@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>FindGo - Directory & Listing HTML Template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="CreativeLayers">
+
+	<!-- Styles -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-grid.css" />
+	<link rel="stylesheet" href="css/icons.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/responsive.css" />
+</head>
+<body class="full-height" id="scrollup">
+
+<div class="page-loading">
+	<img src="images/loader.gif" alt="" />
+	<span>Skip Loader</span>
+</div>
+
+<div class="theme-layout">
+
+	<div class="responsiveheader">
+		<div class="rheader">
+			<span><img src="images/ricon.png" alt="" /></span>
+			<div class="logo">
+				<a href="#" title=""><img src="http://placehold.it/164x37" alt="" /></a>
+			</div>
+			<div class="extras">
+				<span class="accountbtn"><i class="flaticon-avatar"></i></span>
+			</div>
+		</div>
+		<div class="rnaver">
+			<span class="closeresmenu"><i>x</i>Close</span>
+			<div class="logo"><a href="#" title=""><img src="http://placehold.it/175x40" alt="" /></a></div>
+			<div class="extras">
+				<a href="add-listing.html" title=""><img src="images/icon1.png" alt="" /> Add Listing</a>
+			</div>
+			<ul>
+				<li class="menu-item-has-children">
+					<a href="#" title="">Home</a>
+					<ul>
+						<li><a href="index.html" title="">Home 1</a></li>
+						<li><a href="index2.html" title="">Home 2</a></li>
+						<li><a href="index3.html" title="">Home 3</a></li>
+						<li><a href="index4.html" title="">Home 4</a></li>
+						<li><a href="index5.html" title="">Home 5</a></li>
+					</ul>
+				</li>
+				<li class="menu-item-has-children">
+					<a href="#" title="">Listings</a>
+					<ul>
+						<li><a href="add-listing.html" title="">Add Listing</a></li>
+						<li><a href="listing-category.html" title="">Listing Category</a></li>
+						<li><a href="listing-category2.html" title="">Listing Category 2</a></li>
+						<li><a href="listing-full.html" title="">Listing Full</a></li>
+						<li><a href="listing-map.html" title="">Listing Map</a></li>
+						<li><a href="listing-map2.html" title="">Listing Map 2</a></li>
+						<li><a href="listing-sidebar.html" title="">Listing Sidebar</a></li>
+					</ul>
+				</li>
+				<li class="menu-item-has-children">
+					<a href="#" title="">Listing Details</a>
+					<ul>
+						<li><a href="listing-single1.html" title="">Listing Details 1</a></li>
+						<li><a href="listing-single2.html" title="">Listing Details 2</a></li>
+						<li><a href="listing-single3.html" title="">Listing Details 3</a></li>
+						<li><a href="listing-single4.html" title="">Listing Details 4</a></li>
+						<li><a href="listing-single5.html" title="">Listing Details 5</a></li>
+					</ul>
+				</li>
+				<li class="menu-item-has-children">
+					<a href="#" title="">User</a>
+					<ul>
+						<li><a href="user-dashboard.html" title="">User Dashboard</a></li>
+						<li><a href="user-favourite.html" title="">User Favourites</a></li>
+						<li><a href="user-my-listings.html" title="">User Listing</a></li>
+						<li><a href="user-notification.html" title="">User Notifications</a></li>
+						<li><a href="user-profile.html" title="">User Profile</a></li>
+						<li><a href="user-review.html" title="">User Review</a></li>
+					</ul>
+				</li>
+				<li class="menu-item-has-children">
+					<a href="#" title="">Pages</a>
+					<ul>
+						<li><a href="blog1.html" title="">Blog 1</a></li>
+						<li><a href="blog2.html" title="">Blog 2</a></li>
+						<li><a href="blog-single.html" title="">Blog Details</a></li>
+						<li><a href="pricing.html" title="">Pricing</a></li>
+						<li><a href="404.html" title="">404 Error</a></li>
+						<li><a href="contact.html" title="">Contact Us</a></li>
+						<li><a href="services.html" title="">Our Services</a></li>
+						<li><a href="terms.html" title="">Our Terms</a></li>
+						<li><a href="testimonials.html" title="">Testimonials</a></li>
+					</ul>
+				</li>
+				<li class="menu-item-has-children">
+					<a href="#" title="">Shop</a>
+					<ul>
+						<li><a href="shop-list.html" title="">Shop Lists</a></li>
+						<li><a href="shop-detail.html" title="">Shop Details</a></li>
+						<li><a href="cart.html" title="">Shop Cart</a></li>
+						<li><a href="checkout.html" title="">Checkout</a></li>
+						<li><a href="shop-order.html" title="">Shop Order</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div><!-- Responsive header -->
+
+	<header class="s4 dark">
+		<div class="container fluid">
+			<div class="logo">
+				<a href="#" title=""><img src="http://placehold.it/164x37" alt="" /></a>
+			</div>
+			<div class="listingform">
+				<form>
+					<div class="fieldform line">
+						<div id="myDropdown"></div>
+					</div>
+					<div class="fieldform">
+						<div id="myDropdowns" class="s2"></div>
+						<i class="flaticon-pin"></i>
+					</div>
+					<div class="fieldbtn">
+						<button type="submit">Search <i class="flaticon-magnifying-glass"></i></button>
+					</div>
+				</form>
+			</div>
+			<div class="extras">
+				<a href="add-listing.html" title=""><img src="images/icon1.png" alt="" /> Add Listing</a>
+				<span class="accountbtn"><i class="flaticon-avatar"></i></span>
+			</div>
+			<nav>
+				<ul>
+					<li class="menu-item-has-children">
+						<a href="#" title="">Home</a>
+						<ul>
+							<li><a href="index.html" title="">Home 1</a></li>
+							<li><a href="index2.html" title="">Home 2</a></li>
+							<li><a href="index3.html" title="">Home 3</a></li>
+							<li><a href="index4.html" title="">Home 4</a></li>
+							<li><a href="index5.html" title="">Home 5</a></li>
+						</ul>
+					</li>
+					<li class="menu-item-has-children">
+						<a href="#" title="">Listings</a>
+						<ul>
+							<li><a href="add-listing.html" title="">Add Listing</a></li>
+							<li><a href="listing-category.html" title="">Listing Category</a></li>
+							<li><a href="listing-category2.html" title="">Listing Category 2</a></li>
+							<li><a href="listing-full.html" title="">Listing Full</a></li>
+							<li><a href="listing-map.html" title="">Listing Map</a></li>
+							<li><a href="listing-map2.html" title="">Listing Map 2</a></li>
+							<li><a href="listing-sidebar.html" title="">Listing Sidebar</a></li>
+						</ul>
+					</li>
+					<li class="menu-item-has-children">
+						<a href="#" title="">Listing Details</a>
+						<ul>
+							<li><a href="listing-single1.html" title="">Listing Details 1</a></li>
+							<li><a href="listing-single2.html" title="">Listing Details 2</a></li>
+							<li><a href="listing-single3.html" title="">Listing Details 3</a></li>
+							<li><a href="listing-single4.html" title="">Listing Details 4</a></li>
+							<li><a href="listing-single5.html" title="">Listing Details 5</a></li>
+						</ul>
+					</li>
+					<li class="menu-item-has-children">
+						<a href="#" title="">User</a>
+						<ul>
+							<li><a href="user-dashboard.html" title="">User Dashboard</a></li>
+							<li><a href="user-favourite.html" title="">User Favourites</a></li>
+							<li><a href="user-my-listings.html" title="">User Listing</a></li>
+							<li><a href="user-notification.html" title="">User Notifications</a></li>
+							<li><a href="user-profile.html" title="">User Profile</a></li>
+							<li><a href="user-review.html" title="">User Review</a></li>
+						</ul>
+					</li>
+					<li class="menu-item-has-children">
+						<a href="#" title="">Pages</a>
+						<ul>
+							<li class="menu-item-has-children">
+								<a href="#" title="">BLog</a>
+								<ul>
+									<li><a href="blog1.html" title="">Blog 1</a></li>
+									<li><a href="blog2.html" title="">Blog 2</a></li>
+									<li><a href="blog-single.html" title="">Blog Details</a></li>
+								</ul>
+							</li>
+							<li><a href="pricing.html" title="">Pricing</a></li>
+							<li><a href="404.html" title="">404 Error</a></li>
+							<li><a href="contact.html" title="">Contact Us</a></li>
+							<li><a href="services.html" title="">Our Services</a></li>
+							<li><a href="terms.html" title="">Our Terms</a></li>
+							<li><a href="testimonials.html" title="">Testimonials</a></li>
+						</ul>
+					</li>
+					<li class="menu-item-has-children">
+						<a href="#" title="">Shop</a>
+						<ul>
+							<li><a href="shop-list.html" title="">Shop Lists</a></li>
+							<li><a href="shop-detail.html" title="">Shop Details</a></li>
+							<li><a href="cart.html" title="">Shop Cart</a></li>
+							<li><a href="checkout.html" title="">Checkout</a></li>
+							<li><a href="shop-order.html" title="">Shop Order</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<section>
+		<div class="block no-padding">
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="ml-filterslide openall fakeScroll fakeScrolls">
+							<div class="mlfilter-sec">
+								<div class="mfilterform forresponsive">
+									<form>
+										<div class="row">
+											<div class="col-lg-3">
+												<div class="mlfield drop">
+													<input type="text" placeholder="Price" />
+													<i class="fa fa-money"></i>
+													<div class="prices-dropsec">
+														<div class="prices-drop">
+															<p>What is the price range?</p>
+															<span><i>Prices</i>$</span><span><i>Prices</i>$$</span><span><i>Prices</i>$$$</span><span><i>Prices</i>$$$$</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-3">
+												<div class="mlfield">
+													<input type="text" placeholder="Near Me" />
+													<i class="fa fa-flag-o"></i>
+												</div>
+											</div>
+											<div class="col-lg-3">
+												<div class="mlfield">
+													<input type="text" placeholder="Open Now" />
+													<i class="fa fa-clock-o"></i>
+												</div>
+											</div>
+											<div class="col-lg-3">
+												<div class="mlfield">
+													<select class="selectbox">
+														<option>Sort By</option>
+														<option>By Date</option>
+														<option>By Location</option>
+														<option>Latest</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-lg-3">
+												<div class="mlfield s2">
+													<select class="selectbox">
+														<option>All Categories</option>
+														<option>Homes</option>
+														<option>Electrician</option>
+														<option>Mobiles</option>
+														<option>Camera</option>
+														<option>Technology</option>
+													</select>
+												</div>
+											</div>
+											<div class="col-lg-3">
+												<div class="customdropdown">
+													<span>More Filters <i class="fa fa-angle-down"></i></span>
+													<div class="customdrops">	
+														<div class="mltags">
+															<div class="row">
+																<div class="col-lg-6">
+																	<p class="c-label"><input name="cb" id="1" type="checkbox"><label for="1">Smoking Allow</label></p>
+																	<p class="c-label"><input name="cb" id="2" type="checkbox"><label for="2">Parking str</label></p>
+																	<p class="c-label"><input name="cb" id="3" type="checkbox"><label for="3">Daily Specials</label></p>
+																	<p class="c-label"><input name="cb" id="4" type="checkbox"><label for="4">Card Payment</label></p>
+																</div>
+																<div class="col-lg-6">
+																	<p class="c-label"><input name="cb" id="5" type="checkbox"><label for="5">Wireless Inter</label></p>
+																	<p class="c-label"><input name="cb" id="6" type="checkbox"><label for="6">Wheelchair</label></p>
+																	<p class="c-label"><input name="cb" id="7" type="checkbox"><label for="7">Pet Friendly</label></p>
+																	<p class="c-label"><input name="cb" id="8" type="checkbox"><label for="8">Smoking Allow</label></p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-3">
+												<div class="customdropdown">
+													<span>Distance Radius <i class="fa fa-angle-down"></i></span>
+													<div class="customdrops">
+														<div class="rangedrops">
+															<span>Radius around selected destination</span>
+															<div class="rslider">
+																<amino-slider class="slider" data-min="0" data-max="100" data-value="10"></amino-slider>
+															</div>
+															<a href="#" title="" class="btn1 pull-left">Disable</a>
+															<a href="#" title="" class="btn2 pull-right">Apply</a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>	
+								</div>
+								<div class="ml-listings allset">
+									<div class="ml-filterbar">
+										<h3><i class="flaticon-eye"></i>14 Results Found</h3>
+										<ul>
+											<li class="doubleplaces active"><span><i class="fa fa-th-large"></i></span></li>
+											<li class="listingplaces"><span><i class="fa fa-th-list"></i></span></li>
+										</ul>
+									</div>
+									<div class="ml-placessec">
+										<div class="row">
+											<div class="col-lg-6">
+												<div class="places s2">
+													<div class="placethumb">
+														<img src="http://placehold.it/360x220" alt="" />
+														<div class="placeoptions">
+															<span class="pull-left"> <i class="flaticon-eye"></i> Preview </span>
+															<span class="pull-right"> <i class="flaticon-heart"></i> Save </span>
+														</div>
+													</div>
+													<div class="boxplaces">
+														<div class="placeinfos">
+															<h3><a href="#" title="">Hills Restaurant</a></h3>
+															<span>Delicious, luxury food for you</span>
+															<ul class="listmetas">
+																<li><span class="rated">3.5</span>3 Ratings</li>
+																<li><a href="#" title=""><i class="flaticon-chef"></i> Restaurant</a></li>
+																<li>Open</li>
+															</ul>
+														</div>
+														<div class="placedetails">
+															<span class="pull-left"><i class="flaticon-pin"></i>Roma, Italy</span>
+															<span class="pull-right"><i class="flaticon-phone-call"></i>+ 44 20 456 823</span>
+														</div>
+													</div>
+												</div><!-- Places -->
+											</div>
+											<div class="col-lg-6">
+												<div class="places s2">
+													<div class="placethumb">
+														<img src="http://placehold.it/360x220" alt="" />
+														<div class="placeoptions">
+															<span class="pull-left"> <i class="flaticon-eye"></i> Preview </span>
+															<span class="pull-right"> <i class="flaticon-heart"></i> Save </span>
+														</div>
+													</div>
+													<div class="boxplaces">
+														<div class="placeinfos">
+															<h3><a href="#" title="">Balara Cinemas</a></h3>
+															<span>Delicious, luxury food for you</span>
+															<ul class="listmetas">
+																<li><span class="rated">3.5</span>3 Ratings</li>
+																<li><a href="#" title=""><i class="flaticon-chef"></i> Restaurant</a></li>
+																<li>Open</li>
+															</ul>
+														</div>
+														<div class="placedetails">
+															<span class="pull-left"><i class="flaticon-pin"></i>Roma, Italy</span>
+															<span class="pull-right"><i class="flaticon-phone-call"></i>+ 44 20 456 823</span>
+														</div>
+													</div>
+												</div><!-- Places -->
+											</div>
+											<div class="col-lg-6">
+												<div class="places s2">
+													<div class="placethumb">
+														<img src="http://placehold.it/360x220" alt="" />
+														<div class="placeoptions">
+															<span class="pull-left"> <i class="flaticon-eye"></i> Preview </span>
+															<span class="pull-right"> <i class="flaticon-heart"></i> Save </span>
+														</div>
+													</div>
+													<div class="boxplaces">
+														<div class="placeinfos">
+															<h3><a href="#" title="">Balara Cinemas</a></h3>
+															<span>Delicious, luxury food for you</span>
+															<ul class="listmetas">
+																<li><span class="rated">3.5</span>3 Ratings</li>
+																<li><a href="#" title=""><i class="flaticon-chef"></i> Restaurant</a></li>
+																<li>Open</li>
+															</ul>
+														</div>
+														<div class="placedetails">
+															<span class="pull-left"><i class="flaticon-pin"></i>Roma, Italy</span>
+															<span class="pull-right"><i class="flaticon-phone-call"></i>+ 44 20 456 823</span>
+														</div>
+													</div>
+												</div><!-- Places -->
+											</div>
+											<div class="col-lg-6">
+												<div class="places s2">
+													<div class="placethumb">
+														<img src="http://placehold.it/360x220" alt="" />
+														<div class="placeoptions">
+															<span class="pull-left"> <i class="flaticon-eye"></i> Preview </span>
+															<span class="pull-right"> <i class="flaticon-heart"></i> Save </span>
+														</div>
+													</div>
+													<div class="boxplaces">
+														<div class="placeinfos">
+															<h3><a href="#" title="">Balara Cinemas</a></h3>
+															<span>Delicious, luxury food for you</span>
+															<ul class="listmetas">
+																<li><span class="rated">3.5</span>3 Ratings</li>
+																<li><a href="#" title=""><i class="flaticon-chef"></i> Restaurant</a></li>
+																<li>Open</li>
+															</ul>
+														</div>
+														<div class="placedetails">
+															<span class="pull-left"><i class="flaticon-pin"></i>Roma, Italy</span>
+															<span class="pull-right"><i class="flaticon-phone-call"></i>+ 44 20 456 823</span>
+														</div>
+													</div>
+												</div><!-- Places -->
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="half-map s2">
+							<div id="map_div" class="map">&nbsp;</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</div>
+
+<div class="popupsec">
+	<div class="popup">
+		<div class="accounttabs">
+			<span class="closepopup"><i>+</i></span>
+			<ul class="ctabs group">
+			    <li><a href="#/one" class="active">Sign In</a></li>
+			    <li><a href="#/two">Sign Up</a></li>
+			</ul>
+			<div id="content">
+				<div class="accountform" id="one">
+					<form class="loginform">
+						<div class="accountformfield">
+							<label>Username or Email Address *</label>
+							<input type="text" placeholder="Creative Layers" />
+						</div>
+						<div class="accountformfield">
+							<label>Password</label>
+							<input type="password" />
+						</div>
+						<p class="c-label">
+							<input name="cb" id="cb1" type="checkbox"><label for="cb1">Remember me?</label>
+						</p>
+						<a href="#" title="">Lost your password</a>
+						<button type="submit">Sign In</button>
+					</form>
+					<div class="extraconnect">
+						<span>Or Connect With Social Networks</span>
+						<div class="social">
+							<a class="facebook" href="#" title=""><i class="fa fa-facebook"></i></a>
+							<a class="twitter" href="#" title=""><i class="fa fa-twitter"></i></a>
+							<a class="googleplus" href="#" title=""><i class="fa fa-google"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="accountform" id="two" style="display: none;">
+					<form class="loginform">
+						<div class="accountformfield">
+							<label>Email *</label>
+							<input type="text" placeholder="Creative Layers" />
+						</div>
+						<div class="accountformfield">
+							<label>Username *</label>
+							<input type="text" placeholder="Creative Layers" />
+						</div>
+						<div class="accountformfield">
+							<label>Password</label>
+							<input type="password" />
+						</div>
+						<div class="terms">By creating an account you agree to our <a href="#" title="">Terms and Conditions</a> and our <a href="#" title="">Privacy Policy</a></div>
+						<button type="submit">Sign Up</button>
+					</form>
+					<div class="extraconnect">
+						<span>Or Connect With Social Networks</span>
+						<div class="social">
+							<a class="facebook" href="#" title=""><i class="fa fa-facebook"></i></a>
+							<a class="twitter" href="#" title=""><i class="fa fa-twitter"></i></a>
+							<a class="googleplus" href="#" title=""><i class="fa fa-google"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/modernizr.js" type="text/javascript"></script>
+<script src="js/script.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<script src="js/wow.min.js" type="text/javascript"></script>
+<script src="js/slick.min.js" type="text/javascript"></script>
+<script src="js/sumoselect.js" type="text/javascript"></script>
+<script src="js/isotop.js" type="text/javascript"></script>
+<script src="js/jquery.nicescroll.min.js" type="text/javascript"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCYc537bQom7ajFpWE5sQaVyz1SQa9_tuY&sensor=true&libraries=places"></script><!-- Maps -->
+<script type="text/javascript" src="js/map1.js"></script>
+<script type="text/javascript" src="js/jq.aminoSlider.js"></script>
+<script src="js/dropdown.js" type="text/javascript"></script>
+
+</body>
+</html>
+
