@@ -105,6 +105,9 @@ table{
     border-spacing:0;
 }
 html{overflow-x:hidden}
+html,body {
+    height: 100%;
+}
 body{
     color:#555555;
     
@@ -1969,7 +1972,7 @@ footer {
     font-size: 13px;
     color: #8d8d8d;
     margin-bottom: 12px;
-    margin-top: 5px;
+    margin-top: 5px
 }
 .footersec .social a {
     background: #ffffff;
@@ -3810,6 +3813,7 @@ header.s4 .listingform {
 .s4.dark {
     background: #151519;
 }
+
 .half-map.s2 {
     width: 50%;
     padding-left: 0;
@@ -7462,7 +7466,7 @@ blockquote span {
 }
 .urrating {
     float: right;
-    width: 60%;
+    width: 30%;
 }
 .urrating > span {
     float: left;

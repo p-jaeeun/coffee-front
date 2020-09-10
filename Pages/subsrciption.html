@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/responsive.css" />
     <link rel="stylesheet" type="text/css" href="css/customize.css" />
-    <title>User page</title>
+    <title>My subscription</title>
   </head>
   <body class="full-height" id="scrollup">
 
@@ -126,25 +126,77 @@
                         <h3>Dashboard</h3>
                         <div class="dashbadgesec">
                             <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="dashbadge clr1">
-                                        <a href="#" title="" class="dashnum"> <span><i>${total_cafe}</i></span> <strong>I visited</strong></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="dashbadge clr2">
-                                        <a href="#" title="" class="dashnum"> <span><i>${total_add}</i></span> <strong>I added</strong></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="dashbadge clr3">
-                                        <a href="#" title="" class="dashnum"> <span><i>${total_reviews}</i></span> <strong>Total Reviews</strong></a>
-                                    </div>
+                                <div class="carouselplaces">
+                                    <ul id="carouselsec">
+                                        <li>	
+                                            <div class="places">
+                                                <div class="placethumb">
+                                                    <img src="http://placehold.it/360x220" alt="" />
+                                                    <div class="placeoptions">
+                                                        <span class="pull-left"> <i class="flaticon-eye"></i> Preview </span>
+                                                        <span class="pull-right"> <i class="flaticon-heart"></i> Save </span>
+                                                    </div>
+                                                </div>
+                                                <div class="placeinfos">
+                                                    <h3><a href="#" title="">${cafe_name}</a></h3>
+                                                    <span>${description}</span>
+                                                    <ul class="listmetas">
+                                                        <li><span class="rated">${cafe_rate}</span>${cafe_rate_count}</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="placedetails">
+                                                    <span class="pull-left"><i class="flaticon-pin"></i>${cafe_location}</span>
+                                                </div>
+                                            </div><!-- Places -->
+                                        </li>
+                                        <li>	
+                                            <div class="places">
+                                                <div class="placethumb">
+                                                    <img src="http://placehold.it/360x220" alt="" />
+                                                    <div class="placeoptions">
+                                                        <span class="pull-left"> <i class="flaticon-eye"></i> Preview </span>
+                                                        <span class="pull-right"> <i class="flaticon-heart"></i> Save </span>
+                                                    </div>
+                                                </div>
+                                                <div class="placeinfos">
+                                                    <h3><a href="#" title="">${cafe_name}</a></h3>
+                                                    <span>${description}</span>
+                                                    <ul class="listmetas">
+                                                        <li><span class="rated">${cafe_rate}</span>${cafe_rate_count}</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="placedetails">
+                                                    <span class="pull-left"><i class="flaticon-pin"></i>${cafe_location}</span>
+                                                </div>
+                                            </div><!-- Places -->
+                                        </li>
+                                        <li>	
+                                            <div class="places">
+                                                <div class="placethumb">
+                                                    <img src="http://placehold.it/360x220" alt="" />
+                                                    <div class="placeoptions">
+                                                        <span class="pull-left"> <i class="flaticon-eye"></i> Preview </span>
+                                                        <span class="pull-right"> <i class="flaticon-heart"></i> Save </span>
+                                                    </div>
+                                                </div>
+                                                <div class="placeinfos">
+                                                    <h3><a href="#" title="">${cafe_name}</a></h3>
+                                                    <span>${description}</span>
+                                                    <ul class="listmetas">
+                                                        <li><span class="rated">${cafe_rate}</span>${cafe_rate_count}</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="placedetails">
+                                                    <span class="pull-left"><i class="flaticon-pin"></i>${cafe_location}</span>
+                                                </div>
+                                            </div><!-- Places -->
+                                        </li>
+                                    </ul>
                                 </div>
                                 
                             </div>
                         </div>
-                    </div>
+                    </div
                 </div>
             </div>
         </div>
