@@ -44,10 +44,14 @@
 }
 
 /*main-img*/
-.main_img {
-  height: 750px;
+.main_section {
+  height: auto;
 }
 
+.main_img {
+  background-image: url("/images/cafe_main.jpg");
+  background-size: cover;
+}
 /*extra-position*/
 .extra_top {
   position: absolute;
@@ -64,5 +68,64 @@
 
 /*margin top main section*/
 .main-section {
+  margin-top: 50px;
+}
+
+/*style.css -> urrating width를 60 -> 30%*/
+
+/*search-popup-size and position*/
+.search_pop_size {
+  width: 900px;
+  height: 500px;
+  left: 500px;
+}
+
+.search_bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search_bar > input {
+  margin: 0px;
+}
+
+.search_title {
+  font-size: 25px;
+  font-family: "Quicksand";
+  font-weight: 700;
+  margin: 10px 0 35px 0px;
+}
+
+.pop_title {
+  text-align: left;
+  margin-left: -10px;
+  margin-top: 25px;
+}
+
+.option_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search_btn {
+  margin-top: 20px;
+}
+
+/*main_before_login_section*/
+.main_section,
+.main_img img {
+  height: 100vh;
+}
+
+.search_title {
+  margin-top: 20px;
+}
+
+/*style.css에 html,body{height:100%} 추가*/
+
+/*header z down*/
+.section_down {
   margin-top: 50px;
 }

@@ -104,6 +104,9 @@ table{
     border-collapse:collapse;
     border-spacing:0;
 }
+/* 추가한것 */
+html, body{height:100% }
+
 html{overflow-x:hidden}
 body{
     color:#555555;
@@ -7462,7 +7465,7 @@ blockquote span {
 }
 .urrating {
     float: right;
-    width: 60%;
+    width: 30%;
 }
 .urrating > span {
     float: left;
