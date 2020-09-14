@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="css/responsive.css" />
     <link rel="stylesheet" href="css/customize.css" />
 
-    <title>Index</title>
+    <title>Search popup</title>
   </head>
   <body class="full-height" id="scrollup">
     <div class="page-loading">
@@ -33,9 +33,6 @@
               ><img src="/Pages/images/hiddenc_logo_black.png" alt=""
             /></a>
           </div>
-          <div class="extras">
-            <span class="accountbtn"><i class="flaticon-avatar"></i></span>
-          </div>
         </div>
         <div class="rnaver">
           <span class="closeresmenu"><i>x</i>Close</span>
@@ -48,7 +45,7 @@
             <li>
               <a href="#" title="">Home</a>
             </li>
-            <li>
+            <li class="accountbtn">
               <a href="#" title="">Search</a>
             </li>
             <li>
@@ -88,23 +85,19 @@
         </nav>
       </header>
 
-      <!-- 헤더 search에 accountbtn클래스 주고 아래코드를 html에 붙여넣으면 된다. 단 계정생성과 같이 사용할 수 없다 -->
-      <!-- 모든 html은 theme-layout안에 정의되어야 함을 주의 -->
       <div class="popupsec">
         <div class="popup">
           <div class="accounttabs search_pop_size">
             <span class="closepopup"><i>+</i></span>
-
             <div id="content">
-              <div class="accountform" id="one">
+              <div class="accountform pop_form" id="one">
                 <div class="pop_title">
-                  <label class="search_title">어떤 카페를 찾으세요?</label>
+                  <h5 class="search_title">어떤 카페를 찾으세요?</h5>
                 </div>
-
                 <div class="search_bar">
                   <input type="text" placeholder="검색어를 입력하세요" />
                   <div class="fieldbtn">
-                    <button type="search">SERACH</button>
+                    <button type="search" class="search_button">SEARCH</button>
                   </div>
                 </div>
               </div>
@@ -125,28 +118,10 @@
     <script src="js/jquery.nicescroll.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/map1.js"></script>
     <script type="text/javascript" src="js/jq.aminoSlider.js"></script>
-    <script src="app.js"></script>
-
-    <!-- <script src="app.js" type="module"></script> -->
-    <!-- <script src="../coffee/view/Pages.js"></script> -->
-    <!-- <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"
-    ></script> -->
-    <!-- <script
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb"
-    ></script> -->
+    ></script>
+    <script src="app.js" type="module"></script>
   </body>
 </html>

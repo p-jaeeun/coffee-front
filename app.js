@@ -1,9 +1,14 @@
-import { AdminCTR } from "../coffee/client/controller/admin_controller.js";
-import { AdminService } from "../coffee/client/service/admin_service.js";
-import { AdminView } from "../coffee/client/view/admin_view.js";
+import { UserCTR } from "/Users/김청하/Desktop/coffee-front/coffee/client/User/controller/UserCTR";
+import { UserService } from "/Users/김청하/Desktop/coffee-front/coffee/client/User/service/UserService";
+import { UserComponent } from "/Users/김청하/Desktop/coffee-front/coffee/client/User/view/UserComponent";
+
+import { AdminCTR } from "/Users/김청하/Desktop/coffee-front/coffee/client/Admin/controller/AdminCTR";
+import { AdminService } from "/Users/김청하/Desktop/coffee-front/coffee/client/Admin/service/AdminService";
+import { AdminComponent } from "/Users/김청하/Desktop/coffee-front/coffee/client/Admin/view/AdminComponent";
 
 (function () {
-  const app = new AdminCTR(new AdminService(), new AdminView());
+  const admin_app = new AdminCTR(new AdminService(), new AdminComponent());
+  const user_app = new UserCTR(new UserService(), new UserComponent());
 });
 
 //Pages에 만든 페이지

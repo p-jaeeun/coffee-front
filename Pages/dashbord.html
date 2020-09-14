@@ -15,45 +15,34 @@
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/responsive.css" />
     <link rel="stylesheet" type="text/css" href="css/customize.css" />
-<<<<<<< HEAD
-    
-=======
->>>>>>> 5a7d16574cfcc2a92d3fb03e74cbb83dbed7b953
-    <title>User page</title>
+    <title>User page - Dashboard</title>
   </head>
   <body class="full-height" id="scrollup">
 
     <div class="page-loading">
-        <img src="images/loader.gif" alt="" />
-        <span>Skip Loader</span>
+      <img src="images/loader.gif" alt="" />
+      <span>Skip Loader</span>
     </div>
     
     <div class="theme-layout">
-    
         <div class="responsiveheader">
             <div class="rheader">
                 <span><img src="images/ricon.png" alt="" /></span>
                 <div class="logo">
                     <a href="#" title=""><img src="/images/hiddenc_logo.png" alt="" /></a>
                 </div>
-                <div class="extras">
-                    <span class="accountbtn"><i class="flaticon-avatar"></i></span>
-                </div>
+              
             </div>
             <div class="rnaver">
                 <span class="closeresmenu"><i>x</i>Close</span>
-<<<<<<< HEAD
-                <div class="logo"><a href="#" title=""><img src="http://placehold.it/175x40" alt="" /></a></div>
-=======
->>>>>>> 5a7d16574cfcc2a92d3fb03e74cbb83dbed7b953
                 <ul>
                     <li>
                         <a href="#" title="">Home</a>
                     </li>
-                    <li >
+                    <li class="accountbtn">
                         <a href="#" title="">Search</a>
                     </li>
-                    <li >
+                    <li>
                         <a href="#" title="">User</a>
                     </li>
                 </ul>
@@ -65,26 +54,24 @@
                 <a href="#" title=""><img src="/images/hiddenc_logo.png" alt="" /></a>
             </div>
             <div class="userdropsec">
-                <span><img src="http://placehold.it/50x50" alt="" />${user_name} </span>
+                <span><img src="http://placehold.it/50x50" alt="" />${user_id} </span>
             </div>
             <a href="#" title="" class="bellicon"><i class="fa fa-bell-o"></i><strong>${notification}</strong></a>
             <nav>
-                    <ul>
-                    <li>
-                    <a href="#" title="">Home</a>
+              <ul>
+                <li>
+                  <a href="#" title="">Home</a>
+                </li>
+                <li class="accountbtn" style="float:left;">
+                  <a href="#" title="">Search</a>
                 </li>
                 <li >
-                    <a href="#" title="">Search</a>
+                  <a href="#" title="">User</a>
                 </li>
-                <li >
-                    <a href="#" title="">User</a>
-                </li>
-                        </li>
-                    </ul>
-                </nav>
+              </ul>
+            </nav>
         </header>
-
-        <section>
+    
         <div class="block remove-bottom double-gap-top">
             <div class="layer blackish">
                 <div data-velocity="-.1" style="background: url(http://placehold.it/1920x850) repeat scroll 50% 422.28px transparent;" class="no-parallax parallax scrolly-invisible"></div><!-- PARALLAX BACKGROUND IMAGE -->	
@@ -95,13 +82,13 @@
                                 <div class="iamuser">
                                     <div class="userimg"><img src="http://placehold.it/120x120" alt="" /></div>
                                     <div class="userinfos">
-                                        <h3>${user_name}</h3>
+                                        <h3>${user_id}</h3>
                                         <span>${status}</span>
                                     </div>
                                 </div>
                                 <div class="iamuserstats">
                                     <span><i class="fa fa-coffee" aria-hidden="true"></i>Caffeine ${user_caffeine}</span>
-                                    <span><i class="flaticon-avatar"></i>Subscriber ${subscriber}</span>
+                                    <span><i class="flaticon-avatar"></i>Subscriber ${user_like}</span>
                                 </div>
                             </div>
                         </div>
@@ -125,104 +112,98 @@
         </div>
     </div>
 
-<section>
-    <div class="block gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="dashboradsec">
-                        <h3>Dashboard</h3>
-                        <div class="dashbadgesec">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="dashbadge clr1">
-                                        <a href="#" title="" class="dashnum"> <span><i>${total_cafe}</i></span> <strong>I visited</strong></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="dashbadge clr2">
-                                        <a href="#" title="" class="dashnum"> <span><i>${total_add}</i></span> <strong>I added</strong></a>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4">
-                                    <div class="dashbadge clr3">
-                                        <a href="#" title="" class="dashnum"> <span><i>${total_reviews}</i></span> <strong>Total Reviews</strong></a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<footer>
-<<<<<<< HEAD
-    <div class="block">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footersec">
-                        <ul>
-                            <li><a href="#" >Home</a></li>
-                            <li><a href="#" >Partners</a></li>
-                            <li><a href="#" >Contact</a></li>
-                            <li><a href="#" >Terms</a></li>
-                            <li><a href="#">Customer Center</a></li>
-                        </ul>
-                        <span>Seoul Geumcheon-gu, Gasan-dong, Gasan digital 1-ro</span>
-                        <span>+82 02-123-4567</span>
-                        <span>HiddenC@gmail.com</span>
-                        <div class="social ">
-                            <a href="#" title=""><i class="fa fa-facebook" ></i></a>
-                            <a href="#" title="" ><i class="fa fa-twitter"  ></i></a>
-                            <a href="#" title="" ><i class="fa fa-instagram"></i></a>
-                            <a href="#" title="" ><i class="fa fa-google"  ></i></a>
-                        </div>
-=======
-<div class="block">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="footersec">
-                    <ul>
-                        <li><a href="#" >Home</a></li>
-                        <li><a href="#" >Partners</a></li>
-                        <li><a href="#" >Contact</a></li>
-                        <li><a href="#" >Terms</a></li>
-                        <li><a href="#">Customer Center</a></li>
-                    </ul>
-                    <span>Seoul Geumcheon-gu, Gasan-dong, Gasan digital 1-ro</span>
-                    <span>+82 02-123-4567</span>
-                    <span>HiddenC@gmail.com</span>
-                    <div class="social">
-                        <a href="#" title=""><i class="fa fa-facebook"></i></a>
-                        <a href="#" title=""><i class="fa fa-twitter"></i></a>
-                        <a href="#" title=""><i class="fa fa-instagram"></i></a>
-                        <a href="#" title=""><i class="fa fa-google"></i></a>
->>>>>>> 5a7d16574cfcc2a92d3fb03e74cbb83dbed7b953
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<<<<<<< HEAD
-    <div class="bottomline">
-        <a href="#scrollup" class="scrollup" title=""><i class="fa fa-angle-up"></i></a>
-        <span>© 2020 HiddenC All rights reserved.</span>
-    </div>
-  </footer>
-=======
-</div>
-<div class="bottomline">
-    <a href="#scrollup" class="scrollup" title=""><i class="fa fa-angle-up"></i></a>
-    <span>© 2020 HiddenC All rights reserved.</span>
-</div>
-</footer>
+    <section>
+      <div class="block gray">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <div class="dashboradsec">
+                          <h3>Dashboard</h3>
+                          <div class="dashbadgesec">
+                              <div class="row">
+                                  <div class="col-lg-4">
+                                      <div class="dashbadge clr1">
+                                          <a href="#" title="" class="dashnum"> <span><i>${total_cafe}</i></span> <strong>I   visited</strong></a>
+                                      </div>
+                                  </div>
+                                  <div class="col-lg-4">
+                                      <div class="dashbadge clr2">
+                                          <a href="#" title="" class="dashnum"> <span><i>${total_add}</i></span> <>I added</  strong></a>
+                                      </div>
+                                  </div>
+                                  <div class="col-lg-4">
+                                      <div class="dashbadge clr3">
+                                          <a href="#" title="" class="dashnum"> <span><i>${total_favorite}</i></span>   <strong>Total Bookmark</strong></a>
+                                      </div>
+                                  </div> 
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
 
->>>>>>> 5a7d16574cfcc2a92d3fb03e74cbb83dbed7b953
+
+    <footer>
+    <div class="block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="footersec">
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Partners</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Terms</a></li>
+                <li><a href="#">Customer Center</a></li>
+              </ul>
+              <span
+                >Seoul Geumcheon-gu, Gasan-dong, Gasan digital 1-ro</span
+              >
+              <span>+82 02-123-4567</span>
+              <span>HiddenC@gmail.com</span>
+              <div class="social">
+                <a href="#" title=""><i class="fa fa-facebook"></i></a>
+                <a href="#" title=""><i class="fa fa-twitter"></i></a>
+                <a href="#" title=""><i class="fa fa-instagram"></i></a>
+                <a href="#" title=""><i class="fa fa-google"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bottomline">
+      <a href="#scrollup" class="scrollup" title=""
+        ><i class="fa fa-angle-up"></i
+      ></a>
+      <span>© 2020 HiddenC All rights reserved.</span>
+    </div>
+    </footer>
+
+    <div class="popupsec">
+    <div class="popup">
+      <div class="accounttabs search_pop_size">
+        <span class="closepopup"><i>+</i></span>
+        <div id="content">
+          <div class="accountform" id="one">
+            <div class="pop_title">
+              <label class="search_title">어떤 카페를 찾으세요?</label>
+            </div>
+            <div class="search_bar">
+              <input type="text" placeholder="검색어를 입력하세요" />
+              <div class="fieldbtn">
+                <button type="search">Search</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>
 
     <!-- Script -->
     <script src="js/jquery.min.js" type="text/javascript"></script>
@@ -236,28 +217,10 @@
     <script src="js/jquery.nicescroll.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/map1.js"></script>
     <script type="text/javascript" src="js/jq.aminoSlider.js"></script>
-    <script src="app.js"></script>
-
-    <!-- <script src="app.js" type="module"></script> -->
-    <!-- <script src="../coffee/view/Pages.js"></script> -->
-    <!-- <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
     <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"
-    ></script> -->
-    <!-- <script
-      type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb"
-    ></script> -->
+    type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb"
+  ></script>
+  <script src="app.js" type="module"></script>
   </body>
 </html>

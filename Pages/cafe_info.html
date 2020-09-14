@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="css/animate.min.css" />
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/responsive.css" />
-    <title>Index</title>
+    <link rel="stylesheet" href="css/customize.css" />
+
+    <title>카페 상세 정보</title>
   </head>
   <body class="full-height" id="scrollup">
     <div class="page-loading">
@@ -23,7 +25,6 @@
     </div>
 
     <div class="theme-layout">
-      <!-- 헤더 추가해야함 -->
       <div class="responsiveheader">
         <div class="rheader">
           <span><img src="images/ricon.png" alt="" /></span>
@@ -32,9 +33,6 @@
               ><img src="/images/hiddenc_logo.png" alt=""
             /></a>
           </div>
-          <div class="extras">
-            <span class="accountbtn"><i class="flaticon-avatar"></i></span>
-          </div>
         </div>
         <div class="rnaver">
           <span class="closeresmenu"><i>x</i>Close</span>
@@ -42,7 +40,7 @@
             <li>
               <a href="#" title="">Home</a>
             </li>
-            <li>
+            <li class="accountbtn">
               <a href="#" title="">Search</a>
             </li>
             <li>
@@ -63,8 +61,8 @@
           <div class="userdropsec">
             <span
               ><img src="http://placehold.it/50x50" alt="" /><span
-                class="header_user_name"
-                >${user_name}</span
+                class="header_user_id"
+                >${user_id}</span
               ></span
             >
           </div>
@@ -76,7 +74,7 @@
               <li>
                 <a href="#" title="">Home</a>
               </li>
-              <li>
+              <li class="accountbtn" style="float: left">
                 <a href="#" title="">Search</a>
               </li>
               <li>
@@ -136,7 +134,6 @@
                       <div class="col-lg-6">
                         <div class="sltitle">
                           <h1>${cafe_name}</h1>
-                          <span>${description}</span>
                           <ul class="listmetas">
                             <li>
                               <span class="rated">${cafe_rate}</span
@@ -148,7 +145,7 @@
                       <div class="col-lg-6">
                         <div class="slbtnsspans">
                           <span
-                            ><i class="flaticon-pin"></i> ${cafe_address}</span
+                            ><i class="flaticon-pin"></i> ${cafe_location}</span
                           >
 
                           <div class="slbtns">
@@ -202,7 +199,13 @@
                   <div class="bbox">
                     <h3>Description</h3>
                     <div class="ldesc">
-                      <p>${description_detail}</p>
+                      <p>${cafe_information}</p>
+                    </div>
+                  </div>
+                  <div class="bbox">
+                    <h3>Menu</h3>
+                    <div class="ldesc">
+                      <p>${cafe_menu}</p>
                     </div>
                   </div>
 
@@ -260,7 +263,7 @@
                         <img src="http://placehold.it/60x60" alt="" />
                       </div>
                       <div class="reviewinfo">
-                        <h3>${review_user_name}</h3>
+                        <h3>${review_user_id}</h3>
                         <span>${write_date}</span>
                         <ul class="listmetas justrate">
                           <li>
@@ -273,7 +276,7 @@
                           <span>Was This Review ...?</span>
                           <div class="wasreviewbtn">
                             <a href="#" title="" class="c3"
-                              ><i class="flaticon-heart"></i>Love 87</a
+                              ><i class="flaticon-heart"></i>Like {cafe_like}</a
                             >
                           </div>
                         </div>
@@ -288,22 +291,31 @@
                   <div class="listingcomment">
                     <div class="leavecomment">
                       <h3>Rate us and Write a Review</h3>
-                      <div class="upimg">
+                      <div class="upimg" style="width: 60%">
                         <span>Upload images</span>
                         <a href="#" title=""
                           ><img src="images/cloud.png" alt=""
                         /></a>
-                        <input type="file" />
+                        <input
+                          type="file"
+                          accept="img/*"
+                          onChange="uploadImgPreview()"
+                          id="js-upload"
+                          multiple
+                        />
+                        <div id="js-thumnail"></div>
                       </div>
                       <div class="urrating rate_input">
                         <input type="text" placeholder="점수를 입력하세요." />
                       </div>
-                      <form>
-                        <input placeholder="your@mail.com" type="Email" />
-                        <input placeholder="Title" type="text" />
-                        <textarea placeholder="Review"></textarea>
-                        <input value="Submit Review" type="submit" />
-                      </form>
+
+                      <input placeholder="your@mail.com" type="Email" />
+                      <input placeholder="Title" type="text" />
+                      <textarea placeholder="Review"></textarea>
+
+                      <div class="fieldbtn">
+                        <button type="search">등록하기</button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -313,7 +325,7 @@
                     <div class="contact-map">
                       <div id="map" style="width: 350px; height: 400px"></div>
                     </div>
-                    <span>${cafe_address}</span>
+                    <span>${cafe_location}</span>
                     <span>${cafe_mail}</span>
 
                     <div class="wsocial">
@@ -324,18 +336,6 @@
                       <a href="#" title=""><i class="fa fa-google"></i></a>
                       <a href="#" title=""><i class="fa fa-dribbble"></i></a>
                     </div>
-                  </div>
-                  <div class="cbusiness">
-                    <h3>Contact to the cafe</h3>
-                    <form>
-                      <label>Your Name *</label>
-                      <input type="text" placeholder="Your name" />
-                      <label>Your Email Address*</label>
-                      <input type="text" placeholder="demo@demo.com" />
-                      <label>Your Message</label>
-                      <textarea placeholder="demo@demo.com"></textarea>
-                      <button type="submit">Send Message</button>
-                    </form>
                   </div>
                 </div>
               </div>
@@ -383,79 +383,17 @@
 
       <div class="popupsec">
         <div class="popup">
-          <div class="accounttabs">
+          <div class="accounttabs search_pop_size">
             <span class="closepopup"><i>+</i></span>
-            <ul class="ctabs group">
-              <li><a href="#/one" class="active">Sign In</a></li>
-              <li><a href="#/two">Sign Up</a></li>
-            </ul>
             <div id="content">
-              <div class="accountform" id="one">
-                <form class="loginform">
-                  <div class="accountformfield">
-                    <label>Username or Email Address *</label>
-                    <input type="text" placeholder="Creative Layers" />
-                  </div>
-                  <div class="accountformfield">
-                    <label>Password</label>
-                    <input type="password" />
-                  </div>
-                  <p class="c-label">
-                    <input name="cb" id="cb1" type="checkbox" /><label for="cb1"
-                      >Remember me?</label
-                    >
-                  </p>
-                  <a href="#" title="">Lost your password</a>
-                  <button type="submit">Sign In</button>
-                </form>
-                <div class="extraconnect">
-                  <span>Or Connect With Social Networks</span>
-                  <div class="social">
-                    <a class="facebook" href="#" title=""
-                      ><i class="fa fa-facebook"></i
-                    ></a>
-                    <a class="twitter" href="#" title=""
-                      ><i class="fa fa-twitter"></i
-                    ></a>
-                    <a class="googleplus" href="#" title=""
-                      ><i class="fa fa-google"></i
-                    ></a>
-                  </div>
+              <div class="accountform pop_form" id="one">
+                <div class="pop_title">
+                  <h5 class="search_title">어떤 카페를 찾으세요?</h5>
                 </div>
-              </div>
-              <div class="accountform" id="two" style="display: none">
-                <form class="loginform">
-                  <div class="accountformfield">
-                    <label>Email *</label>
-                    <input type="text" placeholder="Creative Layers" />
-                  </div>
-                  <div class="accountformfield">
-                    <label>Username *</label>
-                    <input type="text" placeholder="Creative Layers" />
-                  </div>
-                  <div class="accountformfield">
-                    <label>Password</label>
-                    <input type="password" />
-                  </div>
-                  <div class="terms">
-                    By creating an account you agree to our
-                    <a href="#" title="">Terms and Conditions</a> and our
-                    <a href="#" title="">Privacy Policy</a>
-                  </div>
-                  <button type="submit">Sign Up</button>
-                </form>
-                <div class="extraconnect">
-                  <span>Or Connect With Social Networks</span>
-                  <div class="social">
-                    <a class="facebook" href="#" title=""
-                      ><i class="fa fa-facebook"></i
-                    ></a>
-                    <a class="twitter" href="#" title=""
-                      ><i class="fa fa-twitter"></i
-                    ></a>
-                    <a class="googleplus" href="#" title=""
-                      ><i class="fa fa-google"></i
-                    ></a>
+                <div class="search_bar">
+                  <input type="text" placeholder="검색어를 입력하세요" />
+                  <div class="fieldbtn">
+                    <button type="search" class="search_button">SEARCH</button>
                   </div>
                 </div>
               </div>
@@ -464,7 +402,6 @@
         </div>
       </div>
     </div>
-
     <!-- Script -->
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/modernizr.js" type="text/javascript"></script>
@@ -477,28 +414,46 @@
     <script src="js/jquery.nicescroll.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/map1.js"></script>
     <script type="text/javascript" src="js/jq.aminoSlider.js"></script>
-    <script src="app.js"></script>
-
-    <!-- <script src="app.js" type="module"></script> -->
-    <!-- <script src="../coffee/view/Pages.js"></script> -->
-    <!-- <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-      crossorigin="anonymous"
-    ></script> -->
     <script
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb"
     ></script>
+    <script src="app.js" type="module"></script>
+    <script>
+      function uploadImgPreview() {
+        // @breif 업로드 파일 읽기
+        let fileList = document.getElementById("js-upload").files;
+        // @breif 업로드 파일 읽기
+        function readAndPreview(fileList) {
+          // @breif 이미지 확장자 검사
+          if (/\.(jpe?g|png|gif)$/i.test(fileList.name)) {
+            let reader = new FileReader();
+            reader.addEventListener(
+              "load",
+              function () {
+                let image = new Image();
+                image.width = "90";
+                image.height = "90";
+                image.title = fileList.name;
+                image.src = this.result;
+                // @details 이미지 확장자 검사
+                document.getElementById("js-thumnail").appendChild(image);
+              },
+              false
+            );
+
+            // @details readAsDataURL( )을 통해 파일의 URL을 읽어온다.
+
+            if (fileList) {
+              reader.readAsDataURL(fileList);
+            }
+          }
+        }
+
+        if (fileList) {
+          [].forEach.call(fileList, readAndPreview);
+        }
+      }
+    </script>
   </body>
 </html>
