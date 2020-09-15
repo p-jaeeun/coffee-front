@@ -1,11 +1,12 @@
-import { UserApi } from "/Users/김청하/Desktop/coffee-front/coffee/client/User/api/UserApi";
-import { UserDTO } from "/Users/김청하/Desktop/coffee-front/coffee/client/User/model/UserDTO";
+import { UserApi } from "../api/UserApi.js";
+import { UserDTO } from "../model/UserDTO.js";
 
 export class UserService {
   constructor() {
     this.api = new UserApi();
   }
-  async userLogin(userData) {
+  async signin(userData) {
+    console.log("service" + userData);
     let dto = new UserDTO();
     let { user_id, user_pw } = userData;
 
@@ -13,36 +14,46 @@ export class UserService {
     dto.setUserPw(user_pw);
 
     try {
-      await this.api.userLogin(dto).then((result) => {
-        if (result === "false") {
-          alert("비밀번호 혹은 아이디 오류입니다.");
-        } else if (result === "true") {
-          this.api.callMain();
-        }
-      });
+      result = await this.api.signin(dto);
     } catch (e) {
       console.log("error: " + e);
     }
+
+    switch (result) {
+      case "true":
+        // this.callMain();
+        console.log("hello");
+      case "admin_true":
+        this.callAdminPage();
+      case "false":
+        alert("아이디 혹은 비밀번호를 확인하세요.");
+    }
   }
 
-  async callMain() {
+  async callMain(user_id) {
     let result;
     let cafe_list = new Array();
     let caffeine = new Array();
 
     try {
-      result = await this.api.callMain();
+      result = await this.api.callMain(user_id);
     } catch (e) {
       console.log("error:" + e);
     }
 
-    if (result === "false") {
-      console.log("Page loading error: " + result);
-    } else if (result === "true") {
-      for (let i = 0; i < result.length; i++) {
-        //카페인 유저, 카페목록을 받음 -> 어떤 형식으로 오나?
-      }
-    }
-    return cafe_list;
+    return result;
   }
+
+  async callAdminPage() {
+    let result;
+
+    try {
+      result = await this.api.callAdminPage();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+    return result;
+  }
+
+  async signup() {}
 }

@@ -1,13 +1,13 @@
-import { AdminView } from "/Users/김청하/Desktop/coffee-front/coffee/client/Admin/view/AdminView";
+import { AdminView } from "../view/AdminView.js";
+import {CommonView} from "../../Common/view/CommonView.js"
 
 export class AdminComponent {
   constructor() {
-    this.view = new AdminView();
+    this.admin_view = new AdminView();
+    this.common_view = new CommonView()
 
     //버튼
-    this.load = document.getElementById("js-cafe-load");
-    this.add = document.getElementById("js-add-cafe");
-    this.update = document.getElementById("js-cafe-update");
+    this.signin = document.getElementById("")
   
     //등록, 수정
     this.cafe_name = document.getElementsByClassName("js-add-revise");
