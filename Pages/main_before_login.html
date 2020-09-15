@@ -95,14 +95,14 @@
             </ul>
             <div id="content">
               <div class="accountform" id="one">
-                <div class="loginform">
+                <div class="loginform js-signin-input" >
                   <div class="accountformfield">
                     <label>ID</label>
-                    <input type="text" placeholder="Creative Layers" />
+                    <input type="text" class="js-signin-input" placeholder="Creative Layers" />
                   </div>
                   <div class="accountformfield">
                     <label>Password</label>
-                    <input type="password" />
+                    <input type="password" class="js-signin-input" />
                   </div>
                   <p class="c-label">
                     <input name="cb" id="cb1" type="checkbox" /><label for="cb1"
@@ -110,7 +110,7 @@
                     >
                   
                   <a href="#" title="">Lost your password?</a></p>
-                  <button type="submit">Sign In</button>
+                  <button type="submit" id="js-signin-btn">Sign In</button>
                 </div>
                 <div class="extraconnect">
                   <span>Or Connect With Social Networks</span>
@@ -128,36 +128,37 @@
                 </div>
               </div>
               <div class="accountform" id="two" style="display: none">
-                <div class="loginform">
+                <div class="loginform js-signup-input">
                   <div class="accountformfield">
                     <label>ID</label>
-                    <input type="text" placeholder="maxpower123" />
+                    <input type="text" class="js-signup-input" placeholder="maxpower123" />
                   </div>
                   <div class="accountformfield">
                     <label>Password</label>
-                    <input type="password" />
+                    <input type="password" class="js-signup-input"/>
                   </div>
                   <div class="accountformfield">
                     <label>Name</label>
-                    <input type="text" placeholder="John Doe" />
+                    <input type="text" class="js-signup-input" placeholder="John Doe" />
                   </div>
                   <div class="accountformfield">
                     <label>Email</label>
-                    <input type="email" placeholder="example@example.com" />
+                    <input type="email" class="js-signup-input" placeholder="example@example.com" />
                   </div>
                   <div class="accountformfield">
                     <label>BirthDate</label>
                     <input
                       type="text"
+                      class="js-signup-input"
                       placeholder="ex) 90년도 12월 12일생 -> 19901212"
                     />
                   </div>
                   <div class="accountformfield">
                     <label>Gender</label>
-                    <select class="cdropshere">
+                    <select class="cdropshere" id="js-signup-input">
                       <option>Select</option>
-                      <option>Female</option>
-                      <option>Male</option>
+                      <option value=1>Male</option>
+                      <option value=0>Female</option>
                     </select>
                   </div>
                   <div class="terms">
@@ -165,7 +166,7 @@
                     <a href="#" title="">Terms and Conditions</a> and our
                     <a href="#" title="">Privacy Policy</a>
                   </div>
-                  <button type="submit">Sign Up</button>
+                  <button type="submit" id="js-signup-btn">Sign Up</button>
                 </div>
                 <div class="extraconnect">
                   <span>Or Connect With Social Networks</span>
