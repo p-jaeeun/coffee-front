@@ -24,7 +24,7 @@
     </div>
 
     <div class="theme-layout">
-      <div class="responsiveheader">
+      <div class="responsiveheader js-admin-header-menu">
         <div class="rheader">
           <span><img src="images/ricon.png" alt="" /></span>
           <div class="logo">
@@ -50,7 +50,7 @@
       </div>
       <!-- Responsive header -->
 
-      <header class="s4 dark">
+      <header class="s4 dark js-admin-header-menu">
         <div class="container fluid">
           <div class="logo">
             <a href="#" title=""
@@ -96,15 +96,16 @@
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 이름 *</span>
-                          <input type="text" />
+                          <input type="text" class="js-admin-addcafe-input"/>
                         </div>
                         <div class="fieldformy">
                           <span
-                            >카페 메뉴 (본인이 구매한 메뉴라도 적어주세요)</span
+                            >카페 메뉴</span
                           >
                           <input
+                            type="text" 
+                            class="js-admin-addcafe-input" 
                             placeholder="ex) 아메리카노 4000 , 라떼 4500"
-                            type="text"
                           />
                         </div>
                         <div class="fieldformy">
@@ -122,15 +123,17 @@
                         <div class="fieldformy">
                           <span>카페 주소 *</span>
                           <input
-                            placeholder="ex) Seoul, Jongno-gu, Gwancheol-dong, 5-8 카페 뎀셀브즈"
                             type="text"
+                            class="js-admin-addcafe-input" 
+                            placeholder="ex) Seoul, Jongno-gu, Gwancheol-dong, 5-8 카페 뎀셀브즈"
                           />
                         </div>
                         <div class="fieldformy">
                           <span>카페 SNS </span>
                           <input
-                            placeholder="https://www.instagram.com/starbucks"
-                            type="text"
+                          type="text"
+                          class="js-admin-addcafe-input"
+                          placeholder="https://www.instagram.com/starbucks"
                           />
                         </div>
                       </div>
@@ -138,6 +141,7 @@
                         <div class="fieldformy">
                           <span>카페 기타 정보 사항</span>
                           <textarea
+                            class="js-admin-addcafe-input"
                             placeholder="예) 여기는 라떼맛집이에요! 핸드드립 메뉴도 있어요"
                           ></textarea>
                         </div>
@@ -148,6 +152,7 @@
                           <span>이미지를 업로드 하려면 클릭해주세요.</span>
                           <input
                             type="file"
+                            class="js-admin-addcafe-img"
                             accept="img/*"
                             onChange="uploadImgPreview()"
                             id="js-upload"
@@ -165,7 +170,7 @@
                     </div>
                     <br />
                     <div class="fieldbtn">
-                      <button type="search" class="js-submit">등록하기</button>
+                      <button type="search" class="js-submit" id="js-admin-addcafe-btn">등록하기</button>
                     </div>
                   </div>
                 </div>

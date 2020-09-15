@@ -24,7 +24,7 @@
     </div>
 
     <div class="theme-layout">
-      <div class="responsiveheader">
+      <div class="responsiveheader js-admin-header-menu">
         <div class="rheader">
           <span><img src="images/ricon.png" alt="" /></span>
           <div class="logo">
@@ -50,7 +50,7 @@
       </div>
       <!-- Responsive header -->
 
-      <header class="s4 dark">
+      <header class="s4 dark js-admin-header-menu">
         <div class="container fluid">
           <div class="logo">
             <a href="#" title=""
@@ -97,13 +97,13 @@
                         <div class="saved_cafe_list">
                           <h5 id="cafe_list_title">
                             카페 리스트:
-                            <select name="cafe_list" id="saved_cafe_list">
+                            <select name="cafe_list" class="js-admin-revisecafe-list" id="saved_cafe_list">
                               <option value="0">select</option>
                             </select>
                           </h5>
                         </div>
                         <div class="fieldbtn">
-                          <button type="search">불러오기</button>
+                          <button type="sumbit" id="js-admin-revisecafe-btn">불러오기</button>
                         </div>
                       </div>
                     </div>
@@ -116,11 +116,11 @@
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 이름 *</span>
-                          <input type="text" />
+                          <input type="text" class="js-admin-revisecafe-input"/>
                         </div>
                         <div class="fieldformy">
                           <span>카페 메뉴 </span>
-                          <input placeholder="" type="text" />
+                          <input type="text" class="js-admin-revisecafe-input" placeholder="" />
                         </div>
                         <div class="fieldformy">
                           <span>카테고리</span>
@@ -136,11 +136,11 @@
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 주소 *</span>
-                          <input placeholder="" type="text" />
+                          <input type="text" class="js-admin-revisecafe-input" placeholder="" />
                         </div>
                         <div class="fieldformy">
                           <span>카페 SNS </span>
-                          <input placeholder="" type="text" />
+                          <input type="text" class="js-admin-revisecafe-input" placeholder="" />
                         </div>
                       </div>
                       <div class="col-lg-12">
@@ -154,6 +154,7 @@
                         <div class="fieldformy">
                           <span>카페 기타 정보 사항</span>
                           <textarea
+                            class="js-admin-revisecafe-input"
                             placeholder="예) 여기는 라떼맛집이에요! 핸드드립 메뉴도 있어요"
                           ></textarea>
                         </div>
@@ -164,6 +165,7 @@
                           <span>이미지를 업로드 하려면 클릭해주세요.</span>
                           <input
                             type="file"
+                            class="js-admin-revisecafe-img"
                             accept="img/*"
                             onChange="uploadImgPreview()"
                             id="js-upload"
@@ -181,7 +183,7 @@
                     </div>
                     <br />
                     <div class="fieldbtn">
-                      <button type="search" class="js-submit">등록하기</button>
+                      <button type="submit" class="js-submit" id="js-admin-revisecafe-btn">등록하기</button>
                     </div>
                   </div>
                 </div>
@@ -201,9 +203,9 @@
                   <h5 class="search_title">어떤 카페를 찾으세요?</h5>
                 </div>
                 <div class="search_bar">
-                  <input type="text" placeholder="검색어를 입력하세요" />
+                  <input type="text" class="js-search-input" placeholder="검색어를 입력하세요" />
                   <div class="fieldbtn">
-                    <button type="search" class="search_button">SEARCH</button>
+                    <button type="search" class="search_button" id="js-search-btn">SEARCH</button>
                   </div>
                 </div>
               </div>

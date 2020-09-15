@@ -84,10 +84,9 @@
           </nav>
         </div>
       </header>
-
       <!-- 개인 프로필이 포함된 헤더 -->
       <div class="section_down">
-        <section>
+
           <div class="block no-padding">
             <div class="container fluid">
               <div class="row">
@@ -122,7 +121,7 @@
               </div>
             </div>
           </div>
-        </section>
+    
 
         <section>
           <div class="block no-padding gray">
@@ -258,7 +257,7 @@
                   </div>
                   <div class="bbox">
                     <h3>${cafe_rate_count} Reviews for ${cafe_name}</h3>
-                    <div class="reviewssec">
+                    <div class="reviewssec js-cafe-review-list">
                       <div class="reviewthumb">
                         <img src="http://placehold.it/60x60" alt="" />
                       </div>
@@ -276,7 +275,7 @@
                           <span>Was This Review ...?</span>
                           <div class="wasreviewbtn">
                             <a href="#" title="" class="c3"
-                              ><i class="flaticon-heart"></i>Like {cafe_like}</a
+                              ><i class="flaticon-heart"></i>Like ${cafe_like}</a
                             >
                           </div>
                         </div>
@@ -298,6 +297,7 @@
                         /></a>
                         <input
                           type="file"
+                          class="js-cafe-review-input"
                           accept="img/*"
                           onChange="uploadImgPreview()"
                           id="js-upload"
@@ -306,15 +306,15 @@
                         <div id="js-thumnail"></div>
                       </div>
                       <div class="urrating rate_input">
-                        <input type="text" placeholder="점수를 입력하세요." />
+                        <input type="text" class="js-cafe-review-input" placeholder="점수를 입력하세요." />
                       </div>
 
-                      <input placeholder="your@mail.com" type="Email" />
-                      <input placeholder="Title" type="text" />
-                      <textarea placeholder="Review"></textarea>
+                      <input type="email" class="js-cafe-review-input" placeholder="your@mail.com"  />
+                      <input type="text" class="js-cafe-review-input" placeholder="Title" />
+                      <textarea class="js-cafe-review-input" placeholder="Review"></textarea>
 
                       <div class="fieldbtn">
-                        <button type="search">등록하기</button>
+                        <button type="submit" id="js-cafe-review-btn">등록하기</button>
                       </div>
                     </div>
                   </div>
@@ -323,7 +323,7 @@
                   <div class="blocation">
                     <h3>Location <a href="#" title="">Get Direction</a></h3>
                     <div class="contact-map">
-                      <div id="map" style="width: 350px; height: 400px"></div>
+                      <div id="map js-map-mini" style="width: 350px; height: 400px"></div>
                     </div>
                     <span>${cafe_location}</span>
                     <span>${cafe_mail}</span>
