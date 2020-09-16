@@ -21,7 +21,7 @@ export class UserService {
 
     switch (result) {
       case "true":
-        // this.callMain();
+        this.callMain(user_id);
         console.log("hello");
       case "admin_true":
         this.callAdminPage();

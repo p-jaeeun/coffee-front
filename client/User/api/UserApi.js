@@ -32,7 +32,7 @@ export class UserApi {
     return result;
   }
 
-  async callAdminPage(userData) {
+  async callAdminPage() {
     let result;
     try {
       result = await this.api.sendAjaxGet(`/api/admin`);

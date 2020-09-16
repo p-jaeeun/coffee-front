@@ -12,7 +12,9 @@ export class UserCTR {
   signin = (userData) => {
     console.log("CTR");
     console.log(this);
-    this.service.signin(userData);
+    this.service.signin(userData).then((result) => {
+      this.view.makeLoginMain(result);
+    });
   };
 
   signup(scope, userData) {
