@@ -8,9 +8,6 @@
     min-width: 300px;
   }
 
-  .pop_form {
-  }
-
   .search_bar {
     display: flex;
     flex-direction: column;
@@ -96,11 +93,10 @@
   height: auto;
 }
 
-.main_img {
-  height: 100%;
+/* .main_img {
   background-image: url("/images/cafe_main.jpg");
   background-size: cover;
-}
+} */
 /*extra-position*/
 .extra_top {
   position: absolute;
@@ -158,8 +154,8 @@
 
 /*main_before_login_section*/
 .main_section,
-.main_img img {
-  height: 100vh;
+.main_img > img {
+  height: 100vmin;
 }
 
 .search_title {

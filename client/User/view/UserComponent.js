@@ -60,7 +60,6 @@ export class UserComponent {
   //Listener
   signin(callback) {
     console.log("listener");
-
     this.signin_btn[0].addEventListener("click", callback);
   }
 
@@ -117,5 +116,17 @@ export class UserComponent {
     userData.cafe_location;
     userData.cafe_sns; // db에 없음
     userData.cafe_img;
+  }
+
+  //display
+  makeLoginMain(result) {
+    //makeUserHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop
+    let header = this.user_view.makeUserHeader();
+    let caffeine = this.user_view.makeMainCaffaineList();
+    let cafe = this.user_view.makeMainCafeList();
+    let footer = this.common_view.makeFooter();
+    let pop = this.common_view.makeSearchPopup();
+
+    window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
   }
 }

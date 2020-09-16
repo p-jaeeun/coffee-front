@@ -4,7 +4,6 @@ export class UserCTR {
     this.view = view;
     this.self = this;
 
-    this.view.makeTest();
     this.view.signin(() => {
       this.signin(this.view.saveSigninData());
     });
@@ -13,7 +12,9 @@ export class UserCTR {
   signin = (userData) => {
     console.log("CTR");
     console.log(this);
-    this.service.signin(userData);
+    this.service.signin(userData).then((result) => {
+      this.view.makeLoginMain(result);
+    });
   };
 
   signup(scope, userData) {
