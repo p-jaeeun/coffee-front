@@ -1,5 +1,6 @@
 export class UserDTO {
   constructor() {
+    this.user_pk = user_pk;
     this.user_id = user_id;
     this.user_pw = user_pw;
     this.user_email = user_email;
@@ -10,6 +11,14 @@ export class UserDTO {
     this.count_expose_main = count_expose_main;
     this.count_accepted_cafe = count_accepted_cafe;
     this.is_blocked_user = is_blocked_user;
+  }
+
+  getUserPk() {
+    return this.user_pk;
+  }
+
+  setUserPk(user_pk) {
+    this.user_pk = user_pk;
   }
 
   getUserId() {

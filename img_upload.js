@@ -1,3 +1,4 @@
+//여러장의 이미지 업로드
 function uploadImgPreview() {
   // @breif 업로드 파일 읽기
   let fileList = document.getElementById("js-upload").files;
@@ -33,32 +34,49 @@ function uploadImgPreview() {
   }
 }
 
-// function fileLoad (load,prev){
+//한장의 이미지 프리뷰
+function uploadProfile() {
+  var upload = document.getElementById("");
+  var preview = document.getElementById("");
 
-//   var upload = document.getElementById(load);
-//   var preview = document.getElementById(prev)
+  var reader = new FileReader();
+  /* reader 시작시 함수 구현 */
+  reader.onload = (function () {
+    this.image = document.createElement("img");
+    var vm = this;
 
-//       var reader = new FileReader();
-//      /* reader 시작시 함수 구현 */
-//      reader.onload = (function () {
+    return function (e) {
+      /* base64 인코딩 된 스트링 데이터 */
+      vm.image.src = e.target.result;
+    };
+  })();
 
-//      this.image = document.createElement('img');
-//      var vm = this;
+  upload.addEventListener("change", function (e) {
+    var get_file = e.target.files;
 
-//      return function (e) {
-//          /* base64 인코딩 된 스트링 데이터 */
-//          vm.image.src = e.target.result
-//      }
-//  })()
+    preview.appendChild(image);
+  });
+}
 
-//  upload.addEventListener('change',function (e) {
-//      var get_file = e.target.files;
+function uploadBackground() {
+  var upload = document.getElementById("");
+  var preview = document.getElementById("");
 
-//      if(get_file){
-//          reader.readAsDataURL(get_file[0]);
-//      }
+  var reader = new FileReader();
+  /* reader 시작시 함수 구현 */
+  reader.onload = (function () {
+    this.image = document.createElement("img");
+    var vm = this;
 
-//      preview.appendChild(image);
-//  })
+    return function (e) {
+      /* base64 인코딩 된 스트링 데이터 */
+      vm.image.src = e.target.result;
+    };
+  })();
 
-//   }
+  upload.addEventListener("change", function (e) {
+    var get_file = e.target.files;
+
+    preview.appendChild(image);
+  });
+}

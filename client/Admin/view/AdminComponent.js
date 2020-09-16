@@ -1,10 +1,13 @@
 import { AdminView } from "./AdminView.js";
 import { CommonView } from "../../Common/view/CommonView.js";
 
+
 export class AdminComponent {
   constructor() {
     this.admin_view = new AdminView();
+
     this.common_view = new CommonView();
+
     
     // input
     this.search_input = document.getElementsByClassName("js-search-input");

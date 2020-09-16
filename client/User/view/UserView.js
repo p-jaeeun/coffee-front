@@ -13,6 +13,196 @@
 export class UserView {
   constructor() {}
 
+  makeTest() {
+    let a = ` <div class="accountformfield">
+    <label>ID</label>
+    <input type="text" class="js-signin-input" placeholder="Creative Layers" />
+  </div>
+  <div class="accountformfield">
+    <label>Password</label>
+    <input type="password" class="js-signin-input" />
+  </div>
+  <p class="c-label">
+    <input name="cb" id="cb1" type="checkbox" /><label for="cb1"
+      >Remember me?</label
+    >
+  
+  <a href="#" title="">Lost your password?</a></p>
+  <button type="button" id="js-signin-btn">Sign In</button>
+</div>`;
+    return a;
+  }
+  makeMainTest() {
+    let main = `<div class="page-loading">
+  <img src="images/loader.gif" alt="" />
+  <span>Skip Loader</span>
+</div>
+
+<div class="theme-layout">  
+  <div class="responsiveheader">
+    <div class="rheader">
+ 
+      <div class="logo">
+        <a href="#" title=""
+          ><img src="images/hiddenc_logo.png" alt=""
+        /></a>
+      </div>
+      <div class="extras extra_top">
+        <span class="accountbtn account_text">Start</i></span>
+      </div>
+    </div>
+    
+  </div>
+  <!-- Responsive header -->
+
+  <header class="header_color">
+    <div class="container fluid">
+      <div class="logo">
+        <a href="#" title=""
+          ><img src="images/hiddenc_logo.png" alt=""
+        /></a>
+      </div>
+      <div class="extras extra_top">
+        <span class="accountbtn account_text">Start</span>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="block no-padding main_img" >
+      <div class="layer blackish">
+        <div
+          data-velocity="-.1"
+          style="
+            background: url(images/cafe_main.jpg) repeat scroll 50% 422.28px
+              transparent;
+          "
+          class="no-parallax parallax scrolly-invisible main_img"
+        ></div>
+        
+        <!-- PARALLAX BACKGROUND IMAGE -->
+        <div class="container">
+          <div class="row justify-content-center main_section">
+            <div class="col-lg-8 ">
+              <div class="listingsf" style="margin-top: 50%">
+                <h3>Explore hidden cafe</h3>
+                <p>
+                  Let's uncover the best places to eat and drink nearest to
+                  you.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="popupsec">
+    <div class="popup">
+      <div class="accounttabs">
+        <span class="closepopup"><i>+</i></span>
+        <ul class="ctabs group">
+          <li><a href="#/one" class="active">Sign In</a></li>
+          <li><a href="#/two">Sign Up</a></li>
+        </ul>
+        <div id="content">
+          <div class="accountform" id="one">
+            <div class="loginform js-signin-input" >
+              <div class="accountformfield">
+                <label>ID</label>
+                <input type="text" class="js-signin-input" placeholder="John123" />
+              </div>
+              <div class="accountformfield">
+                <label>Password</label>
+                <input type="password" class="js-signin-input" />
+              </div>
+              <p class="c-label">
+                <input name="cb" id="cb1" type="checkbox" /><label for="cb1"
+                  >Remember me?</label
+                >
+              
+              <a href="#" title="">Lost your password?</a></p>
+              <button type="submit" class="js-signin-btn">Sign In</button>
+            </div>
+            <div class="extraconnect">
+              <span>Or Connect With Social Networks</span>
+              <div class="social">
+                <a class="facebook" href="#" title=""
+                  ><i class="fa fa-facebook"></i
+                ></a>
+                <a class="twitter" href="#" title=""
+                  ><i class="fa fa-twitter"></i
+                ></a>
+                <a class="googleplus" href="#" title=""
+                  ><i class="fa fa-google"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="accountform" id="two" style="display: none">
+            <div class="loginform js-signup-input">
+              <div class="accountformfield">
+                <label>ID</label>
+                <input type="text" class="js-signup-input" placeholder="maxpower123" />
+              </div>
+              <div class="accountformfield">
+                <label>Password</label>
+                <input type="password" class="js-signup-input"/>
+              </div>
+              <div class="accountformfield">
+                <label>Name</label>
+                <input type="text" class="js-signup-input" placeholder="John Doe" />
+              </div>
+              <div class="accountformfield">
+                <label>Email</label>
+                <input type="email" class="js-signup-input" placeholder="example@example.com" />
+              </div>
+              <div class="accountformfield">
+                <label>BirthDate</label>
+                <input
+                  type="text"
+                  class="js-signup-input"
+                  placeholder="ex) 90년도 12월 12일생 -> 19901212"
+                />
+              </div>
+              <div class="accountformfield">
+                <label>Gender</label>
+                <select class="cdropshere" id="js-signup-input">
+                  <option>Select</option>
+                  <option value=1>Male</option>
+                  <option value=0>Female</option>
+                </select>
+              </div>
+              <div class="terms">
+                By creating an account you agree to our
+                <a href="#" title="">Terms and Conditions</a> and our
+                <a href="#" title="">Privacy Policy</a>
+              </div>
+              <button type="submit" id="js-signup-btn">Sign Up</button>
+            </div>
+            <div class="extraconnect">
+              <span>Or Connect With Social Networks</span>
+              <div class="social">
+                <a class="facebook" href="#" title=""
+                  ><i class="fa fa-facebook"></i
+                ></a>
+                <a class="twitter" href="#" title=""
+                  ><i class="fa fa-twitter"></i
+                ></a>
+                <a class="googleplus" href="#" title=""
+                  ><i class="fa fa-google"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
+    return main;
+  }
   makeAdminHeader(user_img_mini, user_id, notification) {
     let header = ` 
     <div class="page-loading">
@@ -811,7 +1001,7 @@ export class UserView {
 												<a href="#" title="">Cancel</a>
 											</div>
                         <div class="jstinput"><a href="#" title="" class="browsephoto">Browse</a> 
-                          <input type="file" accept="img/*" id="js-upload-profile" /></div>
+                          <input type="file" accept="img/*" onChange="uploadProfile()" id="js-upload-profile" /></div>
 											<p>Max file size is 1MB, Minimum dimension: <br>270x210 And Suitable</p>
 										</div>
 									</div>
@@ -823,7 +1013,7 @@ export class UserView {
 												<a href="#" title="">Cancel</a>
 											</div>
                         <div class="jstinput"><a href="#" title="" class="browsephoto">Browse</a>
-                          <input type="file" accept="img/*" id="js-upload-back-img" /></div>
+                          <input type="file" accept="img/*" onChange="uploadBackground()" id="js-upload-back-img" /></div>
 											<p>Max file size is 1MB, Minimum dimension: 1920x400 And Suitable  <br>files are .jpg & .png</p>
 										</div>
 									</div>
