@@ -11,64 +11,72 @@ export class AdminView {
     </div>
 
     <div class="theme-layout">
-      <div class="responsiveheader js-admin-header-menu">
-        <div class="rheader">
-          <span><img src="images/ricon.png" alt="" /></span>
-          <div class="logo">
-            <a href="#" title=""
-              ><img src="/images/hiddenc_logo.png" alt=""
-            /></a>
-          </div>
-        </div>
-        <div class="rnaver">
-          <span class="closeresmenu"><i>x</i>Close</span>
-          <ul>
-            <li>
-              <a href="#" title="">Home</a>
-            </li>
-            <li class="accountbtn">
-              <a href="#" title="">Search</a>
-            </li>
-            <li>
-              <a href="#" title="">Admin</a>
-            </li>
-          </ul>
-        </div>
+    <div class="responsiveheader js-admin-header-menu">
+    <div class="rheader">
+      <span><img src="images/ricon.png" alt="" /></span>
+      <div class="logo">
+        <a href="#" title=""
+          ><img src="/images/hiddenc_logo.png" alt=""
+        /></a>
       </div>
-      <!-- Responsive header -->
+    </div>
+    <div class="rnaver">
+      <span class="closeresmenu"><i>x</i>Close</span>
+      <ul>
+        <li>
+          <a href="#" title="">Home</a>
+        </li>
+        <li class="accountbtn">
+          <a href="#" title="">Search</a>
+        </li>
+        <li class="menu-item-has-children">
+          <a href="#" title="">Admin</a>
+          <ul id="js-admin-header-menu">
+            <li>Add Cafe</li>
+            <li>Revise Cafe</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Responsive header -->
 
-      <header class="s4 dark js-admin-header-menu">
-        <div class="container fluid">
-          <div class="logo">
-            <a href="#" title=""
-              ><img src="/images/hiddenc_logo.png" alt=""
-            /></a>
-          </div>
-          <div class="userdropsec">
-            <span
-              ><img src="${profile_admin_id}" alt="" /><span class=""
-                >${admin_id}</span
-              ></span
-            >
-          </div>
-          <a href="#" title="" class="bellicon"
-            ><i class="fa fa-bell-o"></i><strong>${notification}</strong></a
-          >
-          <nav>
-            <ul>
-              <li>
-                <a href="#" title="">Home</a>
-              </li>
-              <li class="accountbtn" style="float: left">
-                <a href="#" title="">Search</a>
-              </li>
-              <li>
-                <a href="#" title="">Admin</a>
-              </li>
+  <header class="s4 dark js-admin-header-menu">
+    <div class="container fluid">
+      <div class="logo">
+        <a href="#" title=""
+          ><img src="/images/hiddenc_logo.png" alt=""
+        /></a>
+      </div>
+      <div class="userdropsec">
+        <span
+          ><img src="${profile_admin_id}" alt="" /><span class=""
+            >${admin_id}</span
+          ></span
+        >
+      </div>
+      <a href="#" title="" class="bellicon"
+        ><i class="fa fa-bell-o"></i><strong>${notification}</strong></a
+      >
+      <nav>
+        <ul>
+          <li>
+            <a href="#" title="">Home</a>
+          </li>
+          <li class="accountbtn" style="float: left">
+            <a href="#" title="">Search</a>
+          </li>
+          <li class="menu-item-has-children">
+            <a href="#" title="">Admin</a>
+            <ul id="js-admin-header-menu">
+              <li>Add Cafe</li>
+              <li>Revise Cafe</li>
             </ul>
-          </nav>
-        </div>
-      </header>`;
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>`;
     return admin_header;
   }
 

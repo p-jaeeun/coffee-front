@@ -29,6 +29,6 @@ export class AdminApi {
       console.log("error:"+e)
     }
   
-    return result
+    return result;
   }
 }

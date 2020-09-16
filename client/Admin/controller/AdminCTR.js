@@ -12,4 +12,5 @@ export class AdminCTR {
   adminLogin() {
     this.service.adminLogin();
   }
+
 }
