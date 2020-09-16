@@ -4,7 +4,6 @@ export class UserCTR {
     this.view = view;
     this.self = this;
 
-    this.view.makeTest();
     this.view.signin(() => {
       this.signin(this.view.saveSigninData());
     });
