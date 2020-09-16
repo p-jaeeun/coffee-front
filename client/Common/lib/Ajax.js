@@ -45,10 +45,7 @@ export class Ajax {
       };
 
       httpRequest.open("POST", url, true);
-      httpRequest.setRequestHeader(
-        "Content-Type",
-        "application/x-www-form-urlencoded"
-      );
+      httpRequest.setRequestHeader("Content-Type"); //, "multipart/form-data" form에 붙여야 하나?
       httpRequest.send(data);
     });
   }
