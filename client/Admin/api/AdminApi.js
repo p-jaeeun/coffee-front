@@ -1,4 +1,4 @@
-import { Ajax } from "/Users/김청하/Desktop/coffee-front/coffee/client/Common/lib/Ajax.js";
+import { Ajax } from "../../Common/lib/Ajax.js";
 
 export class AdminApi {
   constructor() {
@@ -29,6 +29,6 @@ export class AdminApi {
       console.log("error:"+e)
     }
   
-    return result
+    return result;
   }
 }
