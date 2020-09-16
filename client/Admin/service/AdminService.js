@@ -1,5 +1,5 @@
-import { AdminDTO } from "/Users/김청하/Desktop/coffee-front/coffee/client/Admin/model/AdminDTO";
-import { AdminApi } from "/Users/김청하/Desktop/coffee-front/coffee/client/Admin/api/AdminApi";
+import { AdminDTO } from "../model/AdminDTO.js";
+import { AdminApi } from "../api/AdminApi.js";
 
 class AdminService {
   constructor() {

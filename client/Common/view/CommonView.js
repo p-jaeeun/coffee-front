@@ -1,11 +1,11 @@
-  // main-before-login : start_header(common) + start_main(common) + account_pop(common)
-  // cafeInfo : user_header OR admin_header + search_pop(common) + cafeinfo(common) + footer(common)
+// main-before-login : start_header(common) + start_main(common) + account_pop(common)
+// cafeInfo : user_header OR admin_header + search_pop(common) + cafeinfo(common) + footer(common)
 
 export class CommonView {
   constructor() {}
 
-  makeStartHeader(){
-    let start_header =`
+  makeStartHeader() {
+    let start_header = `
     <div class="page-loading">
     <img src="images/loader.gif" alt="" />
     <span>Skip Loader</span>
@@ -43,8 +43,8 @@ export class CommonView {
     return start_header;
   }
 
-  makeStartMain(){
-    let start_Main= `
+  makeStartMain() {
+    let start_Main = `
     <section>
         <div class="block no-padding main_img" >
           <div class="layer blackish">
@@ -148,7 +148,7 @@ export class CommonView {
               </div>
               <div class="accountformfield">
                 <label>Gender</label>
-                <select class="cdropshere js-signup-input"">
+                <select class="cdropshere js-signup-input">
                   <option>Select</option>
                   <option value=1>Male</option>
                   <option value=0>Female</option>
@@ -182,9 +182,26 @@ export class CommonView {
   </div>`;
     return account_pop;
   }
-  
-  makeCafeInfo(user_id, notification, cafe_img_main, cafe_name, cafe_rate, cafe_rate_count, cafe_location, cafe_information, cafe_menu, cafe_mail, cafe_img_gallery, review_user_id,profile_user_id,write_date,comment,cafe_like){
-    let cafeinfo =`
+
+  makeCafeInfo(
+    user_id,
+    notification,
+    cafe_img_main,
+    cafe_name,
+    cafe_rate,
+    cafe_rate_count,
+    cafe_location,
+    cafe_information,
+    cafe_menu,
+    cafe_mail,
+    cafe_img_gallery,
+    review_user_id,
+    profile_user_id,
+    write_date,
+    comment,
+    cafe_like
+  ) {
+    let cafeinfo = `
     <div class="page-loading">
       <img src="images/loader.gif" alt="" />
       <span>Skip Loader</span>
@@ -551,7 +568,6 @@ export class CommonView {
     return footer;
   }
 
-  
   makeSearchPopup() {
     let search_pop = `
     <div class="popupsec">
@@ -576,5 +592,4 @@ export class CommonView {
       </div>`;
     return search_pop;
   }
-
 }

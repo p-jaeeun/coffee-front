@@ -1,5 +1,5 @@
-import { AdminView } from "/Users/김청하/Desktop/coffee-front/coffee/client/Admin/view/AdminComponent";
-import { AdminService } from "/Users/김청하/Desktop/coffee-front/coffee/client/Admin/service/AdminService";
+// import { AdminView } from "../view/AdminView";
+// import { AdminService } from "../service/AdminService";
 
 export class AdminCTR {
   constructor(service, view) {
