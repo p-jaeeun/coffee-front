@@ -12,7 +12,9 @@
 
 export class UserView {
   constructor() {}
-
+  makeConsole() {
+    console.log("view 왔읍니다.");
+  }
   makeTest() {
     let a = ` <div class="accountformfield">
     <label>ID</label>

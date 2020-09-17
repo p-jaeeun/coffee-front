@@ -1,16 +1,17 @@
 import { Ajax } from "../../Common/lib/Ajax.js";
+import { UserDTO } from "../model/UserDTO.js";
 
 export class UserApi {
   constructor() {
     this.api = new Ajax();
   }
 
-  async signin(userDTO) {
+  async signin(userData) {
     console.log("user_api");
     let result;
-    let userData = {};
-    userData.user_id = userDTO.getUserId;
-    userData.user_pw = userDTO.getUserPw;
+    // let userData = {};
+    // userData.user_id = userDTO.getUserId;
+    // userData.user_pw = userDTO.getUserPw;
     let str = JSON.stringify(userData);
 
     try {
@@ -22,9 +23,11 @@ export class UserApi {
   }
 
   async callMain(user_id) {
+    console.log("API_data:" + user_id);
+
     let result;
     try {
-      result = await this.api.sendAjaxGet(`/api/${user_id}/main`);
+      result = await this.api.sendAjaxGet(`/cafe/main`);
     } catch (e) {
       console.log("error:" + e);
     }
