@@ -60,7 +60,6 @@ export class UserComponent {
   //Listener
   signin(callback) {
     console.log("listener");
-
     this.signin_btn[0].addEventListener("click", callback);
   }
 
@@ -121,6 +120,7 @@ export class UserComponent {
     userData.cafe_img;
   }
 
+
   makeLoginMain(result) {
     let user_view = new UserView();
     let common_view = new CommonView();
@@ -133,5 +133,6 @@ export class UserComponent {
 
     window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
     this.user_view.makeConsole();
+
   }
 }
