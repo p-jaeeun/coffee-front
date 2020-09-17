@@ -1,4 +1,4 @@
-import { UserView } from "../view/UserView.js";
+import { UserView } from "./UserView.js";
 import { CommonView } from "../../Common/view/CommonView.js";
 
 export class UserComponent {
@@ -79,9 +79,11 @@ export class UserComponent {
       arr.push(this.signin_input[i].value);
     }
 
-    userData.userId = arr[0];
-    userData.userPw = arr[1];
+    userData.user_id = arr[1];
+    userData.user_pw = arr[2];
     console.log("arr:" + arr);
+    console.log("id:" + userData.user_id);
+    console.log("pw:" + userData.user_pw);
 
     return userData;
   }
@@ -117,5 +119,19 @@ export class UserComponent {
     userData.cafe_location;
     userData.cafe_sns; // db에 없음
     userData.cafe_img;
+  }
+
+  makeLoginMain(result) {
+    let user_view = new UserView();
+    let common_view = new CommonView();
+    //main -> makeUserHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop
+    let header = user_view.makeUserHeader();
+    let caffeine = user_view.makeMainCaffaineList();
+    let cafe = user_view.makeMainCafeList();
+    let footer = common_view.makeFooter();
+    let pop = common_view.makeSearchPopup();
+
+    window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
+    this.user_view.makeConsole();
   }
 }

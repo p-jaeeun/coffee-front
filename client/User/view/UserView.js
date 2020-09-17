@@ -1,10 +1,10 @@
 /*
- * main -> makeAdminHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop
- * dashboard -> makeAdminHeader + makeUserMenu + makeDashboard + makeFooter(common) + makeSearchPop
- * my hidden -> makeAdminHeader + makeUserMenu + makeListAndMap + makeHalfListItem(한개씩 추가) + makeFooter + makeSearchPop
- * my subscription -> makeAdminHeader + makeUserMenu + makeMySubscription + makeSubscriptionList(한개씩 추가) + makeFooter(common) + makeSearchPop
- * add cafe -> makeAdminHeader + makeAddCafe + makeFooter(common) + makeSearchPop
- * setting ->  makeAdminHeader + makeUserMenu + makeProfile + makeFooter(common) + makeSearchPop
+ * main -> makeUserHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop
+ * dashboard -> makeUserHeader + makeUserMenu + makeDashboard + makeFooter(common) + makeSearchPop
+ * my hidden -> makeUserHeader + makeUserMenu + makeListAndMap + makeHalfListItem(한개씩 추가) + makeFooter + makeSearchPop
+ * my subscription -> makeUserHeader + makeUserMenu + makeMySubscription + makeSubscriptionList(한개씩 추가) + makeFooter(common) + makeSearchPop
+ * add cafe -> makeUserHeader + makeAddCafe + makeFooter(common) + makeSearchPop
+ * setting ->  makeUserHeader + makeUserMenu + makeProfile + makeFooter(common) + makeSearchPop
  *
  * ml-placessec 대신 row에 클래스줌, 유저메뉴에 ul, 만들고 클래스줌 이벤트 델리게이션 안돼면 아이디로 변환할 것
  * 프로필 세팅에 프로필 이미지미리보기 js-thumnail, js-upload-profile, 백그라운드 미리보기 js-back-img, js-upload-back-img
@@ -12,7 +12,9 @@
 
 export class UserView {
   constructor() {}
-
+  makeConsole() {
+    console.log("view 왔읍니다.");
+  }
   makeTest() {
     let a = ` <div class="accountformfield">
     <label>ID</label>
@@ -203,7 +205,7 @@ export class UserView {
 </div>`;
     return main;
   }
-  makeAdminHeader(user_img_mini, user_id, notification) {
+  makeUserHeader(user_img_mini, user_id, notification) {
     let header = ` 
     <div class="page-loading">
     <img src="images/loader.gif" alt="" />

@@ -30,6 +30,7 @@
             class="js-user-addcafe-img"
             multiple="multiple"
             name="js-img-file[]"
+            value="img"
           />
         </a>
         <input type="text" class="js-user-addcafe-img" />
@@ -76,6 +77,7 @@
       //   }
       let dom = document.getElementById("btn");
       dom.addEventListener("click", (e) => {
+        e.preventDefault();
         let cls = document.getElementsByClassName("js-user-addcafe-img");
         let arr = [];
         for (let i = 0; i < cls.length; i++) {
@@ -91,12 +93,22 @@
         let data = document.getElementById("myform");
         let formData = new FormData(data);
         // formData.append("img", document.getElementById("js-upload").files[0]);
-        // formData.append("text", arr);
+        formData.append("text", arr);
         // formData.append("json", str);
         for (var value of formData.values()) {
           console.log(value);
         }
+        uploadImgPreview();
       });
+
+      //여러장의 이미지 업로드
+      function uploadImgPreview(fileList) {
+        // for (var value of fileList.values()) {
+        //   console.log("lVFNHKLASKFHAKDSHNFKUHNKFB" + value);
+        // }
+        // let image = fileList[0];
+        // document.getElementById("js-thumnail").appendChild(image);
+      }
     </script>
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/modernizr.js" type="text/javascript"></script>
@@ -113,6 +125,6 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb"
     ></script>
-    <script src="img_upload.js"></script>
+    <!-- <script src="img_upload.js"></script> -->
   </body>
 </html>
