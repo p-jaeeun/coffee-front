@@ -1,22 +1,24 @@
-// admin - addcafe : admin_header + searchpop(common) + addcafe + footer(common) 
-// admin - revisecafe : admin_header + searchpop(common) + revisecafe + footer(common)
+// admin - addcafe : makeAdminHeader +  makeAddCafeForm + makeFooter(common) + makeSearchPop(common)
+// admin - revisecafe : makeAdminHeader +  makeReviseCafeForm + makeFooter(common) +makeSearchPop(common)
+// admin - main(home) : makeAdminHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop(common)
 
 export class AdminView {
   constructor() {}
+
+  getContextPath() {
+    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+    return location.href.substring( hostIndex, location.href.indexOf("/", hostIndex + 1) );
+  }
+
   makeAdminHeader(admin_id, profile_admin_id,notification) {
     let admin_header = `
-    <div class="page-loading">
-      <img src="images/loader.gif" alt="" />
-      <span>Skip Loader</span>
-    </div>
-
     <div class="theme-layout">
     <div class="responsiveheader js-admin-header-menu">
     <div class="rheader">
-      <span><img src="images/ricon.png" alt="" /></span>
+      <span><img src="${this.getContextPath}/images/ricon.png" alt="menu_icon" /></span>
       <div class="logo">
-        <a href="#" title=""
-          ><img src="/images/hiddenc_logo.png" alt=""
+        <a href="javascript:void(0)">
+        <img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"
         /></a>
       </div>
     </div>
@@ -24,13 +26,13 @@ export class AdminView {
       <span class="closeresmenu"><i>x</i>Close</span>
       <ul>
         <li>
-          <a href="#" title="">Home</a>
+          <a href="javascript:void(0)">Home</a>
         </li>
         <li class="accountbtn">
-          <a href="#" title="">Search</a>
+          <a href="javascript:void(0)">Search</a>
         </li>
         <li class="menu-item-has-children">
-          <a href="#" title="">Admin</a>
+          <a href="javascript:void(0)">Admin</a>
           <ul id="js-admin-header-menu">
             <li>Add Cafe</li>
             <li>Revise Cafe</li>
@@ -44,30 +46,28 @@ export class AdminView {
   <header class="s4 dark js-admin-header-menu">
     <div class="container fluid">
       <div class="logo">
-        <a href="#" title=""
-          ><img src="/images/hiddenc_logo.png" alt=""
+        <a href="javascript:void(0)"
+          ><img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"
         /></a>
       </div>
       <div class="userdropsec">
         <span
-          ><img src="${profile_admin_id}" alt="" /><span class=""
-            >${admin_id}</span
-          ></span
-        >
+          ><img src="${this.getContextPath}+'/'+'admin_profile'" alt="admin_profile" /><span class=""
+          >{admin_id}</span
+          ></span>
       </div>
-      <a href="#" title="" class="bellicon"
-        ><i class="fa fa-bell-o"></i><strong>${notification}</strong></a
-      >
+      <a href="javascript:void(0)" class="bellicon"
+        ><i class="fa fa-bell-o"></i><strong>{notification}</strong></a>
       <nav>
         <ul>
           <li>
-            <a href="#" title="">Home</a>
+            <span class="header_text">Home</span>
           </li>
           <li class="accountbtn" style="float: left">
-            <a href="#" title="">Search</a>
+            <span class="header_text">Search</span>
           </li>
           <li class="menu-item-has-children">
-            <a href="#" title="">Admin</a>
+            <span class="header_text">Admin</span>
             <ul id="js-admin-header-menu">
               <li>Add Cafe</li>
               <li>Revise Cafe</li>
@@ -80,8 +80,8 @@ export class AdminView {
     return admin_header;
   }
 
-  makeReviseCafe() {
-    let revisecafe = `
+  makeReviseCafeForm() {
+    let admin_revisecafe = `
     <section>
         <div class="block gray">
           <div class="container">
@@ -110,16 +110,17 @@ export class AdminView {
                 </div>
 
                 <div class="pbox">
-                  <div class="addlistingform">
+                  <form class="addlistingform" id="js-admin-revisecafe-form">
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 이름 *</span>
-                          <input type="text" class="js-admin-revisecafe-input"/>
+                          <input type="text" name="cafe_name" class="js-admin-revisecafe-input"
+                          required="" />
                         </div>
                         <div class="fieldformy">
                           <span>카페 메뉴 </span>
-                          <input type="text" class="js-admin-revisecafe-input" placeholder="" />
+                          <input type="text" name="cafe_menu" class="js-admin-revisecafe-input" placeholder="" />
                         </div>
                         <div class="fieldformy">
                           <span>카테고리</span>
@@ -135,35 +136,31 @@ export class AdminView {
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 주소 *</span>
-                          <input type="text" class="js-admin-revisecafe-input" placeholder="" />
+                          <input type="text" name="cafe_location" class="js-admin-revisecafe-input" placeholder="ex)서울시 종로구 관철동 5-8, 카페 뎀셀브즈"
+                          required="" />
                         </div>
                         <div class="fieldformy">
                           <span>카페 SNS </span>
-                          <input type="text" class="js-admin-revisecafe-input" placeholder="" />
+                          <input type="text" name="cafe_sns" class="js-admin-revisecafe-input" placeholder="" />
                         </div>
                       </div>
-                      <div class="col-lg-12">
-                        <div class="fieldformy">
-                          <span>카페 기타 정보 사항</span>
-                          <textarea placeholder=""></textarea>
-                        </div>
-                      </div>
-
                       <div class="col-lg-12">
                         <div class="fieldformy">
                           <span>카페 기타 정보 사항</span>
                           <textarea
+                            name="cafe_information"
                             class="js-admin-revisecafe-input"
                             placeholder="예) 여기는 라떼맛집이에요! 핸드드립 메뉴도 있어요"
                           ></textarea>
                         </div>
                       </div>
                       <div class="col-lg-12">
-                        <a title="" class="uploadfile">
+                        <a class="uploadfile">
                           <img src="images/cloud.png" alt="" />
                           <span>이미지를 업로드 하려면 클릭해주세요.</span>
                           <input
                             type="file"
+                            name="cafe_image"
                             class="js-admin-revisecafe-img"
                             accept="img/*"
                             onChange="uploadImgPreview()"
@@ -182,40 +179,41 @@ export class AdminView {
                     </div>
                     <br />
                     <div class="fieldbtn">
-                      <button type="submit" class="js-submit" id="js-admin-revisecafe-btn">등록하기</button>
+                      <input type="submit" class="js-submit" id="js-admin-revisecafe-btn">등록하기</input>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>`;
-    return revisecafe;
+    return admin_revisecafe;
   }
 
-  makeAddCafe() {
-    let addcafe = `
+  makeAddCafeForm() {
+    let admin_addcafe = `
     <div class="block gray">
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-lg-10">
                 <!-- PBox -->
                 <div class="pbox">
-                  <div class="addlistingform">
+                  <form class="addlistingform">
                     <div class="add_cafe_title">카페 추가하기</div>
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 이름 *</span>
-                          <input type="text" class="js-admin-addcafe-input"/>
+                          <input type="text" name="cafe_name" class="js-admin-addcafe-input"/>
                         </div>
                         <div class="fieldformy">
                           <span
                             >카페 메뉴</span
                           >
                           <input
-                            type="text" 
+                            type="text"
+                            name="cafe_menu" 
                             class="js-admin-addcafe-input" 
                             placeholder="ex) 아메리카노 4000 , 라떼 4500"
                           />
@@ -236,6 +234,7 @@ export class AdminView {
                           <span>카페 주소 *</span>
                           <input
                             type="text"
+                            name="cafe_location"
                             class="js-admin-addcafe-input" 
                             placeholder="ex) Seoul, Jongno-gu, Gwancheol-dong, 5-8 카페 뎀셀브즈"
                           />
@@ -244,6 +243,7 @@ export class AdminView {
                           <span>카페 SNS </span>
                           <input
                           type="text"
+                          name="cafe_sns"
                           class="js-admin-addcafe-input"
                           placeholder="https://www.instagram.com/starbucks"
                           />
@@ -253,17 +253,19 @@ export class AdminView {
                         <div class="fieldformy">
                           <span>카페 기타 정보 사항</span>
                           <textarea
+                            name="cafe_information"
                             class="js-admin-addcafe-input"
                             placeholder="예) 여기는 라떼맛집이에요! 핸드드립 메뉴도 있어요"
                           ></textarea>
                         </div>
                       </div>
                       <div class="col-lg-12">
-                        <a title="" class="uploadfile">
+                        <a class="uploadfile">
                           <img src="images/cloud.png" alt="" />
                           <span>이미지를 업로드 하려면 클릭해주세요.</span>
                           <input
                             type="file"
+                            name="cafe_image"
                             class="js-admin-addcafe-img"
                             accept="img/*"
                             onChange="uploadImgPreview()"
@@ -284,12 +286,12 @@ export class AdminView {
                     <div class="fieldbtn">
                       <button type="search" class="js-submit" id="js-admin-addcafe-btn">등록하기</button>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
         </div>`;
-    return addcafe;
+    return admin_addcafe;
   }
 }

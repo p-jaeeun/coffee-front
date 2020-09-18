@@ -297,6 +297,7 @@
                         /></a>
                         <input
                           type="file"
+                          name="cafe_image"
                           class="js-cafe-review-input"
                           accept="img/*"
                           onChange="uploadImgPreview()"
@@ -306,12 +307,11 @@
                         <div id="js-thumnail"></div>
                       </div>
                       <div class="urrating rate_input">
-                        <input type="text" class="js-cafe-review-input" placeholder="점수를 입력하세요." />
+                        <input type="text" name="review_rate" class="js-cafe-review-input" placeholder="점수를 입력하세요." />
                       </div>
 
-                      <input type="email" class="js-cafe-review-input" placeholder="your@mail.com"  />
-                      <input type="text" class="js-cafe-review-input" placeholder="Title" />
-                      <textarea class="js-cafe-review-input" placeholder="Review"></textarea>
+                      <input type="text" name="review_title" class="js-cafe-review-input" placeholder="Title" />
+                      <textarea name="review_content" class="js-cafe-review-input" placeholder="Review"></textarea>
 
                       <div class="fieldbtn">
                         <button type="submit" id="js-cafe-review-btn">등록하기</button>

@@ -1,186 +1,14 @@
-// main-before-login : start_header(common) + start_main(common) + account_pop(common)
-// cafeInfo : user_header OR admin_header + search_pop(common) + cafeinfo(common) + footer(common)
+// 카페 검색 : 카페검색 -> 검색결과 ->(클릭시) 카페상세페이지
+// search_result : makeUserHeader OR makeAdminHeader + makeSearchResult + makeFooter(common) + makeSearchPop(common) 
+// cafeInfo : makeUserHeader OR makeAdminHeader + makeCafeInfo(common) + makeFooter(common) + makeSearchPop(common)
+
 
 export class CommonView {
   constructor() {}
 
-  makeStartHeader() {
-    let start_header = `
-    <div class="page-loading">
-    <img src="images/loader.gif" alt="" />
-    <span>Skip Loader</span>
-    </div>
-
-    <div class="theme-layout">  
-      <div class="responsiveheader">
-      <div class="rheader">
-   
-        <div class="logo">
-          <a href="#" title=""
-            ><img src="images/hiddenc_logo.png" alt=""
-          /></a>
-        </div>
-        <div class="extras extra_top">
-          <span class="accountbtn account_text">Start</i></span>
-        </div>
-      </div>
-      
-      </div>
-    <!-- Responsive header -->
-
-    <header class="header_color">
-      <div class="container fluid">
-        <div class="logo">
-          <a href="#" title=""
-            ><img src="images/hiddenc_logo.png" alt=""
-          /></a>
-        </div>
-        <div class="extras extra_top">
-          <span class="accountbtn account_text">Start</span>
-        </div>
-      </div>
-    </header>`;
-    return start_header;
-  }
-
-  makeStartMain() {
-    let start_Main = `
-    <section>
-        <div class="block no-padding main_img" >
-          <div class="layer blackish">
-            <div
-              data-velocity="-.1"
-              style="
-                background: url(images/cafe_main.jpg) repeat scroll 50% 422.28px
-                  transparent;
-              "
-              class="no-parallax parallax scrolly-invisible main_img"
-            ></div>
-            
-            <!-- PARALLAX BACKGROUND IMAGE -->
-            <div class="container">
-              <div class="row justify-content-center main_section">
-                <div class="col-lg-8 ">
-                  <div class="listingsf" style="margin-top: 50%">
-                    <h3>Explore hidden cafe</h3>
-                    <p>
-                      Let's uncover the best places to eat and drink nearest to
-                      you.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>`;
-    return start_Main;
-  }
-
-  makeAccountPopup() {
-    let account_pop = `
-    <div class="popupsec">
-    <div class="popup">
-      <div class="accounttabs">
-        <span class="closepopup"><i>+</i></span>
-        <ul class="ctabs group">
-          <li><a href="#/one" class="active">Sign In</a></li>
-          <li><a href="#/two">Sign Up</a></li>
-        </ul>
-        <div id="content">
-          <div class="accountform" id="one">
-            <div class="loginform" >
-              <div class="accountformfield">
-                <label>ID</label>
-                <input type="text" class="js-signin-input" placeholder="Creative Layers" />
-              </div>
-              <div class="accountformfield">
-                <label>Password</label>
-                <input type="password" class="js-signin-input" />
-              </div>
-              <p class="c-label">
-                <input name="cb" id="cb1" type="checkbox" /><label for="cb1"
-                  >Remember me?</label
-                >
-              
-              <a href="#" title="">Lost your password?</a></p>
-              <button type="submit" id="js-signin-btn">Sign In</button>
-            </div>
-            <div class="extraconnect">
-              <span>Or Connect With Social Networks</span>
-              <div class="social">
-                <a class="facebook" href="#" title=""
-                  ><i class="fa fa-facebook"></i
-                ></a>
-                <a class="twitter" href="#" title=""
-                  ><i class="fa fa-twitter"></i
-                ></a>
-                <a class="googleplus" href="#" title=""
-                  ><i class="fa fa-google"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-          <div class="accountform" id="two" style="display: none">
-            <div class="loginform">
-              <div class="accountformfield">
-                <label>ID</label>
-                <input type="text" class="js-signup-input" placeholder="maxpower123" />
-              </div>
-              <div class="accountformfield">
-                <label>Password</label>
-                <input type="password" class="js-signup-input" />
-              </div>
-              <div class="accountformfield">
-                <label>Name</label>
-                <input type="text" class="js-signup-input" placeholder="John Doe" />
-              </div>
-              <div class="accountformfield">
-                <label>Email</label>
-                <input type="email" class="js-signup-input" placeholder="example@example.com" />
-              </div>
-              <div class="accountformfield">
-                <label>BirthDate</label>
-                <input
-                  type="text" class="js-signup-input"
-                  placeholder="ex) 90년도 12월 12일생 -> 19901212"
-                />
-              </div>
-              <div class="accountformfield">
-                <label>Gender</label>
-                <select class="cdropshere js-signup-input">
-                  <option>Select</option>
-                  <option value=1>Male</option>
-                  <option value=0>Female</option>
-                </select>
-              </div>
-              <div class="terms">
-                By creating an account you agree to our
-                <a href="#" title="">Terms and Conditions</a> and our
-                <a href="#" title="">Privacy Policy</a>
-              </div>
-              <button type="submit" id="js-signup-btn">Sign Up</button>
-            </div>
-            <div class="extraconnect">
-              <span>Or Connect With Social Networks</span>
-              <div class="social">
-                <a class="facebook" href="#" title=""
-                  ><i class="fa fa-facebook"></i
-                ></a>
-                <a class="twitter" href="#" title=""
-                  ><i class="fa fa-twitter"></i
-                ></a>
-                <a class="googleplus" href="#" title=""
-                  ><i class="fa fa-google"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>`;
-    return account_pop;
+  getContextPath() {
+    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+    return location.href.substring( hostIndex, location.href.indexOf("/", hostIndex + 1) );
   }
 
   makeCafeInfo(
@@ -202,32 +30,27 @@ export class CommonView {
     cafe_like
   ) {
     let cafeinfo = `
-    <div class="page-loading">
-      <img src="images/loader.gif" alt="" />
-      <span>Skip Loader</span>
-    </div>
-
     <div class="theme-layout">
       <div class="responsiveheader">
         <div class="rheader">
-          <span><img src="images/ricon.png" alt="" /></span>
+          <span><img src="${this.getContextPath}/images/ricon.png" alt="menu" /></span>
           <div class="logo">
-            <a href="#" title=""
-              ><img src="/images/hiddenc_logo.png" alt=""
-            /></a>
+            <a href="javascript:void(0)">
+              <img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"/>
+            </a>
           </div>
         </div>
         <div class="rnaver">
           <span class="closeresmenu"><i>x</i>Close</span>
           <ul>
             <li>
-              <a href="#" title="">Home</a>
+              <a href="javascript:void(0)">Home</a>
             </li>
             <li class="accountbtn">
-              <a href="#" title="">Search</a>
+              <a href="javascript:void(0)">Search</a>
             </li>
             <li>
-              <a href="#" title="">User</a>
+              <a href="javascript:void(0)">User</a>
             </li>
           </ul>
         </div>
@@ -237,31 +60,27 @@ export class CommonView {
       <header class="s4 dark">
         <div class="container fluid">
           <div class="logo">
-            <a href="#" title=""
-              ><img src="/images/hiddenc_logo.png" alt=""
-            /></a>
+            <a href="javascript:void(0)">
+              <img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"/>
+            </a>
           </div>
           <div class="userdropsec">
-            <span
-              ><img src="http://placehold.it/50x50" alt="" /><span
-                class="header_user_id"
-                >${user_id}</span
-              ></span
-            >
+            <span><img src="${this.getContextPath}+'50x50'" alt="profile_user" />
+              <span class="header_user_id">{user_id}</span>
+            </span>
           </div>
-          <a href="#" title="" class="bellicon"
-            ><i class="fa fa-bell-o"></i><strong>${notification}</strong></a
-          >
+          <a href="javascript:void(0)" class="bellicon">
+            <i class="fa fa-bell-o"></i><strong>{notification}</strong></a>
           <nav>
             <ul>
               <li>
-                <a href="#" title="">Home</a>
+                <a href="javascript:void(0)">Home</a>
               </li>
               <li class="accountbtn" style="float: left">
-                <a href="#" title="">Search</a>
+                <a href="javascript:void(0)">Search</a>
               </li>
               <li>
-                <a href="#" title="">User</a>
+                <a href="javascript:void(0)">User</a>
               </li>
             </ul>
           </nav>
@@ -276,28 +95,28 @@ export class CommonView {
                 <div class="col-lg-12">
                   <div class="sl-slider" id="makeslider">
                     <div class="slg-box">
-                      <img src="${cafe_img_main}" alt="" />
+                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
                     </div>
                     <div class="slg-box">
-                      <img src="${cafe_img_main}" alt="" />
+                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
                     </div>
                     <div class="slg-box">
-                      <img src="${cafe_img_main}" alt="" />
+                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
                     </div>
                     <div class="slg-box">
-                      <img src="${cafe_img_main}" alt="" />
+                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
                     </div>
                     <div class="slg-box">
-                      <img src="${cafe_img_main}" alt="" />
+                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
                     </div>
                     <div class="slg-box">
-                      <img src="${cafe_img_main}" alt="" />
+                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
                     </div>
                     <div class="slg-box">
-                      <img src="${cafe_img_main}" alt="" />
+                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
                     </div>
                     <div class="slg-box">
-                      <img src="${cafe_img_main}" alt="" />
+                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
                     </div>
                   </div>
                 </div>
@@ -315,53 +134,54 @@ export class CommonView {
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="sltitle">
-                          <h1>${cafe_name}</h1>
+                          <h1>{cafe_name}</h1>
                           <ul class="listmetas">
                             <li>
-                              <span class="rated">${cafe_rate}</span
-                              >${cafe_rate_count}
+                              <span class="rated">{cafe_rate}</span>
+                              {cafe_rate_count}
                             </li>
                           </ul>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="slbtnsspans">
-                          <span
-                            ><i class="flaticon-pin"></i> ${cafe_location}</span
-                          >
-
+                          <span>
+                          <i class="flaticon-pin"></i>cafe_location</span>
                           <div class="slbtns">
                             <div class="sharelisting">
-                              <a href="#" title=""
-                                ><i class="flaticon-share"></i>Share</a
-                              >
+                              <a href="javascript:void(0)">
+                                <i class="flaticon-share"></i>
+                                Share
+                              </a>
                               <div class="sharebtns">
-                                <a href="#" title=""
-                                  ><i class="fa fa-facebook"></i
-                                ></a>
-                                <a href="#" title=""
-                                  ><i class="fa fa-twitter"></i
-                                ></a>
-                                <a href="#" title=""
-                                  ><i class="fa fa-instagram"></i
-                                ></a>
-                                <a href="#" title=""
-                                  ><i class="fa fa-pinterest"></i
-                                ></a>
-                                <a href="#" title=""
-                                  ><i class="fa fa-dribbble"></i
-                                ></a>
-                                <a href="#" title=""
-                                  ><i class="fa fa-google"></i
-                                ></a>
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-instagram"></i>
+                                </a>
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-pinterest"></i>
+                                </a>
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-dribbble"></i>
+                                </a>
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-google"></i>
+                                </a>
                               </div>
                             </div>
-                            <a href="#" title=""
-                              ><i class="flaticon-heart"></i>Bookmark</a
-                            >
-                            <a href="#" title=""
-                              ><i class="flaticon-note"></i>Add review</a
-                            >
+                            <a href="javascript:void(0)">
+                              <i class="flaticon-heart"></i>
+                              Bookmark
+                            </a>
+                            <a href="javascript:void(0)">
+                              <i class="flaticon-note"></i>
+                              Add review
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -381,13 +201,13 @@ export class CommonView {
                   <div class="bbox">
                     <h3>Description</h3>
                     <div class="ldesc">
-                      <p>${cafe_information}</p>
+                      <p>{cafe_information}</p>
                     </div>
                   </div>
                   <div class="bbox">
                     <h3>Menu</h3>
                     <div class="ldesc">
-                      <p>${cafe_menu}</p>
+                      <p>{cafe_menu}</p>
                     </div>
                   </div>
 
@@ -396,90 +216,94 @@ export class CommonView {
                     <ul class="gallerylistin">
                       <li>
                         <img
-                          src="${cafe_img_gallery}"
-                          alt=""
+                          src="${this.getContextPath}+'cafe_img_gallery'"
+                          alt="cafe_img_gallery"
                           class="small_img"
                         />
                       </li>
                       <li>
                         <img
-                          src="${cafe_img_gallery}"
-                          alt=""
+                          src="${this.getContextPath}+'cafe_img_gallery'"
+                          alt="cafe_img_gallery"
                           class="small_img"
                         />
                       </li>
                       <li>
                         <img
-                          src="${cafe_img_gallery}"
-                          alt=""
+                          src="${this.getContextPath}+'cafe_img_gallery'"
+                          alt="cafe_img_gallery"
                           class="small_img"
                         />
                       </li>
                       <li>
                         <img
-                          src="${cafe_img_gallery}"
-                          alt=""
+                          src="${this.getContextPath}+'cafe_img_gallery'
+                          alt="cafe_img_gallery"
                           class="small_img"
                         />
                       </li>
                       <li>
                         <img
-                          src="${cafe_img_gallery}"
-                          alt=""
+                          src="${this.getContextPath}+'cafe_img_gallery'"
+                          alt="cafe_img_gallery"
                           class="small_img"
                         />
                       </li>
                       <li>
                         <img
-                          src="${cafe_img_gallery}"
-                          alt=""
+                          src="${this.getContextPath}+'cafe_img_gallery'"
+                          alt="cafe_img_gallery"
                           class="small_img"
                         />
                       </li>
                     </ul>
                   </div>
                   <div class="bbox">
-                    <h3>${cafe_rate_count} Reviews for ${cafe_name}</h3>
+                    <h3>{cafe_rate_count} Reviews for {cafe_name}</h3>
                     <div class="reviewssec js-cafe-review-list">
                       <div class="reviewthumb">
-                        <img src="${profile_user_id}" alt="" />
+                        <img src="${this.getContextPath}+'profile_user_id'" alt="profile_user_id" />
                       </div>
                       <div class="reviewinfo">
-                        <h3>${review_user_id}</h3>
-                        <span>${write_date}</span>
+                        <h3>{review_user_id}</h3>
+                        <span>{write_date}</span>
                         <ul class="listmetas justrate">
                           <li>
-                            <span class="rated">${cafe_rate}</span
-                            >${cafe_rate_count}
+                            <span class="rated">{cafe_rate}</span>
+                            {cafe_rate_count}
                           </li>
                         </ul>
-                        <p>${comment}</p>
+                        <p>{comment}</p>
                         <div class="wasreview">
                           <span>Was This Review ...?</span>
                           <div class="wasreviewbtn">
-                            <a href="#" title="" class="c3"
-                              ><i class="flaticon-heart"></i>Like ${cafe_like}</a
-                            >
+                            <a href="javascript:void(0)" class="c3">
+                              <i class="flaticon-heart"></i>
+                              Like {cafe_like}
+                            </a>
                           </div>
                         </div>
                         <div class="reviewaction">
-                          <a href="#" title=""
-                            ><i class="flaticon-back"></i> Reply</a
-                          >
+                          <a href="javascript:void(0)">
+                            <i class="flaticon-back"></i>
+                            Reply
+                          </a>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="listingcomment">
                     <div class="leavecomment">
+                    <form id="js-cafe-review-form">
                       <h3>Rate us and Write a Review</h3>
                       <div class="upimg" style="width: 60%">
                         <span>Upload images</span>
-                        <a href="#" title=""
-                          ><img src="images/cloud.png" alt=""
-                        /></a>
+                        <a href="javascript:void(0)">
+                          <img src="${this.getContextPath}/images/cloud.png" alt="cloud"/>
+                        </a>
                         <input
                           type="file"
+                          name="cafe_image"
                           class="js-cafe-review-input"
                           accept="img/*"
                           onChange="uploadImgPreview()"
@@ -489,35 +313,34 @@ export class CommonView {
                         <div id="js-thumnail"></div>
                       </div>
                       <div class="urrating rate_input">
-                        <input type="text" class="js-cafe-review-input" placeholder="점수를 입력하세요." />
+                        <input type="text" name="review_rate" class="js-cafe-review-input" placeholder="점수를 입력하세요." required="required" />
                       </div>
-
-                      <input type="email" class="js-cafe-review-input" placeholder="your@mail.com"  />
-                      <input type="text" class="js-cafe-review-input" placeholder="Title" />
-                      <textarea class="js-cafe-review-input" placeholder="Review"></textarea>
+                      <input type="text" name="review_title" class="js-cafe-review-input" placeholder="Title" />
+                      <textarea name="review_content" class="js-cafe-review-input" placeholder="Review"></textarea>
 
                       <div class="fieldbtn">
-                        <button type="submit" id="js-cafe-review-btn">등록하기</button>
+                        <input type="submit" id="js-cafe-review-btn">등록하기</input>
                       </div>
+                    </form>
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-4 column">
                   <div class="blocation">
-                    <h3>Location <a href="#" title="">Get Direction</a></h3>
+                    <h3>Location <a href="javascript:void(0)">Get Direction</a></h3>
                     <div class="contact-map">
                       <div id="map js-map-mini" style="width: 350px; height: 400px"></div>
                     </div>
-                    <span>${cafe_location}</span>
-                    <span>${cafe_mail}</span>
+                    <span>{cafe_location}</span>
+                    <span>{cafe_mail}</span>
 
                     <div class="wsocial">
-                      <a href="#" title=""><i class="fa fa-facebook"></i></a>
-                      <a href="#" title=""><i class="fa fa-twitter"></i></a>
-                      <a href="#" title=""><i class="fa fa-linkedin"></i></a>
-                      <a href="#" title=""><i class="fa fa-pinterest"></i></a>
-                      <a href="#" title=""><i class="fa fa-google"></i></a>
-                      <a href="#" title=""><i class="fa fa-dribbble"></i></a>
+                      <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
+                      <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
+                      <a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
+                      <a href="javascript:void(0)"><i class="fa fa-pinterest"></i></a>
+                      <a href="javascript:void(0)"><i class="fa fa-google"></i></a>
+                      <a href="javascript:void(0)"><i class="fa fa-dribbble"></i></a>
                     </div>
                   </div>
                 </div>
@@ -536,22 +359,20 @@ export class CommonView {
           <div class="col-lg-12">
             <div class="footersec">
               <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Partners</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">Customer Center</a></li>
+                <li><a href="javascript:void(0)">Home</a></li>
+                <li><a href="javascript:void(0)">Partners</a></li>
+                <li><a href="javascript:void(0)">Contact</a></li>
+                <li><a href="javascript:void(0)">Terms</a></li>
+                <li><a href="javascript:void(0)">Customer Center</a></li>
               </ul>
-              <span
-                >Seoul Geumcheon-gu, Gasan-dong, Gasan digital 1-ro</span
-              >
+              <span>Seoul Geumcheon-gu, Gasan-dong, Gasan digital 1-ro</span>
               <span>+82 02-123-4567</span>
               <span>HiddenC@gmail.com</span>
               <div class="social">
-                <a href="#" title=""><i class="fa fa-facebook"></i></a>
-                <a href="#" title=""><i class="fa fa-twitter"></i></a>
-                <a href="#" title=""><i class="fa fa-instagram"></i></a>
-                <a href="#" title=""><i class="fa fa-google"></i></a>
+                <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
+                <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
+                <a href="javascript:void(0)"><i class="fa fa-instagram"></i></a>
+                <a href="javascript:void(0)"><i class="fa fa-google"></i></a>
               </div>
             </div>
           </div>
@@ -559,37 +380,304 @@ export class CommonView {
       </div>
     </div>
     <div class="bottomline">
-      <a href="#scrollup" class="scrollup" title=""
-        ><i class="fa fa-angle-up"></i
-      ></a>
+      <a href="javascript:void(0)scrollup" class="scrollup">
+        <i class="fa fa-angle-up"></i>
+      </a>
       <span>© 2020 HiddenC All rights reserved.</span>
     </div>
   </footer>`;
     return footer;
   }
 
-  makeSearchPopup() {
+  makeSearchPop() {
     let search_pop = `
     <div class="popupsec">
         <div class="popup">
           <div class="accounttabs search_pop_size">
             <span class="closepopup"><i>+</i></span>
             <div id="content">
-              <div class="accountform pop_form" id="one">
+              <form class="accountform pop_form" id="one js-search-form">
                 <div class="pop_title">
                   <h5 class="search_title">어떤 카페를 찾으세요?</h5>
                 </div>
                 <div class="search_bar">
-                  <input type="text" class="js-search-input" placeholder="검색어를 입력하세요" />
+                  <input type="text" class="js-search-input" name="cafe_name" placeholder="검색어를 입력하세요" required="required"/>
                   <div class="fieldbtn">
-                    <button type="search" class="search_button" id="js-search-btn">SEARCH</button>
+                    <input type="search" class="search_button" id="js-search-btn">SEARCH</input>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
       </div>`;
     return search_pop;
+  }
+  makeSearchResult(){
+    let search_result=`
+      <section>
+        <div class="block no-padding">
+          <div class="container fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="ml-filterslide openall fakeScroll fakeScrolls">
+                  <div class="mlfilter-sec">
+                    <div class="mfilterform forresponsive">
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <div class="mlfield">
+                            <select class="selectbox">
+                              <option>Sort By</option>
+                              <option>By Date</option>
+                              <option>By Location</option>
+                              <option>Latest</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="mlfield s2">
+                            <select class="selectbox">
+                              <option>Categories</option>
+                              <option>Category 1</option>
+                              <option>Category 2</option>
+                              <option>Category 3</option>
+                              <option>Category 4</option>
+                              <option>Category 5</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-3">
+                          <div class="customdropdown">
+                            <span>More Filters<i class="fa fa-angle-down"></i></span>
+                            <div class="customdrops">
+                              <div class="mltags">
+                                <div class="row">
+                                  <div class="col-lg-6">
+                                    <p class="c-label">
+                                      <input
+                                        name="cb"
+                                        id="1"
+                                        type="checkbox"
+                                      /><label for="1">option 1</label>
+                                    </p>
+                                    <p class="c-label">
+                                      <input
+                                        name="cb"
+                                        id="2"
+                                        type="checkbox"
+                                      /><label for="2">option 2</label>
+                                    </p>
+                                    <p class="c-label">
+                                      <input
+                                        name="cb"
+                                        id="3"
+                                        type="checkbox"
+                                      /><label for="3">option 3</label>
+                                    </p>
+                                    <p class="c-label">
+                                      <input
+                                        name="cb"
+                                        id="4"
+                                        type="checkbox"
+                                      /><label for="4">option 4</label>
+                                    </p>
+                                  </div>
+                                  <div class="col-lg-6">
+                                    <p class="c-label">
+                                      <input
+                                        name="cb"
+                                        id="5"
+                                        type="checkbox"
+                                      /><label for="5">option 5</label>
+                                    </p>
+                                    <p class="c-label">
+                                      <input
+                                        name="cb"
+                                        id="6"
+                                        type="checkbox"
+                                      /><label for="6">option 6</label>
+                                    </p>
+                                    <p class="c-label">
+                                      <input
+                                        name="cb"
+                                        id="7"
+                                        type="checkbox"
+                                      /><label for="7">option 7</label>
+                                    </p>
+                                    <p class="c-label">
+                                      <input
+                                        name="cb"
+                                        id="8"
+                                        type="checkbox"
+                                      /><label for="8">option 8</label>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="ml-listings allset">
+                      <div class="ml-filterbar">
+                        <h3><i class="flaticon-eye"></i>14 Results Found</h3>
+                        <ul>
+                          <li class="doubleplaces active">
+                            <span><i class="fa fa-th-large"></i></span>
+                          </li>
+                          <li class="listingplaces">
+                            <span><i class="fa fa-th-list"></i></span>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="ml-placessec">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <div class="places s2">
+                              <div class="placethumb">
+                                <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
+                                <div class="placeoptions">
+                                  <span class="pull-left">
+                                    <i class="flaticon-eye"></i> Preview
+                                  </span>
+                                  <span class="pull-right">
+                                    <i class="flaticon-heart"></i> Save
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="boxplaces">
+                                <div class="placeinfos">
+                                  <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
+                                  <ul class="listmetas">
+                                    <li>
+                                      <span class="rated">{cafe_rate}</span>
+                                      {cafe_rate_count}
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="placedetails">
+                                  <span class="pull-left">
+                                    <i class="flaticon-pin"></i>
+                                    {cafe_location}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Places -->
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="places s2">
+                              <div class="placethumb">
+                                <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
+                                <div class="placeoptions">
+                                  <span class="pull-left">
+                                    <i class="flaticon-eye"></i> Preview
+                                  </span>
+                                  <span class="pull-right">
+                                    <i class="flaticon-heart"></i> Save
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="boxplaces">
+                                <div class="placeinfos">
+                                  <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
+                                  <ul class="listmetas">
+                                    <li>
+                                      <span class="rated">{cafe_rate}</span>
+                                      {cafe_rate_count}
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="placedetails">
+                                  <span class="pull-left">
+                                    <i class="flaticon-pin"></i>
+                                    {cafe_location}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Places -->
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="places s2">
+                              <div class="placethumb">
+                                <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
+                                <div class="placeoptions">
+                                  <span class="pull-left">
+                                    <i class="flaticon-eye"></i> Preview
+                                  </span>
+                                  <span class="pull-right">
+                                    <i class="flaticon-heart"></i> Save
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="boxplaces">
+                                <div class="placeinfos">
+                                  <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
+                                  <ul class="listmetas">
+                                    <li>
+                                      <span class="rated">{cafe_rate}</span>
+                                      {cafe_rate_count}
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="placedetails">
+                                  <span class="pull-left">
+                                    <i class="flaticon-pin"></i>
+                                    {cafe_location}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Places -->
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="places s2">
+                              <div class="placethumb">
+                                <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
+                                <div class="placeoptions">
+                                  <span class="pull-left">
+                                    <i class="flaticon-eye"></i> Preview
+                                  </span>
+                                  <span class="pull-right">
+                                    <i class="flaticon-heart"></i> Save
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="boxplaces">
+                                <div class="placeinfos">
+                                  <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
+                                  <ul class="listmetas">
+                                    <li>
+                                      <span class="rated">{cafe_rate}</span>
+                                      {cafe_rate_count}
+                                    </li>
+                                  </ul>
+                                </div>
+                                <div class="placedetails">
+                                  <span class="pull-left">
+                                    <i class="flaticon-pin"></i>
+                                    {cafe_location}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- Places -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="half-map s2">
+                  <div id="map_div" class="map">&nbsp;</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>`;
+    return search_result;
   }
 }

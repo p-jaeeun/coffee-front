@@ -34,23 +34,22 @@ export class AdminComponent {
 
   //리스너 정의
 
-  headermenu(callback){
-    this.admin_header.addEventListener("click",callback);
-  }
-
-  adminmenu(callback){
+  adminMenu(callback){
     this.admin_menu.addEventListener("click",callback);
   }
 
-  addcafe(callback){
+  addCafe(callback){
+    console.log("카페추가 버튼")
     this.addcafe_btn.addEventListener("click",callback);
   }
-
-  revisecafe(callback){
+  
+  reviseCafe(callback){
+    console.log("카페 수정 버튼")
     this.revisecafe_update_btn.addEventListener("click",callback);
   }
 
-  loadcafelist(callback){
+  loadCafeList(callback){
+    console.log("카페 불러오기 버튼")
     this.revisecafe_load_btn.addEventListener("click",callback);
   }
 
@@ -61,14 +60,7 @@ export class AdminComponent {
 
 
 
-  //input data 처리
-  saveSigninData() {
-    let userData = new Object();
-    let arr = new Array();
-    for(let i=0; i<this.)
-
-    return userData;
-  }
+  //save input data
 
   saveCafeData() {
     let cafeData = new Object();
@@ -83,8 +75,11 @@ export class AdminComponent {
     cafeData.cafe_sns = arr[3];
     cafeData.cafe_information = arr[4];
     cafeData.cafe_image = arr[5];
+
+    console.log(cafeData);
     return cafeData;
   }
+
   reviseCafeData() {
     let cafeData = new Object();
     let arr = new Array();
@@ -98,6 +93,44 @@ export class AdminComponent {
     cafeData.cafe_sns = arr[3];
     cafeData.cafe_information = arr[4];
     cafeData.cafe_image = arr[5];
+
+    console.log(cafeData);
     return cafeData;
   }
+
+
+  // make view of admin page 
+
+  makeAddCafePage(){
+    let admin_view = new AdminView();
+    let common_view = new CommonView();
+
+    let header = admin_view.makeAdminHeader();
+    let add_cafe_form = admin_view.makeAddCafeForm();
+    let footer = common_view.makeFooter();
+    let search_pop = common_view.makeSearchPop();
+
+    // 서버에서 스크롤 안되는 문제 방지
+    window.document.body.setAttribute("class", "full-height");  
+    window.document.body.setAttribute("id", "scrollup");    
+
+    window.document.body.innerHTML = header + add_cafe_form + footer + search_pop;
+  }
+
+  makeReviseCafePage(){
+    let admin_view = new AdminView();
+    let common_view = new CommonView();
+
+    let header = admin_view.makeAdminHeader();
+    let revise_cafe_form = admin_view.makeReviseCafeForm();
+    let footer = common_view.makeFooter();
+    let search_pop = common_view.makeSearchPop();
+
+    // 서버에서 스크롤 안되는 문제 방지
+    window.document.body.setAttribute("class", "full-height");  
+    window.document.body.setAttribute("id", "scrollup");    
+
+    window.document.body.innerHTML = header + revise_cafe_form + footer + search_pop;
+  }
+
 }
