@@ -12,211 +12,20 @@
 
 export class UserView {
   constructor() {}
-  makeConsole() {
-    console.log("view 왔읍니다.");
+
+  getContextPath() {
+    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
+    return location.href.substring( hostIndex, location.href.indexOf("/", hostIndex + 1) );
   }
-  makeTest() {
-    let a = ` <div class="accountformfield">
-    <label>ID</label>
-    <input type="text" class="js-signin-input" placeholder="Creative Layers" />
-  </div>
-  <div class="accountformfield">
-    <label>Password</label>
-    <input type="password" class="js-signin-input" />
-  </div>
-  <p class="c-label">
-    <input name="cb" id="cb1" type="checkbox" /><label for="cb1"
-      >Remember me?</label
-    >
-  
-  <a href="#" title="">Lost your password?</a></p>
-  <button type="button" id="js-signin-btn">Sign In</button>
-</div>`;
-    return a;
-  }
-  makeMainTest() {
-    let main = `<div class="page-loading">
-  <img src="images/loader.gif" alt="" />
-  <span>Skip Loader</span>
-</div>
 
-<div class="theme-layout">  
-  <div class="responsiveheader">
-    <div class="rheader">
- 
-      <div class="logo">
-        <a href="#" title=""
-          ><img src="images/hiddenc_logo.png" alt=""
-        /></a>
-      </div>
-      <div class="extras extra_top">
-        <span class="accountbtn account_text">Start</i></span>
-      </div>
-    </div>
-    
-  </div>
-  <!-- Responsive header -->
-
-  <header class="header_color">
-    <div class="container fluid">
-      <div class="logo">
-        <a href="#" title=""
-          ><img src="images/hiddenc_logo.png" alt=""
-        /></a>
-      </div>
-      <div class="extras extra_top">
-        <span class="accountbtn account_text">Start</span>
-      </div>
-    </div>
-  </header>
-
-  <section>
-    <div class="block no-padding main_img" >
-      <div class="layer blackish">
-        <div
-          data-velocity="-.1"
-          style="
-            background: url(images/cafe_main.jpg) repeat scroll 50% 422.28px
-              transparent;
-          "
-          class="no-parallax parallax scrolly-invisible main_img"
-        ></div>
-        
-        <!-- PARALLAX BACKGROUND IMAGE -->
-        <div class="container">
-          <div class="row justify-content-center main_section">
-            <div class="col-lg-8 ">
-              <div class="listingsf" style="margin-top: 50%">
-                <h3>Explore hidden cafe</h3>
-                <p>
-                  Let's uncover the best places to eat and drink nearest to
-                  you.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="popupsec">
-    <div class="popup">
-      <div class="accounttabs">
-        <span class="closepopup"><i>+</i></span>
-        <ul class="ctabs group">
-          <li><a href="#/one" class="active">Sign In</a></li>
-          <li><a href="#/two">Sign Up</a></li>
-        </ul>
-        <div id="content">
-          <div class="accountform" id="one">
-            <div class="loginform js-signin-input" >
-              <div class="accountformfield">
-                <label>ID</label>
-                <input type="text" class="js-signin-input" placeholder="John123" />
-              </div>
-              <div class="accountformfield">
-                <label>Password</label>
-                <input type="password" class="js-signin-input" />
-              </div>
-              <p class="c-label">
-                <input name="cb" id="cb1" type="checkbox" /><label for="cb1"
-                  >Remember me?</label
-                >
-              
-              <a href="#" title="">Lost your password?</a></p>
-              <button type="submit" class="js-signin-btn">Sign In</button>
-            </div>
-            <div class="extraconnect">
-              <span>Or Connect With Social Networks</span>
-              <div class="social">
-                <a class="facebook" href="#" title=""
-                  ><i class="fa fa-facebook"></i
-                ></a>
-                <a class="twitter" href="#" title=""
-                  ><i class="fa fa-twitter"></i
-                ></a>
-                <a class="googleplus" href="#" title=""
-                  ><i class="fa fa-google"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-          <div class="accountform" id="two" style="display: none">
-            <div class="loginform js-signup-input">
-              <div class="accountformfield">
-                <label>ID</label>
-                <input type="text" class="js-signup-input" placeholder="maxpower123" />
-              </div>
-              <div class="accountformfield">
-                <label>Password</label>
-                <input type="password" class="js-signup-input"/>
-              </div>
-              <div class="accountformfield">
-                <label>Name</label>
-                <input type="text" class="js-signup-input" placeholder="John Doe" />
-              </div>
-              <div class="accountformfield">
-                <label>Email</label>
-                <input type="email" class="js-signup-input" placeholder="example@example.com" />
-              </div>
-              <div class="accountformfield">
-                <label>BirthDate</label>
-                <input
-                  type="text"
-                  class="js-signup-input"
-                  placeholder="ex) 90년도 12월 12일생 -> 19901212"
-                />
-              </div>
-              <div class="accountformfield">
-                <label>Gender</label>
-                <select class="cdropshere" id="js-signup-input">
-                  <option>Select</option>
-                  <option value=1>Male</option>
-                  <option value=0>Female</option>
-                </select>
-              </div>
-              <div class="terms">
-                By creating an account you agree to our
-                <a href="#" title="">Terms and Conditions</a> and our
-                <a href="#" title="">Privacy Policy</a>
-              </div>
-              <button type="submit" id="js-signup-btn">Sign Up</button>
-            </div>
-            <div class="extraconnect">
-              <span>Or Connect With Social Networks</span>
-              <div class="social">
-                <a class="facebook" href="#" title=""
-                  ><i class="fa fa-facebook"></i
-                ></a>
-                <a class="twitter" href="#" title=""
-                  ><i class="fa fa-twitter"></i
-                ></a>
-                <a class="googleplus" href="#" title=""
-                  ><i class="fa fa-google"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>`;
-    return main;
-  }
   makeUserHeader(user_img_mini, user_id, notification) {
     let header = ` 
-    <div class="page-loading">
-    <img src="images/loader.gif" alt="" />
-    <span>Skip Loader</span>
-  </div>
     <div class="responsiveheader">
   <div class="rheader">
-    <span><img src="images/ricon.png" alt="" /></span>
+    <span><img src="${this.getContextPath}images/ricon.png" alt="hiddenC_logo" /></span>
     <div class="logo">
-      <a href="#" title=""
-        ><img src="/images/hiddenc_logo.png" alt=""
+      <a href="javascript:void(0)" title=""
+        ><img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"
       /></a>
     </div>
   </div>
@@ -224,13 +33,13 @@ export class UserView {
     <span class="closeresmenu"><i>x</i>Close</span>
     <ul>
       <li>
-        <a href="#" title="">Home</a>
+        <a href="javascript:void(0)" title="">Home</a>
       </li>
       <li class="accountbtn">
-        <a href="#" title="">Search</a>
+        <a href="javascript:void(0)" title="">Search</a>
       </li>
       <li>
-        <a href="#" title="">User</a>
+        <a href="javascript:void(0)" title="">User</a>
       </li>
     </ul>
   </div>
@@ -240,30 +49,30 @@ export class UserView {
 <header class="s4 dark">
   <div class="container fluid">
     <div class="logo">
-      <a href="#" title=""
-        ><img src="/images/hiddenc_logo.png" alt=""
+      <a href="javascript:void(0)" title=""
+        ><img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"
       /></a>
     </div>
     <div class="userdropsec">
       <span
-        ><img src="${user_img_mini}" alt="" /><span
+        ><img src="${this.getContextPath}+'user_img_mini'" alt="user_profile" /><span
           >${user_id}</span
         ></span
-      >
+      > 
     </div>
-    <a href="#" title="" class="bellicon"
+    <a href="javascript:void(0)" title="" class="bellicon"
       ><i class="fa fa-bell-o"></i><strong>${notification}</strong></a
     >
     <nav>
       <ul class="js-user-header-menu">
         <li>
-          <a href="#" title="">Home</a>
+          <a href="javascript:void(0)" title="">Home</a>
         </li>
         <li class="accountbtn" style="float: left">
-          <a href="#" title="">Search</a>
+          <a href="javascript:void(0)" title="">Search</a>
         </li>
         <li>
-          <a href="#" title="">User</a>
+          <a href="javascript:void(0)" title="">User</a>
         </li>
       </ul>
     </nav>
@@ -312,41 +121,41 @@ export class UserView {
             <ul class="citieslists">
               <li>
                 <div class="cities">
-                  <a href="#" title=""
-                    ><img src="${user_img1}" alt=""
+                  <a href="javascript:void(0)" title=""
+                    ><img src="${this.getContextPath}/images/" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id1}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id1}</a></h3>
                     <span></span>
                   </div>
                 </div>
                 <!-- Cities -->
                 <div class="cities">
-                  <a href="#" title=""
+                  <a href="javascript:void(0)" title=""
                     ><img src="${user_img2}" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id2}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id2}</a></h3>
                     <span></span>
                   </div>
                 </div>
                 <!-- Cities -->
                 <div class="cities">
-                  <a href="#" title=""
+                  <a href="javascript:void(0)" title=""
                     ><img src="${user_img3}" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id3}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id3}</a></h3>
                     <span></span>
                   </div>
                 </div>
                 <!-- Cities -->
                 <div class="cities">
-                  <a href="#" title=""
+                  <a href="javascript:void(0)" title=""
                     ><img src="${user_img4}" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id4}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id4}</a></h3>
                     <span></span>
                   </div>
                 </div>
@@ -354,41 +163,41 @@ export class UserView {
               </li>
               <li>
                 <div class="cities">
-                  <a href="#" title=""
+                  <a href="javascript:void(0)" title=""
                     ><img src="${user_img5}" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id5}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id5}</a></h3>
                     <span></span>
                   </div>
                 </div>
                 <!-- Cities -->
                 <div class="cities">
-                  <a href="#" title=""
+                  <a href="javascript:void(0)" title=""
                     ><img src="${user_img6}" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id6}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id6}</a></h3>
                     <span></span>
                   </div>
                 </div>
                 <!-- Cities -->
                 <div class="cities">
-                  <a href="#" title=""
+                  <a href="javascript:void(0)" title=""
                     ><img src="${user_img7}" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id7}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id7}</a></h3>
                     <span></span>
                   </div>
                 </div>
                 <!-- Cities -->
                 <div class="cities">
-                  <a href="#" title=""
+                  <a href="javascript:void(0)" title=""
                     ><img src="${user_img8}" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id8}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id8}</a></h3>
                     <span></span>
                   </div>
                 </div>
@@ -396,41 +205,41 @@ export class UserView {
               </li>
               <li>
                 <div class="cities">
-                  <a href="#" title=""
+                  <a href="javascript:void(0)" title=""
                     ><img src="${user_img9}" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id9}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id9}</a></h3>
                     <span></span>
                   </div>
                 </div>
                 <!-- Cities -->
                 <div class="cities">
-                  <a href="#" title=""
+                  <a href="javascript:void(0)" title=""
                     ><img src="${user_img10}" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id10}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id10}</a></h3>
                     <span></span>
                   </div>
                 </div>
                 <!-- Cities -->
                 <div class="cities">
-                  <a href="#" title=""
+                  <a href="javascript:void(0)" title=""
                     ><img src="${user_img11}" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id11}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id11}</a></h3>
                     <span></span>
                   </div>
                 </div>
                 <!-- Cities -->
                 <div class="cities">
-                  <a href="#" title=""
+                  <a href="javascript:void(0)" title=""
                     ><img src="${user_img12}" alt=""
                   /></a>
                   <div class="cities-title">
-                    <h3><a href="#" title="">${user_id12}</a></h3>
+                    <h3><a href="javascript:void(0)" title="">${user_id12}</a></h3>
                     <span></span>
                   </div>
                 </div>
@@ -484,7 +293,7 @@ export class UserView {
                       </div>
                     </div>
                     <div class="placeinfos">
-                      <h3><a href="#" title="">${cafe_name1}</a></h3>
+                      <h3><a href="javascript:void(0)" title="">${cafe_name1}</a></h3>
 
                       <ul class="listmetas">
                         <li>
@@ -515,7 +324,7 @@ export class UserView {
                       </div>
                     </div>
                     <div class="placeinfos">
-                      <h3><a href="#" title="">${cafe_name2}</a></h3>
+                      <h3><a href="javascript:void(0)" title="">${cafe_name2}</a></h3>
 
                       <ul class="listmetas">
                         <li>
@@ -546,7 +355,7 @@ export class UserView {
                       </div>
                     </div>
                     <div class="placeinfos">
-                      <h3><a href="#" title="">${cafe_name3}</a></h3>
+                      <h3><a href="javascript:void(0)" title="">${cafe_name3}</a></h3>
 
                       <ul class="listmetas">
                         <li>
@@ -637,12 +446,12 @@ export class UserView {
         <div class="row">
             <div class="col-lg-12">
               <ul class="js-user-menu">
-              <li><a href="#" title=""><i class="flaticon-credit-card"></i>Dashboard</a></li>
-              <li><a href="#" title=""><i class="fa fa-map-pin" aria-hidden="true"></i>My Hidden Cafe(${total_cafe})</a></li>
-              <li> <a href="#" title=""><i class="fa fa-users" aria-hidden="true"></i>My Subscription(${subscription}) </a></li>
-              <li><a href="#" title=""><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a></li>
-              <li><a href="#" title=""><i class="flaticon-heart"></i> Bookmark(${favorite})</a></li>
-              <li> <a href="#" title=""><i class="fa fa-cog" aria-hidden="true"></i>Settings</a></li>
+              <li><a href="javascript:void(0)" title=""><i class="flaticon-credit-card"></i>Dashboard</a></li>
+              <li><a href="javascript:void(0)" title=""><i class="fa fa-map-pin" aria-hidden="true"></i>My Hidden Cafe(${total_cafe})</a></li>
+              <li> <a href="javascript:void(0)" title=""><i class="fa fa-users" aria-hidden="true"></i>My Subscription(${subscription}) </a></li>
+              <li><a href="javascript:void(0)" title=""><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a></li>
+              <li><a href="javascript:void(0)" title=""><i class="flaticon-heart"></i> Bookmark(${favorite})</a></li>
+              <li> <a href="javascript:void(0)" title=""><i class="fa fa-cog" aria-hidden="true"></i>Settings</a></li>
               </ul>
             </div>
         </div>
@@ -664,17 +473,17 @@ export class UserView {
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="dashbadge clr1">
-                                        <a href="#" title="" class="dashnum"> <span><i>${total_cafe}</i></span> <strong>I   visited</strong></a>
+                                        <a href="javascript:void(0)" title="" class="dashnum"> <span><i>${total_cafe}</i></span> <strong>I   visited</strong></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="dashbadge clr2">
-                                        <a href="#" title="" class="dashnum"> <span><i>${total_add}</i></span> <>I added</  strong></a>
+                                        <a href="javascript:void(0)" title="" class="dashnum"> <span><i>${total_add}</i></span> <>I added</  strong></a>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="dashbadge clr3">
-                                        <a href="#" title="" class="dashnum"> <span><i>${total_favorite}</i></span>   <strong>Total Bookmark</strong></a>
+                                        <a href="javascript:void(0)" title="" class="dashnum"> <span><i>${total_favorite}</i></span>   <strong>Total Bookmark</strong></a>
                                     </div>
                                 </div> 
                             </div>
@@ -775,8 +584,8 @@ export class UserView {
                         <div class="rslider">
                           <amino-slider class="slider" data-min="0" data-max="100" data-value="10"></amino-slider>
                         </div>
-                        <a href="#" title="" class="btn1 pull-left">Disable</a>
-                        <a href="#" title="" class="btn2 pull-right">Apply</a>
+                        <a href="javascript:void(0)" title="" class="btn1 pull-left">Disable</a>
+                        <a href="javascript:void(0)" title="" class="btn2 pull-right">Apply</a>
                       </div>
                     </div>
                   </div>
@@ -824,7 +633,7 @@ export class UserView {
       </div>
       <div class="boxplaces">
         <div class="placeinfos">
-          <h3><a href="#" title="">${cafe_name}</a></h3>
+          <h3><a href="javascript:void(0)" title="">${cafe_name}</a></h3>
           <ul class="listmetas">
             <li><span class="rated">${cafe_rate}</span>${cafe_rate_count}</li>
           </ul>
@@ -879,7 +688,7 @@ export class UserView {
       </div>
       <div class="boxplaces">
         <div class="placeinfos">
-          <h3><a href="#" title="">${cafe_name}</a></h3>
+          <h3><a href="javascript:void(0)" title="">${cafe_name}</a></h3>
           <ul class="listmetas">
             <li>
               <span class="rated">${cafe_rate}</span
@@ -1000,9 +809,9 @@ export class UserView {
 											<h3>Change Profile Image</h3>
 											<div class="uploadimage">
                         <div id="js-thumnail" style="display: flex" src=""></div>
-												<a href="#" title="">Cancel</a>
+												<a href="javascript:void(0)" title="">Cancel</a>
 											</div>
-                        <div class="jstinput"><a href="#" title="" class="browsephoto">Browse</a> 
+                        <div class="jstinput"><a href="javascript:void(0)" title="" class="browsephoto">Browse</a> 
                           <input type="file" accept="img/*" onChange="uploadProfile()" id="js-upload-profile" /></div>
 											<p>Max file size is 1MB, Minimum dimension: <br>270x210 And Suitable</p>
 										</div>
@@ -1012,9 +821,9 @@ export class UserView {
 											<h3>Change Background</h3>
 											<div class="uploadimage">
 												<div id="js-back-img" style="display: flex" src=""></div>
-												<a href="#" title="">Cancel</a>
+												<a href="javascript:void(0)" title="">Cancel</a>
 											</div>
-                        <div class="jstinput"><a href="#" title="" class="browsephoto">Browse</a>
+                        <div class="jstinput"><a href="javascript:void(0)" title="" class="browsephoto">Browse</a>
                           <input type="file" accept="img/*" onChange="uploadBackground()" id="js-upload-back-img" /></div>
 											<p>Max file size is 1MB, Minimum dimension: 1920x400 And Suitable  <br>files are .jpg & .png</p>
 										</div>
@@ -1039,8 +848,8 @@ export class UserView {
 										</div>
 										<div class="col-lg-12">
 											<div class="formaction">
-												<a href="#" title="" class="updatebtn" id="js-user-status-btn">Update</a>
-												<a href="#" title="" class="cancelbtn">Cancel</a>
+												<a href="javascript:void(0)" title="" class="updatebtn" id="js-user-status-btn">Update</a>
+												<a href="javascript:void(0)" title="" class="cancelbtn">Cancel</a>
 											</div>
 										</div>
 									</div>
@@ -1066,8 +875,8 @@ export class UserView {
 											</div>
 											<div class="col-lg-12">
 												<div class="formaction">
-													<a href="#" title="" class="updatebtn"  id="js-user-pwchange-btn">Update</a>
-													<a href="#" title="" class="cancelbtn">Cancel</a>
+													<a href="javascript:void(0)" title="" class="updatebtn"  id="js-user-pwchange-btn">Update</a>
+													<a href="javascript:void(0)" title="" class="cancelbtn">Cancel</a>
 												</div>
 											</div>
 									</div>

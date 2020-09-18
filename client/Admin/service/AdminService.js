@@ -3,23 +3,6 @@ import { AdminApi } from "../api/AdminApi.js";
 
 class AdminService {
   constructor() {
-    // this.like_list = new Array();
-
-    this.api = new AdminApi();
-  }
-  async adminLogin(userData) {
-    
-
-    await this.api.adminLogin(userData).then((result) => {
-      if (result === "false") {
-        alert("아이디 혹은 비밀번호 오류입니다.")
-      } else if (result === "true") {
-        await this.callCafeList()
-      }
-    });
-  }
-
-  //로그인하면 앞단에서 다시 통신해야하나? //맞으면 이거 맞음, dto사용방식 손봐야함
 
   async callCafeList() {
     let result;

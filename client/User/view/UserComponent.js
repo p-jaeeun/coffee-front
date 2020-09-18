@@ -124,14 +124,15 @@ export class UserComponent {
   makeLoginMain(result) {
     let user_view = new UserView();
     let common_view = new CommonView();
-    //main -> makeUserHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop
+    //main -> makeUserHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop(common)
+    
     let header = user_view.makeUserHeader();
     let caffeine = user_view.makeMainCaffaineList();
     let cafe = user_view.makeMainCafeList();
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPopup();
 
-    window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
+    window.document.body.innerHTML = header;
     this.user_view.makeConsole();
 
   }
