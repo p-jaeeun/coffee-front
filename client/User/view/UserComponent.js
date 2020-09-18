@@ -110,6 +110,7 @@ export class UserComponent {
     //main -> makeUserHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop
     let user_view = new UserView();
     let common_view = new CommonView();
+    //main -> makeUserHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop(common)
 
     let header = user_view.makeUserHeader();
     let caffeine = user_view.makeMainCaffaineList();
