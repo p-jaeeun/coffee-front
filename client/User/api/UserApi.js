@@ -6,8 +6,20 @@ export class UserApi {
     this.api = new Ajax();
   }
 
+  async callHome() {
+    console.log("API_data:");
+    let result;
+
+    try {
+      result = await this.api.sendAjaxGet("http://192.168.1.107:8080/");
+    } catch (e) {
+      console.log("error:" + e);
+    }
+    return result;
+  }
+
   async signin(userData) {
-    console.log("user_api");
+    console.log("API_data:");
     let result;
     // let userData = {};
     // userData.user_id = userDTO.getUserId;
@@ -15,7 +27,10 @@ export class UserApi {
     let str = JSON.stringify(userData);
 
     try {
-      result = await this.api.sendAjaxPost("/api/login", str);
+      result = await this.api.sendAjaxPost(
+        "http://192.168.1.107:8080/cafe/login",
+        str
+      );
     } catch (e) {
       console.log("error:" + e);
     }
@@ -27,7 +42,9 @@ export class UserApi {
 
     let result;
     try {
-      result = await this.api.sendAjaxGet(`/cafe/main`);
+      result = await this.api.sendAjaxGet(
+        "http://192.168.1.107:8080/cafe/login/main"
+      );
     } catch (e) {
       console.log("error:" + e);
     }
@@ -36,9 +53,12 @@ export class UserApi {
   }
 
   async callAdminPage() {
+    console.log("API_data:");
     let result;
     try {
-      result = await this.api.sendAjaxGet(`/api/admin`);
+      result = await this.api.sendAjaxGet(
+        `http://192.168.1.131:8080/api/admin`
+      );
     } catch (e) {
       console.log("error:" + e);
     }
@@ -46,11 +66,15 @@ export class UserApi {
   }
 
   async signup(userData) {
+    console.log("API_data:");
     let result;
     let str = JSON.stringify(userData);
 
     try {
-      result = await this.api.sendAjaxPost("/api/signup", str);
+      result = await this.api.sendAjaxPost(
+        "http://192.168.1.107:8080/cafe/signup",
+        str
+      );
     } catch (e) {
       console.log("error:" + e);
     }

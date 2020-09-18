@@ -2,31 +2,49 @@ export class UserCTR {
   constructor(service, view) {
     this.service = service;
     this.view = view;
-    this.self = this;
 
-    this.view.makeLoginMain(); //for test
-    // this.view.makeTest();
-
+    this.view.makeLoginMain();
     this.view.signin(() => {
-      console.log(this.view.saveSigninData());
       this.signin(this.view.saveSigninData());
+      console.log(this.view.saveSigninData());
     });
     this.view.signup(() => {
-      this.signup(this.self, this.view.saveSignupData());
+      this.signup(this.view.saveSignupData());
     });
   }
-  signin = (userData) => {
-    console.log("CTR");
 
+  signin = async (userData) => {
     console.log("CTR-this:" + this);
-    this.service.signin(userData).then((result) => {
-      console.log("then");
-      this.view.makeLoginMain();
+    let result;
 
-    });
+    try {
+      result = await this.service.signin(userData);
+    } catch (e) {
+      console.log("CTR-error:" + e);
+    }
+    if (result !== undefined || result !== "undefined") {
+      this.view.makeLoginMain();
+      console.log("컨트롤러-서비스 결과값:" + result);
+    } else {
+      console.log("CTR-return-error:" + result);
+      return;
+    }
   };
 
-  signup(scope, userData) {
-    scope.service.signup(userData);
-  }
+  signup = async (userData) => {
+    let result;
+
+    try {
+      result = await this.service.signup(userData);
+    } catch (e) {
+      console.log("CTR-error:" + e);
+    }
+    if (result !== undefined || result !== "undefined") {
+      this.view.makeDashboard();
+      console.log("컨트롤러-서비스 결과값:" + result);
+    } else {
+      console.log("CTR-return-error:" + result);
+      return;
+    }
+  };
 }

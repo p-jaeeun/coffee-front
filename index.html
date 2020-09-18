@@ -29,8 +29,8 @@
           <div class="rheader">
        
             <div class="logo">
-              <a href="#" title=""
-                ><img src="images/hiddenc_logo.png" alt=""
+              <a href="javascript:void(0)" 
+                ><img src="" alt="logo_img"
               /></a>
             </div>
             <div class="extras extra_top">
@@ -44,8 +44,8 @@
         <header class="header_color">
           <div class="container fluid">
             <div class="logo">
-              <a href="#" title=""
-                ><img src="images/hiddenc_logo.png" alt=""
+              <a href="javascript:void(0)"
+                ><img src="" alt="logo_img"
               /></a>
             </div>
             <div class="extras extra_top">
@@ -83,7 +83,7 @@
           </div>
         </section>
         
-  
+  <!-- 여기만 서버에서 바꾸면된다 -->
         <div class="popupsec">
           <div class="popup">
             <div class="accounttabs">
@@ -108,86 +108,90 @@
                         >Remember me?</label
                       >
                     
-                    <a href="#" title="">Lost your password?</a></p>
-                    <button type="submit" class="js-signin-btn">Sign In</button>
+                    <a href="javascript:void(0)" >Lost your password?</a></p>
+                    <button type="submit" id="js-signin-btn">Sign In</button>
                   </div>
                   <div class="extraconnect">
                     <span>Or Connect With Social Networks</span>
                     <div class="social">
-                      <a class="facebook" href="#" title=""
+                      <a class="facebook" href="javascript:void(0)" 
                         ><i class="fa fa-facebook"></i
                       ></a>
-                      <a class="twitter" href="#" title=""
+                      <a class="twitter" href="javascript:void(0)" 
                         ><i class="fa fa-twitter"></i
                       ></a>
-                      <a class="googleplus" href="#" title=""
+                      <a class="googleplus" href="javascript:void(0)" 
                         ><i class="fa fa-google"></i
                       ></a>
                     </div>
                   </div>
                 </div>
-                <div class="accountform" id="two" style="display: none">
+                <form id="js-signup-form">
+                  <div class="accountform" id="two" style="display: none" >
                   <div class="loginform js-signup-input">
                     <div class="accountformfield">
                       <label>ID</label>
-                      <input type="text" class="js-signup-input" placeholder="maxpower123" />
+                      <input type="text" class="js-signup-input" placeholder="maxpower123" name="user_id" required pattern="[a-z0-9]{3,12}"/>
                     </div>
                     <div class="accountformfield">
                       <label>Password</label>
-                      <input type="password" class="js-signup-input"/>
+                      <input type="password" class="js-signup-input" name="user_pw" required pattern="[a-z0-9]{8,12}"/>
                     </div>
                     <div class="accountformfield">
                       <label>Name</label>
-                      <input type="text" class="js-signup-input" placeholder="John Doe" />
+                      <input type="text" class="js-signup-input" placeholder="John Doe" name="user_name" required pattern="[가-힣]{2,5}"/>
                     </div>
                     <div class="accountformfield">
                       <label>Email</label>
-                      <input type="email" class="js-signup-input" placeholder="example@example.com" />
+                      <input type="text" class="js-signup-input" placeholder="example@example.com" name="user_email" required pattern="[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}"/>
                     </div>
                     <div class="accountformfield">
                       <label>BirthDate</label>
                       <input
                         type="text"
                         class="js-signup-input"
-                        placeholder="ex) 90년도 12월 12일생 -> 19901212"
+                        placeholder="ex) 90년도 12월 12일생 -> 19901212" name="user_birth" required pattern="[1-2][8-9][0-9][0-9][0-1][0-9][0-3][0-9]"
                       />
                     </div>
                     <div class="accountformfield">
                       <label>Gender</label>
-                      <select class="cdropshere" id="js-signup-input">
-                        <option>Select</option>
+                      <select class="cdropshere" id="js-signup-gender" name="user_gender" required>
+                        <option value="">Select</option>
                         <option value=1>Male</option>
                         <option value=0>Female</option>
                       </select>
                     </div>
                     <div class="terms">
                       By creating an account you agree to our
-                      <a href="#" title="">Terms and Conditions</a> and our
-                      <a href="#" title="">Privacy Policy</a>
+                      <a href="javascript:void(0)" >Terms and Conditions</a> and our
+                      <a href="javascript:void(0)" >Privacy Policy</a>
                     </div>
-                    <button type="submit" id="js-signup-btn">Sign Up</button>
+                    <input type="submit" id="js-signup-btn">Sign Up</input>
                   </div>
                   <div class="extraconnect">
                     <span>Or Connect With Social Networks</span>
                     <div class="social">
-                      <a class="facebook" href="#" title=""
+                      <a class="facebook" href="javascript:void(0)" title=""
                         ><i class="fa fa-facebook"></i
                       ></a>
-                      <a class="twitter" href="#" title=""
+                      <a class="twitter" href="javascript:void(0)" title=""
                         ><i class="fa fa-twitter"></i
                       ></a>
-                      <a class="googleplus" href="#" title=""
+                      <a class="googleplus" href="javascript:void(0)" title=""
                         ><i class="fa fa-google"></i
                       ></a>
                     </div>
                   </div>
                 </div>
+              </form>
+                
               </div>
             </div>
           </div>
         </div>
       </div> 
     <!-- Script -->
+    
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/modernizr.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script> -->
@@ -203,7 +207,20 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb"
     ></script> -->
+<<<<<<< HEAD
+    <script src="img_upload.js"></script>
+=======
     <!-- <script src="img_upload.js"></script> -->
+>>>>>>> origin
     <script src="app.js" type="module"></script>
+    <script>
+      // let dom = document.getElementById("testF");
+      //    dom.addEventListener("click", ()=>{
+      //   console.log("asdasdCKGBAKSBDAS");
+      //   alert("asdasdasdasdc  ;iuryewkufyvbK");
+      // })
+     
+     
+    </script>
   </body>
 </html>

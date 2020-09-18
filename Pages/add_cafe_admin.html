@@ -98,20 +98,20 @@
               <div class="col-lg-10">
                 <!-- PBox -->
                 <div class="pbox">
-                  <div class="addlistingform">
+                  <form class="addlistingform" id="js-cafe-admin-form">
                     <div class="add_cafe_title">카페 추가하기</div>
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 이름 *</span>
-                          <input type="text" class="js-admin-addcafe-input" />
+                          <input type="text" class="js-admin-addcafe-input" name="cafe_name"/>
                         </div>
                         <div class="fieldformy">
                           <span>카페 메뉴</span>
                           <input
                             type="text"
                             class="js-admin-addcafe-input"
-                            placeholder="ex) 아메리카노 4000 , 라떼 4500"
+                            placeholder="ex) 아메리카노 4000 , 라떼 4500" name="cafe_menu"
                           />
                         </div>
                         <div class="fieldformy">
@@ -131,7 +131,7 @@
                           <input
                             type="text"
                             class="js-admin-addcafe-input"
-                            placeholder="ex) Seoul, Jongno-gu, Gwancheol-dong, 5-8 카페 뎀셀브즈"
+                            placeholder="ex) Seoul, Jongno-gu, Gwancheol-dong, 5-8 카페 뎀셀브즈" name="cafe_location"
                           />
                         </div>
                         <div class="fieldformy">
@@ -139,7 +139,7 @@
                           <input
                             type="text"
                             class="js-admin-addcafe-input"
-                            placeholder="https://www.instagram.com/starbucks"
+                            placeholder="https://www.instagram.com/starbucks" name="cafe_sns"
                           />
                         </div>
                       </div>
@@ -148,7 +148,7 @@
                           <span>카페 기타 정보 사항</span>
                           <textarea
                             class="js-admin-addcafe-input"
-                            placeholder="예) 여기는 라떼맛집이에요! 핸드드립 메뉴도 있어요"
+                            placeholder="예) 여기는 라떼맛집이에요! 핸드드립 메뉴도 있어요" name="cafe_info"
                           ></textarea>
                         </div>
                       </div>
@@ -162,6 +162,7 @@
                             accept="img/*"
                             onChange="uploadImgPreview()"
                             id="js-upload"
+                            name="cafe_img"
                           />
                         </a>
                         <div class="pbox">
@@ -176,15 +177,15 @@
                     </div>
                     <br />
                     <div class="fieldbtn">
-                      <button
-                        type="search"
+                      <input
+                        type="submit"
                         class="js-submit"
                         id="js-admin-addcafe-btn"
                       >
                         등록하기
-                      </button>
+                      </input>
                     </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -212,44 +213,44 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <footer>
-      <div class="block">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="footersec">
-                <ul>
-                  <li><a href="#">Home</a></li>
-                  <li><a href="#">Partners</a></li>
-                  <li><a href="#">Contact</a></li>
-                  <li><a href="#">Terms</a></li>
-                  <li><a href="#">Customer Center</a></li>
-                </ul>
-                <span
-                  >Seoul Geumcheon-gu, Gasan-dong, Gasan digital 1-ro</span
-                >
-                <span>+82 02-123-4567</span>
-                <span>HiddenC@gmail.com</span>
-                <div class="social">
-                  <a href="#" title=""><i class="fa fa-facebook"></i></a>
-                  <a href="#" title=""><i class="fa fa-twitter"></i></a>
-                  <a href="#" title=""><i class="fa fa-instagram"></i></a>
-                  <a href="#" title=""><i class="fa fa-google"></i></a>
+      <footer>
+        <div class="block">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="footersec">
+                  <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Partners</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Customer Center</a></li>
+                  </ul>
+                  <span
+                    >Seoul Geumcheon-gu, Gasan-dong, Gasan digital 1-ro</span
+                  >
+                  <span>+82 02-123-4567</span>
+                  <span>HiddenC@gmail.com</span>
+                  <div class="social">
+                    <a href="#" title=""><i class="fa fa-facebook"></i></a>
+                    <a href="#" title=""><i class="fa fa-twitter"></i></a>
+                    <a href="#" title=""><i class="fa fa-instagram"></i></a>
+                    <a href="#" title=""><i class="fa fa-google"></i></a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="bottomline">
-        <a href="#scrollup" class="scrollup" title=""
-          ><i class="fa fa-angle-up"></i
-        ></a>
-        <span>© 2020 HiddenC All rights reserved.</span>
-      </div>
-    </footer>
+        <div class="bottomline">
+          <a href="#scrollup" class="scrollup" title=""
+            ><i class="fa fa-angle-up"></i
+          ></a>
+          <span>© 2020 HiddenC All rights reserved.</span>
+        </div>
+      </footer>
+    </div>
     <!-- Script -->
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/modernizr.js" type="text/javascript"></script>
