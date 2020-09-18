@@ -35,9 +35,11 @@ function uploadImgPreview() {
 }
 
 //한장의 이미지 프리뷰
-function uploadProfile() {
-  var upload = document.getElementById("");
-  var preview = document.getElementById("");
+
+let profile = document.getElementById("js-upload-profile");
+profile.addEventListener("click", () => {
+  var upload = document.getElementById("js-upload-profile");
+  var preview = document.getElementById("js-thumnail");
 
   var reader = new FileReader();
   /* reader 시작시 함수 구현 */
@@ -54,13 +56,19 @@ function uploadProfile() {
   upload.addEventListener("change", function (e) {
     var get_file = e.target.files;
 
+    if (get_file) {
+      reader.readAsDataURL(get_file[0]);
+    }
+
     preview.appendChild(image);
   });
-}
+});
 
-function uploadBackground() {
-  var upload = document.getElementById("");
-  var preview = document.getElementById("");
+let back = document.getElementById("js-upload-back-img");
+
+back.addEventListener("click", () => {
+  var upload = document.getElementById("js-upload-back-img");
+  var preview = document.getElementById("js-back-img");
 
   var reader = new FileReader();
   /* reader 시작시 함수 구현 */
@@ -77,6 +85,10 @@ function uploadBackground() {
   upload.addEventListener("change", function (e) {
     var get_file = e.target.files;
 
+    if (get_file) {
+      reader.readAsDataURL(get_file[0]);
+    }
+
     preview.appendChild(image);
   });
-}
+});

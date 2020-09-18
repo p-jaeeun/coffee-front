@@ -9,9 +9,8 @@ export class UserService {
   async signin(userData) {
     console.log("service" + userData.user_id);
     console.log("service" + userData.user_pw);
+    var result;
     // let dto = new UserDTO();
-    let result;
-    let result2;
     // dto.setUserId(userData.user_id);
     // dto.setUserPw(userData.user_pw);
 
@@ -20,52 +19,54 @@ export class UserService {
     } catch (e) {
       console.log("error: " + e);
     }
+
     console.log("id" + userData.user_id);
     console.log("type" + typeof result);
 
     switch (result) {
       case true:
-        result2 = await this.api.callMain();
-        if (result2 !== undefined || result2 !== "undefined") {
-          return result2;
+        let result_of_main = await this.api.callMain();
+        if (result_of_main !== undefined || result_of_main !== "undefined") {
+          return result_of_main;
         } else {
-          console.log("result is undefined:" + result2);
+          console.log("Service-result-undefined:" + result_of_main);
           break;
         }
       case "admin_true":
-        // this.callAdminPage();
-        console.log("admin");
-        break;
+        let result_of_admin = await this.api.callAdminPage();
+        if (result_of_admin !== undefined || result_of_admin !== "undefined") {
+          console.log("Service-result:" + result_of_admin);
+          return result_of_admin;
+        } else {
+          console.log("Service-result-undefined:" + result_of_admin);
+          break;
+        }
       case false:
         alert("아이디 혹은 비밀번호를 확인하세요.");
         break;
+      default:
+        alert("로그인중 문제가 발생했습니다. 다시 시도 하세요.");
+        break;
     }
   }
 
-  // async callMain(user_id) {
-  //   let result;
-  //   let cafe_list = new Array();
-  //   let caffeine = new Array();
-
-  //   try {
-  //     result = await this.api.callMain(user_id);
-  //   } catch (e) {
-  //     console.log("error:" + e);
-  //   }
-
-  //   return result;
-  // }
-
-  async callAdminPage() {
+  async signup(userData) {
     let result;
-
     try {
-      result = await this.api.callAdminPage();
+      result = await this.api.signup(userData);
     } catch (e) {
       console.log("error:" + e);
     }
-    return result;
-  }
 
-  async signup() {}
+    console.log("id" + userData.user_id);
+    console.log("type" + typeof result);
+
+    if (result !== undefined || result !== "undefined") {
+      console.log("Service-result:" + result);
+      return result;
+    } else {
+      console.log("Service-result-undefined:" + result);
+      return;
+    }
+  }
 }
