@@ -1,6 +1,8 @@
 // admin - addcafe : makeAdminHeader +  makeAddCafeForm + makeFooter(common) + makeSearchPop(common)
 // admin - revisecafe : makeAdminHeader +  makeReviseCafeForm + makeFooter(common) +makeSearchPop(common)
 // admin - main(home) : makeAdminHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop(common)
+// search_result : makeAdminHeader + makeSearchResult + makeFooter(common) + makeSearchPop(common) 
+// cafeInfo : makeAdminHeader + makeCafeInfo(common) + makeFooter(common) + makeSearchPop(common)
 
 export class AdminView {
   constructor() {}
@@ -102,7 +104,7 @@ export class AdminView {
                           </h5>
                         </div>
                         <div class="fieldbtn">
-                          <button type="sumbit" id="js-admin-revisecafe-btn">불러오기</button>
+                          <button type="submit" id="js-admin-revisecafe-btn">불러오기</button>
                         </div>
                       </div>
                     </div>
@@ -199,7 +201,7 @@ export class AdminView {
               <div class="col-lg-10">
                 <!-- PBox -->
                 <div class="pbox">
-                  <form class="addlistingform">
+                  <form class="addlistingform" id="js-admin-addcafe-form">
                     <div class="add_cafe_title">카페 추가하기</div>
                     <div class="row">
                       <div class="col-lg-6">
@@ -284,7 +286,7 @@ export class AdminView {
                     </div>
                     <br />
                     <div class="fieldbtn">
-                      <button type="search" class="js-submit" id="js-admin-addcafe-btn">등록하기</button>
+                      <button type="submit" class="js-submit" id="js-admin-addcafe-btn">등록하기</button>
                     </div>
                   </form>
                 </div>

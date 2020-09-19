@@ -28,7 +28,7 @@ export class UserApi {
 
     try {
       result = await this.api.sendAjaxPost(
-        "http://192.168.1.107:8080/cafe/login",
+        "http://192.168.1.107:8080/hiddenc/login",
         str
       );
     } catch (e) {
@@ -43,7 +43,7 @@ export class UserApi {
     let result;
     try {
       result = await this.api.sendAjaxGet(
-        "http://192.168.1.107:8080/cafe/login/main"
+        "http://192.168.1.107:8080/hiddenc/login/main"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -57,7 +57,7 @@ export class UserApi {
     let result;
     try {
       result = await this.api.sendAjaxGet(
-        `http://192.168.1.131:8080/api/admin`
+        `http://192.168.1.131:8080/hiddenc/admin`
       );
     } catch (e) {
       console.log("error:" + e);
@@ -72,7 +72,7 @@ export class UserApi {
 
     try {
       result = await this.api.sendAjaxPost(
-        "http://192.168.1.107:8080/cafe/signup",
+        "http://192.168.1.107:8080/hiddenc/signup",
         str
       );
     } catch (e) {

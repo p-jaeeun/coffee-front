@@ -116,7 +116,7 @@ export class UserComponent {
     let caffeine = user_view.makeMainCaffaineList();
     let cafe = user_view.makeMainCafeList();
     let footer = common_view.makeFooter();
-    let pop = common_view.makeSearchPopup();
+    let pop = common_view.makeSearchPop();
 
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
@@ -132,7 +132,7 @@ export class UserComponent {
     let user_menu = user_view.makeUserMenu();
     let dashboard = user_view.makeDashboard();
     let footer = common_view.makeFooter();
-    let pop = common_view.makeSearchPopup();
+    let pop = common_view.makeSearchPop();
 
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");

@@ -4,6 +4,10 @@ import { AdminApi } from "../api/AdminApi.js";
 class AdminService {
   constructor() {
 
+  async addCafeInfo(){
+    let 
+  }
+
   async callCafeList() {
     let result;
     let dto = new AdminDTO();
@@ -19,4 +23,5 @@ class AdminService {
     }
     return cafe_list; //저장한 정보를 컨트롤러의 콜백함수에서 받아서 뷰가 가진 메소드의 매개변수로 넘긴다.
   }
+
 }

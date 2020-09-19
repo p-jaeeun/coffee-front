@@ -3,7 +3,6 @@ export class UserCTR {
     this.service = service;
     this.view = view;
 
-    this.view.makeLoginMain();
     this.view.signin(() => {
       this.signin(this.view.saveSigninData());
       console.log(this.view.saveSigninData());
