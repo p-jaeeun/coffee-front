@@ -403,7 +403,7 @@ export class CommonView {
                   <h5 class="search_title">어떤 카페를 찾으세요?</h5>
                 </div>
                 <div class="search_bar">
-                  <input type="text" class="js-search-input" name="cafe_name" placeholder="검색어를 입력하세요" required="required"/>
+                  <input type="text" name="cafe_name" placeholder="검색어를 입력하세요" required="required"/>
                   <div class="fieldbtn">
                     <button type="submit" class="search_button" id="js-search-btn">SEARCH</button>
                   </div>

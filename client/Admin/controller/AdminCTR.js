@@ -10,19 +10,23 @@ export class AdminCTR {
       this.callAdminPage(this.view.makeAddCafePage());
     });
 
-    this.view.makeAddCafe(()=>{ 
+    this.view.addCafe(()=>{
+      this.addCafe(this.view.saveCafeData());
     });
+
   }
 
-  adminLogin() {
-    this.service.adminLogin();
-  }
+  // adminLogin() {
+  //   this.service.adminLogin();
+  // }
   
   
   callAdminPage(){
-    this.service.
+    this.service.addCafeData();
   }
 
-
+  addCafe(){
+    this.service.addCafeInfo();
+  }
 
 }
