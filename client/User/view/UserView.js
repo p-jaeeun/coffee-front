@@ -695,7 +695,7 @@ export class UserView {
           <div class="col-lg-10">
             <!-- PBox -->
             <div class="pbox">
-              <form class="addlistingform" id="js-addcafe-admin-form">
+              <form class="addlistingform" id="js-addcafe-user-form">
                 <div class="add_cafe_title">카페 추가하기</div>
                 <div class="row">
                   <div class="col-lg-6">
@@ -762,7 +762,7 @@ export class UserView {
                 </div>
                 <br />
                 <div class="fieldbtn">
-                  <input type="submit" class="js-submit" id="js-user-addcafe-btn">등록하기</input>
+                  <button type="submit" class="js-submit" id="js-user-addcafe-btn">등록하기</button>
                 </div>
               </form>
             </div>
@@ -893,7 +893,7 @@ export class UserView {
                         </div>
                       </div>
                       <div class="col-lg-12">
-                     <input
+                     <button
                           type="submit"
                           class="updatebtn"
                           id="js-user-pwchange-btn" 

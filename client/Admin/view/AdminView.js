@@ -6,11 +6,14 @@ export class AdminView {
   constructor() {}
 
   getContextPath() {
-    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
-    return location.href.substring( hostIndex, location.href.indexOf("/", hostIndex + 1) );
+    var hostIndex = location.href.indexOf(location.host) + location.host.length;
+    return location.href.substring(
+      hostIndex,
+      location.href.indexOf("/", hostIndex + 1)
+    );
   }
 
-  makeAdminHeader(admin_id, profile_admin_id,notification) {
+  makeAdminHeader(admin_id, profile_admin_id, notification) {
     let admin_header = `
     <div class="theme-layout">
     <div class="responsiveheader js-admin-header-menu">
@@ -284,7 +287,7 @@ export class AdminView {
                     </div>
                     <br />
                     <div class="fieldbtn">
-                      <button type="search" class="js-submit" id="js-admin-addcafe-btn">등록하기</button>
+                      <button type="submit" class="js-submit" id="js-admin-addcafe-btn">등록하기</button>
                     </div>
                   </form>
                 </div>

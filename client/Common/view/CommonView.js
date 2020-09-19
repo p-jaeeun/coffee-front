@@ -1,14 +1,16 @@
 // 카페 검색 : 카페검색 -> 검색결과 ->(클릭시) 카페상세페이지
-// search_result : makeUserHeader OR makeAdminHeader + makeSearchResult + makeFooter(common) + makeSearchPop(common) 
+// search_result : makeUserHeader OR makeAdminHeader + makeSearchResult + makeFooter(common) + makeSearchPop(common)
 // cafeInfo : makeUserHeader OR makeAdminHeader + makeCafeInfo(common) + makeFooter(common) + makeSearchPop(common)
-
 
 export class CommonView {
   constructor() {}
 
   getContextPath() {
-    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
-    return location.href.substring( hostIndex, location.href.indexOf("/", hostIndex + 1) );
+    var hostIndex = location.href.indexOf(location.host) + location.host.length;
+    return location.href.substring(
+      hostIndex,
+      location.href.indexOf("/", hostIndex + 1)
+    );
   }
 
   makeCafeInfo(
@@ -319,7 +321,7 @@ export class CommonView {
                       <textarea name="review_content" class="js-cafe-review-input" placeholder="Review"></textarea>
 
                       <div class="fieldbtn">
-                        <input type="submit" id="js-cafe-review-btn">등록하기</input>
+                        <button type="submit" id="js-cafe-review-btn">등록하기</button>
                       </div>
                     </form>
                     </div>
@@ -396,14 +398,14 @@ export class CommonView {
           <div class="accounttabs search_pop_size">
             <span class="closepopup"><i>+</i></span>
             <div id="content">
-              <form class="accountform pop_form" id="one js-search-form">
+              <form class="accountform pop_form" id="js-search-form">
                 <div class="pop_title">
                   <h5 class="search_title">어떤 카페를 찾으세요?</h5>
                 </div>
                 <div class="search_bar">
                   <input type="text" class="js-search-input" name="cafe_name" placeholder="검색어를 입력하세요" required="required"/>
                   <div class="fieldbtn">
-                    <input type="search" class="search_button" id="js-search-btn">SEARCH</input>
+                    <button type="submit" class="search_button" id="js-search-btn">SEARCH</button>
                   </div>
                 </div>
               </form>
@@ -413,8 +415,8 @@ export class CommonView {
       </div>`;
     return search_pop;
   }
-  makeSearchResult(){
-    let search_result=`
+  makeSearchResult() {
+    let search_result = `
       <section>
         <div class="block no-padding">
           <div class="container fluid">

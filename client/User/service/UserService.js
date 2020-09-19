@@ -1,18 +1,38 @@
 import { UserApi } from "../api/UserApi.js";
-import { UserDTO } from "../model/UserDTO.js";
+import { UserDTO } from "../model/UserDTO.js"; //통신결과를 받아서 반복문으로 배열의 요소마다 추가해서 정보 저장
 
 export class UserService {
   constructor() {
     this.api = new UserApi();
-    // this.dto = new UserDTO();
   }
+
+  //화면
+  async callMain() {
+    let result;
+
+    try {
+      result = await this.api.callMain();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    return result;
+  }
+
+  async callHome() {
+    let result;
+
+    try {
+      result = await this.api.callHome();
+    } catch (e) {
+      console.log("error: " + e);
+    }
+    return result;
+  }
+
+  //정보
   async signin(userData) {
-    console.log("service" + userData.user_id);
-    console.log("service" + userData.user_pw);
     var result;
-    // let dto = new UserDTO();
-    // dto.setUserId(userData.user_id);
-    // dto.setUserPw(userData.user_pw);
 
     try {
       result = await this.api.signin(userData);
@@ -20,53 +40,84 @@ export class UserService {
       console.log("error: " + e);
     }
 
-    console.log("id" + userData.user_id);
-    console.log("type" + typeof result);
+    console.log("id");
+    console.log("type:" + typeof result);
 
     switch (result) {
-      case true:
-        let result_of_main = await this.api.callMain();
-        if (result_of_main !== undefined || result_of_main !== "undefined") {
-          return result_of_main;
-        } else {
+      case "true":
+        let result_of_main = await this.callMain();
+        if (result_of_main === undefined || result_of_main === "undefined") {
           console.log("Service-result-undefined:" + result_of_main);
-          break;
+          this.callHome();
+          return;
+        } else {
+          localStorage.setItem("user_id", userData.get("user_id"));
+          return ["member", result_of_main];
         }
+
       case "admin_true":
         let result_of_admin = await this.api.callAdminPage();
-        if (result_of_admin !== undefined || result_of_admin !== "undefined") {
-          console.log("Service-result:" + result_of_admin);
-          return result_of_admin;
-        } else {
+        if (result_of_admin === undefined || result_of_admin === "undefined") {
           console.log("Service-result-undefined:" + result_of_admin);
-          break;
+          this.callHome();
+          return;
+        } else {
+          console.log("Service-result:" + result_of_admin);
+          localStorage.setItem("admin_id", userData.get("user_id"));
+          return ["admin", result_of_admin];
         }
-      case false:
+
+      case "false":
         alert("아이디 혹은 비밀번호를 확인하세요.");
+        this.callHome();
         break;
       default:
         alert("로그인중 문제가 발생했습니다. 다시 시도 하세요.");
+        this.callHome();
         break;
     }
   }
 
   async signup(userData) {
-    let result;
+    var result;
     try {
       result = await this.api.signup(userData);
     } catch (e) {
       console.log("error:" + e);
     }
 
-    console.log("id" + userData.user_id);
+    console.log("id");
     console.log("type" + typeof result);
 
-    if (result !== undefined || result !== "undefined") {
-      console.log("Service-result:" + result);
-      return result;
-    } else {
+    if (result === undefined || result === "undefined") {
       console.log("Service-result-undefined:" + result);
+      this.callHome();
       return;
+    } else {
+      console.log("Service-result:" + result);
+      alert("환영합니다.");
+      this.callHome();
+      return result;
+    }
+  }
+
+  async addCafe(userData) {
+    var result;
+
+    try {
+      result = await this.api.addCafe(userData);
+    } catch (e) {
+      console.log("service-error:" + e);
+    }
+
+    if (result === undefined || result === "undefined") {
+      console.log("Service-result-undefined:" + result);
+      this.view.makeAddCafe(); //아직 구현 안됨
+      return;
+    } else {
+      console.log("Service-result:" + result);
+      alert("추가 요청이 성공적으로 전달되었습니다.");
+      return result;
     }
   }
 }
