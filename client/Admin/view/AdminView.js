@@ -8,11 +8,14 @@ export class AdminView {
   constructor() {}
 
   getContextPath() {
-    var hostIndex = location.href.indexOf( location.host ) + location.host.length;
-    return location.href.substring( hostIndex, location.href.indexOf("/", hostIndex + 1) );
+    var hostIndex = location.href.indexOf(location.host) + location.host.length;
+    return location.href.substring(
+      hostIndex,
+      location.href.indexOf("/", hostIndex + 1)
+    );
   }
 
-  makeAdminHeader(admin_id, profile_admin_id,notification) {
+  makeAdminHeader(admin_id, profile_admin_id, notification) {
     let admin_header = `
     <div class="theme-layout">
     <div class="responsiveheader js-admin-header-menu">

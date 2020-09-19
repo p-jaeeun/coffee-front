@@ -6,39 +6,21 @@ export class UserApi {
     this.api = new Ajax();
   }
 
+  //화면
   async callHome() {
     console.log("API_data:");
     let result;
 
     try {
-      result = await this.api.sendAjaxGet("http://192.168.1.107:8080/");
+      result = await this.api.sendAjaxGet("http://192.168.1.107:8080/hiddenc");
     } catch (e) {
       console.log("error:" + e);
     }
     return result;
   }
 
-  async signin(userData) {
+  async callMain() {
     console.log("API_data:");
-    let result;
-    // let userData = {};
-    // userData.user_id = userDTO.getUserId;
-    // userData.user_pw = userDTO.getUserPw;
-    let str = JSON.stringify(userData);
-
-    try {
-      result = await this.api.sendAjaxPost(
-        "http://192.168.1.107:8080/hiddenc/login",
-        str
-      );
-    } catch (e) {
-      console.log("error:" + e);
-    }
-    return result;
-  }
-
-  async callMain(user_id) {
-    console.log("API_data:" + user_id);
 
     let result;
     try {
@@ -49,6 +31,28 @@ export class UserApi {
       console.log("error:" + e);
     }
 
+    return result;
+  }
+
+  //정보
+  async signin(userData) {
+    console.log("API_data:");
+    let result;
+    // let userData = {};
+    // userData.user_id = userDTO.getUserId;
+    // userData.user_pw = userDTO.getUserPw;
+    // let str = JSON.stringify();
+
+    try {
+      result = await this.api.sendAjaxPostFile(
+        "http://192.168.1.107:8080/hiddenc/login",
+        userData
+      );
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    console.log("value type" + typeof result);
     return result;
   }
 
@@ -68,12 +72,12 @@ export class UserApi {
   async signup(userData) {
     console.log("API_data:");
     let result;
-    let str = JSON.stringify(userData);
+    // let str = JSON.stringify(userData);
 
     try {
-      result = await this.api.sendAjaxPost(
+      result = await this.api.sendAjaxPostFile(
         "http://192.168.1.107:8080/hiddenc/signup",
-        str
+        userData
       );
     } catch (e) {
       console.log("error:" + e);

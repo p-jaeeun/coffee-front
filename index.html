@@ -94,14 +94,15 @@
               </ul>
               <div id="content">
                 <div class="accountform" id="one">
-                  <div class="loginform js-signin-input" >
+                  <form class="loginform js-signin-input" id="js-signin-form" >
+                    
                     <div class="accountformfield">
                       <label>ID</label>
-                      <input type="text" class="js-signin-input" placeholder="Creative Layers" />
+                      <input type="text" class="js-signin-input" placeholder="ID" name="user_id" />
                     </div>
                     <div class="accountformfield">
                       <label>Password</label>
-                      <input type="password" class="js-signin-input" />
+                      <input type="password" class="js-signin-input" n/>
                     </div>
                     <p class="c-label">
                       <input name="cb" id="cb1" type="checkbox" /><label for="cb1"
@@ -109,8 +110,8 @@
                       >
                     
                     <a href="javascript:void(0)" >Lost your password?</a></p>
-                    <button type="submit" id="js-signin-btn">Sign In</button>
-                  </div>
+                    <button type="submit" class="js-signin-btn">Sign In</button>
+                  </form>
                   <div class="extraconnect">
                     <span>Or Connect With Social Networks</span>
                     <div class="social">
@@ -126,7 +127,7 @@
                     </div>
                   </div>
                 </div>
-                <form id="js-signup-form">
+                <form id="js-signup-form" enctype="multipart/form-data">
                   <div class="accountform" id="two" style="display: none" >
                   <div class="loginform js-signup-input">
                     <div class="accountformfield">
@@ -150,7 +151,7 @@
                       <input
                         type="text"
                         class="js-signup-input"
-                        placeholder="ex) 90년도 12월 12일생 -> 19901212" name="user_birth" required pattern="[1-2][8-9][0-9][0-9][0-1][0-9][0-3][0-9]"
+                        placeholder="ex) 90년도 12월 12일생 -> 19901212" name="user_birth" required pattern="[1-2][0-9][0-9][0-9][0-1][0-9][0-3][0-9]"
                       />
                     </div>
                     <div class="accountformfield">
@@ -166,7 +167,7 @@
                       <a href="javascript:void(0)" >Terms and Conditions</a> and our
                       <a href="javascript:void(0)" >Privacy Policy</a>
                     </div>
-                    <input type="submit" id="js-signup-btn">Sign Up</input>
+                    <button type="submit" class="js-signup-btn">Sign Up</button>
                   </div>
                   <div class="extraconnect">
                     <span>Or Connect With Social Networks</span>
@@ -194,33 +195,20 @@
     
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/modernizr.js" type="text/javascript"></script>
-    <script src="js/script.js" type="text/javascript"></script> -->
+    <script src="js/script.js" type="text/javascript"></script> 
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="js/wow.min.js" type="text/javascript"></script> -->
+    <script src="js/wow.min.js" type="text/javascript"></script> 
     <script src="js/slick.min.js" type="text/javascript"></script>
     <script src="js/sumoselect.js" type="text/javascript"></script>
     <script src="js/isotop.js" type="text/javascript"></script>
-    <script src="js/jquery.nicescroll.min.js" type="text/javascript"></script> -->
+    <script src="js/jquery.nicescroll.min.js" type="text/javascript"></script> 
     <script type="text/javascript" src="js/map1.js"></script>
     <script type="text/javascript" src="js/jq.aminoSlider.js"></script>
     <!-- <script
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb"
     ></script> -->
-<<<<<<< HEAD
     <script src="img_upload.js"></script>
-=======
-    <!-- <script src="img_upload.js"></script> -->
->>>>>>> origin
     <script src="app.js" type="module"></script>
-    <script>
-      // let dom = document.getElementById("testF");
-      //    dom.addEventListener("click", ()=>{
-      //   console.log("asdasdCKGBAKSBDAS");
-      //   alert("asdasdasdasdc  ;iuryewkufyvbK");
-      // })
-     
-     
-    </script>
   </body>
 </html>
