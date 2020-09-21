@@ -4,8 +4,14 @@ import { AdminApi } from "../api/AdminApi.js";
 class AdminService {
   constructor() {
 
-  async addCafeInfo(){
-    let 
+  async addCafe(){
+    var result;
+    
+    try{
+     
+    }catch (e) {
+      console.log("service-error: " + e);
+    }
   }
 
   async callCafeList() {

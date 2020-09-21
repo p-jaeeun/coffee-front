@@ -4,6 +4,7 @@ import { UserDTO } from "../model/UserDTO.js";
 export class UserApi {
   constructor() {
     this.ajax = new Ajax();
+
   }
 
   //화면
@@ -68,6 +69,7 @@ export class UserApi {
     console.log("value type" + typeof result);
     return result;
   }
+
 
   async signup(userData) {
     console.log("ajax-signup");
@@ -176,7 +178,6 @@ export class UserApi {
     } catch (e) {
       console.log("error:" + e);
     }
-
     return result;
   }
 
@@ -191,7 +192,6 @@ export class UserApi {
     } catch (e) {
       console.log("error:" + e);
     }
-
     return result;
   }
 }

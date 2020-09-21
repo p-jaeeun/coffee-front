@@ -550,7 +550,7 @@ export class CommonView {
       </section>`;
     return search_result;
   }
-
+  
   makeSearchItem() {
     let item = `       
     <div class="col-lg-6">

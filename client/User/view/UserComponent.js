@@ -46,8 +46,10 @@ export class UserComponent {
     this.my_hidden_cafe_list = document.getElementsByClassName(
       "js-user-myhiddencafe-list"
     );
+
     this.half_map = document.getElementById("js-map-half");
     this.search_list = document.getElementById("js-search-result-list");
+
 
     //이미지 미리보기
     this.thumnail = document.getElementById("js-thumnail");
