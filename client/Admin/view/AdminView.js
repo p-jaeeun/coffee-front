@@ -120,12 +120,11 @@ export class AdminView {
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 이름 *</span>
-                          <input type="text" name="cafe_name" class="js-admin-revisecafe-input"
-                          required="" />
+                          <input type="text" name="cafe_name" required="" />
                         </div>
                         <div class="fieldformy">
                           <span>카페 메뉴 </span>
-                          <input type="text" name="cafe_menu" class="js-admin-revisecafe-input" placeholder="" />
+                          <input type="text" name="cafe_menu" placeholder="" />
                         </div>
                         <div class="fieldformy">
                           <span>카테고리</span>
@@ -141,12 +140,12 @@ export class AdminView {
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 주소 *</span>
-                          <input type="text" name="cafe_location" class="js-admin-revisecafe-input" placeholder="ex)서울시 종로구 관철동 5-8, 카페 뎀셀브즈"
+                          <input type="text" name="cafe_location" placeholder="ex)서울시 종로구 관철동 5-8, 카페 뎀셀브즈"
                           required="" />
                         </div>
                         <div class="fieldformy">
                           <span>카페 SNS </span>
-                          <input type="text" name="cafe_sns" class="js-admin-revisecafe-input" placeholder="" />
+                          <input type="text" name="cafe_sns" placeholder="" />
                         </div>
                       </div>
                       <div class="col-lg-12">
@@ -210,7 +209,7 @@ export class AdminView {
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 이름 *</span>
-                          <input type="text" name="cafe_name" class="js-admin-addcafe-input"/>
+                          <input type="text" name="cafe_name" />
                         </div>
                         <div class="fieldformy">
                           <span
@@ -219,7 +218,6 @@ export class AdminView {
                           <input
                             type="text"
                             name="cafe_menu" 
-                            class="js-admin-addcafe-input" 
                             placeholder="ex) 아메리카노 4000 , 라떼 4500"
                           />
                         </div>
@@ -240,7 +238,6 @@ export class AdminView {
                           <input
                             type="text"
                             name="cafe_location"
-                            class="js-admin-addcafe-input" 
                             placeholder="ex) Seoul, Jongno-gu, Gwancheol-dong, 5-8 카페 뎀셀브즈"
                           />
                         </div>
@@ -249,7 +246,6 @@ export class AdminView {
                           <input
                           type="text"
                           name="cafe_sns"
-                          class="js-admin-addcafe-input"
                           placeholder="https://www.instagram.com/starbucks"
                           />
                         </div>
@@ -259,7 +255,6 @@ export class AdminView {
                           <span>카페 기타 정보 사항</span>
                           <textarea
                             name="cafe_information"
-                            class="js-admin-addcafe-input"
                             placeholder="예) 여기는 라떼맛집이에요! 핸드드립 메뉴도 있어요"
                           ></textarea>
                         </div>
