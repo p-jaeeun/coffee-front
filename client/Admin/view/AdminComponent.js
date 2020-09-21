@@ -34,22 +34,27 @@ export class AdminComponent {
   //리스너 정의
 
   adminMenu(callback){
+    console.log("admin-menu-listener");
     this.admin_menu.addEventListener("click",callback);
   }
 
   addCafe(callback){
-    console.log("카페추가 버튼")
+    console.log("add-cafe-listener")
     this.addcafe_btn.addEventListener("click",callback);
   }
   
   reviseCafe(callback){
-    console.log("카페 수정 버튼")
+    console.log("revise-cafe-listener")
     this.revisecafe_update_btn.addEventListener("click",callback);
   }
 
   loadCafeList(callback){
-    console.log("카페 불러오기 버튼")
+    console.log("load list of cafe listner")
     this.revisecafe_load_btn.addEventListener("click",callback);
+  }
+  search(callback) {
+    console.log("search-listener");
+    this.search_btn.addEventListener("click", callback);
   }
 
   // previewCafeImg(callback){
