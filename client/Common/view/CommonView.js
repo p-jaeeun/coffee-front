@@ -32,65 +32,7 @@ export class CommonView {
     cafe_like
   ) {
     let cafeinfo = `
-    <div class="theme-layout">
-      <div class="responsiveheader">
-        <div class="rheader">
-          <span><img src="${this.getContextPath}/images/ricon.png" alt="menu" /></span>
-          <div class="logo">
-            <a href="javascript:void(0)">
-              <img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"/>
-            </a>
-          </div>
-        </div>
-        <div class="rnaver">
-          <span class="closeresmenu"><i>x</i>Close</span>
-          <ul>
-            <li>
-              <a href="javascript:void(0)">Home</a>
-            </li>
-            <li class="accountbtn">
-              <a href="javascript:void(0)">Search</a>
-            </li>
-            <li>
-              <a href="javascript:void(0)">User</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- Responsive header -->
-
-      <header class="s4 dark">
-        <div class="container fluid">
-          <div class="logo">
-            <a href="javascript:void(0)">
-              <img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"/>
-            </a>
-          </div>
-          <div class="userdropsec">
-            <span><img src="${this.getContextPath}+'50x50'" alt="profile_user" />
-              <span class="header_user_id">{user_id}</span>
-            </span>
-          </div>
-          <a href="javascript:void(0)" class="bellicon">
-            <i class="fa fa-bell-o"></i><strong>{notification}</strong></a>
-          <nav>
-            <ul>
-              <li>
-                <a href="javascript:void(0)">Home</a>
-              </li>
-              <li class="accountbtn" style="float: left">
-                <a href="javascript:void(0)">Search</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)">User</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <!-- 개인 프로필이 포함된 헤더 -->
       <div class="section_down">
-
           <div class="block no-padding">
             <div class="container fluid">
               <div class="row">
@@ -125,6 +67,7 @@ export class CommonView {
               </div>
             </div>
           </div>
+        </div>
     
 
         <section>
@@ -534,7 +477,7 @@ export class CommonView {
                         </ul>
                       </div>
                       <div class="ml-placessec">
-                        <div class="row" id="js-search-result-list">
+                        <div class="row js-search-result-list">
                         </div>
                       </div>
                     </div>
@@ -550,7 +493,7 @@ export class CommonView {
       </section>`;
     return search_result;
   }
-  
+
   makeSearchItem() {
     let item = `       
     <div class="col-lg-6">
