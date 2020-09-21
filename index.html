@@ -19,54 +19,145 @@
   </head>
 
   <body class="full-height" id="scrollup">
-    <div class="page-loading">
+    <div id="content">
+      <form class="accountform pop_form" id="js-search-form">
+        <div class="pop_title">
+          <h5 class="search_title">어떤 카페를 찾으세요?</h5>
+        </div>
+        <div class="search_bar">
+          <input
+            type="text"
+            name="cafe_name"
+            placeholder="검색어를 입력하세요"
+            required="required"
+          />
+
+          <button type="submit" class="search_button" class="js-search-btn">
+            SEARCH
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- <section>
+      <div class="block gray">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-10">
+              <form id="js-user-settings-form">
+                <h3>Profile</h3>
+                <div class="profileimageaction">
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <div class="changeimg">
+                        <h3>Change Profile Image</h3>
+
+                        <div class="uploadimage">
+                          <div
+                            id="js-thumnail"
+                            style="display: flex"
+                            src=""
+                          ></div>
+                          <a href="javascript:void(0)">Cancel</a>
+                        </div>
+
+                        <div class="jstinput">
+                          <a href="" class="browsephoto">Browse</a>
+                          <input
+                            type="file"
+                            accept="img/*"
+                            id="js-upload-profile"
+                            onChange="uploadProfile()"
+                            name="user_profile_img"
+                          />
+                        </div>
+
+                        <p>
+                          Max file size is 1MB, Minimum dimension:
+                          <br />270x210 And Suitable
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-lg-7">
+                      <div class="changeimg">
+                        <h3>Change Background</h3>
+
+                        <div class="uploadimage">
+                          <div
+                            id="js-back-img"
+                            style="display: flex"
+                            src=""
+                          ></div>
+                          <a href="javascript:void(0)">Cancel</a>
+                        </div>
+
+                        <div class="jstinput">
+                          <a href="" class="browsephoto">Browse</a>
+                          <input
+                            type="file"
+                            accept="img/*"
+                            onChange="uploadBackground()"
+                            id="js-upload-back-img"
+                            name="user_back_img"
+                          />
+                        </div>
+
+                        <p>
+                          Max file size is 1MB, Minimum dimension: 1920x400 And
+                          Suitable <br />files are .jpg & .png
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pbox">
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="fieldformy">
+                        <span>status message</span>
+                        <input type="text" name="user_status" />
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="fieldformy">
+                        <span>Email </span>
+                        <input type="email" name="user_email" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="pbox">
+                  <h3>Change Password</h3>
+
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="fieldformy">
+                        <span>New Password</span>
+                        <input type="password" name="user_changed_pw1" />
+                      </div>
+                      <div class="fieldformy">
+                        <span>Confirm New Password</span>
+                        <input type="password" name="user_changed_pw2" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="js-user-pwchange-btn">
+                  업데이트
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+
+    <!-- <div class="page-loading">
       <img src="images/loader.gif" alt="" />
       <span>Skip Loader</span>
     </div>
 
-    <div class="block remove-bottom double-gap-top">
-      <div class="layer blackish">
-          <div data-velocity="-.1" style="background: url(${this.getContextPath}+${user_img_background}) repeat scroll 50% 422.28px transparent;" class="no-parallax parallax scrolly-invisible"></div><!-- PARALLAX BACKGROUND IMAGE -->	
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-12">
-                      <div class="iamusersec">
-                          <div class="iamuser">
-                              <div class="userimg"><img src="${this.getContextPath}+${user_img_profile}" alt=""user_img /></div>
-                              <div class="userinfos">
-                                  <h3>{user_id}</h3>
-                                  <span>{status}</span>
-                              </div>
-                          </div>
-                          <div class="iamuserstats">
-                              <span><i class="fa fa-coffee" aria-hidden="true"></i>Caffeine {user_caffeine}</span>
-                              <span><i class="flaticon-avatar"></i>Subscriber {user_like}</span>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-  <div class="menubarsec">
-      <div class="container">
-          <div class="row">
-              <div class="col-lg-12 js-user-menu">
-                
-                <a href="javascript:void(0)" ><i class="flaticon-credit-card"></i>Dashboard</a>
-                <a href="javascript:void(0)" ><i class="fa fa-map-pin" aria-hidden="true"></i>My Hidden Cafe({total_cafe})</a>
-                <a href="javascript:void(0)" ><i class="fa fa-users" aria-hidden="true"></i>My Subscription({subscription}) </a>
-                <a href="javascript:void(0)" ><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
-                <a href="javascript:void(0)" ><i class="flaticon-heart"></i> Bookmark({favorite})</a>
-                <a href="javascript:void(0)" ><i class="fa fa-cog" aria-hidden="true"></i>Settings</a>
-                
-              </div>
-          </div>
-      </div>
-  </div>
-  </div>
-
-    <!-- <div class="theme-layout">
+    <div class="theme-layout">
     <div class="responsiveheader">
       <div class="rheader">
 
@@ -202,14 +293,13 @@
                 </div>
               </div>
             </form>
-
           </div>
         </div>
       </div>
     </div>
   </div> -->
-    <!-- Script -->
 
+    <!-- Script -->
     <script src="js/jquery.min.js" type="text/javascript"></script>
     <script src="js/modernizr.js" type="text/javascript"></script>
     <script src="js/script.js" type="text/javascript"></script>

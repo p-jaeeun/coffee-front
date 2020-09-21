@@ -40,16 +40,15 @@ export class UserComponent {
       "js-cafe-review-list"
     );
     this.mini_map = document.getElementById("js-map-mini");
-    this.header_menu = document.querySelectorAll(".js-user-header-menu")[1]; //evnet delegation 에서 읽히지 않는 문제가 발생
+
     this.header_img = document.getElementsByClassName("js-user-header-img");
-    this.user_menu = document.querySelectorAll(".js-user-menu")[0];
     this.my_hidden_cafe_list = document.getElementsByClassName(
       "js-user-myhiddencafe-list"
     );
-
     this.half_map = document.getElementById("js-map-half");
-    this.search_list = document.getElementById("js-search-result-list");
-
+    this.search_list = document.getElementsByClassName(
+      "js-search-result-list"
+    )[0];
 
     //이미지 미리보기
     this.thumnail = document.getElementById("js-thumnail");
@@ -61,7 +60,6 @@ export class UserComponent {
   //Listener
   signin(callback) {
     console.log("signin-listener");
-
     window.addEventListener("load", () => {
       this.signin_btn.addEventListener("click", callback);
     });
@@ -102,25 +100,42 @@ export class UserComponent {
     });
   }
 
-  prevent() {
-    let dom = document.getElementById("js-prevent");
-    dom.addEventListener("click", () => {
-      alert("컴포넌트의 이벤트를 받을 리스너 ");
-    });
-  }
-
   //evnet delegation
   headerMenu(callback) {
     console.log("header-delegation");
+
     window.addEventListener("load", () => {
-      this.header_menu.addEventListener("click", callback);
+      let r_header = document.getElementsByClassName("js-user-header-menu")[0];
+      let header = document.getElementsByClassName("js-user-header-menu")[1];
+
+      r_header.addEventListener("click", callback);
+      header.addEventListener("click", callback);
     });
   }
 
   userMenu(callback) {
     console.log("user_menu-delegation");
     window.addEventListener("load", () => {
-      this.user_menu.addEventListener("click", callback);
+      let user_menu = document.getElementsByClassName("js-user-menu")[0];
+      user_menu.addEventListener("click", callback);
+    });
+  }
+
+  caffeineList(callback) {
+    console.log("caffeine-list");
+    window.addEventListener("load", () => {
+      let caffeine_list = document.getElementsByClassName(
+        "js-caffeine-list"
+      )[0];
+      caffeine_list.addEventListener("click", callback);
+    });
+  }
+
+  cafeList(callback) {
+    console.log("cafe-list");
+    window.addEventListener("load", () => {
+      let cafe_list = document.getElementsByClassName("js-cafe-list")[0];
+      cafe_list.addEventListener("click", callback);
     });
   }
 
@@ -131,7 +146,7 @@ export class UserComponent {
     let common_view = new CommonView();
 
     let header = user_view.makeUserHeader();
-    let caffeine = user_view.makeMainCaffaineList();
+    let caffeine = user_view.makeMainCaffeineList();
     let cafe = user_view.makeMainCafeList();
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
@@ -183,18 +198,23 @@ export class UserComponent {
     let header = user_view.makeUserHeader();
     let user_menu = user_view.makeUserMenu();
     var subscription = user_view.makeMySubscription();
-    let list_item = user_view.makeSubscriptionList(); //is it really need?
-    let footer = user_view.makeFooter();
+    let item = user_view.makeSubscriptionList(); //is it really need?
+    let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
-
-    for (let i = 0; i < result.length; i++) {
-      subscription += user_view.makeSubscriptionList(result[i]); //결과에서 길이와 데이터를 받아서 넣자, append????
-    }
 
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML =
       header + user_menu + subscription + footer + pop;
+
+    let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
+
+    dom.innerHTML += item;
+    dom.innerHTML += item;
+    dom.innerHTML += item;
+    for (let i = 0, max = result.length; i < max; i++) {
+      dom += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+    }
   }
 
   makeVisitedCafe(result) {
@@ -205,18 +225,17 @@ export class UserComponent {
     let header = user_view.makeUserHeader();
     let user_menu = user_view.makeUserMenu();
     var half_list = user_view.makeListAndMap();
-    let list_item = user_view.makeHalfListItem();
-    let footer = common_view.makeFooter();
+    let item = user_view.makeHalfListItem();
+
     let pop = common_view.makeSearchPop();
 
-    window.document.body.setAttribute("class", "full-height");
-    window.document.body.setAttribute("id", "scrollup");
-    window.document.body.innerHTML =
-      header + user_menu + half_list + footer + pop;
+    // window.document.body.setAttribute("class", "full-height");
+    // window.document.body.setAttribute("id", "scrollup");
+    window.document.body.innerHTML = header + user_menu + half_list + pop;
 
-    let dom = document.getElementById("js-user-myhiddencafe-list");
+    let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
     for (let i = 0, max = result.length; i < max; i++) {
-      dom += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+      dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
     }
   }
 
@@ -228,7 +247,7 @@ export class UserComponent {
     let header = user_view.makeUserHeader();
     let info = common_view.makeCafeInfo();
     let footer = common_view.makeFooter();
-    let pop = common_view.make.makeSearchPop();
+    let pop = common_view.makeSearchPop();
 
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
@@ -236,7 +255,6 @@ export class UserComponent {
   }
 
   makeSearchResult(result) {
-    console.log("!!!");
     //search_result : makeUserHeader OR makeAdminHeader + makeSearchResult + makeFooter(common) + makeSearchPop(common)
     let user_view = new UserView();
     let common_view = new CommonView();
@@ -244,16 +262,17 @@ export class UserComponent {
     let header = user_view.makeUserHeader();
     var search_result = common_view.makeSearchResult();
     let item = common_view.makeSearchItem();
-    let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
 
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + search_result + pop;
 
-    let dom = document.getElementById("js-search-result-list");
+    let dom = document.getElementsByClassName("js-search-result-list")[0];
+    console.log(dom);
+    dom.innerHTML += item;
     for (let i = 0, max = result.length; i < max; i++) {
-      dom += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+      dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
     }
   }
 

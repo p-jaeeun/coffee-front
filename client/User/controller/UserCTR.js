@@ -6,8 +6,8 @@ export class UserCTR {
     this.service = service;
     this.view = view;
     this.self = this;
-
-    // this.view.makeSettings();
+    // this.view.makeCafeInfo();
+    // this.view.makeDashboard();
 
     this.view.signin(() => {
       this.signin();
@@ -22,6 +22,7 @@ export class UserCTR {
       this.search();
     });
     this.view.settings(() => {
+      alert("CTR-setting-checked!");
       this.settings();
     });
     this.view.addReview(() => {
@@ -33,9 +34,14 @@ export class UserCTR {
     this.view.headerMenu((e) => {
       this.headerMenu(e);
     });
-
     this.view.userMenu((e) => {
       this.userMenu(e);
+    });
+    this.view.caffeineList((e) => {
+      this.caffeineList(e);
+    });
+    this.view.cafeList((e) => {
+      this.cafeList(e);
     });
   }
 
@@ -104,8 +110,11 @@ export class UserCTR {
 
       if (result === undefined || result === "undefined") {
         console.log("CTR-return-error:" + result);
+        this.view.makeAddCafe();
       } else {
         console.log("컨트롤러-서비스 결과값:" + result);
+        this.view.makeAddCafe();
+        alert("추가 요청이 성공적으로 전달되었습니다.");
         //화면은 필요하지 않음
       }
     });
@@ -136,13 +145,28 @@ export class UserCTR {
 
   settings = () => {
     var result;
+    console.log("clicked settings");
 
     this.view.settings_form.addEventListener("click", async (e) => {
       e.preventDefault();
-
+      console.log("setting-form-set-ready");
       let userData = new FormData(this.view.settings_form);
       for (let value of userData.values()) {
         console.log("vlaue: " + value);
+      }
+
+      let input_1 = userData.get("user_changed_pw1");
+      let input_2 = userData.get("user_changed_pw2");
+
+      if (
+        input_1 !== input_2 ||
+        input_1 === "" ||
+        input_2 === "" ||
+        isNaN(input_1) == true ||
+        isNaN(input_2) == true
+      ) {
+        alert("입력값이 다릅니다.");
+        return;
       }
 
       let service = new UserService();
@@ -196,7 +220,7 @@ export class UserCTR {
       // console.log('taget' + e.target.tagName)
       if (e.target.innerHTML.includes("Home")) {
         console.log("Home");
-        this.service.callHome();
+        this.service.callMain();
       } else if (e.target.innerHTML.includes("User")) {
         console.log("user");
 
@@ -293,15 +317,57 @@ export class UserCTR {
         //
       } else if (e.target.innerHTML.includes("Settings")) {
         console.log("clicked Settings");
-        let user_id = localStorage.getItem("user_id");
-        let user_img = localStorage.getItem("user_img");
-        console.log("local data:" + user_id);
-        console.log("local data:" + user_img);
+        // let user_id = localStorage.getItem("user_id");
+        // let user_img = localStorage.getItem("user_img");
+        // console.log("local data:" + user_id);
+        // console.log("local data:" + user_img);
 
         this.view.makeSettings();
       }
     } else {
-      console.log("you clicked invalid area");
+      console.log("you clicked invalid area: " + e.target.tagName);
+    }
+  };
+
+  caffeineList = async (e) => {
+    console.log("CTR-caffeine-list");
+    console.log("CTR-CAFFEINE: " + e.target.innerHTML);
+
+    if (e.target.tagName === "H3" || e.target.tagName === "A") {
+      let str = String(e.target.innerHTML);
+      let pattern = /(?!value=")\d.*(?<!\")/;
+      let found = str.match(pattern);
+      var result;
+
+      try {
+        result = this.service.searchOtherUser(found);
+      } catch (e) {
+        console.log("error:" + e);
+      }
+      this.view.makeVisitedCafe(result);
+    } else {
+      console.log("you clicked invalid area:" + e.target.tagName);
+    }
+  };
+
+  cafeList = async (e) => {
+    console.log("CTR-cafe-list");
+    console.log("CTR-CAFE: " + e.target.innerHTML);
+
+    if (e.target.tagName === "H3" || e.target.tagName === "A") {
+      let str = String(e.target.innerHTML);
+      let pattern = /(?!value=")\d.*(?<!\")/;
+      let found = str.match(pattern);
+      var result;
+
+      try {
+        result = this.service.searchCafeInfo(found);
+      } catch (e) {
+        console.log("error:" + e);
+      }
+      this.view.makeCafeInfo(result);
+    } else {
+      console.log("you clicked invalid area:" + e.target.tagName);
     }
   };
 }

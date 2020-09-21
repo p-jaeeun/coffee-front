@@ -35,7 +35,7 @@ export class UserView {
       </div>
       <div class="rnaver">
         <span class="closeresmenu"><i>x</i>Close</span>
-        <ul class = "js-user-header-menu">
+        <ul class="js-user-header-menu">
           <li>
             <a href="javascript:void(0)" >Home</a>
           </li>
@@ -72,7 +72,6 @@ export class UserView {
             <li>
               <a href="javascript:void(0)" >Home</a>
             </li>
-            <li class="accountbtn"></li>
             <li class="accountbtn" style="float: left">
               <a href="javascript:void(0)" >Search</a>
             </li>
@@ -86,7 +85,7 @@ export class UserView {
   `;
   }
 
-  makeMainCaffaineList(
+  makeMainCaffeineList(
     user_id1,
     user_img1,
     user_id2,
@@ -122,7 +121,7 @@ export class UserView {
                 <span>이번주 카페인 랭킹 TOP 12</span>
               </div>
               <!-- Heading -->
-              <ul class="citieslists">
+              <ul class="citieslists js-caffeine-list">
                 <li>
                   <div class="cities">
                     <a href="javascript:void(0)" 
@@ -130,6 +129,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id1}</a></h3>
+                      <hidden value="{value1}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -140,6 +140,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id2}</a></h3>
+                      <hidden value="{value2}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -150,6 +151,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id3}</a></h3>
+                      <hidden value="{value3}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -160,6 +162,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id4}</a></h3>
+                      <hidden value="{value4}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -172,6 +175,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id5}</a></h3>
+                      <hidden value="{value5}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -182,6 +186,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id6}</a></h3>
+                      <hidden value="{value6}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -192,6 +197,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id7}</a></h3>
+                      <hidden value="{value7}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -202,6 +208,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id8}</a></h3>
+                      <hidden value="{value8}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -214,6 +221,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id9}</a></h3>
+                      <hidden value="{value9}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -224,6 +232,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id10}</a></h3>
+                      <hidden value="{value10}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -234,6 +243,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id11}</a></h3>
+                      <hidden value="{value11}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -244,6 +254,7 @@ export class UserView {
                     /></a>
                     <div class="cities-title">
                       <h3><a href="javascript:void(0)" >{user_id12}</a></h3>
+                      <hidden value="{value12}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -282,7 +293,7 @@ export class UserView {
                 <span>이번주 새로 등록된 카페입니다.</span>
               </div>
               <div class="carouselplaces">
-                <ul id="carouselsec">
+                <ul id="carouselsec" class="js-cafe-list">
                   <li>
                     <div class="places">
                       <div class="placethumb">
@@ -298,6 +309,7 @@ export class UserView {
                       </div>
                       <div class="placeinfos">
                         <h3><a href="javascript:void(0)" >{cafe_name1}</a></h3>
+                        <hidden value="{value1}"></hidden>
   
                         <ul class="listmetas">
                           <li>
@@ -329,6 +341,7 @@ export class UserView {
                       </div>
                       <div class="placeinfos">
                         <h3><a hrefjavascript:void(0)" >{cafe_name2}</a></h3>
+                        <hidden value="{value2}"></hidden>
   
                         <ul class="listmetas">
                           <li>
@@ -360,6 +373,7 @@ export class UserView {
                       </div>
                       <div class="placeinfos">
                         <h3><a href="javascript:void(0)" >{cafe_name3}</a></h3>
+                        <hidden value="{value3}"></hidden>
   
                         <ul class="listmetas">
                           <li>
@@ -405,7 +419,7 @@ export class UserView {
                   <div class="col-lg-12">
                       <div class="iamusersec">
                           <div class="iamuser">
-                              <div class="userimg"><img src="${this.getContextPath}+${user_img_profile}" alt=""user_img /></div>
+                              <div class="userimg"><img src="${this.getContextPath}+${user_img_profile}" alt="user_img" /></div>
                               <div class="userinfos">
                                   <h3>{user_id}</h3>
                                   <span>{status}</span>
@@ -582,9 +596,7 @@ export class UserView {
                     </div>
                     <div class="ml-placessec "> 
                       <div class="row js-user-myhiddencafe-list">
-                      
-                      //클래스 위치가 맞는지 모르겠다.
-                        
+        
                       </div>
                     </div>
                   </div>
@@ -602,28 +614,36 @@ export class UserView {
   }
 
   makeHalfListItem(cafe_name, cafe_rate, cafe_rate_count, cafe_location) {
-    let item = ` <div class="col-lg-6"> <!--여기서 부터 1개의 카페-->
-      <div class="places s2">
-        <div class="placethumb">
-          <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
-          <div class="placeoptions">
-            <span class="pull-left"> <i class="flaticon-eye"></i> Preview </span>
-            <span class="pull-right"> <i class="flaticon-heart"></i> Save </span>
-          </div>
-        </div>
-        <div class="boxplaces">
-          <div class="placeinfos">
-            <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
-            <ul class="listmetas">
-              <li><span class="rated">{cafe_rate}</span>{cafe_rate_count}</li>
-            </ul>
-          </div>
-          <div class="placedetails">
-            <span class="pull-left"><i class="flaticon-pin"></i>{cafe_location}</span>
-          </div>
+    let item = `       <!--여기서 부터 1개의 카페-->
+    <div class="places s2">
+      <div class="placethumb">
+        <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
+        <div class="placeoptions">
+          <span class="pull-left">
+            <i class="flaticon-eye"></i> Preview
+          </span>
+          <span class="pull-right">
+            <i class="flaticon-heart"></i> Save
+          </span>
         </div>
       </div>
-    </div><!-- Places -->`;
+      <div class="boxplaces">
+        <div class="placeinfos">
+          <h3><a href="javascript:void(0)">{cafe_name}</a></h3>
+          <hidden value="{value}"></hidden>
+          <ul class="listmetas">
+            <li><span class="rated">{cafe_rate}</span>{cafe_rate_count}</li>
+          </ul>
+        </div>
+        <div class="placedetails">
+          <span class="pull-left"
+            ><i class="flaticon-pin"></i>{cafe_location}</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Places -->`;
     return item;
   }
 
@@ -641,7 +661,7 @@ export class UserView {
               >
             </div>
             <div class="ml-placessec">
-              <div class="row js-user-myhiddencafe-list">
+              <div class="row js-user-myhiddencafe-list js-cafe-list">
      
               </div>
             </div>
@@ -653,37 +673,35 @@ export class UserView {
   }
 
   makeSubscriptionList(cafe_name, cafe_rate, cafe_rate_count, cafe_location) {
-    let list = `  <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
-      <div class="places">
-        <div class="placethumb">
-          <img src="${this.getContextPath}+'360x220'" alt="subscription_cafe" />
-          <div class="placeoptions">
-            <span class="pull-left">
-              <i class="flaticon-eye"></i> Preview
-            </span>
-            <span class="pull-right">
-              <i class="flaticon-heart"></i> Save
-            </span>
-          </div>
-        </div>
-        <div class="boxplaces">
-          <div class="placeinfos">
-            <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
-            <ul class="listmetas">
-              <li>
-                <span class="rated">{cafe_rate}</span
-                >{cafe_rate_count}
-              </li>
-            </ul>
-          </div>
-          <div class="placedetails">
-            <span class="pull-left"
-              ><i class="flaticon-pin"></i>{cafe_location}</span
-            >
-          </div>
+    let list = `      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+    <div class="places">
+      <div class="placethumb">
+        <img src="${this.getContextPath}+'360x220'" alt="subscription_cafe" />
+        <div class="placeoptions">
+          <span class="pull-left">
+            <i class="flaticon-eye"></i> Preview
+          </span>
+          <span class="pull-right">
+            <i class="flaticon-heart"></i> Save
+          </span>
         </div>
       </div>
-    </div>`;
+      <div class="boxplaces">
+        <div class="placeinfos">
+          <h3><a href="javascript:void(0)">{cafe_name}</a></h3>
+          <hidden value="{value}"></hidden>
+          <ul class="listmetas">
+            <li><span class="rated">{cafe_rate}</span>{cafe_rate_count}</li>
+          </ul>
+        </div>
+        <div class="placedetails">
+          <span class="pull-left"
+            ><i class="flaticon-pin"></i>{cafe_location}</span
+          >
+        </div>
+      </div>
+    </div>
+  </div>`;
     return list;
   }
 
@@ -709,17 +727,17 @@ export class UserView {
                       >
                       <input
                         placeholder="ex) 아메리카노 4000 , 라떼 4500"
-                        type="text"  cafe="cafe_menu"
+                        type="text" name="cafe_menu"
                       />
                     </div>
                     <div class="fieldformy">
                       <span>카테고리</span>
-                      <select class="cdropshere">
-                        <option>select option</option>
-                        <option>option1</option>
-                        <option>option2</option>
-                        <option>option3</option>
-                        <option>option4</option>
+                      <select class="cdropshere" name="category">
+                        <option value="">select option</option>
+                        <option value="">option1</option>
+                        <option value="">option2</option>
+                        <option value="">option3</option>
+                        <option value="">option4</option>
                       </select>
                     </div>
                   </div>
@@ -761,9 +779,9 @@ export class UserView {
                   </div>
                 </div>
                 <br />
-                <div class="fieldbtn">
+                
                   <button type="submit" class="js-submit js-user-addcafe-btn" >등록하기</button>
-                </div>
+                
               </form>
             </div>
           </div>
@@ -775,138 +793,116 @@ export class UserView {
   }
 
   makeSettings() {
-    let profile = `       <section>
+    let profile = `  <section>
     <div class="block gray">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-10">
             <form id="js-user-settings-form">
-              <div class="dashboradsec">
-                <h3>Profile</h3>
-                <div class="profileimageaction">
-                  <div class="row">
-                    <div class="col-lg-5">
-                      <div class="changeimg">
-                        <h3>Change Profile Image</h3>
-                        <div class="uploadimage">
-                          <div
-                            id="js-thumnail"
-                            style="display: flex"
-                            src=""
-                          ></div>
-                          <a href="javascript:void(0)" title="">Cancel</a>
-                        </div>
-                        <div class="jstinput">
-                          <a href="" title="" class="browsephoto">Browse</a>
-                          <input
-                            type="file"
-                            accept="img/*"
-                            onchange="uploadProfile()"
-                            id="js-upload-profile"
-                            name="user_profile"
-                          />
-                        </div>
-                        <p>
-                          Max file size is 1MB, Minimum dimension:
-                          <br />270x210 And Suitable
-                        </p>
+              <h3>Profile</h3>
+              <div class="profileimageaction">
+                <div class="row">
+                  <div class="col-lg-5">
+                    <div class="changeimg">
+                      <h3>Change Profile Image</h3>
+
+                      <div class="uploadimage">
+                        <div
+                          id="js-thumnail"
+                          style="display: flex"
+                          src=""
+                        ></div>
+                        <a href="javascript:void(0)">Cancel</a>
                       </div>
-                    </div>
-                    <div class="col-lg-7">
-                      <div class="changeimg">
-                        <h3>Change Background</h3>
-                        <div class="uploadimage">
-                          <div
-                            id="js-back-img"
-                            style="display: flex"
-                            src=""
-                          ></div>
-                          <a href="javascript:void(0)" title="">Cancel</a>
-                        </div>
-                        <div class="jstinput">
-                          <a href="" title="" class="browsephoto">Browse</a>
-                          <input
-                            type="file"
-                            accept="img/*"
-                          onchange="uploadBackground()"
-                            id="js-upload-back-img"
-                            name="user_bgimg"
-                          />
-                        </div>
-                        <p>
-                          Max file size is 1MB, Minimum dimension: 1920x400
-                          And Suitable <br />files are .jpg & .png
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="pbox">
-                  <div class="addlistingform">
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="fieldformy">
-                          <span>status message</span>
-                          <input
-                            type="text"
-                            name="user_status"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-lg-6">
-                        <div class="fieldformy">
-                          <span>Email </span>
-                          <input
-                            type="text"
-                            name="user_email"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="pbox">
-                  <h3>Change Password</h3>
-                  <div class="addlistingform">
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <div class="fieldformy">
-                          <span>Current Password</span>
-                          <input
-                            type="password"
-                            name="user_current_pw"
-                          />
-                        </div>
-                        <div class="fieldformy">
-                          <span>New Password</span>
-                          <input
-                            type="password"
-                            name="user_changed_pw1"
-                          />
-                        </div>
-                        <div class="fieldformy">
-                          <span>Confirm New Password</span>
-                          <input
-                            type="password"
-                            name="user_changed_pw2" 
-                          />
-                        </div>
-                      </div>
-                      <div class="col-lg-12">
-                     <button
-                          type="submit"
-                          class="updatebtn js-user-pwchange-btn"
-                         
+
+                      <div class="jstinput">
+                        <a href="" class="browsephoto">Browse</a>
+                        <input
+                          type="file"
+                          accept="img/*"
+                          id="js-upload-profile"
+                          onChange="uploadProfile()"
+                          name="user_profile_img"
                         />
-                        </div>
                       </div>
+
+                      <p>
+                        Max file size is 1MB, Minimum dimension:
+                        <br />270x210 And Suitable
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-lg-7">
+                    <div class="changeimg">
+                      <h3>Change Background</h3>
+
+                      <div class="uploadimage">
+                        <div
+                          id="js-back-img"
+                          style="display: flex"
+                          src=""
+                        ></div>
+                        <a href="javascript:void(0)">Cancel</a>
+                      </div>
+
+                      <div class="jstinput">
+                        <a href="" class="browsephoto">Browse</a>
+                        <input
+                          type="file"
+                          accept="img/*"
+                          onChange="uploadBackground()"
+                          id="js-upload-back-img"
+                          name="user_back_img"
+                        />
+                      </div>
+
+                      <p>
+                        Max file size is 1MB, Minimum dimension: 1920x400 And
+                        Suitable <br />files are .jpg & .png
+                      </p>
                     </div>
                   </div>
                 </div>
               </div>
+              <div class="pbox">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="fieldformy">
+                      <span>status message</span>
+                      <input type="text" name="user_status" />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="fieldformy">
+                      <span>Email </span>
+                      <input type="email" name="user_email" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="pbox">
+                <h3>Change Password</h3>
+
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="fieldformy">
+                      <span>New Password</span>
+                      <input type="password" name="user_changed_pw1" />
+                    </div>
+                    <div class="fieldformy">
+                      <span>Confirm New Password</span>
+                      <input type="password" name="user_changed_pw2" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="js-user-pwchange-btn">
+                업데이트
+              </button>
             </form>
           </div>
         </div>
+      </div>
     </div>
   </section>`;
     return profile;

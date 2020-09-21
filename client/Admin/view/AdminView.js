@@ -1,7 +1,7 @@
 // admin - addcafe : makeAdminHeader +  makeAddCafeForm + makeFooter(common) + makeSearchPop(common)
 // admin - revisecafe : makeAdminHeader +  makeReviseCafeForm + makeFooter(common) +makeSearchPop(common)
 // admin - main(home) : makeAdminHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop(common)
-// search_result : makeAdminHeader + makeSearchResult + makeFooter(common) + makeSearchPop(common) 
+// search_result : makeAdminHeader + makeSearchResult + makeFooter(common) + makeSearchPop(common)
 // cafeInfo : makeAdminHeader + makeCafeInfo(common) + makeFooter(common) + makeSearchPop(common)
 
 export class AdminView {
@@ -18,7 +18,7 @@ export class AdminView {
   makeAdminHeader(admin_id, profile_admin_id, notification) {
     let admin_header = `
     <div class="theme-layout">
-    <div class="responsiveheader js-admin-header-menu">
+    <div class="responsiveheader ">
     <div class="rheader">
       <span><img src="${this.getContextPath}/images/ricon.png" alt="menu_icon" /></span>
       <div class="logo">
@@ -29,7 +29,7 @@ export class AdminView {
     </div>
     <div class="rnaver">
       <span class="closeresmenu"><i>x</i>Close</span>
-      <ul>
+      <ul class="js-admin-header-menu">
         <li>
           <a href="javascript:void(0)">Home</a>
         </li>
@@ -66,13 +66,13 @@ export class AdminView {
       <nav>
         <ul>
           <li>
-            <span class="header_text">Home</span>
+          <a href="javascript:void(0)" >Home</a>
           </li>
-          <li class="accountbtn" style="float: left">
-            <span class="header_text">Search</span>
+          <li class="accountbtn" >
+          <a href="javascript:void(0)" >Search</a>
           </li>
           <li class="menu-item-has-children">
-            <span class="header_text">Admin</span>
+          <a href="javascript:void(0)" >Admin</a>
             <ul id="js-admin-header-menu">
               <li>Add Cafe</li>
               <li>Revise Cafe</li>
