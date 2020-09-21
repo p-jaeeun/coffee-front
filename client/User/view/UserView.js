@@ -35,7 +35,7 @@ export class UserView {
       </div>
       <div class="rnaver">
         <span class="closeresmenu"><i>x</i>Close</span>
-        <ul>
+        <ul class = "js-user-header-menu">
           <li>
             <a href="javascript:void(0)" >Home</a>
           </li>
@@ -67,8 +67,8 @@ export class UserView {
         <a href="javascript:void(0)"  class="bellicon"
           ><i class="fa fa-bell-o"></i><strong>{notification}</strong></a
         >
-        <nav>
-          <ul>
+        <nav class="js-user-header-menu">
+          <ul >
             <li>
               <a href="javascript:void(0)" >Home</a>
             </li>
@@ -424,15 +424,15 @@ export class UserView {
   <div class="menubarsec">
       <div class="container">
           <div class="row">
-              <div class="col-lg-12">
-                <ul class="js-user-menu" id="testF">
+              <div class="col-lg-12 js-user-menu">
+                
                 <a href="javascript:void(0)" ><i class="flaticon-credit-card"></i>Dashboard</a>
                 <a href="javascript:void(0)" ><i class="fa fa-map-pin" aria-hidden="true"></i>My Hidden Cafe({total_cafe})</a>
                 <a href="javascript:void(0)" ><i class="fa fa-users" aria-hidden="true"></i>My Subscription({subscription}) </a>
                 <a href="javascript:void(0)" ><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
                 <a href="javascript:void(0)" ><i class="flaticon-heart"></i> Bookmark({favorite})</a>
                 <a href="javascript:void(0)" ><i class="fa fa-cog" aria-hidden="true"></i>Settings</a>
-                </ul>
+                
               </div>
           </div>
       </div>
@@ -762,7 +762,7 @@ export class UserView {
                 </div>
                 <br />
                 <div class="fieldbtn">
-                  <button type="submit" class="js-submit" id="js-user-addcafe-btn">등록하기</button>
+                  <button type="submit" class="js-submit js-user-addcafe-btn" >등록하기</button>
                 </div>
               </form>
             </div>
@@ -895,8 +895,8 @@ export class UserView {
                       <div class="col-lg-12">
                      <button
                           type="submit"
-                          class="updatebtn"
-                          id="js-user-pwchange-btn" 
+                          class="updatebtn js-user-pwchange-btn"
+                         
                         />
                         </div>
                       </div>

@@ -321,7 +321,7 @@ export class CommonView {
                       <textarea name="review_content" class="js-cafe-review-input" placeholder="Review"></textarea>
 
                       <div class="fieldbtn">
-                        <button type="submit" id="js-cafe-review-btn">등록하기</button>
+                        <button type="submit" class="js-cafe-review-btn">등록하기</button>
                       </div>
                     </form>
                     </div>
@@ -405,7 +405,7 @@ export class CommonView {
                 <div class="search_bar">
                   <input type="text" name="cafe_name" placeholder="검색어를 입력하세요" required="required"/>
                   <div class="fieldbtn">
-                    <button type="submit" class="search_button" id="js-search-btn">SEARCH</button>
+                    <button type="submit" class="search_button" class="js-search-btn">SEARCH</button>
                   </div>
                 </div>
               </form>
@@ -534,139 +534,7 @@ export class CommonView {
                         </ul>
                       </div>
                       <div class="ml-placessec">
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <div class="places s2">
-                              <div class="placethumb">
-                                <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
-                                <div class="placeoptions">
-                                  <span class="pull-left">
-                                    <i class="flaticon-eye"></i> Preview
-                                  </span>
-                                  <span class="pull-right">
-                                    <i class="flaticon-heart"></i> Save
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="boxplaces">
-                                <div class="placeinfos">
-                                  <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
-                                  <ul class="listmetas">
-                                    <li>
-                                      <span class="rated">{cafe_rate}</span>
-                                      {cafe_rate_count}
-                                    </li>
-                                  </ul>
-                                </div>
-                                <div class="placedetails">
-                                  <span class="pull-left">
-                                    <i class="flaticon-pin"></i>
-                                    {cafe_location}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- Places -->
-                          </div>
-                          <div class="col-lg-6">
-                            <div class="places s2">
-                              <div class="placethumb">
-                                <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
-                                <div class="placeoptions">
-                                  <span class="pull-left">
-                                    <i class="flaticon-eye"></i> Preview
-                                  </span>
-                                  <span class="pull-right">
-                                    <i class="flaticon-heart"></i> Save
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="boxplaces">
-                                <div class="placeinfos">
-                                  <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
-                                  <ul class="listmetas">
-                                    <li>
-                                      <span class="rated">{cafe_rate}</span>
-                                      {cafe_rate_count}
-                                    </li>
-                                  </ul>
-                                </div>
-                                <div class="placedetails">
-                                  <span class="pull-left">
-                                    <i class="flaticon-pin"></i>
-                                    {cafe_location}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- Places -->
-                          </div>
-                          <div class="col-lg-6">
-                            <div class="places s2">
-                              <div class="placethumb">
-                                <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
-                                <div class="placeoptions">
-                                  <span class="pull-left">
-                                    <i class="flaticon-eye"></i> Preview
-                                  </span>
-                                  <span class="pull-right">
-                                    <i class="flaticon-heart"></i> Save
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="boxplaces">
-                                <div class="placeinfos">
-                                  <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
-                                  <ul class="listmetas">
-                                    <li>
-                                      <span class="rated">{cafe_rate}</span>
-                                      {cafe_rate_count}
-                                    </li>
-                                  </ul>
-                                </div>
-                                <div class="placedetails">
-                                  <span class="pull-left">
-                                    <i class="flaticon-pin"></i>
-                                    {cafe_location}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- Places -->
-                          </div>
-                          <div class="col-lg-6">
-                            <div class="places s2">
-                              <div class="placethumb">
-                                <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
-                                <div class="placeoptions">
-                                  <span class="pull-left">
-                                    <i class="flaticon-eye"></i> Preview
-                                  </span>
-                                  <span class="pull-right">
-                                    <i class="flaticon-heart"></i> Save
-                                  </span>
-                                </div>
-                              </div>
-                              <div class="boxplaces">
-                                <div class="placeinfos">
-                                  <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
-                                  <ul class="listmetas">
-                                    <li>
-                                      <span class="rated">{cafe_rate}</span>
-                                      {cafe_rate_count}
-                                    </li>
-                                  </ul>
-                                </div>
-                                <div class="placedetails">
-                                  <span class="pull-left">
-                                    <i class="flaticon-pin"></i>
-                                    {cafe_location}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                            <!-- Places -->
-                          </div>
+                        <div class="row" id="js-search-result-list">
                         </div>
                       </div>
                     </div>
@@ -681,5 +549,42 @@ export class CommonView {
         </div>
       </section>`;
     return search_result;
+  }
+  
+  makeSearchItem() {
+    let item = `       
+    <div class="col-lg-6">
+      <div class="places s2">
+        <div class="placethumb">
+          <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
+          <div class="placeoptions">
+            <span class="pull-left">
+              <i class="flaticon-eye"></i> Preview
+            </span>
+            <span class="pull-right">
+              <i class="flaticon-heart"></i> Save
+            </span>
+          </div>
+        </div>
+        <div class="boxplaces">
+          <div class="placeinfos">
+            <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
+            <ul class="listmetas">
+              <li>
+                <span class="rated">{cafe_rate}</span>
+                {cafe_rate_count}
+              </li>
+            </ul>
+          </div>
+          <div class="placedetails">
+            <span class="pull-left">
+              <i class="flaticon-pin"></i>
+              {cafe_location}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div><!-- Places -->`;
+    return item;
   }
 }
