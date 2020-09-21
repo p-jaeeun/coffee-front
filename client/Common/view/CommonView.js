@@ -31,50 +31,10 @@ export class CommonView {
     comment,
     cafe_like
   ) {
-    let cafeinfo = `<div class="section_down">
-    <div class="block no-padding">
-      <div class="container fluid">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="sl-slider" id="makeslider">
-              <div class="slg-box">
-                <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-              </div>
-              <div class="slg-box">
-                <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-              </div>
-              <div class="slg-box">
-                <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-              </div>
-              <div class="slg-box">
-                <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-              </div>
-              <div class="slg-box">
-                <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-              </div>
-              <div class="slg-box">
-                <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-              </div>
-              <div class="slg-box">
-                <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-              </div>
-              <div class="slg-box">
-                <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <section>
-    <div class="block no-padding gray">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="slhead">
+    let cafeinfo = `
+      <div class="section_down">
+          <div class="block no-padding">
+            <div class="container fluid">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="sltitle">
@@ -87,35 +47,70 @@ export class CommonView {
                     </ul>
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="slbtnsspans">
-                    <span>
-                    <i class="flaticon-pin"></i>cafe_location</span>
-                    <div class="slbtns">
-                      <div class="sharelisting">
-                        <a href="javascript:void(0)">
-                          <i class="flaticon-share"></i>
-                          Share
-                        </a>
-                        <div class="sharebtns">
-                          <a href="javascript:void(0)">
-                            <i class="fa fa-facebook"></i>
-                          </a>
-                          <a href="javascript:void(0)">
-                            <i class="fa fa-twitter"></i>
-                          </a>
-                          <a href="javascript:void(0)">
-                            <i class="fa fa-instagram"></i>
-                          </a>
-                          <a href="javascript:void(0)">
-                            <i class="fa fa-pinterest"></i>
-                          </a>
-                          <a href="javascript:void(0)">
-                            <i class="fa fa-dribbble"></i>
-                          </a>
-                          <a href="javascript:void(0)">
-                            <i class="fa fa-google"></i>
-                          </a>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+
+        <section>
+          <div class="block no-padding gray">
+            <div class="container">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="slhead">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="sltitle">
+                          <h1>{cafe_name}</h1>
+                          <ul class="listmetas">
+                            <li>
+                              <span class="rated">{cafe_rate}</span>
+                              {cafe_rate_count}
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="slbtnsspans">
+                          <span>
+                          <i class="flaticon-pin"></i>cafe_location</span>
+                          <div class="slbtns">
+                            <div class="sharelisting">
+                              <a href="javascript:void(0)">
+                                <i class="flaticon-share"></i>
+                                Share
+                              </a>
+                              <div class="sharebtns">
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-instagram"></i>
+                                </a>
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-pinterest"></i>
+                                </a>
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-dribbble"></i>
+                                </a>
+                                <a href="javascript:void(0)">
+                                  <i class="fa fa-google"></i>
+                                </a>
+                              </div>
+                            </div>
+                            <a href="javascript:void(0)">
+                              <i class="flaticon-heart"></i>
+                              Bookmark
+                            </a>
+                            <a href="javascript:void(0)">
+                              <i class="flaticon-note"></i>
+                              Add review
+                            </a>
+                          </div>
                         </div>
                       </div>
                       <a href="javascript:void(0)">

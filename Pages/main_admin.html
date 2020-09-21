@@ -92,23 +92,25 @@
       </header>
       <div class="menubarsec">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-12 js-admin-menu">
-              <a href="javascript:void(0)"
-                ><i class="fa fa-coffee" aria-hidden="true"></i>Hidden Cafe
-                List</a
-              >
-              <a href="javascript:void(0)"
-                ><i class="fa fa-address-card-o" aria-hidden="true"></i> Member
-                Management</a
-              >
-              <a href="javascript:void(0)"
-                ><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden
-                Cafe</a
-              >
-              <a href="javascript:void(0)"
-                ><i class="fa fa-user-plus"></i> Add Hidden Cafe by Users</a
-              >
+          <div class="row justify-content-center">
+            <div class="col-lg-12">
+                <div class="col-lg-12 js-admin-menu">
+                  <a href="javascript:void(0)"
+                    ><i class="fa fa-coffee" aria-hidden="true"></i>Hidden Cafe
+                    List</a
+                  >
+                  <a href="javascript:void(0)"
+                    ><i class="fa fa-address-card-o" aria-hidden="true"></i>
+                    Member Management</a
+                  >
+                  <a href="javascript:void(0)"
+                    ><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden
+                    Cafe</a
+                  >
+                  <a href="javascript:void(0)"
+                    ><i class="fa fa-user-plus"></i> Add Hidden Cafe by Users</a
+                  >
+                </div>
             </div>
           </div>
         </div>
@@ -118,96 +120,25 @@
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-lg-10">
-                <!-- PBox -->
                 <div class="pbox">
-                  <form class="addlistingform" id="js-cafe-admin-form">
-                    <div class="add_cafe_title">카페 추가하기</div>
-                    <div class="row">
+                  <div class="addlistingform">
+                    <div class="add_cafe_title">카페 등록 현황</div>
+                      <div class="row">
                       <div class="col-lg-6">
                         <div class="fieldformy">
-                          <span>카페 이름 *</span>
-                          <input type="text" class="js-admin-addcafe-input" name="cafe_name"/>
-                        </div>
-                        <div class="fieldformy">
-                          <span>카페 메뉴</span>
-                          <input
-                            type="text"
-                            class="js-admin-addcafe-input"
-                            placeholder="ex) 아메리카노 4000 , 라떼 4500" name="cafe_menu"
-                          />
-                        </div>
-                        <div class="fieldformy">
-                          <span>카테고리</span>
-                          <select class="cdropshere">
-                            <option>select option</option>
-                            <option>option1</option>
-                            <option>option2</option>
-                            <option>option3</option>
-                            <option>option4</option>
-                          </select>
+                          <span>카페 이름 </span>
+                          <div></div>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <div class="fieldformy">
-                          <span>카페 주소 *</span>
-                          <input
-                            type="text"
-                            class="js-admin-addcafe-input"
-                            placeholder="ex) Seoul, Jongno-gu, Gwancheol-dong, 5-8 카페 뎀셀브즈" name="cafe_location"
-                          />
-                        </div>
-                        <div class="fieldformy">
-                          <span>카페 SNS </span>
-                          <input
-                            type="text"
-                            class="js-admin-addcafe-input"
-                            placeholder="https://www.instagram.com/starbucks" name="cafe_sns"
-                          />
+                          <span>카페 주소 </span>
+                          <div></div>
                         </div>
                       </div>
-                      <div class="col-lg-12">
-                        <div class="fieldformy">
-                          <span>카페 기타 정보 사항</span>
-                          <textarea
-                            class="js-admin-addcafe-input"
-                            placeholder="예) 여기는 라떼맛집이에요! 핸드드립 메뉴도 있어요" name="cafe_info"
-                          ></textarea>
-                        </div>
-                      </div>
-                      <div class="col-lg-12">
-                        <a title="" class="uploadfile">
-                          <img src="images/cloud.png" alt="" />
-                          <span>이미지를 업로드 하려면 클릭해주세요.</span>
-                          <input
-                            type="file"
-                            class="js-admin-addcafe-img"
-                            accept="img/*"
-                            onChange="uploadImgPreview()"
-                            id="js-upload"
-                            name="cafe_img"
-                          />
-                        </a>
-                        <div class="pbox">
-                          <h3>Gallery</h3>
-                          <div class="slistinggallery">
-                            <div class="sgallery img_preview">
-                              <div id="js-thumnail" style="display: flex"></div>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
-                    <br />
-                    <div class="fieldbtn">
-                      <input
-                        type="submit"
-                        class="js-submit"
-                        id="js-admin-addcafe-btn"
-                      >
-                        등록하기
-                      </input>
-                    </div>
-                  </form>
+                  </div>
                 </div>
               </div>
             </div>
