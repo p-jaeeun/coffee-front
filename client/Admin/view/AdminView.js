@@ -1,7 +1,9 @@
-// admin - addcafe : makeAdminHeader +  makeAddCafeForm + makeFooter(common) + makeSearchPop(common)
+// adminpage(cafe management) = makeAdminHeader + makeAdminMenu + makeCafeList + makeFooter (common) + makeSearchPop(common)
+// admin - user management = 아직 구현안됨.
+// admin - addcafe : makeAdminHeader + makeAdminMenu +  makeAddCafeForm + makeFooter(common) + makeSearchPop(common)
 // admin - revisecafe : makeAdminHeader +  makeReviseCafeForm + makeFooter(common) +makeSearchPop(common)
-// admin - main(home) : makeAdminHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop(common)
-// search_result : makeAdminHeader + makeSearchResult + makeFooter(common) + makeSearchPop(common) 
+// main(home) : makeAdminHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop(common)
+// search_result : makeAdminHeader + makeSearchResult + makeFooter(common) + makeSearchPop(common)
 // cafeInfo : makeAdminHeader + makeCafeInfo(common) + makeFooter(common) + makeSearchPop(common)
 
 export class AdminView {
@@ -18,7 +20,7 @@ export class AdminView {
   makeAdminHeader(admin_id, profile_admin_id, notification) {
     let admin_header = `
     <div class="theme-layout">
-    <div class="responsiveheader js-admin-header-menu">
+    <div class="responsiveheader">
     <div class="rheader">
       <span><img src="${this.getContextPath}/images/ricon.png" alt="menu_icon" /></span>
       <div class="logo">
@@ -29,7 +31,7 @@ export class AdminView {
     </div>
     <div class="rnaver">
       <span class="closeresmenu"><i>x</i>Close</span>
-      <ul>
+      <ul class="js-admin-header-menu">
         <li>
           <a href="javascript:void(0)">Home</a>
         </li>
@@ -48,7 +50,7 @@ export class AdminView {
   </div>
   <!-- Responsive header -->
 
-  <header class="s4 dark js-admin-header-menu">
+  <header class="s4 dark">
     <div class="container fluid">
       <div class="logo">
         <a href="javascript:void(0)"
@@ -64,15 +66,15 @@ export class AdminView {
       <a href="javascript:void(0)" class="bellicon"
         ><i class="fa fa-bell-o"></i><strong>{notification}</strong></a>
       <nav>
-        <ul>
+        <ul class="js-admin-header-menu">
           <li>
-            <span class="header_text">Home</span>
+          <a href="javascript:void(0)" >Home</a>
           </li>
-          <li class="accountbtn" style="float: left">
-            <span class="header_text">Search</span>
+          <li class="accountbtn" >
+          <a href="javascript:void(0)" >Search</a>
           </li>
           <li class="menu-item-has-children">
-            <span class="header_text">Admin</span>
+          <a href="javascript:void(0)" >Admin</a>
             <ul id="js-admin-header-menu">
               <li>Add Cafe</li>
               <li>Revise Cafe</li>
@@ -85,6 +87,110 @@ export class AdminView {
     return admin_header;
   }
 
+  makeAdminMenu() {
+    let admin_menu = `<div class="menubarsec">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <div class="col-lg-12 js-admin-menu">
+              <a href="javascript:void(0)"
+                ><i class="fa fa-coffee" aria-hidden="true"></i>Hidden Cafe
+                List</a
+              >
+              <a href="javascript:void(0)"
+                ><i class="fa fa-address-card-o" aria-hidden="true"></i>
+                Member Management</a
+              >
+              <a href="javascript:void(0)"
+                ><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden
+                Cafe</a
+              >
+              <a href="javascript:void(0)"
+                ><i class="fa fa-user-plus"></i> Add Hidden Cafe by Users</a
+              >
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+    return admin_menu;
+  }
+
+  makeCafeList() {
+    let saved_cafe_list = `<section>
+    <div class="block gray">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="pbox">
+              <div class="addlistingform">
+                <div class="add_cafe_title">카페 등록 현황</div>
+                  <div class="row">
+                  <div class="col-lg-6">
+                    <div class="fieldformy">
+                      <span>카페 이름 </span>
+                      <div></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="fieldformy">
+                      <span>카페 주소 </span>
+                      <div></div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>`;
+    return saved_cafe_list;
+  }
+
+  makeMemberList(user_id, user_name, user_caffeine, is_blocked_user) {
+    let member_list = `
+    <section>
+    <div class="block gray">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-12">
+            <div class="pbox">
+              <div class="addlistingform">
+                <div class="add_cafe_title">회원 관리</div>
+                  <div class="row">
+                  <div class="col-lg-4">
+                    <div class="fieldformy">
+                      <span> ID </span>
+                      <div></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="fieldformy">
+                      <span> 이름 </span>
+                      <div></div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4">
+                    <div class="fieldformy">
+                      <span>카페인 지수 </span>
+                      <div></div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+    `;
+    return member_list;
+  }
   makeReviseCafeForm() {
     let admin_revisecafe = `
     <section>
@@ -107,7 +213,7 @@ export class AdminView {
                           </h5>
                         </div>
                         <div class="fieldbtn">
-                          <button type="submit" id="js-admin-revisecafe-btn">불러오기</button>
+                          <button type="submit" class="js-admin-revisecafe-btn">불러오기</button>
                         </div>
                       </div>
                     </div>
@@ -183,7 +289,7 @@ export class AdminView {
                     </div>
                     <br />
                     <div class="fieldbtn">
-                      <input type="submit" class="js-submit" id="js-admin-revisecafe-btn">등록하기</input>
+                      <button type="submit" class="js-submit js-admin-revisecafe-btn">등록하기</button>
                     </div>
                   </form>
                 </div>
@@ -284,7 +390,7 @@ export class AdminView {
                     </div>
                     <br />
                     <div class="fieldbtn">
-                      <button type="submit" class="js-submit" id="js-admin-addcafe-btn">등록하기</button>
+                      <button type="submit" class="js-submit js-admin-addcafe-btn">등록하기</button>
                     </div>
                   </form>
                 </div>

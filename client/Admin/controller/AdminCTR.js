@@ -1,27 +1,163 @@
-import { AdminView } from "../view/AdminView";
-import { AdminService } from "../service/AdminService";
+import { AdminView } from "../view/AdminView.js";
+import { AdminService } from "../service/AdminService.js";
 
 export class AdminCTR {
-  constructor() {
-    this.view = new AdminView();
-    this.service = new AdminService();
+  constructor(service, view) {
+    this.view = view;
+    this.service = service;
+
+    // this.view.makeMemberPage();
+
+    // event delegation
+    this.view.headerMenu(() => {
+      this.headerMenu(e);
+    });
 
     this.view.adminMenu(() => {
-      this.callAdminPage(this.view.makeAddCafePage());
+      this.adminMenu(e);
     });
 
     this.view.addCafe(() => {
-      this.addCafe(this.view.saveCafeData());
+      this.addCafe();
     });
 
-    this.view.reviseCafe(() => {});
+    this.view.reviseCafe(() => {
+      this.reviseCafe();
+    });
+
+    this.view.loadCafeList(() => {
+      this.loadCafeList();
+    });
   }
 
-  callAdminPage() {
-    this.service.addCafeData();
+  addCafe = () => {
+    var result;
+
+    this.view.addcafe_form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      let cafeData = new FormData(this.view.addcafe_form);
+      for (let value of cafeData.values()) {
+        console.log("value: " + value);
+      }
+
+      let service = new AdminService();
+      result = await service.addCafe(cafeData);
+    });
+  };
+
+  reviseCafe() {
+    var result;
+
+    this.view.revisecafe_form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      //마저 작성해야함.
+    });
   }
 
-  addCafe() {
-    this.service.addCafe();
+  loadCafeList() {
+    this.service.loadCafeList();
   }
+  headerMenu = async (e) => {
+    console.log("headermenu-controller");
+
+    if (
+      e.target.tagname === "UL" ||
+      e.target.tagName === "LI" ||
+      e.target.tagName === "A"
+    ) {
+      // console.log('taget' + e.target.tagName)
+      if (e.target.innerHTML.includes("Home")) {
+        console.log("clicked Home");
+        this.service.callMain();
+      } else if (e.target.innerHTML.includes("Search")) {
+        console.log("clicked Search");
+      } else if (e.target.innerHTML.includes("Admin")) {
+        console.log("clicked Admin");
+
+        let result;
+        let adminData = localStorage.getItem(admin_id);
+        console.log("local data:" + adminData);
+        try {
+          result = await this.service.callAdminPage(adminData);
+        } catch (e) {
+          console.log("error: " + e);
+        }
+
+        if (result === undefined || result === "undefined") {
+          console.log("CTR-result is undefined" + result);
+          return;
+        } else {
+          this.view.makeCafeListPage(result);
+        }
+      }
+    } else {
+      console.log("you clicked invalid area");
+    }
+  };
+
+  AdminMenu = async (e) => {
+    console.log("admin menu -controller");
+
+    if (e.target.tagName === "A" || e.target.tagName === "I") {
+      if (e.target.innerHTML.includes("Hidden Cafe List")) {
+        console.log("clicked Hidden Cafe List");
+        let result;
+        let adminData = localStorage.getItem("admin_id");
+        console.log("local data:" + adminData);
+        try {
+          result = await this.service.callCafeList(adminData);
+        } catch (e) {
+          console.log("error: " + e);
+        }
+
+        if (result === undefined || result === "undefined") {
+          console.log("CTR-result is undefined" + result);
+          return;
+        } else {
+          this.view.makeCafeListPage(result);
+        }
+      } else if (e.target.innerHTML.includes("Add New Hidden Cafe")) {
+        console.log("clicked Add Cafe");
+
+        let cafe_id = localStorage.getItem("cafe_id");
+        let adminData = localStorage.getItem("admin_id");
+        console.log("local data: " + adminData);
+
+        try {
+          result = await this.service.callAddCafe(userData);
+        } catch (e) {
+          console.log("error: " + e);
+        }
+
+        if (result === undefined || result === "undefined") {
+          console.log("CTR-result is undefined" + result);
+          return;
+        } else {
+          this.view.makeAddCafePage(result);
+        }
+      } else if (e.target.innerHTML.includes("Add New Hidden Cafe by Users")) {
+        console.log("clicked Revise Cafe");
+
+        let cafe_id = localStorage.getItem("cafe_id");
+        let adminData = localStorage.getItem("admin_id");
+        console.log("local data:" + adminData);
+
+        try {
+          result = await this.service.callMemberList();
+        } catch (e) {
+          console.log("error: " + e);
+        }
+        if (result === undefined || result === "undefined") {
+          console.log("CTR-result is undefined" + result);
+          return;
+        } else {
+          this.view.makeMemberPage(cafe_id, adminData);
+        }
+      }
+    } else {
+      console.log("you clicked ivalid area");
+    }
+  };
 }
