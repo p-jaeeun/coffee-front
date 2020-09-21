@@ -24,7 +24,8 @@ export class AdminApi {
   callCafeList() {
     let result;
     try {
-      result = await this.ajax.sendAjaxGet("/api/admin")
+      result = await this.ajax.sendAjaxGet(
+        "/admin")
     } catch (e) {
       console.log("error:"+e)
     }

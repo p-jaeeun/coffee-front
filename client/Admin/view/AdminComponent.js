@@ -8,11 +8,10 @@ export class AdminComponent {
 
     this.common_view = new CommonView();
 
-    
-    // input
-    this.search_input = document.getElementsByClassName("js-search-input");
-    this.addcafe_input = document.getElementsByClassName("js-admin-addcafe-input");
-    this.revisecafe_input = document.getElementsByClassName("js-admin-js-admin-revisecafe-input");
+    // form
+    this.search_form = document.getElementById("js-search-form");
+    this.add_form = document.getElementById("js-admin-addcafe-form");
+    this.revise_form = document.getElementById("js-admin-revisecafe-form");
 
     // button
     this.addcafe_btn = document.getElementById("js-admin-addcafe-btn");
@@ -60,22 +59,16 @@ export class AdminComponent {
 
 
 
-  //save input data
+  //save input data -> CTR 로 이동
 
   saveCafeData() {
-    let cafeData = new Object();
-    let arr = new Array();
+    let cafeData = new FormData(this.addcafe_input);
+    
 
     for(let i=0; i<this.addcafe_input.length; i++){
       arr.push(this.addcafe_input[i].value);
     }
-    cafeData.cafe_name = arr[0];
-    cafeData.cafe_menu = arr[1];
-    cafeData.cafe_location = arr[2];
-    cafeData.cafe_sns = arr[3];
-    cafeData.cafe_information = arr[4];
-    cafeData.cafe_image = arr[5];
-
+    
     console.log(cafeData);
     return cafeData;
   }
@@ -133,4 +126,36 @@ export class AdminComponent {
     window.document.body.innerHTML = header + revise_cafe_form + footer + search_pop;
   }
 
+  makeSearchResultPage(){
+    let admin_view = new AdminView();
+    let common_view = new CommonView();
+
+    let header = admin_view.makeAdminHeader();
+    let search_result = common_view.makeSearchResult();
+    let footer = common_view.makeFooter();
+    let search_pop = common_view.makeSearchPop();
+
+    // 서버에서 스크롤 안되는 문제 방지
+    window.document.body.setAttribute("class", "full-height");  
+    window.document.body.setAttribute("id", "scrollup");
+
+    window.document.body.innerHTML = header + search_result + footer + search_pop;
+  }
+
+  makeCafeInfoPage(){
+    let admin_view = new AdminView();
+    let common_view = new CommonView();
+
+    let header = admin_view.makeAdminHeader();
+    let cafe_info = common_view.makeCafeInfo();
+    let footer = common_view.makeFooter();
+    let search_pop = common_view.makeSearchPop();
+
+    // 서버에서 스크롤 안되는 문제 방지
+    window.document.body.setAttribute("class", "full-height");  
+    window.document.body.setAttribute("id", "scrollup");    
+
+    window.document.body.innerHTML = header + cafe_info + footer + search_pop;
+
+  }
 }
