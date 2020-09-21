@@ -36,32 +36,15 @@ export class CommonView {
           <div class="block no-padding">
             <div class="container fluid">
               <div class="row">
-                <div class="col-lg-12">
-                  <div class="sl-slider" id="makeslider">
-                    <div class="slg-box">
-                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-                    </div>
-                    <div class="slg-box">
-                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-                    </div>
-                    <div class="slg-box">
-                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-                    </div>
-                    <div class="slg-box">
-                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-                    </div>
-                    <div class="slg-box">
-                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-                    </div>
-                    <div class="slg-box">
-                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-                    </div>
-                    <div class="slg-box">
-                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-                    </div>
-                    <div class="slg-box">
-                      <img src="${this.getContextPath}+'480x350'" alt="cafe_img_main" />
-                    </div>
+                <div class="col-lg-6">
+                  <div class="sltitle">
+                    <h1>{cafe_name}</h1>
+                    <ul class="listmetas">
+                      <li>
+                        <span class="rated">{cafe_rate}</span>
+                        {cafe_rate_count}
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -130,169 +113,180 @@ export class CommonView {
                           </div>
                         </div>
                       </div>
+                      <a href="javascript:void(0)">
+                        <i class="flaticon-heart"></i>
+                        Bookmark
+                      </a>
+                      <a href="javascript:void(0)">
+                        <i class="flaticon-note"></i>
+                        Add review
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <section>
-          <div class="block">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8 column">
-                  <div class="bbox">
-                    <h3>Description</h3>
-                    <div class="ldesc">
-                      <p>{cafe_information}</p>
-                    </div>
-                  </div>
-                  <div class="bbox">
-                    <h3>Menu</h3>
-                    <div class="ldesc">
-                      <p>{cafe_menu}</p>
-                    </div>
-                  </div>
+  <section>
+    <div class="block">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 column">
+            <div class="bbox">
+              <h3>Description</h3>
+              <div class="ldesc">
+                <p>{cafe_information}</p>
+              </div>
+            </div>
+            <div class="bbox">
+              <h3>Menu</h3>
+              <div class="ldesc">
+                <p>{cafe_menu}</p>
+              </div>
+            </div>
 
-                  <div class="bbox">
-                    <h3>Gallery</h3>
-                    <ul class="gallerylistin">
-                      <li>
-                        <img
-                          src="${this.getContextPath}+'cafe_img_gallery'"
-                          alt="cafe_img_gallery"
-                          class="small_img"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src="${this.getContextPath}+'cafe_img_gallery'"
-                          alt="cafe_img_gallery"
-                          class="small_img"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src="${this.getContextPath}+'cafe_img_gallery'"
-                          alt="cafe_img_gallery"
-                          class="small_img"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src="${this.getContextPath}+'cafe_img_gallery'
-                          alt="cafe_img_gallery"
-                          class="small_img"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src="${this.getContextPath}+'cafe_img_gallery'"
-                          alt="cafe_img_gallery"
-                          class="small_img"
-                        />
-                      </li>
-                      <li>
-                        <img
-                          src="${this.getContextPath}+'cafe_img_gallery'"
-                          alt="cafe_img_gallery"
-                          class="small_img"
-                        />
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="bbox">
-                    <h3>{cafe_rate_count} Reviews for {cafe_name}</h3>
-                    <div class="reviewssec js-cafe-review-list">
-                      <div class="reviewthumb">
-                        <img src="${this.getContextPath}+'profile_user_id'" alt="profile_user_id" />
-                      </div>
-                      <div class="reviewinfo">
-                        <h3>{review_user_id}</h3>
-                        <span>{write_date}</span>
-                        <ul class="listmetas justrate">
-                          <li>
-                            <span class="rated">{cafe_rate}</span>
-                            {cafe_rate_count}
-                          </li>
-                        </ul>
-                        <p>{comment}</p>
-                        <div class="wasreview">
-                          <span>Was This Review ...?</span>
-                          <div class="wasreviewbtn">
-                            <a href="javascript:void(0)" class="c3">
-                              <i class="flaticon-heart"></i>
-                              Like {cafe_like}
-                            </a>
-                          </div>
-                        </div>
-                        <div class="reviewaction">
-                          <a href="javascript:void(0)">
-                            <i class="flaticon-back"></i>
-                            Reply
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="listingcomment">
-                    <div class="leavecomment">
-                    <form id="js-cafe-review-form">
-                      <h3>Rate us and Write a Review</h3>
-                      <div class="upimg" style="width: 60%">
-                        <span>Upload images</span>
-                        <a href="javascript:void(0)">
-                          <img src="${this.getContextPath}/images/cloud.png" alt="cloud"/>
-                        </a>
-                        <input
-                          type="file"
-                          name="cafe_image"
-                          class="js-cafe-review-input"
-                          accept="img/*"
-                          onChange="uploadImgPreview()"
-                          id="js-upload"
-                          multiple
-                        />
-                        <div id="js-thumnail"></div>
-                      </div>
-                      <div class="urrating rate_input">
-                        <input type="text" name="review_rate" class="js-cafe-review-input" placeholder="점수를 입력하세요." required="required" />
-                      </div>
-                      <input type="text" name="review_title" class="js-cafe-review-input" placeholder="Title" />
-                      <textarea name="review_content" class="js-cafe-review-input" placeholder="Review"></textarea>
-
-                      <div class="fieldbtn">
-                        <button type="submit" class="js-cafe-review-btn">등록하기</button>
-                      </div>
-                    </form>
-                    </div>
-                  </div>
+            <div class="bbox">
+              <h3>Gallery</h3>
+              <ul class="gallerylistin">
+                <li>
+                  <img
+                    src="${this.getContextPath}+'cafe_img_gallery'"
+                    alt="cafe_img_gallery"
+                    class="small_img"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="${this.getContextPath}+'cafe_img_gallery'"
+                    alt="cafe_img_gallery"
+                    class="small_img"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="${this.getContextPath}+'cafe_img_gallery'"
+                    alt="cafe_img_gallery"
+                    class="small_img"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="${this.getContextPath}+'cafe_img_gallery'
+                    alt="cafe_img_gallery"
+                    class="small_img"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="${this.getContextPath}+'cafe_img_gallery'"
+                    alt="cafe_img_gallery"
+                    class="small_img"
+                  />
+                </li>
+                <li>
+                  <img
+                    src="${this.getContextPath}+'cafe_img_gallery'"
+                    alt="cafe_img_gallery"
+                    class="small_img"
+                  />
+                </li>
+              </ul>
+            </div>
+            <div class="bbox">
+              <h3>{cafe_rate_count} Reviews for {cafe_name}</h3>
+              <div class="reviewssec js-cafe-review-list">
+                <div class="reviewthumb">
+                  <img src="${this.getContextPath}+'profile_user_id'" alt="profile_user_id" />
                 </div>
-                <div class="col-lg-4 column">
-                  <div class="blocation">
-                    <h3>Location <a href="javascript:void(0)">Get Direction</a></h3>
-                    <div class="contact-map">
-                      <div id="map js-map-mini" style="width: 350px; height: 400px"></div>
+                <div class="reviewinfo">
+                  <h3>{review_user_id}</h3>
+                  <span>{write_date}</span>
+                  <ul class="listmetas justrate">
+                    <li>
+                      <span class="rated">{cafe_rate}</span>
+                      {cafe_rate_count}
+                    </li>
+                  </ul>
+                  <p>{comment}</p>
+                  <div class="wasreview">
+                    <span>Was This Review ...?</span>
+                    <div class="wasreviewbtn">
+                      <a href="javascript:void(0)" class="c3">
+                        <i class="flaticon-heart"></i>
+                        Like {cafe_like}
+                      </a>
                     </div>
-                    <span>{cafe_location}</span>
-                    <span>{cafe_mail}</span>
-
-                    <div class="wsocial">
-                      <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
-                      <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
-                      <a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
-                      <a href="javascript:void(0)"><i class="fa fa-pinterest"></i></a>
-                      <a href="javascript:void(0)"><i class="fa fa-google"></i></a>
-                      <a href="javascript:void(0)"><i class="fa fa-dribbble"></i></a>
-                    </div>
+                  </div>
+                  <div class="reviewaction">
+                    <a href="javascript:void(0)">
+                      <i class="flaticon-back"></i>
+                      Reply
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
+            <div class="listingcomment">
+              <div class="leavecomment">
+              <form id="js-cafe-review-form">
+                <h3>Rate us and Write a Review</h3>
+                <div class="upimg" style="width: 60%">
+                  <span>Upload images</span>
+                  <a href="javascript:void(0)">
+                    <img src="${this.getContextPath}/images/cloud.png" alt="cloud"/>
+                  </a>
+                  <input
+                    type="file"
+                    name="cafe_image"
+                    class="js-cafe-review-input"
+                    accept="img/*"
+                    onChange="uploadImgPreview()"
+                    id="js-upload"
+                    multiple
+                  />
+                  <div id="js-thumnail"></div>
+                </div>
+                <div class="urrating rate_input">
+                  <input type="text" name="review_rate" class="js-cafe-review-input" placeholder="점수를 입력하세요." required="required" />
+                </div>
+                <input type="text" name="review_title" class="js-cafe-review-input" placeholder="Title" />
+                <textarea name="review_content" class="js-cafe-review-input" placeholder="Review"></textarea>
+
+                <div class="fieldbtn">
+                  <button type="submit" class="js-cafe-review-btn">등록하기</button>
+                </div>
+              </form>
+              </div>
+            </div>
           </div>
-        </section>`;
+          <div class="col-lg-4 column">
+            <div class="blocation">
+              <h3>Location <a href="javascript:void(0)">Get Direction</a></h3>
+              <div class="contact-map">
+                <div id="map js-map-mini" style="width: 350px; height: 400px"></div>
+              </div>
+              <span>{cafe_location}</span>
+              <span>{cafe_mail}</span>
+
+              <div class="wsocial">
+                <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
+                <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
+                <a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
+                <a href="javascript:void(0)"><i class="fa fa-pinterest"></i></a>
+                <a href="javascript:void(0)"><i class="fa fa-google"></i></a>
+                <a href="javascript:void(0)"><i class="fa fa-dribbble"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>`;
     return cafeinfo;
   }
 
@@ -347,9 +341,9 @@ export class CommonView {
                 </div>
                 <div class="search_bar">
                   <input type="text" name="cafe_name" placeholder="검색어를 입력하세요" required="required"/>
-                  <div class="fieldbtn">
+                  
                     <button type="submit" class="search_button" class="js-search-btn">SEARCH</button>
-                  </div>
+                  
                 </div>
               </form>
             </div>
