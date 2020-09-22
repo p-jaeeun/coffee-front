@@ -49,6 +49,9 @@ export class UserComponent {
     this.search_list = document.getElementsByClassName(
       "js-search-result-list"
     )[0];
+    this.review_list = document.getElementsByClassName(
+      "js-cafe-review-list"
+    )[0];
 
     //이미지 미리보기
     this.thumnail = document.getElementById("js-thumnail");
@@ -150,11 +153,10 @@ export class UserComponent {
     let cafe = user_view.makeMainCafeList();
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
-
+    // this.addScript();
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
-    window.document.body.innerHTML =
-      header + caffeine + cafe + cafe + footer + pop;
+    window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
   }
 
   makeAdminMain(result) {
@@ -199,7 +201,7 @@ export class UserComponent {
     let header = user_view.makeUserHeader();
     let user_menu = user_view.makeUserMenu();
     var subscription = user_view.makeMySubscription();
-    let item = user_view.makeSubscriptionList(); //is it really need?
+    let item = user_view.makeSubscriptionItem(); //is it really need?
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
 
@@ -208,14 +210,17 @@ export class UserComponent {
     window.document.body.innerHTML =
       header + user_menu + subscription + footer + pop;
 
-    let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
+    window.addEventListener("load", () => {
+      let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
+      console.log("dom" + dom);
 
-    dom.innerHTML += item;
-    dom.innerHTML += item;
-    dom.innerHTML += item;
-    for (let i = 0, max = result.length; i < max; i++) {
-      dom += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
-    }
+      dom.innerHTML += item;
+      dom.innerHTML += item;
+      dom.innerHTML += item; //for test
+      for (let i = 0, max = result.length; i < max; i++) {
+        dom += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+      }
+    });
   }
 
   makeVisitedCafe(result) {
@@ -230,14 +235,15 @@ export class UserComponent {
 
     let pop = common_view.makeSearchPop();
 
+    window.addEventListener("load", () => {
+      let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
+      for (let i = 0, max = result.length; i < max; i++) {
+        dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+      }
+    });
     // window.document.body.setAttribute("class", "full-height");
     // window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + user_menu + half_list + pop;
-
-    let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
-    for (let i = 0, max = result.length; i < max; i++) {
-      dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
-    }
   }
 
   makeCafeInfo(result) {
@@ -249,6 +255,17 @@ export class UserComponent {
     let info = common_view.makeCafeInfo();
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
+    var no_item = common_view.makeNoReviewItem();
+    var item = common_view.makeReviewItem();
+
+    window.addEventListener("load", () => {
+      let dom = document.getElementsByClassName("js-cafe-review-list")[0];
+      console.log("dom: " + dom);
+
+      // dom.innerHTML += item;
+      dom.innerHTML += no_item;
+    });
+    // dom.innerHTML += item;
 
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
@@ -269,12 +286,14 @@ export class UserComponent {
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + search_result + pop;
 
-    let dom = document.getElementsByClassName("js-search-result-list")[0];
-    console.log(dom);
-    dom.innerHTML += item;
-    for (let i = 0, max = result.length; i < max; i++) {
-      dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
-    }
+    window.addEventListener("load", () => {
+      let dom = document.getElementsByClassName("js-search-result-list")[0];
+      console.log(dom);
+      dom.innerHTML += item;
+      for (let i = 0, max = result.length; i < max; i++) {
+        dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+      }
+    });
   }
 
   makeAddCafe(result) {
@@ -307,5 +326,81 @@ export class UserComponent {
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML =
       header + user_menu + settings + footer + pop;
+  }
+
+  addScript() {
+    let path = this.getContextPath();
+    //create
+    let script1 = document.createElement("script");
+    let script2 = document.createElement("script");
+    let script3 = document.createElement("script");
+    let script4 = document.createElement("script");
+    let script5 = document.createElement("script");
+    let script6 = document.createElement("script");
+    let script7 = document.createElement("script");
+    let script8 = document.createElement("script");
+    let script9 = document.createElement("script");
+    let script10 = document.createElement("script");
+    let script11 = document.createElement("script");
+    let script12 = document.createElement("script");
+    let script13 = document.createElement("script");
+    let script14 = document.createElement("script");
+
+    //set path
+    script1.src = `${path}/resources/js/jquery.min.js`;
+    script2.src = `${path}/resources/js/modernizr.js`;
+    script3.src = `${path}/resources/js/script.js`;
+    script4.src = `${path}/resources/js/bootstrap.min.js`;
+    script5.src = `${path}/resources/js/wow.min.js`;
+    script6.src = `${path}/resources/js/slick.min.js`;
+    script7.src = `${path}/resources/js/sumoselect.js`;
+    script8.src = `${path}/resources/js/isotop.js`;
+    script9.src = `${path}/resources/js/jquery.nicescroll.min.js`;
+    script10.src = `${path}/resources/js/map1.js`;
+    script11.src = `${path}/resources/js/jq.aminoSlider.js`;
+    script12.src =
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb";
+    script13.src = `${path}/resources/img_upload.js`;
+    script14.src = `${path}/resources/app.js`;
+
+    //type
+    script1.setAttribute = ("type", "text/javascript");
+    script2.setAttribute = ("type", "text/javascript");
+    script3.setAttribute = ("type", "text/javascript");
+    script4.setAttribute = ("type", "text/javascript");
+    script5.setAttribute = ("type", "text/javascript");
+    script6.setAttribute = ("type", "text/javascript");
+    script7.setAttribute = ("type", "text/javascript");
+    script8.setAttribute = ("type", "text/javascript");
+    script9.setAttribute = ("type", "text/javascript");
+    script10.setAttribute = ("type", "text/javascript");
+    script11.setAttribute = ("type", "text/javascript");
+    script12.setAttribute = ("type", "text/javascript");
+    script13.setAttribute = ("type", "text/javascript");
+    script14.setAttribute = ("type", "module");
+
+    //append
+    document.body.append(script1);
+    document.body.append(script2);
+    document.body.append(script3);
+    document.body.append(script4);
+    document.body.append(script5);
+    document.body.append(script6);
+    document.body.append(script7);
+    document.body.append(script8);
+    document.body.append(script9);
+    document.body.append(script10);
+    document.body.append(script11);
+    document.body.append(script12);
+    document.body.append(script13);
+    document.body.append(script14);
+  }
+
+  getContextPath() {
+    var hostIndex = location.href.indexOf(location.host) + location.host.length;
+    return location.href.substring(
+      hostIndex,
+      location.href.indexOf("/", hostIndex + 1)
+    );
   }
 }

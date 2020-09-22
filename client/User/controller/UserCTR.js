@@ -1,14 +1,16 @@
+// import { UserComponent } from "../view/UserComponent.js";
 import { UserService } from "../service/UserService.js";
-import { UserComponent } from "../view/UserComponent.js";
 
 export class UserCTR {
   constructor(service, view) {
     this.service = service;
     this.view = view;
     this.self = this;
+
     // this.view.makeCafeInfo();
     // this.view.makeDashboard();
-
+    // this.view.makeAddCafe();
+    // this.view.makeSettings();
     // this.view.makeLoginMain();
 
     this.view.signin(() => {
@@ -18,6 +20,7 @@ export class UserCTR {
       this.signup();
     });
     this.view.addCafe(() => {
+      alert("CTR_BUTTON_ALRIGHT!");
       this.addCafe();
     });
     this.view.search(() => {
@@ -32,7 +35,6 @@ export class UserCTR {
     });
 
     //event delegation
-
     this.view.headerMenu((e) => {
       this.headerMenu(e);
     });
@@ -66,7 +68,7 @@ export class UserCTR {
         console.log("CTR-return-error:" + result);
       } else if (result[0] === "member") {
         console.log("컨트롤러-서비스 결과값:" + result);
-        this.view.makeLoginMain(result[1]);
+        this.view.makeLoginMain();
       } else if (result[0] === "admin") {
         console.log("컨트롤러-서비스 결과값:" + result);
         this.view.makeAdminMain(result[1]);
@@ -212,6 +214,7 @@ export class UserCTR {
 
   //event delegation
   headerMenu = async (e) => {
+    e.preventDefault();
     console.log("headermenu-ctr");
 
     if (
@@ -249,6 +252,7 @@ export class UserCTR {
   };
 
   userMenu = async (e) => {
+    e.preventDefault();
     console.log("usermenu-ctr");
 
     if (e.target.tagName === "A" || e.target.tagName === "I") {
