@@ -17,15 +17,16 @@ export class AdminView {
     );
   }
 
-  makeAdminHeader(admin_id, profile_admin_id, notification) {
+  makeAdminHeader(admin_id) {
+    let path = this.getContextPath();
     let admin_header = `
     <div class="theme-layout">
     <div class="responsiveheader">
     <div class="rheader">
-      <span><img src="${this.getContextPath}/images/ricon.png" alt="menu_icon" /></span>
+      <span><img src="${path}/images/ricon.png" alt="menu_icon" /></span>
       <div class="logo">
         <a href="javascript:void(0)">
-        <img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"
+        <img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
         /></a>
       </div>
     </div>
@@ -50,12 +51,11 @@ export class AdminView {
     <div class="container fluid">
       <div class="logo">
         <a href="javascript:void(0)"
-          ><img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"
+          ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
         /></a>
       </div>
       <div class="userdropsec">
         <span
-          ><img src="${this.getContextPath}+'/'+'admin_profile'" alt="admin_profile" /><span class=""
           >{admin_id}</span
           ></span>
       </div>
@@ -80,31 +80,29 @@ export class AdminView {
   }
 
   makeAdminMenu() {
-    let admin_menu = `<div class="menubarsec">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-12">
-            <div class="col-lg-12 js-admin-menu">
-              <a href="javascript:void(0)"
-                ><i class="fa fa-coffee" aria-hidden="true"></i>Hidden Cafe
-                List</a
-              >
-              <a href="javascript:void(0)"
-                ><i class="fa fa-address-card-o" aria-hidden="true"></i>
-                Member Management</a
-              >
-              <a href="javascript:void(0)"
-                ><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden
-                Cafe</a
-              >
-              <a href="javascript:void(0)"
-                ><i class="fa fa-user-plus"></i> Add Hidden Cafe by Users</a
-              >
+    let admin_menu = `
+    <div class="menubarsec">
+      <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+            <ul class="js-admin-menu"">
+              <li>
+               <a href="javascript:void(0)"><i class="fa fa-coffee" aria-hidden="true"></i>Hidden Cafe List</a>
+              </li>
+              <li>
+              <a href="javascript:void(0)"><i class="fa fa-address-card-o" aria-hidden="true"></i>Member Management</a>
+              </li>
+              <li>
+              <a href="javascript:void(0)return"><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
+              </li>
+              <li>
+              <a href="javascript:void(0)"><i class="fa fa-user-plus"></i> Add New Hidden Cafe by Users</a>
+              </li>
+              </ul>
             </div>
         </div>
       </div>
-    </div>
-  </div>`;
+    </div>`;
     return admin_menu;
   }
 
@@ -117,17 +115,8 @@ export class AdminView {
             <div class="pbox">
               <div class="addlistingform">
                 <div class="add_cafe_title">카페 등록 현황</div>
-                  <div class="row">
-                  <div class="col-lg-6">
-                    <div class="fieldformy">
-                      <span>카페 이름 </span>
-                      <div></div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="fieldformy">
-                      <span>카페 주소 </span>
-                      <div></div>
+                  <div class="row js-admin-cafelist">
+                  
                     </div>
                   </div>
                   </div>
@@ -140,6 +129,20 @@ export class AdminView {
     </div>
   </section>`;
     return saved_cafe_list;
+  }
+
+  makeCafeListItem(cafe_name, cafe_location) {
+    let item = `<div class="col-lg-6">
+    <div class="fieldformy">
+      <span>카페 이름 </span>
+      <div></div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="fieldformy">
+      <span>카페 주소 </span>
+      <div></div>`;
+    return item;
   }
 
   makeMemberList(user_id, user_name, user_caffeine, is_blocked_user) {
@@ -218,7 +221,7 @@ export class AdminView {
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 이름 *</span>
-                          <input type="text" name="cafe_name" required="" />
+                          <input type="text" name="cafe_name" required/>
                         </div>
                         <div class="fieldformy">
                           <span>카페 메뉴 </span>
@@ -239,7 +242,7 @@ export class AdminView {
                         <div class="fieldformy">
                           <span>카페 주소 *</span>
                           <input type="text" name="cafe_location" placeholder="ex)서울시 종로구 관철동 5-8, 카페 뎀셀브즈"
-                          required="" />
+                          required />
                         </div>
                         <div class="fieldformy">
                           <span>카페 SNS </span>
@@ -280,9 +283,7 @@ export class AdminView {
                       </div>
                     </div>
                     <br />
-                    <div class="fieldbtn">
                       <button type="submit" class="js-submit js-admin-revisecafe-btn">등록하기</button>
-                    </div>
                   </form>
                 </div>
               </div>
@@ -299,7 +300,6 @@ export class AdminView {
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-lg-10">
-                <!-- PBox -->
                 <div class="pbox">
                   <form class="addlistingform" id="js-admin-addcafe-form">
                     <div class="add_cafe_title">카페 추가하기</div>
@@ -307,7 +307,7 @@ export class AdminView {
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 이름 *</span>
-                          <input type="text" name="cafe_name" />
+                          <input type="text" name="cafe_name" required />
                         </div>
                         <div class="fieldformy">
                           <span
@@ -337,6 +337,7 @@ export class AdminView {
                             type="text"
                             name="cafe_location"
                             placeholder="ex) Seoul, Jongno-gu, Gwancheol-dong, 5-8 카페 뎀셀브즈"
+                            required
                           />
                         </div>
                         <div class="fieldformy">
@@ -381,10 +382,8 @@ export class AdminView {
                       </div>
                     </div>
                     <br />
-                    <div class="fieldbtn">
-                      <button type="submit" class="js-submit js-admin-addcafe-btn">등록하기</button>
-                    </div>
-                  </form>
+                    <button type="submit" class="js-submit js-admin-addcafe-btn">등록하기</button>
+                    </form>
                 </div>
               </div>
             </div>

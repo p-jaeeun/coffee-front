@@ -1,5 +1,6 @@
 import { AdminView } from "./AdminView.js";
 import { CommonView } from "../../Common/view/CommonView.js";
+import { UserView } from "../../User/view/UserView.js";
 
 export class AdminComponent {
   constructor() {
@@ -53,7 +54,6 @@ export class AdminComponent {
 
   reviseCafe(callback) {
     console.log("revise-cafe-listener");
-
     window.addEventListener("load", () => {
       this.revisecafe_update_btn.addEventListener("click", callback);
     });
@@ -74,7 +74,7 @@ export class AdminComponent {
     });
   }
 
-  // evnet delegation
+  // event delegation
   headerMenu(callback) {
     console.log("header_menu-delegation");
 
@@ -117,6 +117,15 @@ export class AdminComponent {
 
     window.document.body.innerHTML =
       header + admin_menu + saved_cafe_list + footer + search_pop;
+
+    // let dom = document.getElementsByClassName("js-admin-cafelist")[0];
+    // console.log(dom);
+    // dom.innerHTML += item;
+    // dom.innerHTML += item;
+    // dom.innerHTML += item;
+    // dom.innerHTML += item;
+    // for (let i = 0, max = result.length; i < max; i++) {
+    //   dom.innerHTML += item(result[i]);
   }
 
   makeMemberPage() {
@@ -201,5 +210,21 @@ export class AdminComponent {
     window.document.body.setAttribute("id", "scrollup");
 
     window.document.body.innerHTML = header + cafe_info + footer + search_pop;
+  }
+
+  makeAdminMainPage(result) {
+    let user_view = new UserView();
+    let common_view = new CommonView();
+    let admin_view = new AdminView();
+
+    let header = admin_view.makeAdminHeader();
+    let caffeine = user_view.makeMainCaffeineList();
+    let cafe = user_view.makeMainCafeList();
+    let footer = common_view.makeFooter();
+    let pop = common_view.makeSearchPop();
+
+    window.window.document.body.setAttribute("class", "full-height");
+    window.document.body.setAttribute("id", "scrollup");
+    window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
   }
 }

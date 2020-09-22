@@ -6,9 +6,10 @@ export class AdminCTR {
     this.view = view;
     this.service = service;
 
-    // this.view.makeAddCafePage();
+    this.view.makeAddCafePage();
 
     // event delegation
+
     this.view.headerMenu((e) => {
       this.headerMenu(e);
     });
@@ -43,6 +44,15 @@ export class AdminCTR {
 
       let service = new AdminService();
       result = await service.addCafe(cafeData);
+
+      if (result === undefined || result === "undefined") {
+        console.log("CTR-return-error:" + result);
+        this.view.makeAddCafePage();
+      } else {
+        console.log("컨트롤러-서비스 결과값:" + result);
+        this.view.makeAddCafePage();
+        alert("입력하신 카페정보가 성공적으로 등록되었습니다.");
+      }
     });
   };
 
@@ -72,7 +82,21 @@ export class AdminCTR {
       // console.log('taget' + e.target.tagName)
       if (e.target.innerHTML.includes("Home")) {
         console.log("clicked Home");
-        this.service.callMain();
+        let result;
+
+        try {
+          result = await this.service.callMain();
+        } catch (e) {
+          console.log("error: " + e);
+        }
+
+        if (result === undefined || result === "undefined") {
+          console.log("CTR-result is undefined" + result);
+          return;
+        } else {
+          this.view.makeAdminMainPage(result);
+          console.log("received data:" + result);
+        }
       } else if (e.target.innerHTML.includes("Search")) {
         console.log("clicked Search");
       } else if (e.target.innerHTML.includes("Admin")) {
@@ -100,51 +124,28 @@ export class AdminCTR {
   };
 
   adminMenu = async (e) => {
-    console.log("admin menu -controller");
+    console.log("admin menu - CTR");
 
     if (e.target.tagName === "A" || e.target.tagName === "I") {
       if (e.target.innerHTML.includes("Hidden Cafe List")) {
         console.log("clicked Hidden Cafe List");
         let result;
-        let adminData = localStorage.getItem("admin_id");
-        console.log("local data:" + adminData);
+
         try {
-          result = await this.service.callCafeList(adminData);
+          result = await this.service.callCafeList();
         } catch (e) {
           console.log("error: " + e);
         }
-
         if (result === undefined || result === "undefined") {
           console.log("CTR-result is undefined" + result);
           return;
         } else {
           this.view.makeCafeListPage(result);
+          console.log("cafe list:" + result);
         }
-      } else if (e.target.innerHTML.includes("Add New Hidden Cafe")) {
-        console.log("clicked Add Cafe");
-
-        let cafe_id = localStorage.getItem("cafe_id");
-        let adminData = localStorage.getItem("admin_id");
-        console.log("local data: " + adminData);
-
-        try {
-          result = await this.service.callAddCafe(adminData);
-        } catch (e) {
-          console.log("error: " + e);
-        }
-
-        if (result === undefined || result === "undefined") {
-          console.log("CTR-result is undefined" + result);
-          return;
-        } else {
-          this.view.makeAddCafePage(result);
-        }
-      } else if (e.target.innerHTML.includes("Add New Hidden Cafe by Users")) {
-        console.log("clicked Revise Cafe");
-
-        let cafe_id = localStorage.getItem("cafe_id");
-        let adminData = localStorage.getItem("admin_id");
-        console.log("local data:" + adminData);
+      } else if (e.target.innerHTML.includes("Member Management")) {
+        console.log("clicked Member Management");
+        let result;
 
         try {
           result = await this.service.callMemberList();
@@ -155,7 +156,27 @@ export class AdminCTR {
           console.log("CTR-result is undefined" + result);
           return;
         } else {
-          this.view.makeMemberPage(cafe_id, adminData);
+          this.view.makeMemberPage(result);
+          console.log("user list:" + result);
+        }
+      } else if (e.target.innerHTML.includes("Add New Hidden Cafe")) {
+        console.log("clicked Add Cafe");
+        this.view.makeAddCafePage();
+      } else if (e.target.innerHTML.includes("Add New Hidden Cafe by Users")) {
+        console.log("clicked Revise Cafe");
+        let result;
+
+        try {
+          result = await this.service.callReviseCafe();
+        } catch (e) {
+          console.log("error: " + e);
+        }
+        if (result === undefined || result === "undefined") {
+          console.log("CTR-result is undefined" + result);
+          return;
+        } else {
+          this.view.makeReviseCafePage(result);
+          console.log("user list:" + result);
         }
       }
     } else {

@@ -31,28 +31,44 @@ export class CommonView {
     comment,
     cafe_like
   ) {
+    let path = this.getContextPath();
     let cafeinfo = `
-      <div class="section_down">
-          <div class="block no-padding">
-            <div class="container fluid">
-              <div class="row">
-                <div class="col-lg-6">
-                  <div class="sltitle">
-                    <h1>{cafe_name}</h1>
-                    <ul class="listmetas">
-                      <li>
-                        <span class="rated">{cafe_rate}</span>
-                        {cafe_rate_count}
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+    <div class="section_down">
+
+    <div class="block no-padding">
+      <div class="container fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="sl-slider" id="makeslider">
+              <div class="slg-box">
+                <img src="${path}+'480x350'" alt="cafe_img_main" />
+              </div>
+              <div class="slg-box">
+                <img src="${path}+'480x350'" alt="cafe_img_main" />
+              </div>
+              <div class="slg-box">
+                <img src="${path}+'480x350'" alt="cafe_img_main" />
+              </div>
+              <div class="slg-box">
+                <img src="${path}+'480x350'" alt="cafe_img_main" />
+              </div>
+              <div class="slg-box">
+                <img src="${path}+'480x350'" alt="cafe_img_main" />
+              </div>
+              <div class="slg-box">
+                <img src="${path}+'480x350'" alt="cafe_img_main" />
+              </div>
+              <div class="slg-box">
+                <img src="${path}+'480x350'" alt="cafe_img_main" />
+              </div>
+              <div class="slg-box">
+                <img src="${path}+'480x350'" alt="cafe_img_main" />
               </div>
             </div>
           </div>
         </div>
-    
-
+      </div>
+    </div>
         <section>
           <div class="block no-padding gray">
             <div class="container">
@@ -155,42 +171,42 @@ export class CommonView {
               <ul class="gallerylistin">
                 <li>
                   <img
-                    src="${this.getContextPath}+'cafe_img_gallery'"
+                    src="${path}+'cafe_img_gallery'"
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
                 </li>
                 <li>
                   <img
-                    src="${this.getContextPath}+'cafe_img_gallery'"
+                    src="${path}+'cafe_img_gallery'"
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
                 </li>
                 <li>
                   <img
-                    src="${this.getContextPath}+'cafe_img_gallery'"
+                    src="${path}+'cafe_img_gallery'"
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
                 </li>
                 <li>
                   <img
-                    src="${this.getContextPath}+'cafe_img_gallery'
+                    src="${path}+'cafe_img_gallery'
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
                 </li>
                 <li>
                   <img
-                    src="${this.getContextPath}+'cafe_img_gallery'"
+                    src="${path}+'cafe_img_gallery'"
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
                 </li>
                 <li>
                   <img
-                    src="${this.getContextPath}+'cafe_img_gallery'"
+                    src="${path}+'cafe_img_gallery'"
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
@@ -201,7 +217,7 @@ export class CommonView {
               <h3>{cafe_rate_count} Reviews for {cafe_name}</h3>
               <div class="reviewssec js-cafe-review-list">
                 <div class="reviewthumb">
-                  <img src="${this.getContextPath}+'profile_user_id'" alt="profile_user_id" />
+                  <img src="${path}+'profile_user_id'" alt="profile_user_id" />
                 </div>
                 <div class="reviewinfo">
                   <h3>{review_user_id}</h3>
@@ -238,7 +254,7 @@ export class CommonView {
                 <div class="upimg" style="width: 60%">
                   <span>Upload images</span>
                   <a href="javascript:void(0)">
-                    <img src="${this.getContextPath}/images/cloud.png" alt="cloud"/>
+                    <img src="${path}/images/cloud.png" alt="cloud"/>
                   </a>
                   <input
                     type="file"
@@ -489,11 +505,12 @@ export class CommonView {
   }
 
   makeSearchItem() {
+    let path = this.getContextPath();
     let item = `       
     <div class="col-lg-6">
       <div class="places s2">
         <div class="placethumb">
-          <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
+          <img src="${path}+'360x220'" alt="cafe_img" />
           <div class="placeoptions">
             <span class="pull-left">
               <i class="flaticon-eye"></i> Preview

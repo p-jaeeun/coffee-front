@@ -34,15 +34,17 @@ export class AdminApi {
     return result;
   }
 
-  // callCafeList() {
-  //   let result;
-  //   try {
-  //     result = await this.ajax.sendAjaxGet("http://192.168.1.131:8080/hiddenc/admin/cafe")
-  //   } catch (e) {
-  //     console.log("error:" + e);
-  //   }
-  //   return result;
-  // }
+  async callCafeList() {
+    let result;
+    try {
+      result = await this.ajax.sendAjaxGet(
+        "http://192.168.1.131:8080/hiddenc/admin/cafe"
+      );
+    } catch (e) {
+      console.log("error:" + e);
+    }
+    return result;
+  }
 
   async callMemberPage() {
     console.log("ajax-adminpage-member");
@@ -57,11 +59,11 @@ export class AdminApi {
     return result;
   }
 
-  async callAddCafePage() {
+  async callAddCafe() {
     console.log("ajax-adminpage-addcafe");
     let result;
     try {
-      result = await this.ajax.sendAjaxGet(
+      result = await this.ajax.sendAjaxPostFile(
         "http://192.168.1.131:8080/hiddenc/admin/addcafe"
       );
     } catch (e) {
@@ -70,7 +72,7 @@ export class AdminApi {
     return result;
   }
 
-  async callReviseCafePage() {
+  async callReviseCafe() {
     console.log("ajax-adminpage-revisecafe");
     let result;
     try {
