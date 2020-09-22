@@ -5,52 +5,7 @@ export class AdminService {
   constructor() {
     this.api = new AdminApi();
   }
-
-  // view
-  async callMain() {
-    let result;
-
-    try {
-      result = await this.api.callMain();
-    } catch {
-      console.log("Service-error: " + e);
-    }
-    return result;
-  }
-
-  async callMemberList() {
-    let result;
-
-    try {
-      result = await this.api.callMemberPage();
-    } catch {
-      console.log("Service-error: " + e);
-    }
-    return result;
-  }
-
-  async callAdminPage(adminData) {
-    let result;
-
-    try {
-      result = await this.api.callAdminPage(adminData);
-    } catch {
-      console.log("Service-error: " + e);
-    }
-    return result;
-  }
-
-  async callAddCafe(adminData) {
-    let result;
-
-    try {
-      result = await this.api.callAddCafe(adminData);
-    } catch (e) {
-      console.log("error: " + e);
-    }
-    return result;
-  }
-
+  // 정보
   async addCafe(cafeData) {
     let result;
 
@@ -71,19 +26,74 @@ export class AdminService {
     }
   }
 
-  async callCafeList() {
+  // view
+  async callMain() {
     let result;
-    let dto = new AdminDTO();
-    let cafe_array = new Array();
+
+    try {
+      result = await this.api.callMain();
+    } catch {
+      console.log("Service-error: " + e);
+    }
+    return result;
+  }
+
+  //관리자 메인화면 따로없어서 카페등록현황으로 연결
+  async callAdminPage() {
+    let result;
+
+    try {
+      result = await this.api.callAdminPage();
+    } catch {
+      console.log("Service-error: " + e);
+    }
+    return result;
+  }
+
+  async callCafeList() {
+    var result;
 
     try {
       result = await this.api.callCafeList();
     } catch (e) {
       console.log("error:" + e);
     }
-    for (let i = 0; i < result.length; i++) {
-      cafe_array[i].cafe_name = result[0].cafe_name;
+    // for (let i = 0; i < result.length; i++) {
+    //   result[i].cafe_name = result[0].cafe_name;
+    // }
+    return result; //저장한 정보를 컨트롤러의 콜백함수에서 받아서 뷰가 가진 메소드의 매개변수로 넘긴다.
+  } //DTO 활용해야할 것 같은데..
+
+  async callMemberList() {
+    let result;
+
+    try {
+      result = await this.api.callMemberPage();
+    } catch {
+      console.log("Service-error: " + e);
     }
-    return cafe_list; //저장한 정보를 컨트롤러의 콜백함수에서 받아서 뷰가 가진 메소드의 매개변수로 넘긴다.
+    return result;
+  }
+
+  async callAddCafe() {
+    let result;
+
+    try {
+      result = await this.api.callAddCafe();
+    } catch (e) {
+      console.log("error: " + e);
+    }
+    return result;
+  }
+
+  async callReviseCafe() {
+    let result;
+
+    try {
+      result = await this.api.callReviseCafe();
+    } catch (e) {
+      console.log("error: " + e);
+    }
+    return result;
   }
 }
