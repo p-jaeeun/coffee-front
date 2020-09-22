@@ -38,12 +38,8 @@ export class AdminView {
         <li class="accountbtn">
           <a href="javascript:void(0)">Search</a>
         </li>
-        <li class="menu-item-has-children">
+        <li>
           <a href="javascript:void(0)">Admin</a>
-          <ul id="js-admin-header-menu">
-            <li>Add Cafe</li>
-            <li>Revise Cafe</li>
-          </ul>
         </li>
       </ul>
     </div>
@@ -70,15 +66,11 @@ export class AdminView {
           <li>
           <a href="javascript:void(0)" >Home</a>
           </li>
-          <li class="accountbtn" >
+          <li class="accountbtn" style="float: left" >
           <a href="javascript:void(0)" >Search</a>
           </li>
-          <li class="menu-item-has-children">
+          <li>
           <a href="javascript:void(0)" >Admin</a>
-            <ul id="js-admin-header-menu">
-              <li>Add Cafe</li>
-              <li>Revise Cafe</li>
-            </ul>
           </li>
         </ul>
       </nav>

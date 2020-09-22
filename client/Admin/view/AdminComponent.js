@@ -25,8 +25,8 @@ export class AdminComponent {
     this.search_btn = document.getElementsByClassName("js-search-btn")[0];
 
     // tag
-    this.header_menu = document.querySelectorAll(".js-admin-header-menu")[1];
-    this.admin_menu = document.querySelectorAll(".js-admin-header-menu")[0];
+    // this.header_menu = document.querySelectorAll(".js-admin-header-menu")[1];
+    // this.admin_menu = document.querySelectorAll(".js-admin-header-menu")[0];
     this.revisecafe_list = document.getElementsByClassName(
       "js-admin-js-admin-revisecafe-list"
     );
@@ -77,14 +77,22 @@ export class AdminComponent {
   // evnet delegation
   headerMenu(callback) {
     console.log("header_menu-delegation");
+
     window.addEventListener("load", () => {
-      this.header_menu.addEventListener("click", callback);
+      let r_header = document.getElementsByClassName("js-admin-header-menu")[0];
+      let header = document.getElementsByClassName("js-admin-header-menu")[1];
+
+      r_header.addEventListener("click", callback);
+      header.addEventListener("click", callback);
     });
   }
+
   adminMenu(callback) {
     console.log("admin_menu-delegation");
+
     window.addEventListener("load", () => {
-      this.admin_menu.addEventListener("click", callback);
+      let admin_menu = document.getElementsByClassName("js-admin-menu")[0];
+      admin_menu.addEventListener("click", callback);
     });
   }
   // previewCafeImg(callback){

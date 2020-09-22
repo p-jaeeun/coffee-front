@@ -13,7 +13,7 @@ export class UserApi {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxGet("http://192.168.1.107:8080/hiddenc");
+      result = await this.ajax.sendAjaxGet("http://192.168.1.131:8080/hiddenc");
     } catch (e) {
       console.log("error:" + e);
     }
@@ -26,7 +26,7 @@ export class UserApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://192.168.1.107:8080/hiddenc/login/main"
+        "http://192.168.1.131:8080/hiddenc/login/main"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -40,7 +40,7 @@ export class UserApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        `http://192.168.1.131:8080/hiddenc/admin`
+        `http://192.168.1.131:8080/hiddenc/admin/cafe`
       );
     } catch (e) {
       console.log("error:" + e);
@@ -55,7 +55,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://192.168.1.107:8080/hiddenc/login",
+        "http://192.168.1.131:8080/hiddenc/login",
         userData
       );
     } catch (e) {
@@ -73,7 +73,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://192.168.1.107:8080/hiddenc/signup",
+        "http://192.168.1.131:8080/hiddenc/signup",
         userData
       );
     } catch (e) {
@@ -89,7 +89,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://192.168.1.107:8080/hiddenc/user/addcafe",
+        "http://192.168.1.131:8080/hiddenc/user/addcafe",
         userData
       ); // from here have to check whether the address is correct or not
     } catch (e) {
@@ -106,7 +106,7 @@ export class UserApi {
     let str = JSON.stringify(userData);
     try {
       result = await this.ajax.sendPost(
-        "http://192.168.1.107:8080/hiddenc/login/search/result",
+        "http://192.168.1.131:8080/hiddenc/login/search/result",
         str
       );
     } catch (e) {
@@ -123,7 +123,7 @@ export class UserApi {
     let str = JSON.stringify(userData);
     try {
       result = await this.ajax.sendGet(
-        "http://192.168.1.107:8080/hiddenc/login/search/result/cafeinfo"
+        "http://192.168.1.131:8080/hiddenc/login/search/result/cafeinfo"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -138,7 +138,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://192.168.1.107:8080/hiddenc/login/setting",
+        "http://192.168.1.131:8080/hiddenc/login/setting",
         userData
       );
     } catch (e) {
@@ -154,7 +154,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://192.168.1.107:8080/hiddenc/login/addreview",
+        "http://192.168.1.131:8080/hiddenc/login/addreview",
         userData
       );
     } catch (e) {
@@ -170,7 +170,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxDelete(
-        "http://192.168.1.107:8080/hiddenc/login/deletereview"
+        "http://192.168.1.131:8080/hiddenc/login/deletereview"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -184,7 +184,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://192.168.1.107:8080/hiddenc/login/mypage"
+        "http://192.168.1.131:8080/hiddenc/login/mypage"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -198,7 +198,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://192.168.1.107:8080/hiddenc/login/visited/cafeinfo"
+        "http://192.168.1.131:8080/hiddenc/login/visited/cafeinfo"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -211,7 +211,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://192.168.1.107:8080/hiddenc/login/Likelist"
+        "http://192.168.1.131:8080/hiddenc/login/Likelist"
       );
     } catch (e) {
       console.log("error:" + e);
