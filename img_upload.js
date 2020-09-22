@@ -33,11 +33,11 @@ function uploadImgPreview() {
     [].forEach.call(fileList, readAndPreview);
   }
 }
-// onChange="uploadProfile()"
+onChange = "uploadProfile()";
 
-function uploadProfile() {
+function uploadReviewImg() {
   let fileList = document.getElementById("js-upload-profile").files;
-
+  var thumnail = document.getElementById("js-thumnail");
   function readAndPreview(fileList) {
     if (/\.(jpe?g|png|gif)$/i.test(fileList.name)) {
       let reader = new FileReader();
@@ -45,11 +45,55 @@ function uploadProfile() {
         "load",
         function () {
           let image = new Image();
-          image.width = "264";
-          image.height = "264";
+          if (
+            thumnail.innerHTML !== null ||
+            thumnail.innerHTML !== "undefined"
+          ) {
+            thumnail.innerHTML = "";
+          }
+
+          image.width = "100";
+          image.height = "100";
           image.title = fileList.name;
           image.src = this.result;
-          document.getElementById("js-thumnail").appendChild(image);
+          thumnail.appendChild(image);
+        },
+        false
+      );
+
+      if (fileList) {
+        reader.readAsDataURL(fileList);
+      }
+    }
+  }
+
+  if (fileList) {
+    [].forEach.call(fileList, readAndPreview);
+  }
+}
+
+function uploadProfile() {
+  let fileList = document.getElementById("js-upload-profile").files;
+  var thumnail = document.getElementById("js-thumnail");
+  function readAndPreview(fileList) {
+    if (/\.(jpe?g|png|gif)$/i.test(fileList.name)) {
+      let reader = new FileReader();
+      reader.addEventListener(
+        "load",
+        function () {
+          let image = new Image();
+          if (
+            thumnail.innerHTML !== null ||
+            thumnail.innerHTML !== "undefined"
+          ) {
+            thumnail.innerHTML = "";
+          }
+
+          image.width = "200";
+          image.height = "120";
+          image.title = fileList.name;
+          image.src = this.result;
+          thumnail.appendChild(image);
         },
         false
       );
@@ -67,7 +111,7 @@ function uploadProfile() {
 
 function uploadBackground() {
   let fileList = document.getElementById("js-upload-back-img").files;
-
+  var thumnail = document.getElementById("js-back-img");
   function readAndPreview(fileList) {
     if (/\.(jpe?g|png|gif)$/i.test(fileList.name)) {
       let reader = new FileReader();
@@ -75,12 +119,18 @@ function uploadBackground() {
         "load",
         function () {
           let image = new Image();
-          image.width = "250";
+          if (
+            thumnail.innerHTML !== null ||
+            thumnail.innerHTML !== "undefined"
+          ) {
+            thumnail.innerHTML = "";
+          }
+
+          image.width = "350";
           image.height = "250";
           image.title = fileList.name;
           image.src = this.result;
-
-          document.getElementById("js-back-img").appendChild(image);
+          thumnail.appendChild(image);
         },
         false
       );
@@ -95,61 +145,3 @@ function uploadBackground() {
     [].forEach.call(fileList, readAndPreview);
   }
 }
-
-//한장의 이미지 프리뷰
-
-// let profile = document.getElementById("js-upload-profile");
-// profile.addEventListener("click", () => {
-//   var upload = document.getElementById("js-upload-profile");
-//   var preview = document.getElementById("js-thumnail");
-
-//   var reader = new FileReader();
-//   /* reader 시작시 함수 구현 */
-//   reader.onload = (function () {
-//     this.image = document.createElement("img");
-//     var vm = this;
-
-//     return function (e) {
-//       /* base64 인코딩 된 스트링 데이터 */
-//       vm.image.src = e.target.result;
-//     };
-//   })();
-
-//   upload.addEventListener("change", function (e) {
-//     var get_file = e.target.files;
-
-//     if (get_file) {
-//       reader.readAsDataURL(get_file[0]);
-//     }
-
-//     preview.appendChild(image);
-//   });
-// });
-
-// let back = document.getElementById("js-upload-back-img");
-// back.addEventListener("click", () => {
-//   var upload = document.getElementById("js-upload-back-img");
-//   var preview = document.getElementById("js-back-img");
-
-//   var reader = new FileReader();
-//   /* reader 시작시 함수 구현 */
-//   reader.onload = (function () {
-//     this.image = document.createElement("img");
-//     var vm = this;
-
-//     return function (e) {
-//       /* base64 인코딩 된 스트링 데이터 */
-//       vm.image.src = e.target.result;
-//     };
-//   })();
-
-//   upload.addEventListener("change", function (e) {
-//     var get_file = e.target.files;
-
-//     if (get_file) {
-//       reader.readAsDataURL(get_file[0]);
-//     }
-
-//     preview.appendChild(image);
-//   });
-// });

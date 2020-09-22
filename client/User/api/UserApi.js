@@ -1,6 +1,5 @@
+// import { UserDTO } from "../model/UserDTO.js";
 import { Ajax } from "../../Common/lib/Ajax.js";
-import { UserDTO } from "../model/UserDTO.js";
-import { UserService } from "../service/UserService.js";
 
 export class UserApi {
   constructor() {
@@ -64,7 +63,7 @@ export class UserApi {
 
     console.log("value type" + typeof result);
     return result;
-  }
+  } //url 131로 바꿔줘야함
 
   async signup(userData) {
     console.log("ajax-signup");
@@ -105,7 +104,7 @@ export class UserApi {
 
     let str = JSON.stringify(userData);
     try {
-      result = await this.ajax.sendPost(
+      result = await this.ajax.sendAjaxPostFile(
         "http://192.168.1.131:8080/hiddenc/login/search/result",
         str
       );
@@ -122,8 +121,9 @@ export class UserApi {
 
     let str = JSON.stringify(userData);
     try {
-      result = await this.ajax.sendGet(
-        "http://192.168.1.131:8080/hiddenc/login/search/result/cafeinfo"
+      result = await this.ajax.sendAjaxPost(
+        "http://192.168.1.131:8080/hiddenc/login/search/result/cafeinfo",
+        userData
       );
     } catch (e) {
       console.log("error:" + e);
@@ -167,10 +167,11 @@ export class UserApi {
   async deleteReview(userData) {
     console.log("ajax-addReview");
     let result;
-
+    let str = JSON.stringify(userData);
     try {
-      result = await this.ajax.sendAjaxDelete(
-        "http://192.168.1.131:8080/hiddenc/login/deletereview"
+      result = await this.ajax.sendAjaxPost(
+        "http://192.168.1.131:8080/hiddenc/login/deletereview",
+        str
       );
     } catch (e) {
       console.log("error:" + e);
@@ -181,24 +182,26 @@ export class UserApi {
 
   async callDashboard(userData) {
     let result;
-
+    let str = JSON.stringify(userData);
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://192.168.1.131:8080/hiddenc/login/mypage"
+      result = await this.ajax.sendAjaxPost(
+        "http://192.168.1.131:8080/hiddenc/login/mypage",
+        str
       );
     } catch (e) {
       console.log("error:" + e);
     }
 
     return result;
-  } // get으로 데이터 어떻게 꺼냄?
+  }
 
   async callVisitedCafe(userData) {
     let result;
-
+    let str = JSON.stringify(userData);
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://192.168.1.131:8080/hiddenc/login/visited/cafeinfo"
+      result = await this.ajax.sendAjaxPost(
+        "http://192.168.1.131:8080/hiddenc/login/visited/cafeinfo",
+        str
       );
     } catch (e) {
       console.log("error:" + e);
@@ -209,9 +212,12 @@ export class UserApi {
   async callSubscription(userData) {
     let result;
 
+    let str = JSON.stringify(userData);
+
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://192.168.1.131:8080/hiddenc/login/Likelist"
+      result = await this.ajax.sendAjaxPost(
+        "http://192.168.1.131:8080/hiddenc/login/Likelist",
+        str
       );
     } catch (e) {
       console.log("error:" + e);
@@ -219,3 +225,7 @@ export class UserApi {
     return result;
   }
 }
+
+//callsubscription, visitedCafe, callDashboard
+
+//Put은 Post로?

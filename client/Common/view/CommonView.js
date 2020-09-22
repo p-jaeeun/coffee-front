@@ -33,6 +33,7 @@ export class CommonView {
   ) {
     let path = this.getContextPath();
     let cafeinfo = `
+
     <div class="section_down">
 
     <div class="block no-padding">
@@ -213,40 +214,14 @@ export class CommonView {
                 </li>
               </ul>
             </div>
-            <div class="bbox">
-              <h3>{cafe_rate_count} Reviews for {cafe_name}</h3>
-              <div class="reviewssec js-cafe-review-list">
-                <div class="reviewthumb">
-                  <img src="${path}+'profile_user_id'" alt="profile_user_id" />
-                </div>
-                <div class="reviewinfo">
-                  <h3>{review_user_id}</h3>
-                  <span>{write_date}</span>
-                  <ul class="listmetas justrate">
-                    <li>
-                      <span class="rated">{cafe_rate}</span>
-                      {cafe_rate_count}
-                    </li>
-                  </ul>
-                  <p>{comment}</p>
-                  <div class="wasreview">
-                    <span>Was This Review ...?</span>
-                    <div class="wasreviewbtn">
-                      <a href="javascript:void(0)" class="c3">
-                        <i class="flaticon-heart"></i>
-                        Like {cafe_like}
-                      </a>
-                    </div>
-                  </div>
-                  <div class="reviewaction">
-                    <a href="javascript:void(0)">
-                      <i class="flaticon-back"></i>
-                      Reply
-                    </a>
-                  </div>
-                </div>
+
+            <div class="bbox js-review-list">
+            <h3>{cafe_rate_count} Reviews for {cafe_name}</h3>
+            <div class="reviewssec js-cafe-review-list">
+            
               </div>
             </div>
+
             <div class="listingcomment">
               <div class="leavecomment">
               <form id="js-cafe-review-form">
@@ -261,9 +236,9 @@ export class CommonView {
                     name="cafe_image"
                     class="js-cafe-review-input"
                     accept="img/*"
-                    onChange="uploadImgPreview()"
-                    id="js-upload"
-                    multiple
+                    onChange="uploadReviewImg()"
+                    id="js-upload-profile"
+                    
                   />
                   <div id="js-thumnail"></div>
                 </div>
@@ -304,6 +279,54 @@ export class CommonView {
     </div>
   </section>`;
     return cafeinfo;
+  }
+
+  makeReviewItem() {
+    let path = this.getContextPath();
+    let review = `
+    
+      <div class="reviewthumb">
+        <img src="${path}+'profile_user_id'" alt="profile_user_id" />
+      </div>
+      <div class="reviewinfo">
+        <h3>{review_user_id}</h3>
+        <span>{write_date}</span>
+        <ul class="listmetas justrate">
+          <li>
+            <span class="rated">{cafe_rate}</span>
+            {cafe_rate_count}
+          </li>
+        </ul>
+        <p>{comment}</p>
+        <div class="wasreview">
+          <span>Was This Review ...?</span>
+          <div class="wasreviewbtn">
+            <a href="javascript:void(0)" class="c3">
+              <i class="flaticon-heart"></i>
+              Like {cafe_like}
+            </a>
+          </div>
+        </div>
+        <div class="reviewaction">
+          <a href="javascript:void(0)">
+            <i class="flaticon-back"></i>
+            Reply
+          </a>
+        </div>
+      </div>
+    `;
+    return review;
+  }
+
+  makeNoReviewItem() {
+    let path = this.getContextPath();
+    let review = `
+    
+      <div class="reviewthumb">
+        아직 리뷰가 없습니다...
+      </div>
+    `;
+    return review;
   }
 
   makeFooter() {
@@ -523,6 +546,7 @@ export class CommonView {
         <div class="boxplaces">
           <div class="placeinfos">
             <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
+            <hidden value="{value1}"></hidden>
             <ul class="listmetas">
               <li>
                 <span class="rated">{cafe_rate}</span>
@@ -534,6 +558,7 @@ export class CommonView {
             <span class="pull-left">
               <i class="flaticon-pin"></i>
               {cafe_location}
+              <hidden value="{value1}"></hidden>
             </span>
           </div>
         </div>

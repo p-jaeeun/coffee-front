@@ -5,8 +5,6 @@
  * my subscription -> makeUserHeader + makeUserMenu + makeMySubscription + makeSubscriptionList(한개씩 추가) + makeFooter(common) + makeSearchPop
  * add cafe -> makeUserHeader + makeAddCafe + makeFooter(common) + makeSearchPop
  * setting ->  makeUserHeader + makeUserMenu + makeSettings + makeFooter(common) + makeSearchPop
- *
- * ml-placessec 대신 row에 클래스줌, 유저메뉴에 ul, 만들고 클래스줌 이벤트 델리게이션 안돼면 아이디로 변환할 것
  * 프로필 세팅에 프로필 이미지미리보기 js-thumnail, js-upload-profile, 백그라운드 미리보기 js-back-img, js-upload-back-img
  */
 
@@ -22,14 +20,15 @@ export class UserView {
   }
 
   makeUserHeader(user_img_mini, user_id, notification) {
+    let path = this.getContextPath();
     return `    
     <div class="theme-layout">
     <div class="responsiveheader">
       <div class="rheader">
-        <span><img src="${this.getContextPath}/images/ricon.png" alt="menu_icon" /></span>
+        <span><img src="${path}/images/ricon.png" alt="menu_icon" /></span>
         <div class="logo">
-          <a href="javascript:void(0)" 
-            ><img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"
+          <a href="#" 
+            ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
           /></a>
         </div>
       </div>
@@ -37,13 +36,13 @@ export class UserView {
         <span class="closeresmenu"><i>x</i>Close</span>
         <ul class="js-user-header-menu">
           <li>
-            <a href="javascript:void(0)" >Home</a>
+            <a href="#" >Home</a>
           </li>
           <li class="accountbtn">
-            <a href="javascript:void(0)" >Search</a>
+            <a href="#" >Search</a>
           </li>
           <li>
-            <a href="javascript:void(0)" >User</a>
+            <a href="#" >User</a>
           </li>
         </ul>
       </div>
@@ -53,30 +52,30 @@ export class UserView {
     <header class="s4 dark">
       <div class="container fluid">
         <div class="logo">
-          <a href="javascript:void(0)" 
-            ><img src="${this.getContextPath}/images/hiddenc_logo.png" alt="hiddenC_logo"
+          <a href="#" 
+            ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
           /></a>
         </div>
         <div class="userdropsec">
           <span
-            ><img src="${this.getContextPath}http://placehold.it/50x50" alt="user_img" /><span class=""
+            ><img src="${path}http://placehold.it/50x50" alt="user_img" /><span class=""
               >{user_id}</span
             ></span
           >
         </div>
-        <a href="javascript:void(0)"  class="bellicon"
+        <a href="#"  class="bellicon"
           ><i class="fa fa-bell-o"></i><strong>{notification}</strong></a
         >
         <nav class="js-user-header-menu">
           <ul >
             <li>
-              <a href="javascript:void(0)" >Home</a>
+              <a href="#" >Home</a>
             </li>
             <li class="accountbtn" style="float: left">
-              <a href="javascript:void(0)" >Search</a>
+              <a href="#" >Search</a>
             </li>
             <li>
-              <a href="javascript:void(0)" >User</a>
+              <a href="#" >User</a>
             </li>
           </ul>
         </nav>
@@ -111,6 +110,7 @@ export class UserView {
     user_id12,
     user_img12
   ) {
+    let path = this.getContextPath();
     let caffaine = ` <section class="main-section">
       <div class="block less-bottom">
         <div class="container fluid">
@@ -124,44 +124,44 @@ export class UserView {
               <ul class="citieslists js-caffeine-list">
                 <li>
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img1}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img1}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id1}</a></h3>
+                      <h3><a href="#" >{user_id1}</a></h3>
                       <hidden value="{value1}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img2}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img2}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id2}</a></h3>
+                      <h3><a href="#" >{user_id2}</a></h3>
                       <hidden value="{value2}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img3}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img3}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id3}</a></h3>
+                      <h3><a href="#" >{user_id3}</a></h3>
                       <hidden value="{value3}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img4}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img4}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id4}</a></h3>
+                      <h3><a href="#" >{user_id4}</a></h3>
                       <hidden value="{value4}"></hidden>
                       <span></span>
                     </div>
@@ -170,44 +170,44 @@ export class UserView {
                 </li>
                 <li>
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img5}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img5}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id5}</a></h3>
+                      <h3><a href="#" >{user_id5}</a></h3>
                       <hidden value="{value5}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img6}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img6}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id6}</a></h3>
+                      <h3><a href="#" >{user_id6}</a></h3>
                       <hidden value="{value6}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img7}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img7}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id7}</a></h3>
+                      <h3><a href="#" >{user_id7}</a></h3>
                       <hidden value="{value7}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img8}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img8}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id8}</a></h3>
+                      <h3><a href="#" >{user_id8}</a></h3>
                       <hidden value="{value8}"></hidden>
                       <span></span>
                     </div>
@@ -216,44 +216,44 @@ export class UserView {
                 </li>
                 <li>
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img9}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img9}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id9}</a></h3>
+                      <h3><a href="#" >{user_id9}</a></h3>
                       <hidden value="{value9}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img10}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img10}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id10}</a></h3>
+                      <h3><a href="#" >{user_id10}</a></h3>
                       <hidden value="{value10}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img11}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img11}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id11}</a></h3>
+                      <h3><a href="#" >{user_id11}</a></h3>
                       <hidden value="{value11}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
-                    <a href="javascript:void(0)" 
-                      ><img src="${this.getContextPath}+${user_img12}" alt="caffeine_ranker"
+                    <a href="#" 
+                      ><img src="${path}+${user_img12}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="javascript:void(0)" >{user_id12}</a></h3>
+                      <h3><a href="#" >{user_id12}</a></h3>
                       <hidden value="{value12}"></hidden>
                       <span></span>
                     </div>
@@ -283,6 +283,7 @@ export class UserView {
     cafe_rate_count3,
     cafe_location3
   ) {
+    let path = this.getContextPath();
     let list = ` <section>
       <div class="block">
         <div class="container">
@@ -297,7 +298,7 @@ export class UserView {
                   <li>
                     <div class="places">
                       <div class="placethumb">
-                        <img src="${this.getContextPath}+'360x220'" alt="new_cafe" />
+                        <img src="${path}+'360x220'" alt="new_cafe" />
                         <div class="placeoptions">
                           <span class="pull-left">
                             <i class="flaticon-eye"></i> Preview
@@ -308,13 +309,14 @@ export class UserView {
                         </div>
                       </div>
                       <div class="placeinfos">
-                        <h3><a href="javascript:void(0)" >{cafe_name1}</a></h3>
+                        <h3><a href="#" >{cafe_name1}</a></h3>
                         <hidden value="{value1}"></hidden>
   
                         <ul class="listmetas">
                           <li>
                             <span class="rated">{cafe_rate1}</span
                             >{cafe_rate_count1}
+                            <hidden value="{value1}"></hidden>
                           </li>
                         </ul>
                       </div>
@@ -329,7 +331,7 @@ export class UserView {
                   <li>
                     <div class="places">
                       <div class="placethumb">
-                        <img src="${this.getContextPath}+'360x220'" alt="new_cafe" />
+                        <img src="${path}+'360x220'" alt="new_cafe" />
                         <div class="placeoptions">
                           <span class="pull-left">
                             <i class="flaticon-eye"></i> Preview
@@ -340,13 +342,14 @@ export class UserView {
                         </div>
                       </div>
                       <div class="placeinfos">
-                        <h3><a hrefjavascript:void(0)" >{cafe_name2}</a></h3>
+                        <h3><a href="#" >{cafe_name2}</a></h3>
                         <hidden value="{value2}"></hidden>
   
                         <ul class="listmetas">
                           <li>
                             <span class="rated">{cafe_rate2}</span
                             >{cafe_rate_count2}
+                            <hidden value="{value2}"></hidden>
                           </li>
                         </ul>
                       </div>
@@ -361,7 +364,7 @@ export class UserView {
                   <li>
                     <div class="places">
                       <div class="placethumb">
-                        <img src="${this.getContextPath}+'360x220'" alt="new_cafe" />
+                        <img src="${path}+'360x220'" alt="new_cafe" />
                         <div class="placeoptions">
                           <span class="pull-left">
                             <i class="flaticon-eye"></i> Preview
@@ -372,13 +375,14 @@ export class UserView {
                         </div>
                       </div>
                       <div class="placeinfos">
-                        <h3><a href="javascript:void(0)" >{cafe_name3}</a></h3>
+                        <h3><a href="#" >{cafe_name3}</a></h3>
                         <hidden value="{value3}"></hidden>
   
                         <ul class="listmetas">
                           <li>
                             <span class="rated">{cafe_rate3}</span
                             >{cafe_rate_count3}
+                            <hidden value="{value3}"></hidden>
                           </li>
                         </ul>
                       </div>
@@ -411,15 +415,16 @@ export class UserView {
     subscription,
     favorite
   ) {
+    let path = this.getContextPath();
     let menu = `        <div class="block remove-bottom double-gap-top">
       <div class="layer blackish">
-          <div data-velocity="-.1" style="background: url(${this.getContextPath}+${user_img_background}) repeat scroll 50% 422.28px transparent;" class="no-parallax parallax scrolly-invisible"></div><!-- PARALLAX BACKGROUND IMAGE -->	
+          <div data-velocity="-.1" style="background: url(${path}+${user_img_background}) repeat scroll 50% 422.28px transparent;" class="no-parallax parallax scrolly-invisible"></div><!-- PARALLAX BACKGROUND IMAGE -->	
           <div class="container">
               <div class="row">
                   <div class="col-lg-12">
                       <div class="iamusersec">
                           <div class="iamuser">
-                              <div class="userimg"><img src="${this.getContextPath}+${user_img_profile}" alt="user_img" /></div>
+                              <div class="userimg"><img src="${path}+${user_img_profile}" alt="user_img" /></div>
                               <div class="userinfos">
                                   <h3>{user_id}</h3>
                                   <span>{status}</span>
@@ -440,12 +445,12 @@ export class UserView {
           <div class="row">
               <div class="col-lg-12 js-user-menu">
                 
-                <a href="javascript:void(0)" ><i class="flaticon-credit-card"></i>Dashboard</a>
-                <a href="javascript:void(0)" ><i class="fa fa-map-pin" aria-hidden="true"></i>My Hidden Cafe({total_cafe})</a>
-                <a href="javascript:void(0)" ><i class="fa fa-users" aria-hidden="true"></i>My Subscription({subscription}) </a>
-                <a href="javascript:void(0)" ><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
-                <a href="javascript:void(0)" ><i class="flaticon-heart"></i> Bookmark({favorite})</a>
-                <a href="javascript:void(0)" ><i class="fa fa-cog" aria-hidden="true"></i>Settings</a>
+                <a href="#" ><i class="flaticon-credit-card"></i>Dashboard</a>
+                <a href="#" ><i class="fa fa-map-pin" aria-hidden="true"></i>My Hidden Cafe({total_cafe})</a>
+                <a href="#" ><i class="fa fa-users" aria-hidden="true"></i>My Subscription({subscription}) </a>
+                <a href="#" ><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
+                <a href="#" ><i class="flaticon-heart"></i> Bookmark({favorite})</a>
+                <a href="#" ><i class="fa fa-cog" aria-hidden="true"></i>Settings</a>
                 
               </div>
           </div>
@@ -456,6 +461,7 @@ export class UserView {
   }
 
   makeDashboard(total_cafe, total_add, total_favorite) {
+    let path = this.getContextPath();
     let dash = `<section>
       <div class="block gray">
           <div class="container">
@@ -467,17 +473,17 @@ export class UserView {
                               <div class="row">
                                   <div class="col-lg-4">
                                       <div class="dashbadge clr1">
-                                          <a href="javascript:void(0)"  class="dashnum"> <span><i>{total_cafe}</i></span> <strong>I   visited</strong></a>
+                                          <a href="#"  class="dashnum"> <span><i>{total_cafe}</i></span> <strong>I   visited</strong></a>
                                       </div>
                                   </div>
                                   <div class="col-lg-4">
                                       <div class="dashbadge clr2">
-                                          <a href="javascript:void(0)"  class="dashnum"> <span><i>{total_add}</i></span> <>I added</  strong></a>
+                                          <a href="#"  class="dashnum"> <span><i>{total_add}</i></span> <>I added</  strong></a>
                                       </div>
                                   </div>
                                   <div class="col-lg-4">
                                       <div class="dashbadge clr3">
-                                          <a href="javascript:void(0)"  class="dashnum"> <span><i>{total_favorite}</i></span>   <strong>Total Bookmark</strong></a>
+                                          <a href="#"  class="dashnum"> <span><i>{total_favorite}</i></span>   <strong>Total Bookmark</strong></a>
                                       </div>
                                   </div> 
                               </div>
@@ -492,6 +498,7 @@ export class UserView {
   }
 
   makeListAndMap(search_count) {
+    let path = this.getContextPath();
     let list = `<section>
       <div class="block no-padding">
         <div class="container fluid">
@@ -578,8 +585,8 @@ export class UserView {
                           <div class="rslider">
                             <amino-slider class="slider" data-min="0" data-max="100" data-value="10"></amino-slider>
                           </div>
-                          <a href="javascript:void(0)"  class="btn1 pull-left">Disable</a>
-                          <a href="javascript:void(0)"  class="btn2 pull-right">Apply</a>
+                          <a href="#"  class="btn1 pull-left">Disable</a>
+                          <a href="#"  class="btn2 pull-right">Apply</a>
                         </div>
                       </div>
                     </div>
@@ -614,10 +621,11 @@ export class UserView {
   }
 
   makeHalfListItem(cafe_name, cafe_rate, cafe_rate_count, cafe_location) {
+    let path = this.getContextPath();
     let item = `       <!--여기서 부터 1개의 카페-->
     <div class="places s2">
       <div class="placethumb">
-        <img src="${this.getContextPath}+'360x220'" alt="cafe_img" />
+        <img src="${path}+'360x220'" alt="cafe_img" />
         <div class="placeoptions">
           <span class="pull-left">
             <i class="flaticon-eye"></i> Preview
@@ -629,7 +637,7 @@ export class UserView {
       </div>
       <div class="boxplaces">
         <div class="placeinfos">
-          <h3><a href="javascript:void(0)">{cafe_name}</a></h3>
+          <h3><a href="#">{cafe_name}</a></h3>
           <hidden value="{value}"></hidden>
           <ul class="listmetas">
             <li><span class="rated">{cafe_rate}</span>{cafe_rate_count}</li>
@@ -648,6 +656,7 @@ export class UserView {
   }
 
   makeMySubscription(user_img_mini, user_id) {
+    let path = this.getContextPath();
     let subscription = ` <div class="block remove-top">
       <div class="container">
         <div class="row">
@@ -655,7 +664,7 @@ export class UserView {
             <div class="userdropsec sub_profile">
               <span
                 ><img
-                  src="${this.getContextPath}+${user_img_mini}"
+                  src="${path}+${user_img_mini}"
                   alt="subscription_user_img"
                 />{user_id}</span
               >
@@ -672,15 +681,17 @@ export class UserView {
     return subscription;
   }
 
-  makeSubscriptionList(cafe_name, cafe_rate, cafe_rate_count, cafe_location) {
+  makeSubscriptionItem(cafe_name, cafe_rate, cafe_rate_count, cafe_location) {
+    let path = this.getContextPath();
     let list = `      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="places">
       <div class="placethumb">
-        <img src="${this.getContextPath}+'360x220'" alt="subscription_cafe" />
+        <img src="${path}+'360x220'" alt="subscription_cafe" />
         <div class="placeoptions">
           <span class="pull-left">
             <i class="flaticon-eye"></i> Preview
           </span>
+          <hidden value="{value}"></hidden>
           <span class="pull-right">
             <i class="flaticon-heart"></i> Save
           </span>
@@ -688,7 +699,7 @@ export class UserView {
       </div>
       <div class="boxplaces">
         <div class="placeinfos">
-          <h3><a href="javascript:void(0)">{cafe_name}</a></h3>
+          <h3><a href="#">{cafe_name}</a></h3>
           <hidden value="{value}"></hidden>
           <ul class="listmetas">
             <li><span class="rated">{cafe_rate}</span>{cafe_rate_count}</li>
@@ -706,6 +717,7 @@ export class UserView {
   }
 
   makeAddCafe() {
+    let path = this.getContextPath();
     let add = `    <section>
     <div class="block gray">
       <div class="container">
@@ -779,9 +791,7 @@ export class UserView {
                   </div>
                 </div>
                 <br />
-                
-                  <button type="submit" class="js-submit js-user-addcafe-btn" >등록하기</button>
-                
+                 <button type="submit" class=" js-user-addcafe-btn" >등록하기</button>
               </form>
             </div>
           </div>
@@ -793,7 +803,8 @@ export class UserView {
   }
 
   makeSettings() {
-    let profile = `  <section>
+    let path = this.getContextPath();
+    let profile = `      <section>
     <div class="block gray">
       <div class="container">
         <div class="row justify-content-center">
@@ -802,7 +813,7 @@ export class UserView {
               <h3>Profile</h3>
               <div class="profileimageaction">
                 <div class="row">
-                  <div class="col-lg-5">
+                  <div class="col-lg-5 " >
                     <div class="changeimg">
                       <h3>Change Profile Image</h3>
 
@@ -812,27 +823,27 @@ export class UserView {
                           style="display: flex"
                           src=""
                         ></div>
-                        <a href="javascript:void(0)">Cancel</a>
-                      </div>
+                        <a href="#">Cancel</a>
 
-                      <div class="jstinput">
-                        <a href="" class="browsephoto">Browse</a>
-                        <input
-                          type="file"
-                          accept="img/*"
-                          id="js-upload-profile"
-                          onChange="uploadProfile()"
-                          name="user_profile_img"
-                        />
-                      </div>
+                        <div class="jstinput">
+                          <a href="" class="browsephoto">Browse</a>
+                          <input
+                            type="file"
+                            accept="img/*"
+                            id="js-upload-profile"
+                            onchange="uploadProfile()"
+                            name="user_profile_img"
+                          />
+                        </div>
 
-                      <p>
-                        Max file size is 1MB, Minimum dimension:
-                        <br />270x210 And Suitable
-                      </p>
+                        <p>
+                          Max file size is 1MB, Minimum dimension:
+                          <br />270x210 And Suitable
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-lg-7">
+                  <div class="col-lg-7" >
                     <div class="changeimg">
                       <h3>Change Background</h3>
 
@@ -842,7 +853,7 @@ export class UserView {
                           style="display: flex"
                           src=""
                         ></div>
-                        <a href="javascript:void(0)">Cancel</a>
+                        <a href="#">Cancel</a>
                       </div>
 
                       <div class="jstinput">
