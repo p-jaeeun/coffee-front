@@ -8,9 +8,8 @@ export class Ajax {
       httpRequest.onreadystatechange = function () {
         if (httpRequest.readyState === 4 && httpRequest.status === 200) {
           console.log("GET-res: " + httpRequest.responseText);
-          let obj = JSON.parse(httpRequest.responseText);
-          console.log("ajax: " + obj);
-          resolve(obj);
+
+          resolve(httpRequest.responseText);
         }
       };
       httpRequest.open("GET", url);

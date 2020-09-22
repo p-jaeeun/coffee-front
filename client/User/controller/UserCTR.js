@@ -9,6 +9,8 @@ export class UserCTR {
     // this.view.makeCafeInfo();
     // this.view.makeDashboard();
 
+    // this.view.makeLoginMain();
+
     this.view.signin(() => {
       this.signin();
     });
