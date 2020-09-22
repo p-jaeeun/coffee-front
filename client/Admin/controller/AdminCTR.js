@@ -6,14 +6,14 @@ export class AdminCTR {
     this.view = view;
     this.service = service;
 
-    // this.view.makeMemberPage();
+    // this.view.makeAddCafePage();
 
     // event delegation
-    this.view.headerMenu(() => {
+    this.view.headerMenu((e) => {
       this.headerMenu(e);
     });
 
-    this.view.adminMenu(() => {
+    this.view.adminMenu((e) => {
       this.adminMenu(e);
     });
 
@@ -59,6 +59,8 @@ export class AdminCTR {
   loadCafeList() {
     this.service.loadCafeList();
   }
+
+  // event delegation
   headerMenu = async (e) => {
     console.log("headermenu-controller");
 
@@ -76,9 +78,9 @@ export class AdminCTR {
       } else if (e.target.innerHTML.includes("Admin")) {
         console.log("clicked Admin");
 
-        let result;
-        let adminData = localStorage.getItem(admin_id);
+        let adminData = localStorage.getItem("admin_id");
         console.log("local data:" + adminData);
+        let result;
         try {
           result = await this.service.callAdminPage(adminData);
         } catch (e) {
@@ -97,7 +99,7 @@ export class AdminCTR {
     }
   };
 
-  AdminMenu = async (e) => {
+  adminMenu = async (e) => {
     console.log("admin menu -controller");
 
     if (e.target.tagName === "A" || e.target.tagName === "I") {
@@ -126,7 +128,7 @@ export class AdminCTR {
         console.log("local data: " + adminData);
 
         try {
-          result = await this.service.callAddCafe(userData);
+          result = await this.service.callAddCafe(adminData);
         } catch (e) {
           console.log("error: " + e);
         }

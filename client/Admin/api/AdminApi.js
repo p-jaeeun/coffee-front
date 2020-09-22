@@ -13,7 +13,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://192.168.1.107:8080/hiddenc/login/main"
+        "http://192.168.1.131:8080/hiddenc/login/main"
       );
     } catch (e) {
       console.log("error: " + e);
@@ -90,7 +90,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://192.168.1.107:8080/hiddenc/addcafe",
+        "http://192.168.1.131:8080/hiddenc/addcafe",
         cafeData
       );
     } catch (e) {

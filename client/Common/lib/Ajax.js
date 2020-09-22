@@ -8,7 +8,6 @@ export class Ajax {
       httpRequest.onreadystatechange = function () {
         if (httpRequest.readyState === 4 && httpRequest.status === 200) {
           console.log("GET-res: " + httpRequest.responseText);
-
           resolve(httpRequest.responseText);
         }
       };

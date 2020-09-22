@@ -164,7 +164,7 @@ export class UserComponent {
     let admin_view = new AdminView();
 
     let header = admin_view.makeAdminHeader();
-    let caffeine = user_view.makeMainCaffaineList();
+    let caffeine = user_view.makeMainCaffeineList();
     let cafe = user_view.makeMainCafeList();
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
