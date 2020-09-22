@@ -95,6 +95,8 @@ export class UserService {
       console.log("Service-result-undefined:" + result);
       this.callHome();
       return;
+    } else if (result.includes("Sorry")) {
+      alert("이미 사용중인 아이디 입니다.");
     } else {
       console.log("Service-result:" + result);
       alert("환영합니다.");

@@ -153,7 +153,8 @@ export class UserComponent {
 
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
-    window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
+    window.document.body.innerHTML =
+      header + caffeine + cafe + cafe + footer + pop;
   }
 
   makeAdminMain(result) {
@@ -168,7 +169,7 @@ export class UserComponent {
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
 
-    window.document.body.setAttribute("class", "full-height");
+    window.window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
   }
