@@ -37,12 +37,13 @@ export class AdminComponent {
     );
     this.half_map = document.getElementById("js-map-half");
     this.search_list = document.getElementsByClassName("js-search-result-list");
+
     // image preview
-    // this.thumnail = document.getElementById("js-thumnail");
-    // this.upload_cafe = document.getElementById("js-upload");
+    this.thumnail = document.getElementById("js-thumnail");
+    this.upload_cafe = document.getElementById("js-upload");
   }
 
-  //리스너 정의
+  // Listener
 
   addCafe(callback) {
     console.log("add-cafe-listener");
@@ -99,15 +100,34 @@ export class AdminComponent {
   //   this.thumnail.addEventListener("load",callback);  // 이미지 미리보기?
   // }
 
-  // make view of admin page
+  // main page(home)
 
-  makeCafeListPage() {
+  makeMainPage(result) {
+    let user_view = new UserView();
+    let common_view = new CommonView();
+    let admin_view = new AdminView();
+
+    let header = admin_view.makeAdminHeader();
+    let caffeine = user_view.makeMainCaffeineList();
+    let cafe = user_view.makeMainCafeList();
+    let footer = common_view.makeFooter();
+    let pop = common_view.makeSearchPop();
+
+    window.window.document.body.setAttribute("class", "full-height");
+    window.document.body.setAttribute("id", "scrollup");
+    window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
+  }
+
+  // admin page
+
+  makeCafeListPage(result) {
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
     let header = admin_view.makeAdminHeader();
     let admin_menu = admin_view.makeAdminMenu();
     let saved_cafe_list = admin_view.makeCafeList();
+    let cafe_item = admin_view.makeCafeListItem();
     let footer = common_view.makeFooter();
     let search_pop = common_view.makeSearchPop();
 
@@ -118,23 +138,28 @@ export class AdminComponent {
     window.document.body.innerHTML =
       header + admin_menu + saved_cafe_list + footer + search_pop;
 
-    // let dom = document.getElementsByClassName("js-admin-cafelist")[0];
-    // console.log(dom);
-    // dom.innerHTML += item;
-    // dom.innerHTML += item;
-    // dom.innerHTML += item;
-    // dom.innerHTML += item;
-    // for (let i = 0, max = result.length; i < max; i++) {
-    //   dom.innerHTML += item(result[i]);
+    window.addEventListener("load", () => {
+      let dom = document.getElementsByClassName("js-admin-cafelist")[0];
+      console.log("dom" + dom);
+      console.log(result);
+
+      dom.innerHTML += cafe_item;
+      dom.innerHTML += cafe_item; //데이터 꺼내서 매개변수에 넣어주는 로직 추후 구현해야함
+
+      for (let i = 0, max = result.length; i < max; i++) {
+        dom += cafe_item(result[i].cafe_name);
+      }
+    });
   }
 
-  makeMemberPage() {
+  makeMemberPage(result) {
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
     let header = admin_view.makeAdminHeader();
     let admin_menu = admin_view.makeAdminMenu();
-    let member_list = admin_view.makeMemberList(); // 아직 view 구현 X
+    let member_list = admin_view.makeMemberList();
+    let member_item = admin_view.makeMemberItem();
     let footer = common_view.makeFooter();
     let search_pop = common_view.makeSearchPop();
 
@@ -144,7 +169,18 @@ export class AdminComponent {
 
     window.document.body.innerHTML =
       header + admin_menu + member_list + footer + search_pop;
+    window.addEventListener("load", () => {
+      let dom = document.getElementsByClassName("js-admin-memberlist")[0];
+      console.log("dom" + dom);
+      dom.innerHTML += member_item;
+      dom.innerHTML += member_item; //데이터 꺼내서 매개변수에 넣어주는 로직 추후 구현해야함
+
+      for (let i = 0, max = result.length; i < max; i++) {
+        dom += member_item(result[i]);
+      }
+    });
   }
+
   makeAddCafePage() {
     let admin_view = new AdminView();
     let common_view = new CommonView();
@@ -163,13 +199,14 @@ export class AdminComponent {
       header + admin_menu + admin_addcafe + footer + search_pop;
   }
 
-  makeReviseCafePage() {
+  makeReviseCafePage(result) {
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
     let header = admin_view.makeAdminHeader();
     let admin_menu = admin_view.makeAdminMenu();
     let admin_revisecafe = admin_view.makeReviseCafeForm();
+    let revise_cafe = admin_view.makeReviseCafeList();
     let footer = common_view.makeFooter();
     let search_pop = common_view.makeSearchPop();
 
@@ -178,10 +215,28 @@ export class AdminComponent {
     window.document.body.setAttribute("id", "scrollup");
 
     window.document.body.innerHTML =
-      header + admin_menu + admin_revisecafe + footer + search_pop;
+      header +
+      admin_menu +
+      admin_revisecafe +
+      revise_cafe +
+      footer +
+      search_pop;
+
+    window.addEventListener("load", () => {
+      let dom = document.getElementsByClassName("js-admin-revisecafe-list")[0];
+      console.log("dom" + dom);
+      dom.innerHTML += revise_cafe;
+      dom.innerHTML += revise_cafe; //데이터 꺼내서 매개변수에 넣어주는 로직 추후 구현해야함
+
+      // for (let i = 0, max = result.length; i < max; i++) {
+      //   dom += revise_cafe(result[i]);
+      // }
+    });
   }
 
-  makeSearchResultPage() {
+  // search & cafeinfo page
+
+  makeSearchResultPage(result) {
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -196,7 +251,7 @@ export class AdminComponent {
     window.document.body.innerHTML = header + search_result + search_pop;
   }
 
-  makeCafeInfoPage() {
+  makeCafeInfoPage(result) {
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -210,21 +265,5 @@ export class AdminComponent {
     window.document.body.setAttribute("id", "scrollup");
 
     window.document.body.innerHTML = header + cafe_info + footer + search_pop;
-  }
-
-  makeAdminMainPage(result) {
-    let user_view = new UserView();
-    let common_view = new CommonView();
-    let admin_view = new AdminView();
-
-    let header = admin_view.makeAdminHeader();
-    let caffeine = user_view.makeMainCaffeineList();
-    let cafe = user_view.makeMainCafeList();
-    let footer = common_view.makeFooter();
-    let pop = common_view.makeSearchPop();
-
-    window.window.document.body.setAttribute("class", "full-height");
-    window.document.body.setAttribute("id", "scrollup");
-    window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
   }
 }

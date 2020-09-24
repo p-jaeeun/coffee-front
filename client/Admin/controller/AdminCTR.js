@@ -6,18 +6,6 @@ export class AdminCTR {
     this.view = view;
     this.service = service;
 
-    this.view.makeAddCafePage();
-
-    // event delegation
-
-    this.view.headerMenu((e) => {
-      this.headerMenu(e);
-    });
-
-    this.view.adminMenu((e) => {
-      this.adminMenu(e);
-    });
-
     this.view.addCafe(() => {
       this.addCafe();
     });
@@ -28,6 +16,18 @@ export class AdminCTR {
 
     this.view.loadCafeList(() => {
       this.loadCafeList();
+    });
+
+    this.view.search(() => {
+      this.search();
+    });
+    // event delegation
+    this.view.headerMenu((e) => {
+      this.headerMenu(e);
+    });
+
+    this.view.adminMenu((e) => {
+      this.adminMenu(e);
     });
   }
 
@@ -51,25 +51,64 @@ export class AdminCTR {
       } else {
         console.log("컨트롤러-서비스 결과값:" + result);
         this.view.makeAddCafePage();
-        alert("입력하신 카페정보가 성공적으로 등록되었습니다.");
+        alert("입력하신 카페가 성공적으로 등록되었습니다.");
       }
     });
   };
 
-  reviseCafe() {
+  reviseCafe = () => {
     var result;
 
     this.view.revisecafe_form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      //마저 작성해야함.
+      let cafeData = new FormData(this.view.revisecafe_form);
+      for (let value of cafeData.values()) {
+        console.log("value: " + value);
+      }
+
+      let service = new AdminService();
+      result = await service.reviseCafe(cafeData);
+
+      if (result === undefined || result === "undefined") {
+        console.log("CTR-return-error:" + result);
+        this.view.makeReviseCafePage();
+      } else {
+        console.log("컨트롤러-서비스 결과값:" + result);
+        this.view.makeReviseCafePage();
+        alert("입력하신 카페가 성공적으로 수정되었습니다.");
+      }
     });
-  }
+  };
 
-  loadCafeList() {
+  loadCafeList = () => {
+    var result;
+
     this.service.loadCafeList();
-  }
+  };
 
+  search = () => {
+    var result;
+
+    this.view.search_form.addEventListener("click", async (e) => {
+      e.preventDefault();
+
+      let adminData = new FormData(this.view.search_form);
+      for (let value of adminData.values()) {
+        console.log("vlaue:" + value);
+      }
+
+      let service = new UserService();
+      result = await service.search(adminData);
+
+      if (result === undefined || result === "undefined") {
+        console.log("CTR-return-error:" + result);
+      } else {
+        console.log("컨트롤러-서비스 결과값:" + result);
+        this.view.makeSearchResultPage(result);
+      }
+    });
+  };
   // event delegation
   headerMenu = async (e) => {
     console.log("headermenu-controller");
@@ -94,7 +133,7 @@ export class AdminCTR {
           console.log("CTR-result is undefined" + result);
           return;
         } else {
-          this.view.makeAdminMainPage(result);
+          this.view.makeMainPage(result);
           console.log("received data:" + result);
         }
       } else if (e.target.innerHTML.includes("Search")) {
@@ -162,7 +201,7 @@ export class AdminCTR {
       } else if (e.target.innerHTML.includes("Add New Hidden Cafe")) {
         console.log("clicked Add Cafe");
         this.view.makeAddCafePage();
-      } else if (e.target.innerHTML.includes("Add New Hidden Cafe by Users")) {
+      } else if (e.target.innerHTML.includes("Revise Hidden Cafe")) {
         console.log("clicked Revise Cafe");
         let result;
 
