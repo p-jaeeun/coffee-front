@@ -1,7 +1,7 @@
 export class Ajax {
   constructor() {}
   async sendAjaxGet(url) {
-    console.log("GET:" + url);
+    console.log("GET-INPUT-DATA:" + url);
     let httpRequest = new XMLHttpRequest();
 
     return new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ export class Ajax {
   }
 
   async sendAjaxDelete(url) {
-    console.log("DELETE:" + url);
+    console.log("DELETE-INPUT-DATA:" + url);
     let httpRequest = new XMLHttpRequest();
 
     return new Promise((resolve, reject) => {
@@ -34,7 +34,7 @@ export class Ajax {
   }
 
   async sendAjaxPut(url, data) {
-    console.log("PUT:", data);
+    console.log("PUT-INPUT-DATA:", data);
     let httpRequest = new XMLHttpRequest();
     return new Promise((resolve, reject) => {
       httpRequest.onreadystatechange = function () {
@@ -50,7 +50,7 @@ export class Ajax {
   }
 
   async sendAjaxPost(url, data) {
-    console.log("POST:", data);
+    console.log("POST-INPUT-DATA:", data);
     let httpRequest = new XMLHttpRequest();
     return new Promise((resolve, reject) => {
       httpRequest.onreadystatechange = function () {
@@ -67,6 +67,7 @@ export class Ajax {
   }
 
   async sendAjaxPostFile(url, data) {
+    console.log("POSTFILE-INPUT-DATA:" + data);
     let httpRequest = new XMLHttpRequest();
     return new Promise((resolve, reject) => {
       httpRequest.onreadystatechange = function () {

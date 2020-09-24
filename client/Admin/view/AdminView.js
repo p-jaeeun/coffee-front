@@ -25,7 +25,7 @@ export class AdminView {
     <div class="rheader">
       <span><img src="${path}/images/ricon.png" alt="menu_icon" /></span>
       <div class="logo">
-        <a href="javascript:void(0)">
+        <a href="">
         <img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
         /></a>
       </div>
@@ -34,13 +34,13 @@ export class AdminView {
       <span class="closeresmenu"><i>x</i>Close</span>
       <ul class="js-admin-header-menu">
         <li>
-          <a href="javascript:void(0)">Home</a>
+          <a href="">Home</a>
         </li>
         <li class="accountbtn">
-          <a href="javascript:void(0)">Search</a>
+          <a href="">Search</a>
         </li>
         <li>
-          <a href="javascript:void(0)">Admin</a>
+          <a href="">Admin</a>
         </li>
       </ul>
     </div>
@@ -50,7 +50,7 @@ export class AdminView {
   <header class="s4 dark">
     <div class="container fluid">
       <div class="logo">
-        <a href="javascript:void(0)"
+        <a href=""
           ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
         /></a>
       </div>
@@ -59,18 +59,18 @@ export class AdminView {
           >{admin_id}</span
           ></span>
       </div>
-      <a href="javascript:void(0)" class="bellicon"
+      <a href="" class="bellicon"
         ><i class="fa fa-bell-o"></i><strong>{notification}</strong></a>
       <nav>
         <ul class="js-admin-header-menu">
           <li>
-          <a href="javascript:void(0)" >Home</a>
+          <a href="" >Home</a>
           </li>
           <li class="accountbtn" style="float: left" >
-          <a href="javascript:void(0)" >Search</a>
+          <a href="" >Search</a>
           </li>
           <li>
-          <a href="javascript:void(0)" >Admin</a>
+          <a href="" >Admin</a>
           </li>
         </ul>
       </nav>
@@ -87,16 +87,16 @@ export class AdminView {
             <div class="col-lg-12">
             <ul class="js-admin-menu"">
               <li>
-               <a href="javascript:void(0)"><i class="fa fa-coffee" aria-hidden="true"></i>Hidden Cafe List</a>
+               <a href=""><i class="fa fa-coffee" aria-hidden="true"></i>Hidden Cafe List</a>
               </li>
               <li>
-              <a href="javascript:void(0)"><i class="fa fa-address-card-o" aria-hidden="true"></i>Member Management</a>
+              <a href=""><i class="fa fa-address-card-o" aria-hidden="true"></i>Member Management</a>
               </li>
               <li>
               <a href="javascript:void(0)return"><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
               </li>
               <li>
-              <a href="javascript:void(0)"><i class="fa fa-user-plus"></i> Add New Hidden Cafe by Users</a>
+              <a href=""><i class="fa fa-user-plus"></i> Add New Hidden Cafe by Users</a>
               </li>
               </ul>
             </div>

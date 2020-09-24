@@ -92,7 +92,11 @@ export class UserComponent {
   settings(callback) {
     console.log("settings-listener");
     window.addEventListener("load", () => {
-      this.settings_btn.addEventListener("click", callback);
+      this.settings_btn.addEventListener("click", (e) => {
+        alert("READ!");
+        e.preventDefault();
+        callback;
+      });
     });
   }
 
