@@ -94,47 +94,47 @@ export class CommonView {
                           <i class="flaticon-pin"></i>cafe_location</span>
                           <div class="slbtns">
                             <div class="sharelisting">
-                              <a href="javascript:void(0)">
+                              <a href="">
                                 <i class="flaticon-share"></i>
                                 Share
                               </a>
                               <div class="sharebtns">
-                                <a href="javascript:void(0)">
+                                <a href="">
                                   <i class="fa fa-facebook"></i>
                                 </a>
-                                <a href="javascript:void(0)">
+                                <a href="">
                                   <i class="fa fa-twitter"></i>
                                 </a>
-                                <a href="javascript:void(0)">
+                                <a href="">
                                   <i class="fa fa-instagram"></i>
                                 </a>
-                                <a href="javascript:void(0)">
+                                <a href="">
                                   <i class="fa fa-pinterest"></i>
                                 </a>
-                                <a href="javascript:void(0)">
+                                <a href="">
                                   <i class="fa fa-dribbble"></i>
                                 </a>
-                                <a href="javascript:void(0)">
+                                <a href="">
                                   <i class="fa fa-google"></i>
                                 </a>
                               </div>
                             </div>
-                            <a href="javascript:void(0)">
+                            <a href="">
                               <i class="flaticon-heart"></i>
                               Bookmark
                             </a>
-                            <a href="javascript:void(0)">
+                            <a href="">
                               <i class="flaticon-note"></i>
                               Add review
                             </a>
                           </div>
                         </div>
                       </div>
-                      <a href="javascript:void(0)">
+                      <a href="">
                         <i class="flaticon-heart"></i>
                         Bookmark
                       </a>
-                      <a href="javascript:void(0)">
+                      <a href="">
                         <i class="flaticon-note"></i>
                         Add review
                       </a>
@@ -228,7 +228,7 @@ export class CommonView {
                 <h3>Rate us and Write a Review</h3>
                 <div class="upimg" style="width: 60%">
                   <span>Upload images</span>
-                  <a href="javascript:void(0)">
+                  <a href="">
                     <img src="${path}/images/cloud.png" alt="cloud"/>
                   </a>
                   <input
@@ -257,7 +257,7 @@ export class CommonView {
           </div>
           <div class="col-lg-4 column">
             <div class="blocation">
-              <h3>Location <a href="javascript:void(0)">Get Direction</a></h3>
+              <h3>Location <a href="">Get Direction</a></h3>
               <div class="contact-map">
                 <div id="map js-map-mini" style="width: 350px; height: 400px"></div>
               </div>
@@ -265,12 +265,12 @@ export class CommonView {
               <span>{cafe_mail}</span>
 
               <div class="wsocial">
-                <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
-                <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
-                <a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
-                <a href="javascript:void(0)"><i class="fa fa-pinterest"></i></a>
-                <a href="javascript:void(0)"><i class="fa fa-google"></i></a>
-                <a href="javascript:void(0)"><i class="fa fa-dribbble"></i></a>
+                <a href=""><i class="fa fa-facebook"></i></a>
+                <a href=""><i class="fa fa-twitter"></i></a>
+                <a href=""><i class="fa fa-linkedin"></i></a>
+                <a href=""><i class="fa fa-pinterest"></i></a>
+                <a href=""><i class="fa fa-google"></i></a>
+                <a href=""><i class="fa fa-dribbble"></i></a>
               </div>
             </div>
           </div>
@@ -301,14 +301,14 @@ export class CommonView {
         <div class="wasreview">
           <span>Was This Review ...?</span>
           <div class="wasreviewbtn">
-            <a href="javascript:void(0)" class="c3">
+            <a href="" class="c3">
               <i class="flaticon-heart"></i>
               Like {cafe_like}
             </a>
           </div>
         </div>
         <div class="reviewaction">
-          <a href="javascript:void(0)">
+          <a href="">
             <i class="flaticon-back"></i>
             Reply
           </a>
@@ -337,20 +337,20 @@ export class CommonView {
           <div class="col-lg-12">
             <div class="footersec">
               <ul>
-                <li><a href="javascript:void(0)">Home</a></li>
-                <li><a href="javascript:void(0)">Partners</a></li>
-                <li><a href="javascript:void(0)">Contact</a></li>
-                <li><a href="javascript:void(0)">Terms</a></li>
-                <li><a href="javascript:void(0)">Customer Center</a></li>
+                <li><a href="">Home</a></li>
+                <li><a href="">Partners</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Terms</a></li>
+                <li><a href="">Customer Center</a></li>
               </ul>
               <span>Seoul Geumcheon-gu, Gasan-dong, Gasan digital 1-ro</span>
               <span>+82 02-123-4567</span>
               <span>HiddenC@gmail.com</span>
               <div class="social">
-                <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
-                <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
-                <a href="javascript:void(0)"><i class="fa fa-instagram"></i></a>
-                <a href="javascript:void(0)"><i class="fa fa-google"></i></a>
+                <a href=""><i class="fa fa-facebook"></i></a>
+                <a href=""><i class="fa fa-twitter"></i></a>
+                <a href=""><i class="fa fa-instagram"></i></a>
+                <a href=""><i class="fa fa-google"></i></a>
               </div>
             </div>
           </div>
@@ -545,7 +545,7 @@ export class CommonView {
         </div>
         <div class="boxplaces">
           <div class="placeinfos">
-            <h3><a href="javascript:void(0)" >{cafe_name}</a></h3>
+            <h3><a href="" >{cafe_name}</a></h3>
             <hidden value="{value1}"></hidden>
             <ul class="listmetas">
               <li>

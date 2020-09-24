@@ -10,7 +10,7 @@ export class UserCTR {
     // this.view.makeCafeInfo();
     // this.view.makeDashboard();
     // this.view.makeAddCafe();
-    // this.view.makeSettings();
+    this.view.makeSettings();
     // this.view.makeLoginMain();
 
     this.view.signin(() => {
@@ -20,14 +20,14 @@ export class UserCTR {
       this.signup();
     });
     this.view.addCafe(() => {
-      alert("CTR_BUTTON_ALRIGHT!");
       this.addCafe();
     });
     this.view.search(() => {
       this.search();
     });
-    this.view.settings(() => {
-      alert("CTR-setting-checked!");
+    this.view.settings((e) => {
+      alert("ASDASDASD");
+      e.preventDefault();
       this.settings();
     });
     this.view.addReview(() => {
@@ -80,6 +80,7 @@ export class UserCTR {
     var result;
 
     this.view.signup_form.addEventListener("submit", async (e) => {
+      console.log("PREVENT");
       e.preventDefault();
 
       let userData = new FormData(this.view.signup_form);
@@ -127,7 +128,7 @@ export class UserCTR {
   search = () => {
     var result;
 
-    this.view.search_form.addEventListener("click", async (e) => {
+    this.view.search_form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       let userData = new FormData(this.view.search_form);
@@ -151,7 +152,7 @@ export class UserCTR {
     var result;
     console.log("clicked settings");
 
-    this.view.settings_form.addEventListener("click", async (e) => {
+    this.view.settings_form.addEventListener("submit", async (e) => {
       e.preventDefault();
       console.log("setting-form-set-ready");
       let userData = new FormData(this.view.settings_form);
@@ -176,7 +177,7 @@ export class UserCTR {
       let service = new UserService();
       result = await service.settings(userData);
 
-      if (result === undefined || result === "undefined") {
+      if (result === undefined || result === "undefined" || result === "") {
         console.log("CTR-return-error:" + result);
         this.view.makeSettings(); //to make the page user id and user image should be needed
       } else {
@@ -190,7 +191,7 @@ export class UserCTR {
   addReview = () => {
     var result;
 
-    this.view.review_form.addEventListener("click", async (e) => {
+    this.view.review_form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
       let userData = new FormData(this.view.review_form);

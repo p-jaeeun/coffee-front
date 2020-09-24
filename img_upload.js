@@ -145,3 +145,15 @@ function uploadBackground() {
     [].forEach.call(fileList, readAndPreview);
   }
 }
+
+function preventReload(e) {
+  if (
+    (e.ctrlKey == true && (e.keyCode == 78 || e.keyCode == 82)) ||
+    e.keyCode == 116
+  ) {
+    e.keyCode = 0;
+    e.cancelBubble = true;
+    e.returnValue = false;
+  }
+}
+document.onkeydown = doNotReload;

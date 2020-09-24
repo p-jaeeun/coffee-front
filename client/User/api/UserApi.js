@@ -102,11 +102,11 @@ export class UserApi {
     console.log("ajax-search");
     let result;
 
-    let str = JSON.stringify(userData);
+    // let str = JSON.stringify(userData);
     try {
       result = await this.ajax.sendAjaxPostFile(
         "http://192.168.1.131:8080/hiddenc/login/search/result",
-        str
+        userData
       );
     } catch (e) {
       console.log("error:" + e);
