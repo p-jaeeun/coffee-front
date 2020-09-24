@@ -96,7 +96,7 @@ export class AdminView {
               <a href="javascript:void(0)return"><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
               </li>
               <li>
-              <a href=""><i class="fa fa-user-plus"></i> Add New Hidden Cafe by Users</a>
+              <a href="javascript:void(0)"><i class="fa fa-user-plus"></i> Revise Hidden Cafe</a>
               </li>
               </ul>
             </div>
@@ -107,7 +107,8 @@ export class AdminView {
   }
 
   makeCafeList() {
-    let saved_cafe_list = `<section>
+    let saved_cafe_list = `
+    <section>
     <div class="block gray">
       <div class="container">
         <div class="row justify-content-center">
@@ -115,12 +116,21 @@ export class AdminView {
             <div class="pbox">
               <div class="addlistingform">
                 <div class="add_cafe_title">카페 등록 현황</div>
-                  <div class="row js-admin-cafelist">
-                  
-                    </div>
-                  </div>
-                  </div>
-                </div>
+                   <div class="row js-admin-cafelist">
+                      <div class="col-lg-6">
+                        <div class="fieldformy">
+                         <div>카페명</div>
+                       </div>
+                      </div>
+                      <div class="col-lg-6">
+                       <div class="fieldformy">
+                         <div> 주소 </div>
+                       </div>
+                      </div>
+                    
+                     </div>
+                   </div>
+                 </div>
               </div>
             </div>
           </div>
@@ -132,20 +142,21 @@ export class AdminView {
   }
 
   makeCafeListItem(cafe_name, cafe_location) {
-    let item = `<div class="col-lg-6">
-    <div class="fieldformy">
-      <span>카페 이름 </span>
-      <div></div>
+    let item = `
+    <div class="col-lg-6">
+      <div class="fieldformy">
+        <span>${cafe_name} </span>
+      </div>
     </div>
-  </div>
-  <div class="col-lg-6">
-    <div class="fieldformy">
-      <span>카페 주소 </span>
-      <div></div>`;
+    <div class="col-lg-6">
+      <div class="fieldformy">
+        <span>${cafe_location} </span>
+      </div>
+    </div>`;
     return item;
   }
 
-  makeMemberList(user_id, user_name, user_caffeine, is_blocked_user) {
+  makeMemberList() {
     let member_list = `
     <section>
     <div class="block gray">
@@ -155,26 +166,23 @@ export class AdminView {
             <div class="pbox">
               <div class="addlistingform">
                 <div class="add_cafe_title">회원 관리</div>
-                  <div class="row">
+                  <div class="row js-admin-memberlist">
                   <div class="col-lg-4">
                     <div class="fieldformy">
-                      <span> ID </span>
-                      <div></div>
+                    <div> ID</div>
                     </div>
                   </div>
                   <div class="col-lg-4">
-                    <div class="fieldformy">
-                      <span> 이름 </span>
-                      <div></div>
-                    </div>
+                   <div class="fieldformy">
+                     <div>이름</div>
+                   </div>
                   </div>
                   <div class="col-lg-4">
                     <div class="fieldformy">
-                      <span>카페인 지수 </span>
-                      <div></div>
-                    </div>
-                  </div>
-                  </div>
+                     <div>카페인 지수</div>
+                   </div> 
+                  </div>    
+                </div>
                 </div>
               </div>
             </div>
@@ -185,6 +193,25 @@ export class AdminView {
   </section>
     `;
     return member_list;
+  }
+  makeMemberItem(user_id, user_name, user_caffeine) {
+    let member_item = `
+    <div class="col-lg-4">
+      <div class="fieldformy">
+        <span>${user_id}</span>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="fieldformy">
+       <span>${user_name}</span>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="fieldformy">
+       <span>${user_caffeine}</span>
+      </div>
+    </div> `;
+    return member_item;
   }
   makeReviseCafeForm() {
     let admin_revisecafe = `
@@ -294,6 +321,11 @@ export class AdminView {
     return admin_revisecafe;
   }
 
+  makeReviseCafeList(cafe_name) {
+    let revise_cafe_name = `
+    <option value="">${cafe_name}</option>`;
+    return revise_cafe_name;
+  }
   makeAddCafeForm() {
     let admin_addcafe = `
     <div class="block gray">

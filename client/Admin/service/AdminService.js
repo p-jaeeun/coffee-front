@@ -26,6 +26,41 @@ export class AdminService {
     }
   }
 
+  async reviseCafe(cafeData) {
+    let result;
+
+    try {
+      result = await this.api.reviseCafe(cafeData);
+    } catch (e) {
+      console.log("service-error: " + e);
+    }
+
+    if (result === undefined || result === "undefined") {
+      console.log("Service-result-undefined:" + result);
+      this.view.makeAddcafePage();
+      return;
+    } else {
+      console.log("Service-result:" + result);
+      alert("신규 카페가 성공적으로 등록되었습니다.");
+      return result;
+    }
+  }
+  async search(adminData) {
+    let result;
+    try {
+      result = await this.api.search(adminData);
+    } catch (e) {
+      console.log("service-error: " + e);
+    }
+
+    if (result === undefined || result === "undefined") {
+      console.log("Service-result-undefined: " + result);
+      return;
+    } else {
+      console.log("Service-result:" + result);
+      return result;
+    }
+  }
   // view
   async callMain() {
     let result;
@@ -58,9 +93,7 @@ export class AdminService {
     } catch (e) {
       console.log("error:" + e);
     }
-    // for (let i = 0; i < result.length; i++) {
-    //   result[i].cafe_name = result[0].cafe_name;
-    // }
+
     return result; //저장한 정보를 컨트롤러의 콜백함수에서 받아서 뷰가 가진 메소드의 매개변수로 넘긴다.
   } //DTO 활용해야할 것 같은데..
 
@@ -68,20 +101,9 @@ export class AdminService {
     let result;
 
     try {
-      result = await this.api.callMemberPage();
+      result = await this.api.callMemberList();
     } catch {
       console.log("Service-error: " + e);
-    }
-    return result;
-  }
-
-  async callAddCafe() {
-    let result;
-
-    try {
-      result = await this.api.callAddCafe();
-    } catch (e) {
-      console.log("error: " + e);
     }
     return result;
   }
