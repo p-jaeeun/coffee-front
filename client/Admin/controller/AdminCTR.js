@@ -6,6 +6,7 @@ export class AdminCTR {
     this.view = view;
     this.service = service;
 
+    this.view.makeCafeListPage();
     this.view.addCafe(() => {
       this.addCafe();
     });
@@ -111,6 +112,7 @@ export class AdminCTR {
   };
   // event delegation
   headerMenu = async (e) => {
+    e.preventDefault();
     console.log("headermenu-controller");
 
     if (
@@ -163,6 +165,7 @@ export class AdminCTR {
   };
 
   adminMenu = async (e) => {
+    e.preventDefault();
     console.log("admin menu - CTR");
 
     if (e.target.tagName === "A" || e.target.tagName === "I") {
