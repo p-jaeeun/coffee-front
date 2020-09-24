@@ -35,6 +35,7 @@ export class AdminApi {
   }
 
   async callCafeList() {
+    console.log("ajax-adminpage-cafeList");
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
@@ -46,25 +47,12 @@ export class AdminApi {
     return result;
   }
 
-  async callMemberPage() {
+  async callMemberList() {
     console.log("ajax-adminpage-member");
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
         "http://192.168.1.131:8080/hiddenc/admin/user"
-      );
-    } catch (e) {
-      console.log("error:" + e);
-    }
-    return result;
-  }
-
-  async callAddCafe() {
-    console.log("ajax-adminpage-addcafe");
-    let result;
-    try {
-      result = await this.ajax.sendAjaxPostFile(
-        "http://192.168.1.131:8080/hiddenc/admin/addcafe"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -85,7 +73,7 @@ export class AdminApi {
     return result;
   }
 
-  // post
+  // 데이터
   async addCafe(cafeData) {
     console.log("ajax-admin-addcafe");
 
@@ -98,6 +86,38 @@ export class AdminApi {
     } catch (e) {
       console.log("error:" + e);
     }
+    return result;
+  }
+
+  async reviseCafe(cafeData) {
+    console.log("ajax-admin-addcafe-byuser");
+
+    let result;
+    try {
+      result = await this.ajax.sendAjaxPostFile(
+        "http://192.168.1.131:8080/hiddenc/addcafe/byuser",
+        cafeData
+      );
+    } catch (e) {
+      console.log("error:" + e);
+    }
+    return result;
+  }
+
+  async search(adminData) {
+    console.log("ajax-search");
+    let result;
+
+    let str = JSON.stringify(adminData);
+    try {
+      result = await this.ajax.sendAjaxPostFile(
+        "http://192.168.1.131:8080/hiddenc/login/search/result",
+        str
+      );
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
     return result;
   }
 }
