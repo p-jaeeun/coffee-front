@@ -6,7 +6,7 @@ export class AdminCTR {
     this.view = view;
     this.service = service;
 
-    this.view.makeCafeListPage();
+    this.view.makeMemberPage();
     this.view.addCafe(() => {
       this.addCafe();
     });
@@ -33,8 +33,9 @@ export class AdminCTR {
   }
 
   addCafe = () => {
+    console.log("CTRaddCafe");
     var result;
-
+    console.log(this.view.addcafe_form);
     this.view.addcafe_form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
@@ -204,6 +205,25 @@ export class AdminCTR {
       } else if (e.target.innerHTML.includes("Add New Hidden Cafe")) {
         console.log("clicked Add Cafe");
         this.view.makeAddCafePage();
+        this.view.fe((e) => {
+          e.preventDefault();
+          let cafeData = new FormData(this.view.addcafe_form);
+          for (let value of cafeData.values()) {
+            console.log("value: " + value);
+          }
+
+          let service = new AdminService();
+          //result = await service.addCafe(cafeData);
+
+          if (result === undefined || result === "undefined") {
+            console.log("CTR-return-error:" + result);
+            this.view.makeAddCafePage();
+          } else {
+            console.log("컨트롤러-서비스 결과값:" + result);
+            this.view.makeAddCafePage();
+            alert("입력하신 카페가 성공적으로 등록되었습니다.");
+          }
+        });
       } else if (e.target.innerHTML.includes("Revise Hidden Cafe")) {
         console.log("clicked Revise Cafe");
         let result;

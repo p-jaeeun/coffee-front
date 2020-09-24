@@ -34,13 +34,13 @@ export class AdminView {
       <span class="closeresmenu"><i>x</i>Close</span>
       <ul class="js-admin-header-menu">
         <li>
-          <a href="">Home</a>
+          <a href="" class="disabled">Home</a>
         </li>
         <li class="accountbtn">
-          <a href="">Search</a>
+          <a href="" class="disabled">Search</a>
         </li>
         <li>
-          <a href="">Admin</a>
+          <a href="" class="disabled">Admin</a>
         </li>
       </ul>
     </div>
@@ -56,7 +56,7 @@ export class AdminView {
       </div>
       <div class="userdropsec">
         <span
-          >{admin_id}</span
+          >${admin_id}</span
           ></span>
       </div>
       <a href="" class="bellicon"
@@ -64,13 +64,13 @@ export class AdminView {
       <nav>
         <ul class="js-admin-header-menu">
           <li>
-          <a href="" >Home</a>
+          <a href="" class="disabled">Home</a>
           </li>
           <li class="accountbtn" style="float: left" >
-          <a href="" >Search</a>
+          <a href="" class="disabled">Search</a>
           </li>
           <li>
-          <a href="" >Admin</a>
+          <a href="" class="disabled" >Admin</a>
           </li>
         </ul>
       </nav>
@@ -93,10 +93,10 @@ export class AdminView {
               <a href=""><i class="fa fa-address-card-o" aria-hidden="true"></i>Member Management</a>
               </li>
               <li>
-              <a href="javascript:void(0)return"><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
+              <a href=""><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
               </li>
               <li>
-              <a href="javascript:void(0)"><i class="fa fa-user-plus"></i> Revise Hidden Cafe</a>
+              <a href=""><i class="fa fa-user-plus"></i> Revise Hidden Cafe</a>
               </li>
               </ul>
             </div>

@@ -47,10 +47,18 @@ export class AdminComponent {
 
   addCafe(callback) {
     console.log("add-cafe-listener");
-
     window.addEventListener("load", () => {
+      console.log(callback);
       this.addcafe_btn.addEventListener("click", callback);
     });
+  }
+
+  fe(callback) {
+    console.log("add-cafe-listener");
+    console.log(callback);
+    document
+      .getElementsByClassName("js-admin-addcafe-btn")[0]
+      .addEventListener("click", callback);
   }
 
   reviseCafe(callback) {
@@ -80,6 +88,7 @@ export class AdminComponent {
     console.log("header_menu-delegation");
 
     window.addEventListener("load", () => {
+      console.log(callback);
       let r_header = document.getElementsByClassName("js-admin-header-menu")[0];
       let header = document.getElementsByClassName("js-admin-header-menu")[1];
 
@@ -146,9 +155,9 @@ export class AdminComponent {
       dom.innerHTML += cafe_item;
       dom.innerHTML += cafe_item; //데이터 꺼내서 매개변수에 넣어주는 로직 추후 구현해야함
 
-      for (let i = 0, max = result.length; i < max; i++) {
-        dom += cafe_item(result[i].cafe_name);
-      }
+      // for (let i = 0, max = result.length; i < max; i++) {
+      //   dom += cafe_item(result[i].cafe_name);
+      // }
     });
   }
 
