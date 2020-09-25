@@ -57,6 +57,7 @@ export class AdminComponent {
 
     document
       .getElementsByClassName("js-admin-revisecafe-btn")[0]
+
       .addEventListener("click", callback);
   }
 
@@ -80,27 +81,20 @@ export class AdminComponent {
   headerMenu(callback) {
     console.log("header_menu-delegation");
 
-    window.addEventListener("load", () => {
-      // console.log(callback);
-      let r_header = document.getElementsByClassName("js-admin-header-menu")[0];
-      let header = document.getElementsByClassName("js-admin-header-menu")[1];
 
-      r_header.addEventListener("click", callback);
-      header.addEventListener("click", callback);
-    });
+    let r_header = document.getElementsByClassName("js-admin-header-menu")[0];
+    let header = document.getElementsByClassName("js-admin-header-menu")[1];
+
+    r_header.addEventListener("click", callback);
+    header.addEventListener("click", callback);
   }
 
   adminMenu(callback) {
     console.log("admin_menu-delegation");
 
-    window.addEventListener("load", () => {
-      let admin_menu = document.getElementsByClassName("js-admin-menu")[0];
-      admin_menu.addEventListener("click", callback);
-    });
+    let admin_menu = document.getElementsByClassName("js-admin-menu")[0];
+    admin_menu.addEventListener("click", callback);
   }
-  // previewCafeImg(callback){
-  //   this.thumnail.addEventListener("load",callback);  // 이미지 미리보기?
-  // }
 
   // main page(home)
 
@@ -115,7 +109,7 @@ export class AdminComponent {
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
 
-    window.window.document.body.setAttribute("class", "full-height");
+    window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
   }
