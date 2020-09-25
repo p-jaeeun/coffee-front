@@ -45,17 +45,16 @@ export class AdminComponent {
 
   // Listener
 
+  // addCafe(callback) {
+  //   console.log("add-cafe-listener");
+  //   window.addEventListener("load", () => {
+  //     console.log(callback);
+  //     this.addcafe_btn.addEventListener("click", callback);
+  //   });
+  // }
+
   addCafe(callback) {
     console.log("add-cafe-listener");
-    window.addEventListener("load", () => {
-      console.log(callback);
-      this.addcafe_btn.addEventListener("click", callback);
-    });
-  }
-
-  fe(callback) {
-    console.log("add-cafe-listener");
-    console.log(callback);
     document
       .getElementsByClassName("js-admin-addcafe-btn")[0]
       .addEventListener("click", callback);
@@ -63,51 +62,42 @@ export class AdminComponent {
 
   reviseCafe(callback) {
     console.log("revise-cafe-listener");
-    window.addEventListener("load", () => {
-      this.revisecafe_update_btn.addEventListener("click", callback);
-    });
+    document
+      .getElementsByClassName("js-admin-revisecafe-load-btn")[0]
+      .addEventListener("click", callback);
   }
 
   loadCafeList(callback) {
     console.log("load list of cafe listner");
-
-    window.addEventListener("load", () => {
-      this.revisecafe_load_btn.addEventListener("click", callback);
-    });
+    document
+      .getElementsByClassName("js-admin-revisecafe-load-btn")[0]
+      .addEventListener("click", callback);
   }
+
   search(callback) {
     console.log("search-listener");
-
-    window.addEventListener("load", () => {
-      this.search_btn.addEventListener("click", callback);
-    });
+    document
+      .getElementsByClassName("js-search-btn")[0]
+      .addEventListener("click", callback);
   }
 
   // event delegation
   headerMenu(callback) {
     console.log("header_menu-delegation");
 
-    window.addEventListener("load", () => {
-      console.log(callback);
-      let r_header = document.getElementsByClassName("js-admin-header-menu")[0];
-      let header = document.getElementsByClassName("js-admin-header-menu")[1];
+    let r_header = document.getElementsByClassName("js-admin-header-menu")[0];
+    let header = document.getElementsByClassName("js-admin-header-menu")[1];
 
-      r_header.addEventListener("click", callback);
-      header.addEventListener("click", callback);
-    });
+    r_header.addEventListener("click", callback);
+    header.addEventListener("click", callback);
   }
 
   adminMenu(callback) {
     console.log("admin_menu-delegation");
 
-    window.addEventListener("load", () => {
-      let admin_menu = document.getElementsByClassName("js-admin-menu")[0];
-      admin_menu.addEventListener("click", callback);
-    });
+    let admin_menu = document.getElementsByClassName("js-admin-menu")[0];
+    admin_menu.addEventListener("click", callback);
   }
-  // previewCafeImg(callback){
-  //   this.thumnail.addEventListener("load",callback);  // 이미지 미리보기?
-  // }
 
   // main page(home)
 
@@ -122,7 +112,7 @@ export class AdminComponent {
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
 
-    window.window.document.body.setAttribute("class", "full-height");
+    window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
   }
