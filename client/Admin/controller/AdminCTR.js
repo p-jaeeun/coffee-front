@@ -6,22 +6,23 @@ export class AdminCTR {
     this.view = view;
     this.service = service;
 
-    this.view.makeMemberPage();
-    this.view.addCafe(() => {
-      this.addCafe();
-    });
+    this.view.makeReviseCafePage();
+    // this.view.addCafe(() => {
+    //   this.addCafe();
+    // });
 
-    this.view.reviseCafe(() => {
-      this.reviseCafe();
-    });
+    // this.view.reviseCafe(() => {
+    //   this.reviseCafe();
+    // });
 
-    this.view.loadCafeList(() => {
-      this.loadCafeList();
-    });
+    // this.view.loadCafeList(() => {
+    //   this.loadCafeList();
+    // });
 
-    this.view.search(() => {
-      this.search();
-    });
+    // this.view.search(() => {
+    //   this.search();
+    // });
+
     // event delegation
     this.view.headerMenu((e) => {
       this.headerMenu(e);
@@ -31,57 +32,6 @@ export class AdminCTR {
       this.adminMenu(e);
     });
   }
-
-  addCafe = () => {
-    console.log("CTRaddCafe");
-    var result;
-    console.log(this.view.addcafe_form);
-    this.view.addcafe_form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      let cafeData = new FormData(this.view.addcafe_form);
-      for (let value of cafeData.values()) {
-        console.log("value: " + value);
-      }
-
-      let service = new AdminService();
-      result = await service.addCafe(cafeData);
-
-      if (result === undefined || result === "undefined") {
-        console.log("CTR-return-error:" + result);
-        this.view.makeAddCafePage();
-      } else {
-        console.log("컨트롤러-서비스 결과값:" + result);
-        this.view.makeAddCafePage();
-        alert("입력하신 카페가 성공적으로 등록되었습니다.");
-      }
-    });
-  };
-
-  reviseCafe = () => {
-    var result;
-
-    this.view.revisecafe_form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      let cafeData = new FormData(this.view.revisecafe_form);
-      for (let value of cafeData.values()) {
-        console.log("value: " + value);
-      }
-
-      let service = new AdminService();
-      result = await service.reviseCafe(cafeData);
-
-      if (result === undefined || result === "undefined") {
-        console.log("CTR-return-error:" + result);
-        this.view.makeReviseCafePage();
-      } else {
-        console.log("컨트롤러-서비스 결과값:" + result);
-        this.view.makeReviseCafePage();
-        alert("입력하신 카페가 성공적으로 수정되었습니다.");
-      }
-    });
-  };
 
   loadCafeList = () => {
     var result;
@@ -205,15 +155,17 @@ export class AdminCTR {
       } else if (e.target.innerHTML.includes("Add New Hidden Cafe")) {
         console.log("clicked Add Cafe");
         this.view.makeAddCafePage();
-        this.view.fe((e) => {
+        this.view.addCafe(async (e) => {
           e.preventDefault();
-          let cafeData = new FormData(this.view.addcafe_form);
+          let cafeData = new FormData(
+            document.getElementById("js-admin-addcafe-form")
+          );
           for (let value of cafeData.values()) {
             console.log("value: " + value);
           }
 
           let service = new AdminService();
-          //result = await service.addCafe(cafeData);
+          result = await service.addCafe(cafeData);
 
           if (result === undefined || result === "undefined") {
             console.log("CTR-return-error:" + result);
@@ -226,7 +178,7 @@ export class AdminCTR {
         });
       } else if (e.target.innerHTML.includes("Revise Hidden Cafe")) {
         console.log("clicked Revise Cafe");
-        let result;
+        var result;
 
         try {
           result = await this.service.callReviseCafe();
@@ -237,8 +189,30 @@ export class AdminCTR {
           console.log("CTR-result is undefined" + result);
           return;
         } else {
-          this.view.makeReviseCafePage(result);
           console.log("user list:" + result);
+          this.view.makeReviseCafePage(result);
+          this.view.reviseCafe(async (e) => {
+            e.preventDefault();
+
+            let cafeData = new FormData(
+              document.getElementById("js-admin-revisecafe-form")
+            );
+            for (let value of cafeData.values()) {
+              console.log("value: " + value);
+            }
+
+            let service = new AdminService();
+            result = service.reviseCafe(cafeData);
+
+            if (result === undefined || result === "undefined") {
+              console.log("CTR-return-error:" + result);
+              this.view.makeReviseCafePage();
+            } else {
+              console.log("컨트롤러-서비스 결과값:" + result);
+              this.view.makeReviseCafePage();
+              alert("입력하신 카페가 성공적으로 수정되었습니다.");
+            }
+          });
         }
       }
     } else {
