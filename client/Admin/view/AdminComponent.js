@@ -45,14 +45,6 @@ export class AdminComponent {
 
   // Listener
 
-  // addCafe(callback) {
-  //   console.log("add-cafe-listener");
-  //   window.addEventListener("load", () => {
-  //     console.log(callback);
-  //     this.addcafe_btn.addEventListener("click", callback);
-  //   });
-  // }
-
   addCafe(callback) {
     console.log("add-cafe-listener");
     document
@@ -62,13 +54,16 @@ export class AdminComponent {
 
   reviseCafe(callback) {
     console.log("revise-cafe-listener");
+
     document
-      .getElementsByClassName("js-admin-revisecafe-load-btn")[0]
+      .getElementsByClassName("js-admin-revisecafe-btn")[0]
+
       .addEventListener("click", callback);
   }
 
   loadCafeList(callback) {
     console.log("load list of cafe listner");
+
     document
       .getElementsByClassName("js-admin-revisecafe-load-btn")[0]
       .addEventListener("click", callback);
@@ -76,6 +71,7 @@ export class AdminComponent {
 
   search(callback) {
     console.log("search-listener");
+
     document
       .getElementsByClassName("js-search-btn")[0]
       .addEventListener("click", callback);
@@ -84,6 +80,7 @@ export class AdminComponent {
   // event delegation
   headerMenu(callback) {
     console.log("header_menu-delegation");
+
 
     let r_header = document.getElementsByClassName("js-admin-header-menu")[0];
     let header = document.getElementsByClassName("js-admin-header-menu")[1];
