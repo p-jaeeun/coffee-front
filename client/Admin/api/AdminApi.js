@@ -107,12 +107,10 @@ export class AdminApi {
   async search(adminData) {
     console.log("ajax-search");
     let result;
-
-    let str = JSON.stringify(adminData);
     try {
       result = await this.ajax.sendAjaxPostFile(
         "http://192.168.1.131:8080/hiddenc/login/search/result",
-        str
+        adminData
       );
     } catch (e) {
       console.log("error:" + e);

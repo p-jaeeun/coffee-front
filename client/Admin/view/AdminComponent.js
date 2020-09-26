@@ -57,7 +57,6 @@ export class AdminComponent {
 
     document
       .getElementsByClassName("js-admin-revisecafe-btn")[0]
-
       .addEventListener("click", callback);
   }
 
@@ -81,7 +80,6 @@ export class AdminComponent {
   headerMenu(callback) {
     console.log("header_menu-delegation");
 
-
     let r_header = document.getElementsByClassName("js-admin-header-menu")[0];
     let header = document.getElementsByClassName("js-admin-header-menu")[1];
 
@@ -94,6 +92,20 @@ export class AdminComponent {
 
     let admin_menu = document.getElementsByClassName("js-admin-menu")[0];
     admin_menu.addEventListener("click", callback);
+  }
+
+  caffeineList(callback) {
+    console.log("caffeine-list");
+
+    let caffeine_list = document.getElementsByClassName("js-caffeine-list")[0];
+    caffeine_list.addEventListener("click", callback);
+  }
+
+  cafeList(callback) {
+    console.log("cafe-list");
+
+    let cafe_list = document.getElementsByClassName("js-cafe-list")[0];
+    cafe_list.addEventListener("click", callback);
   }
 
   // main page(home)
@@ -126,25 +138,24 @@ export class AdminComponent {
     let cafe_item = admin_view.makeCafeListItem();
     let footer = common_view.makeFooter();
     let search_pop = common_view.makeSearchPop();
-
+    console.log("!@@E@#REJFKDHJHFE" + result);
     // 서버에서 스크롤 안되는 문제 방지
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
 
     window.document.body.innerHTML =
       header + admin_menu + saved_cafe_list + footer + search_pop;
-
     window.addEventListener("load", () => {
       let dom = document.getElementsByClassName("js-admin-cafelist")[0];
       console.log("dom" + dom);
-      console.log(result);
+      // console.log(result[i].cafe_name);
 
+      // for (let i = 0; i < result.length; i++) {
+      //   dom += cafe_item(result[i].cafe_name);
+      //   // dom += cafe_item(result[i].cafe_locaion);
+      // }
       dom.innerHTML += cafe_item;
       dom.innerHTML += cafe_item; //데이터 꺼내서 매개변수에 넣어주는 로직 추후 구현해야함
-
-      // for (let i = 0, max = result.length; i < max; i++) {
-      //   dom += cafe_item(result[i].cafe_name);
-      // }
     });
   }
 
@@ -245,6 +256,14 @@ export class AdminComponent {
     window.document.body.setAttribute("id", "scrollup");
 
     window.document.body.innerHTML = header + search_result + search_pop;
+    window.addEventListener("load", () => {
+      let dom = document.getElementsByClassName("js-search-result-list")[0];
+      console.log(dom);
+      dom.innerHTML += item;
+      for (let i = 0, max = result.length; i < max; i++) {
+        dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+      }
+    });
   }
 
   makeCafeInfoPage(result) {
