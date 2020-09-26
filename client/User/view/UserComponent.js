@@ -552,6 +552,7 @@ export class UserComponent {
     script12.setAttribute = ("defer", "defer");
     script13.setAttribute = ("defer", "defer");
     script14.setAttribute = ("defer", "defer");
+
     //append
     document.body.append(script1);
     document.body.append(script2);
