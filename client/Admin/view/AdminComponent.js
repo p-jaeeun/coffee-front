@@ -111,6 +111,7 @@ export class AdminComponent {
   // main page(home)
 
   makeMainPage(result) {
+    this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
     let admin_view = new AdminView();
@@ -129,6 +130,25 @@ export class AdminComponent {
   // admin page
 
   makeCafeListPage(result) {
+    // [
+    //   {
+    //       "cafe_id": 1,
+    //       "cafe_name": "재카페",
+    //       "cafe_location": "555/111"
+    //   },
+    //   {
+    //       "cafe_id": 2,
+    //       "cafe_name": "은카페",
+    //       "cafe_location": "555/111"
+    //   },
+    //   {
+    //       "cafe_id": 3,
+    //       "cafe_name": "재은카페",
+    //       "cafe_location": "555/111"
+    //   }
+    // ]
+    console.log("asdsad", result);
+    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -160,6 +180,33 @@ export class AdminComponent {
   }
 
   makeMemberPage(result) {
+    //   [
+    //     {
+    //         "user_id": "host",
+    //         "user_name": "관리자",
+    //         "user_caffeine": 0,
+    //         "is_blocked_user": false,
+    //         "user_Bg_img": "어드민.jpg",
+    //         "user_Circle_img": null
+    //     },
+    //     {
+    //         "user_id": "ck123",
+    //         "user_name": "청하",
+    //         "user_caffeine": 0,
+    //         "is_blocked_user": false,
+    //         "user_Bg_img": null,
+    //         "user_Circle_img": null
+    //     },
+    //     {
+    //         "user_id": "hello",
+    //         "user_name": "김시험",
+    //         "user_caffeine": 0,
+    //         "is_blocked_user": false,
+    //         "user_Bg_img": null,
+    //         "user_Circle_img": null
+    //     }
+    // ]
+    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -189,6 +236,23 @@ export class AdminComponent {
   }
 
   makeAddCafePage() {
+    // 내가 줘야하는 데이터
+    //   {
+    //     "cafe_id": 0,
+    //     "cafe_name": "재은카페",
+    //     "cafe_location": "555/111",
+    //     "cafe_menu": "아이스아메리카노",
+    //     "cafe_information": "예쁩니다",
+    //     "is_enable_bean_choice": true,
+    //     "cafe_mood": 3,
+    //     "is_enable_buy_bean": true,
+    //     "is_enable_handdrip": true,
+    //     "is_checked": true,
+    //     "user_id": 1,
+    //     "cafe_rate": 0.0,
+    //     "cafe_sns": "www.instagram.com/jaewoo"
+    // }
+    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -207,6 +271,54 @@ export class AdminComponent {
   }
 
   makeReviseCafePage(result) {
+    //   {
+    //     "byuser": [
+    //         {
+    //             "user_id": "jam1",
+    //             "user_image": null,
+    //             "cafe_id": 8,
+    //             "cafe_name": "zzzzzzzz",
+    //             "cafe_location": "555/111",
+    //             "cafe_menu": "아이스아메리카노",
+    //             "cafe_information": "예쁩니다",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 3,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": true,
+    //             "is_checked": false,
+    //             "cafe_rate": 0.0
+    //         },
+    //         {
+    //             "user_id": "jam1",
+    //             "user_image": null,
+    //             "cafe_id": 9,
+    //             "cafe_name": "zzzzzzzz",
+    //             "cafe_location": "555/111",
+    //             "cafe_menu": "아이스아메리카노",
+    //             "cafe_information": "예쁩니다",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 3,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": true,
+    //             "is_checked": false,
+    //             "cafe_rate": 0.0
+    //         },
+    //
+    //     ],
+    //     "cafeImgList": [
+    //         {
+    //             "cafe_id": 8,
+    //             "cafe_image": "resources/cafeimage/61968d9a-a1e1-4289-bb1f-779a54fe09d0_jj.jpeg",
+    //             "is_checked": null
+    //         },
+    //         {
+    //             "cafe_id": 9,
+    //             "cafe_image": "resources/cafeimage/56297143-efb2-418d-920c-7938a8604dcd_gg.jpg",
+    //             "is_checked": null
+    //         }
+    //     ]
+    // }
+    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -244,6 +356,7 @@ export class AdminComponent {
   // search & cafeinfo page
 
   makeSearchResultPage(result) {
+    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -267,6 +380,7 @@ export class AdminComponent {
   }
 
   makeCafeInfoPage(result) {
+    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -280,5 +394,95 @@ export class AdminComponent {
     window.document.body.setAttribute("id", "scrollup");
 
     window.document.body.innerHTML = header + cafe_info + footer + search_pop;
+  }
+  addScript() {
+    let path = this.getContextPath();
+    //create
+    let script1 = document.createElement("script");
+    let script2 = document.createElement("script");
+    let script3 = document.createElement("script");
+    let script4 = document.createElement("script");
+    let script5 = document.createElement("script");
+    let script6 = document.createElement("script");
+    let script7 = document.createElement("script");
+    let script8 = document.createElement("script");
+    let script9 = document.createElement("script");
+    let script10 = document.createElement("script");
+    let script11 = document.createElement("script");
+    let script12 = document.createElement("script");
+    let script13 = document.createElement("script");
+    let script14 = document.createElement("script");
+
+    //set path
+    script1.src = `${path}/resources/js/jquery.min.js`;
+    script2.src = `${path}/resources/js/modernizr.js`;
+    script3.src = `${path}/resources/js/script.js`;
+    script4.src = `${path}/resources/js/bootstrap.min.js`;
+    script5.src = `${path}/resources/js/wow.min.js`;
+    script6.src = `${path}/resources/js/slick.min.js`;
+    script7.src = `${path}/resources/js/sumoselect.js`;
+    script8.src = `${path}/resources/js/isotop.js`;
+    script9.src = `${path}/resources/js/jquery.nicescroll.min.js`;
+    script10.src = `${path}/resources/js/map1.js`;
+    script11.src = `${path}/resources/js/jq.aminoSlider.js`;
+    script12.src =
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb";
+    script13.src = `${path}/resources/img_upload.js`;
+    script14.src = `${path}/resources/app.js`;
+
+    //type
+    script1.setAttribute = ("type", "text/javascript");
+    script2.setAttribute = ("type", "text/javascript");
+    script3.setAttribute = ("type", "text/javascript");
+    script4.setAttribute = ("type", "text/javascript");
+    script5.setAttribute = ("type", "text/javascript");
+    script6.setAttribute = ("type", "text/javascript");
+    script7.setAttribute = ("type", "text/javascript");
+    script8.setAttribute = ("type", "text/javascript");
+    script9.setAttribute = ("type", "text/javascript");
+    script10.setAttribute = ("type", "text/javascript");
+    script11.setAttribute = ("type", "text/javascript");
+    script12.setAttribute = ("type", "text/javascript");
+    script13.setAttribute = ("type", "text/javascript");
+    script14.setAttribute = ("type", "module");
+
+    script1.setAttribute = ("defer", "defer");
+    script2.setAttribute = ("defer", "defer");
+    script3.setAttribute = ("defer", "defer");
+    script4.setAttribute = ("defer", "defer");
+    script5.setAttribute = ("defer", "defer");
+    script6.setAttribute = ("defer", "defer");
+    script7.setAttribute = ("defer", "defer");
+    script8.setAttribute = ("defer", "defer");
+    script9.setAttribute = ("defer", "defer");
+    script10.setAttribute = ("defer", "defer");
+    script11.setAttribute = ("defer", "defer");
+    script12.setAttribute = ("defer", "defer");
+    script13.setAttribute = ("defer", "defer");
+    script14.setAttribute = ("defer", "defer");
+
+    //append
+    document.body.append(script1);
+    document.body.append(script2);
+    document.body.append(script3);
+    document.body.append(script4);
+    document.body.append(script5);
+    document.body.append(script6);
+    document.body.append(script7);
+    document.body.append(script8);
+    document.body.append(script9);
+    document.body.append(script10);
+    document.body.append(script11);
+    document.body.append(script12);
+    document.body.append(script13);
+    document.body.append(script14);
+  }
+
+  getContextPath() {
+    var hostIndex = location.href.indexOf(location.host) + location.host.length;
+    return location.href.substring(
+      hostIndex,
+      location.href.indexOf("/", hostIndex + 1)
+    );
   }
 }
