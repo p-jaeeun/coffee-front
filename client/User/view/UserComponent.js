@@ -63,23 +63,25 @@ export class UserComponent {
   //Listener
   signin(callback) {
     console.log("signin-listener");
-    window.addEventListener("load", () => {
-      this.signin_btn.addEventListener("click", callback);
-    });
+    document
+      .getElementsByClassName("js-signin-btn")[0]
+      .addEventListener("click", callback);
   }
 
   signup(callback) {
     console.log("signup-listener");
-    window.addEventListener("load", () => {
-      this.signup_btn.addEventListener("click", callback);
-    });
+
+    document
+      .getElementsByClassName("js-signup-btn")[0]
+      .addEventListener("click", callback);
   }
 
   addCafe(callback) {
     console.log("add-cafe-listener");
-    window.addEventListener("load", () => {
-      this.add_cafe_btn.addEventListener("click", callback);
-    });
+
+    document
+      .getElementsByClassName("js-user-addcafe-btn")[0]
+      .addEventListener("click", callback);
   }
 
   search(callback) {
@@ -111,13 +113,11 @@ export class UserComponent {
   headerMenu(callback) {
     console.log("header-delegation");
 
-    window.addEventListener("load", () => {
-      let r_header = document.getElementsByClassName("js-user-header-menu")[0];
-      let header = document.getElementsByClassName("js-user-header-menu")[1];
+    let r_header = document.getElementsByClassName("js-user-header-menu")[0];
+    let header = document.getElementsByClassName("js-user-header-menu")[1];
 
-      r_header.addEventListener("click", callback);
-      header.addEventListener("click", callback);
-    });
+    r_header.addEventListener("click", callback);
+    header.addEventListener("click", callback);
   }
 
   userMenu(callback) {
