@@ -6,7 +6,6 @@ import { AdminComponent } from "../../Admin/view/AdminComponent.js";
 import { AdminService } from "../../Admin/service/AdminService.js";
 import { AdminCTR } from "../../Admin/controller/AdminCTR.js";
 
-
 export class UserCTR {
   constructor(service, view) {
     this.service = service;
@@ -60,13 +59,14 @@ export class UserCTR {
       console.log("CTR-return-error:" + result);
     } else if (result[0] === "member") {
       console.log("컨트롤러-서비스 결과값:" + result);
+      this.view.addScript();
       this.view.makeLoginMain(result[1]);
       this.makeLoginMain();
     } else if (result[0] === "admin") {
       console.log("컨트롤러-서비스 결과값:" + result);
+      this.view.addScript();
       this.view.makeAdminMain(result[1]);
       this.makeAdminMain();
-
     }
   };
 
@@ -231,10 +231,9 @@ export class UserCTR {
         } else {
           console.log("컨트롤러-서비스 결과값:" + result);
           alert("성공적으로 변경되었습니다.");
-          
+
           this.view.makeSettings();
           this.makeSettings();
-
         }
       });
   }
@@ -245,7 +244,6 @@ export class UserCTR {
         e.preventDefault();
         var result;
         let service = new UserService();
-
 
         let userData = new FormData(this.view.search_form);
         for (let value of userData.values()) {
@@ -261,7 +259,6 @@ export class UserCTR {
           this.view.makeSearchResult(result);
 
           this.makeSearchResult();
-
         }
       });
   }
@@ -490,7 +487,6 @@ export class UserCTR {
           console.log("you clicked invalid area:" + e.target.tagName);
         }
       });
-
   }
 
   makeCaffeineListComp() {
@@ -618,7 +614,6 @@ export class UserCTR {
 
             view.makeSettings();
             this.makeSettings();
-
           }
         } else {
           console.log("you clicked invalid area: " + e.target.tagName);
