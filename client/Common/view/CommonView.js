@@ -380,9 +380,7 @@ export class CommonView {
                 </div>
                 <div class="search_bar">
                   <input type="text" name="cafe_name" placeholder="검색어를 입력하세요" required="required"/>
-                  
                     <button type="submit"  class="js-search-btn">SEARCH</button>
-                  
                 </div>
               </form>
             </div>

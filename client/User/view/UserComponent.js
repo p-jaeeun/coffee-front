@@ -71,7 +71,6 @@ export class UserComponent {
 
   signup(callback) {
     console.log("signup-listener");
-
     document
       .getElementsByClassName("js-signup-btn")[0]
       .addEventListener("click", callback);

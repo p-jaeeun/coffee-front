@@ -243,7 +243,7 @@ export class AdminView {
                 </div>
 
                 <div class="pbox">
-                  <form class="addlistingform" id="js-admin-revisecafe-form">
+                  <form enctype="multipart/form-data" class="addlistingform" id="js-admin-revisecafe-form">
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="fieldformy">
@@ -293,6 +293,7 @@ export class AdminView {
                           <input
                             type="file"
                             name="cafe_image"
+                            multiple="multiple"
                             class="js-admin-revisecafe-img"
                             accept="img/*"
                             onChange="uploadImgPreview()"
@@ -333,7 +334,7 @@ export class AdminView {
             <div class="row justify-content-center">
               <div class="col-lg-10">
                 <div class="pbox">
-                  <form class="addlistingform" id="js-admin-addcafe-form">
+                  <form enctype="multipart/form-data" class="addlistingform" id="js-admin-addcafe-form" >
                     <div class="add_cafe_title">카페 추가하기</div>
                     <div class="row">
                       <div class="col-lg-6">
@@ -396,6 +397,7 @@ export class AdminView {
                           <span>이미지를 업로드 하려면 클릭해주세요.</span>
                           <input
                             type="file"
+                            multiple="multiple"
                             name="cafe_image"
                             class="js-admin-addcafe-img"
                             accept="img/*"

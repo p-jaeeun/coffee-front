@@ -1,9 +1,11 @@
 import { UserService } from "../service/UserService.js";
 import { UserComponent } from "../view/UserComponent.js";
 import { UserView } from "../view/UserView.js";
+
 import { AdminComponent } from "../../Admin/view/AdminComponent.js";
 import { AdminService } from "../../Admin/service/AdminService.js";
 import { AdminCTR } from "../../Admin/controller/AdminCTR.js";
+
 
 export class UserCTR {
   constructor(service, view) {
@@ -64,6 +66,7 @@ export class UserCTR {
       console.log("컨트롤러-서비스 결과값:" + result);
       this.view.makeAdminMain(result[1]);
       this.makeAdminMain();
+
     }
   };
 
@@ -71,7 +74,6 @@ export class UserCTR {
     e.preventDefault();
     console.log("PREVENT");
     var result;
-
     let userData = new FormData(this.view.signup_form);
     for (let value of userData.values()) {
       console.log("value:" + value);
@@ -229,8 +231,10 @@ export class UserCTR {
         } else {
           console.log("컨트롤러-서비스 결과값:" + result);
           alert("성공적으로 변경되었습니다.");
+          
           this.view.makeSettings();
           this.makeSettings();
+
         }
       });
   }
@@ -241,6 +245,7 @@ export class UserCTR {
         e.preventDefault();
         var result;
         let service = new UserService();
+
 
         let userData = new FormData(this.view.search_form);
         for (let value of userData.values()) {
@@ -254,7 +259,9 @@ export class UserCTR {
         } else {
           console.log("컨트롤러-서비스 결과값:" + result);
           this.view.makeSearchResult(result);
+
           this.makeSearchResult();
+
         }
       });
   }
@@ -483,6 +490,7 @@ export class UserCTR {
           console.log("you clicked invalid area:" + e.target.tagName);
         }
       });
+
   }
 
   makeCaffeineListComp() {
@@ -610,6 +618,7 @@ export class UserCTR {
 
             view.makeSettings();
             this.makeSettings();
+
           }
         } else {
           console.log("you clicked invalid area: " + e.target.tagName);
@@ -631,7 +640,6 @@ export class UserCTR {
         for (let value of userData.values()) {
           console.log("value:" + value);
         }
-
         result = await service.addCafe(userData);
 
         if (result === undefined || result === "undefined") {
