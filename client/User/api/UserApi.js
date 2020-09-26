@@ -184,15 +184,12 @@ export class UserApi {
     return result;
   }
 
-  async callDashboard(userData) {
+  async callDashboard() {
     let result;
-    let obj = {};
-    obj.user_id = userData;
-    let str = JSON.stringify(obj);
+
     try {
-      result = await this.ajax.sendAjaxPost(
-        "http://192.168.1.131:8080/hiddenc/login/mypage",
-        str
+      result = await this.ajax.sendAjaxGet(
+        "http://192.168.1.131:8080/hiddenc/login/mypage"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -201,16 +198,12 @@ export class UserApi {
     return result;
   }
 
-  async callVisitedCafe(userData) {
+  async callVisitedCafe() {
     let result;
-    let obj = {};
-    obj.user_id = userData;
-    let str = JSON.stringify(obj);
 
     try {
-      result = await this.ajax.sendAjaxPost(
-        "http://192.168.1.131:8080/hiddenc/login/visited/cafeinfo",
-        str
+      result = await this.ajax.sendAjaxGet(
+        "http://192.168.1.131:8080/hiddenc/login/visited/"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -218,16 +211,12 @@ export class UserApi {
     return result;
   }
 
-  async callSubscription(userData) {
+  async callSubscription() {
     let result;
-    let obj = {};
-    obj.user_id = userData;
-    let str = JSON.stringify(obj);
 
     try {
-      result = await this.ajax.sendAjaxPost(
-        "http://192.168.1.131:8080/hiddenc/login/Likelist",
-        str
+      result = await this.ajax.sendAjaxGet(
+        "http://192.168.1.131:8080/hiddenc/login/Likelist"
       );
     } catch (e) {
       console.log("error:" + e);
