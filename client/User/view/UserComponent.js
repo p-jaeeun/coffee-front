@@ -63,87 +63,72 @@ export class UserComponent {
   //Listener
   signin(callback) {
     console.log("signin-listener");
-    window.addEventListener("load", () => {
-      this.signin_btn.addEventListener("click", callback);
-    });
+
+    document
+      .getElementsByClassName("js-signin-btn")[0]
+      .addEventListener("click", callback);
   }
 
   signup(callback) {
     console.log("signup-listener");
-    window.addEventListener("load", () => {
-      this.signup_btn.addEventListener("click", callback);
-    });
-  }
 
+    document
+      .getElementsByClassName("js-signup-btn")[0]
+      .addEventListener("click", callback);
+  }
   addCafe(callback) {
-    console.log("add-cafe-listener");
-    window.addEventListener("load", () => {
-      this.add_cafe_btn.addEventListener("click", callback);
-    });
+    document
+      .getElementsByClassName("js-user-addcafe-btn")[0]
+      .addEventListener("click", callback);
   }
 
   search(callback) {
-    console.log("search-listener");
-    window.addEventListener("load", () => {
-      this.search_btn.addEventListener("click", callback);
-    });
+    document
+      .getElementsByClassName("js-search-btn")[0]
+      .addEventListener("click", callback);
   }
 
   settings(callback) {
-    console.log("settings-listener");
-    window.addEventListener("load", () => {
-      this.settings_btn.addEventListener("click", (e) => {
-        alert("READ!");
-        e.preventDefault();
-        callback;
-      });
-    });
+    document
+      .getElementsByClassName("js-user-pwchange-btn")[0]
+      .addEventListener("click", callback);
   }
 
   addReview(callback) {
-    console.log("addReview-listener");
-    window.addEventListener("load", () => {
-      this.cafe_review_btn.addEventListener("click", callback);
-    });
+    document
+      .getElementsByClassName("js-cafe-review-btn")[0]
+      .addEventListener("click", callback);
   }
 
-  //evnet delegation
   headerMenu(callback) {
     console.log("header-delegation");
 
-    window.addEventListener("load", () => {
-      let r_header = document.getElementsByClassName("js-user-header-menu")[0];
-      let header = document.getElementsByClassName("js-user-header-menu")[1];
+    let r_header = document.getElementsByClassName("js-user-header-menu")[0];
+    let header = document.getElementsByClassName("js-user-header-menu")[1];
 
-      r_header.addEventListener("click", callback);
-      header.addEventListener("click", callback);
-    });
+    r_header.addEventListener("click", callback);
+    header.addEventListener("click", callback);
   }
 
   userMenu(callback) {
     console.log("user_menu-delegation");
-    window.addEventListener("load", () => {
-      let user_menu = document.getElementsByClassName("js-user-menu")[0];
-      user_menu.addEventListener("click", callback);
-    });
+    document
+      .getElementsByClassName("js-user-menu")[0]
+      .addEventListener("click", callback);
   }
 
   caffeineList(callback) {
     console.log("caffeine-list");
-    window.addEventListener("load", () => {
-      let caffeine_list = document.getElementsByClassName(
-        "js-caffeine-list"
-      )[0];
-      caffeine_list.addEventListener("click", callback);
-    });
+    document
+      .getElementsByClassName("js-caffeine-list")[0]
+      .addEventListener("click", callback);
   }
 
   cafeList(callback) {
     console.log("cafe-list");
-    window.addEventListener("load", () => {
-      let cafe_list = document.getElementsByClassName("js-cafe-list")[0];
-      cafe_list.addEventListener("click", callback);
-    });
+    document
+      .getElementsByClassName("js-cafe-list")[0]
+      .addEventListener("click", callback);
   }
 
   //Pages
@@ -262,13 +247,12 @@ export class UserComponent {
     var no_item = common_view.makeNoReviewItem();
     var item = common_view.makeReviewItem();
 
-    window.addEventListener("load", () => {
-      let dom = document.getElementsByClassName("js-cafe-review-list")[0];
-      console.log("dom: " + dom);
+    let dom = document.getElementsByClassName("js-cafe-review-list")[0];
+    console.log("dom: " + dom);
 
-      // dom.innerHTML += item;
-      dom.innerHTML += no_item;
-    });
+    // dom.innerHTML += item;
+    // dom.innerHTML += no_item;
+
     // dom.innerHTML += item;
 
     window.document.body.setAttribute("class", "full-height");
@@ -336,68 +320,12 @@ export class UserComponent {
     let path = this.getContextPath();
     //create
     let script1 = document.createElement("script");
-    let script2 = document.createElement("script");
-    let script3 = document.createElement("script");
-    let script4 = document.createElement("script");
-    let script5 = document.createElement("script");
-    let script6 = document.createElement("script");
-    let script7 = document.createElement("script");
-    let script8 = document.createElement("script");
-    let script9 = document.createElement("script");
-    let script10 = document.createElement("script");
-    let script11 = document.createElement("script");
-    let script12 = document.createElement("script");
-    let script13 = document.createElement("script");
-    let script14 = document.createElement("script");
-
     //set path
     script1.src = `${path}/resources/js/jquery.min.js`;
-    script2.src = `${path}/resources/js/modernizr.js`;
-    script3.src = `${path}/resources/js/script.js`;
-    script4.src = `${path}/resources/js/bootstrap.min.js`;
-    script5.src = `${path}/resources/js/wow.min.js`;
-    script6.src = `${path}/resources/js/slick.min.js`;
-    script7.src = `${path}/resources/js/sumoselect.js`;
-    script8.src = `${path}/resources/js/isotop.js`;
-    script9.src = `${path}/resources/js/jquery.nicescroll.min.js`;
-    script10.src = `${path}/resources/js/map1.js`;
-    script11.src = `${path}/resources/js/jq.aminoSlider.js`;
-    script12.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb";
-    script13.src = `${path}/resources/img_upload.js`;
-    script14.src = `${path}/resources/app.js`;
-
     //type
     script1.setAttribute = ("type", "text/javascript");
-    script2.setAttribute = ("type", "text/javascript");
-    script3.setAttribute = ("type", "text/javascript");
-    script4.setAttribute = ("type", "text/javascript");
-    script5.setAttribute = ("type", "text/javascript");
-    script6.setAttribute = ("type", "text/javascript");
-    script7.setAttribute = ("type", "text/javascript");
-    script8.setAttribute = ("type", "text/javascript");
-    script9.setAttribute = ("type", "text/javascript");
-    script10.setAttribute = ("type", "text/javascript");
-    script11.setAttribute = ("type", "text/javascript");
-    script12.setAttribute = ("type", "text/javascript");
-    script13.setAttribute = ("type", "text/javascript");
-    script14.setAttribute = ("type", "module");
-
     //append
     document.body.append(script1);
-    document.body.append(script2);
-    document.body.append(script3);
-    document.body.append(script4);
-    document.body.append(script5);
-    document.body.append(script6);
-    document.body.append(script7);
-    document.body.append(script8);
-    document.body.append(script9);
-    document.body.append(script10);
-    document.body.append(script11);
-    document.body.append(script12);
-    document.body.append(script13);
-    document.body.append(script14);
   }
 
   getContextPath() {

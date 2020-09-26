@@ -36,13 +36,13 @@ export class UserView {
         <span class="closeresmenu"><i>x</i>Close</span>
         <ul class="js-user-header-menu">
           <li>
-            <a href="" onclick="preventDefault(this)">Home</a>
+            <a href=""  class="disabled">Home</a>
           </li>
           <li class="accountbtn">
-            <a href="" onclick="preventDefault(this)">Search</a>
+            <a href=""  class="disabled">Search</a>
           </li>
           <li>
-            <a href="" onclick="preventDefault(this)">User</a>
+            <a href=""  class="disabled">User</a>
           </li>
         </ul>
       </div>
@@ -69,13 +69,13 @@ export class UserView {
         <nav class="js-user-header-menu">
           <ul >
             <li>
-              <a href="#" onclick="preventDefault(this)">Home</a>
+              <a href="" class="disabled">Home</a>
             </li>
             <li class="accountbtn" style="float: left">
-              <a href="" onclick="preventDefault(this)">Search</a>
+              <a href="" class="disabled">Search</a>
             </li>
             <li>
-              <a href="" onclick="preventDefault(this)">User</a>
+              <a href="" class="disabled">User</a>
             </li>
           </ul>
         </nav>
@@ -445,12 +445,12 @@ export class UserView {
           <div class="row">
               <div class="col-lg-12 js-user-menu">
                 
-                <a href="" ><i class="flaticon-credit-card"></i>Dashboard</a>
-                <a href="" ><i class="fa fa-map-pin" aria-hidden="true"></i>My Hidden Cafe({total_cafe})</a>
-                <a href="" ><i class="fa fa-users" aria-hidden="true"></i>My Subscription({subscription}) </a>
-                <a href="" ><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
-                <a href="" ><i class="flaticon-heart"></i> Bookmark({favorite})</a>
-                <a href="" ><i class="fa fa-cog" aria-hidden="true"></i>Settings</a>
+                <a href="" class="disabled"><i class="flaticon-credit-card"></i>Dashboard</a>
+                <a href="" class="disabled"><i class="fa fa-map-pin" aria-hidden="true"></i>My Hidden Cafe({total_cafe})</a>
+                <a href="" class="disabled"><i class="fa fa-users" aria-hidden="true"></i>My Subscription({subscription}) </a>
+                <a href="" class="disabled"><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
+                <a href="" class="disabled"><i class="flaticon-heart"></i> Bookmark({favorite})</a>
+                <a href="" class="disabled"><i class="fa fa-cog" aria-hidden="true"></i>Settings</a>
                 
               </div>
           </div>
@@ -771,7 +771,7 @@ export class UserView {
                   </div>
                   <div class="col-lg-12">
                     <a  class="uploadfile">
-                      <img src="images/cloud.png" alt="upload_img" />
+                      <img src="images/cloud.png" alt="upload_img" multiple="multiple"/>
                       <span>이미지를 업로드 하려면 클릭해주세요.</span>
                       <input
                         type="file"
@@ -791,93 +791,7 @@ export class UserView {
                   </div>
                 </div>
                 <br />
-                 <button type="submit" class=" js-user-addcafe-btn" >등록하기</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>`;
-    return add;
-  }
-
-  makeAddCafe() {
-    let path = this.getContextPath();
-    let add = `    <section>
-    <div class="block gray">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-10">
-            <!-- PBox -->
-            <div class="pbox">
-              <form class="addlistingform" id="js-addcafe-user-form">
-                <div class="add_cafe_title">카페 추가하기</div>
-                <div class="row">
-                  <div class="col-lg-6">
-                    <div class="fieldformy">
-                      <span>카페 이름 *</span>
-                      <input type="text"  name="cafe_name" required="required"/>
-                    </div>
-                    <div class="fieldformy">
-                      <span
-                        >카페 메뉴 (본인이 구매한 메뉴라도 적어주세요)</span
-                      >
-                      <input
-                        placeholder="ex) 아메리카노 4000 , 라떼 4500"
-                        type="text" name="cafe_menu"
-                      />
-                    </div>
-                    <div class="fieldformy">
-                      <span>카테고리</span>
-                      <select class="cdropshere" name="category">
-                        <option value="">select option</option>
-                        <option value="">option1</option>
-                        <option value="">option2</option>
-                        <option value="">option3</option>
-                        <option value="">option4</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="fieldformy">
-                      <span>카페 주소 *</span>
-                      <input
-                        placeholder="ex) Seoul, Jongno-gu, Gwancheol-dong, 5-8 카페 뎀셀브즈"
-                        type="text"  name="cafe_loaction" required="required"
-                      />
-                    </div>
-                    <div class="fieldformy">
-                      <span>카페 SNS </span>
-                      <input
-                        placeholder="https://www.instagram.com/starbucks"
-                        type="text"  name="cafe_sns"
-                      />
-                    </div>
-                  </div>
-                  <div class="col-lg-12">
-                    <a  class="uploadfile">
-                      <img src="images/cloud.png" alt="upload_img" />
-                      <span>이미지를 업로드 하려면 클릭해주세요.</span>
-                      <input
-                        type="file"
-                        accept="img/*"
-                        onChange="uploadImgPreview()"
-                        id="js-upload" class="js-user-addcafe-img" name="cafe_image"
-                      />
-                    </a>
-                    <div class="pbox">
-                      <h3>Gallery</h3>
-                      <div class="slistinggallery">
-                        <div class="sgallery img_preview" >
-                          <div id="js-thumnail" style="display: flex"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <br />
-                 <button type="submit" class=" js-user-addcafe-btn" >등록하기</button>
+                 <button type="submit" class="js-user-addcafe-btn" >등록하기</button>
               </form>
             </div>
           </div>

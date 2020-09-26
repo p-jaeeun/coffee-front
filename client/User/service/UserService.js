@@ -73,6 +73,10 @@ export class UserService {
         alert("아이디 혹은 비밀번호를 확인하세요.");
         this.callHome();
         break;
+      case "blockUser":
+        alert("접근이 거부된 유저 입니다.");
+        this.callHome();
+        break;
       default:
         alert("로그인중 문제가 발생했습니다. 다시 시도 하세요.");
         this.callHome();

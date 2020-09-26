@@ -6,7 +6,7 @@ export class AdminCTR {
     this.view = view;
     this.service = service;
 
-    this.view.makeMemberPage();
+    // this.view.makeMemberPage();
     this.view.addCafe(() => {
       this.addCafe();
     });

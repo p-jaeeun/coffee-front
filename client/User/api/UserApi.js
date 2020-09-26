@@ -118,12 +118,13 @@ export class UserApi {
   async searchCafeInfo(userData) {
     console.log("ajax-cafe-info-search");
     let result;
-
-    let str = JSON.stringify(userData);
+    let obj = {};
+    obj.cafe_id = userData;
+    let str = JSON.stringify(obj);
     try {
       result = await this.ajax.sendAjaxPost(
         "http://192.168.1.131:8080/hiddenc/login/search/result/cafeinfo",
-        userData
+        str
       );
     } catch (e) {
       console.log("error:" + e);
@@ -150,6 +151,7 @@ export class UserApi {
 
   async addReview(userData) {
     console.log("ajax-addReview");
+
     let result;
 
     try {
@@ -167,6 +169,8 @@ export class UserApi {
   async deleteReview(userData) {
     console.log("ajax-addReview");
     let result;
+    let obj = {};
+    obj.cafe_id = userData; //have to discuss more specific data form
     let str = JSON.stringify(userData);
     try {
       result = await this.ajax.sendAjaxPost(
@@ -182,7 +186,9 @@ export class UserApi {
 
   async callDashboard(userData) {
     let result;
-    let str = JSON.stringify(userData);
+    let obj = {};
+    obj.user_id = userData;
+    let str = JSON.stringify(obj);
     try {
       result = await this.ajax.sendAjaxPost(
         "http://192.168.1.131:8080/hiddenc/login/mypage",
@@ -197,7 +203,10 @@ export class UserApi {
 
   async callVisitedCafe(userData) {
     let result;
-    let str = JSON.stringify(userData);
+    let obj = {};
+    obj.user_id = userData;
+    let str = JSON.stringify(obj);
+
     try {
       result = await this.ajax.sendAjaxPost(
         "http://192.168.1.131:8080/hiddenc/login/visited/cafeinfo",
@@ -211,8 +220,9 @@ export class UserApi {
 
   async callSubscription(userData) {
     let result;
-
-    let str = JSON.stringify(userData);
+    let obj = {};
+    obj.user_id = userData;
+    let str = JSON.stringify(obj);
 
     try {
       result = await this.ajax.sendAjaxPost(
@@ -224,6 +234,23 @@ export class UserApi {
     }
     return result;
   }
+
+  async searchOtherUser(userData) {
+    let result;
+    let obj = {};
+    obj.user_id = userData;
+    let str = JSON.stringify(obj);
+
+    try {
+      result = await this.ajax.sendAjaxPost(
+        "http://192.168.1.131:8080/hiddenc/search/other",
+        str
+      );
+    } catch (e) {
+      console.log("error:" + e);
+    }
+    return result;
+  } //아직 정해지지 않음
 }
 
 //callsubscription, visitedCafe, callDashboard

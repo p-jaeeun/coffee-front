@@ -156,4 +156,4 @@ function preventReload(e) {
     e.returnValue = false;
   }
 }
-document.onkeydown = doNotReload;
+document.onkeydown = preventReload;
