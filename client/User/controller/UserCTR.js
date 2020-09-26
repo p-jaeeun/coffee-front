@@ -1,7 +1,11 @@
-// import { UserComponent } from "../view/UserComponent.js";
 import { UserService } from "../service/UserService.js";
 import { UserComponent } from "../view/UserComponent.js";
 import { UserView } from "../view/UserView.js";
+
+import { AdminComponent } from "../../Admin/view/AdminComponent.js";
+import { AdminService } from "../../Admin/service/AdminService.js";
+import { AdminCTR } from "../../Admin/controller/AdminCTR.js";
+
 
 export class UserCTR {
   constructor(service, view) {
@@ -27,14 +31,14 @@ export class UserCTR {
     // this.view.makeSubscription()
     // this.makeSubscription()
 
-    // this.view.makeSearchResult()
-    // this.makeSearchResult()
+    // this.view.makeSearchResult();
+    // this.makeSearchResult();
 
     this.view.signin((e) => {
       this.signin(e);
     });
-    this.view.signup(() => {
-      this.signup();
+    this.view.signup((e) => {
+      this.signup(e);
     });
   }
   //callback functions are to be splited into UserComponent and UserService
@@ -61,16 +65,15 @@ export class UserCTR {
     } else if (result[0] === "admin") {
       console.log("컨트롤러-서비스 결과값:" + result);
       this.view.makeAdminMain(result[1]);
-      this.makeLoginMain();
+      this.makeAdminMain();
+
     }
   };
 
   signup = async (e) => {
     e.preventDefault();
-    var result;
-
     console.log("PREVENT");
-
+    var result;
     let userData = new FormData(this.view.signup_form);
     for (let value of userData.values()) {
       console.log("value:" + value);
@@ -152,6 +155,12 @@ export class UserCTR {
     this.makeSettingsComp();
   }
 
+  makeAdminMain() {
+    this.makeAdminHeaderComp();
+    this.makeCafeListComp();
+    this.makeCaffeineListComp();
+  }
+
   //LISTENER COMPONENTS
   makeAddReviewComp() {
     document
@@ -222,6 +231,10 @@ export class UserCTR {
         } else {
           console.log("컨트롤러-서비스 결과값:" + result);
           alert("성공적으로 변경되었습니다.");
+          
+          this.view.makeSettings();
+          this.makeSettings();
+
         }
       });
   }
@@ -231,13 +244,14 @@ export class UserCTR {
       .addEventListener("click", async (e) => {
         e.preventDefault();
         var result;
+        let service = new UserService();
+
 
         let userData = new FormData(this.view.search_form);
         for (let value of userData.values()) {
           console.log("vlaue:" + value);
         }
 
-        let service = new UserService();
         result = await service.search(userData);
 
         if (result === undefined || result === "undefined") {
@@ -245,6 +259,9 @@ export class UserCTR {
         } else {
           console.log("컨트롤러-서비스 결과값:" + result);
           this.view.makeSearchResult(result);
+
+          this.makeSearchResult();
+
         }
       });
   }
@@ -304,6 +321,31 @@ export class UserCTR {
             }
           } else if (e.target.innerHTML.includes("Search")) {
             console.log("search");
+            var service = new UserService();
+            document
+              .getElementsByClassName("js-search-btn")[0]
+              .addEventListener("click", async (e) => {
+                e.preventDefault();
+                var result;
+
+                let userData = new FormData(
+                  document.getElementById("js-search-form")
+                );
+                for (let value of userData.values()) {
+                  console.log("vlaue:" + value);
+                }
+
+                result = await service.search(userData);
+
+                if (result === undefined || result === "undefined") {
+                  console.log("CTR-return-error:" + result);
+                } else {
+                  console.log("컨트롤러-서비스 결과값:" + result);
+
+                  view.makeSearchResult(result);
+                  this.makeSearchResult();
+                }
+              });
           }
         } else {
           console.log("you clicked invalid area" + e.target.tagName);
@@ -436,7 +478,6 @@ export class UserCTR {
               if (result === undefined || result === "undefined") {
                 console.log("CTR-return-error:" + result);
                 this.view.makeCafeInfo();
-
                 this.makeCafeInfo();
               } else {
                 console.log("컨트롤러-서비스 결과값: " + result);
@@ -449,6 +490,7 @@ export class UserCTR {
           console.log("you clicked invalid area:" + e.target.tagName);
         }
       });
+
   }
 
   makeCaffeineListComp() {
@@ -561,33 +603,7 @@ export class UserCTR {
             var service = new UserService();
 
             view.makeAddCafe(user_id, user_img);
-            document
-              .getElementsByClassName("js-user-addcafe-btn")[0]
-              .addEventListener("click", async (e) => {
-                e.preventDefault();
-
-                var result;
-                let userData = new FormData(
-                  document.getElementById("js-addcafe-user-form")
-                );
-                for (let value of userData.values()) {
-                  console.log("value:" + value);
-                }
-
-                result = await service.addCafe(userData);
-
-                if (result === undefined || result === "undefined") {
-                  console.log("CTR-return-error:" + result);
-                  view.makeAddCafe();
-                  this.makeAddCafe();
-                } else {
-                  console.log("컨트롤러-서비스 결과값:" + result);
-                  view.makeAddCafe();
-                  this.makeAddCafe();
-                  alert("추가 요청이 성공적으로 전달되었습니다.");
-                  //화면은 필요하지 않음
-                }
-              });
+            this.makeAddCafe();
           } else if (e.target.innerHTML.includes("Bookmark")) {
             console.log("clicked Bookmark");
             //
@@ -601,53 +617,8 @@ export class UserCTR {
             var service = new UserService();
 
             view.makeSettings();
+            this.makeSettings();
 
-            document
-              .getElementsByClassName("js-user-pwchange-btn")[0]
-              .addEventListener("click", async (e) => {
-                e.preventDefault();
-                var service = new UserService();
-                var view = new UserComponent();
-                console.log("setting-form-set-ready");
-
-                let userData = new FormData(
-                  document.getElementById("js-user-settings-form")
-                );
-                var result;
-                for (let value of userData.values()) {
-                  console.log("vlaue: " + value);
-                }
-
-                let input_1 = userData.get("user_changed_pw1");
-                let input_2 = userData.get("user_changed_pw2");
-
-                if (
-                  input_1 !== input_2 ||
-                  input_1 === "" ||
-                  input_2 === "" ||
-                  isNaN(input_1) == true ||
-                  isNaN(input_2) == true
-                ) {
-                  alert("입력값이 다릅니다.");
-                  return;
-                }
-
-                result = await service.settings(userData);
-
-                if (
-                  result === undefined ||
-                  result === "undefined" ||
-                  result === ""
-                ) {
-                  console.log("CTR-return-error:" + result);
-                  //to make the page user id and user image should be needed
-                } else {
-                  console.log("컨트롤러-서비스 결과값:" + result);
-                  alert("성공적으로 변경되었습니다.");
-                  view.makeSettings();
-                  this.makeSettings();
-                }
-              });
           }
         } else {
           console.log("you clicked invalid area: " + e.target.tagName);
@@ -669,7 +640,6 @@ export class UserCTR {
         for (let value of userData.values()) {
           console.log("value:" + value);
         }
-
         result = await service.addCafe(userData);
 
         if (result === undefined || result === "undefined") {
@@ -685,6 +655,188 @@ export class UserCTR {
         }
       });
   }
-}
 
-//실패시 페이지를 되돌려야 하는데 항상 필요한 데이터는 아이디랑 이미지?, 카페 넘버?? 유저 아이디 정수값은 뭐지
+  makeAdminHeaderComp() {
+    // responsive header
+    document
+      .getElementsByClassName("js-admin-header-menu")[0]
+      .addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (
+          e.target.tagname === "UL" ||
+          e.target.tagName === "LI" ||
+          e.target.tagName === "A"
+        ) {
+          // console.log('taget' + e.target.tagName)
+          if (e.target.innerHTML.includes("Home")) {
+            console.log("clicked Home");
+            var result;
+
+            var view = new AdminComponent();
+            var service = new AdminService();
+            var ctr = new AdminCTR();
+
+            try {
+              result = await service.callMain();
+            } catch (e) {
+              console.log("error: " + e);
+            }
+            if (result === undefined || result === "undefined") {
+              console.log("CTR-result is undefined" + result);
+              return;
+            } else {
+              view.makeMainPage(result);
+              ctr.makeAdminMainPage();
+              console.log("received data:" + result);
+            }
+          } else if (e.target.innerHTML.includes("Search")) {
+            console.log("clicked Search");
+            document
+              .getElementsByClassName("js-search-btn")[0]
+              .addEventListener("click", async (e) => {
+                e.preventDefault();
+                var result;
+
+                var view = new AdminComponent();
+                var service = new AdminService();
+                var ctr = new AdminCTR();
+
+                let adminData = new FormData(
+                  document.getElementById("js-search-form")
+                );
+                for (let value of adminData.values()) {
+                  console.log("value:" + value);
+                }
+
+                result = await service.search(adminData);
+
+                if (result === undefined || result === "undefined") {
+                  console.log("CTR-return-error:" + result);
+                } else {
+                  console.log("컨트롤러-서비스 결과값:" + result);
+
+                  view.makeSearchResultPage(result);
+                  ctr.makeSearchResultPage();
+                }
+              });
+          } else if (e.target.innerHTML.includes("Admin")) {
+            console.log("clicked Admin");
+            var result;
+
+            let adminData = localStorage.getItem("admin_id");
+            console.log("local data:" + adminData);
+
+            var view = new AdminComponent();
+            var service = new AdminService();
+            var ctr = new AdminCTR();
+
+            try {
+              result = await service.callAdminPage(adminData);
+            } catch (e) {
+              console.log("error: " + e);
+            }
+
+            if (result === undefined || result === "undefined") {
+              console.log("CTR-result is undefined" + result);
+              return;
+            } else {
+              view.makeCafeListPage(result);
+              ctr.makeCafeListPage();
+            }
+          }
+        } else {
+          console.log("you clicked invalid area");
+        }
+      });
+    // header
+    document
+      .getElementsByClassName("js-admin-header-menu")[1]
+      .addEventListener("click", async (e) => {
+        e.preventDefault();
+        if (
+          e.target.tagname === "UL" ||
+          e.target.tagName === "LI" ||
+          e.target.tagName === "A"
+        ) {
+          // console.log('taget' + e.target.tagName)
+          if (e.target.innerHTML.includes("Home")) {
+            console.log("clicked Home");
+            var result;
+
+            var view = new AdminComponent();
+            var service = new AdminService();
+            var ctr = new AdminCTR();
+
+            try {
+              result = await service.callMain();
+            } catch (e) {
+              console.log("error: " + e);
+            }
+            if (result === undefined || result === "undefined") {
+              console.log("CTR-result is undefined" + result);
+              return;
+            } else {
+              view.makeMainPage(result);
+              ctr.makeMainPage();
+              console.log("received data:" + result);
+            }
+          } else if (e.target.innerHTML.includes("Search")) {
+            console.log("clicked Search");
+            document
+              .getElementsByClassName("js-search-btn")[0]
+              .addEventListener("click", async (e) => {
+                e.preventDefault();
+                var result;
+
+                let adminData = new FormData(
+                  document.getElementById("js-search-form")
+                );
+                var view = new AdminComponent();
+                var service = new AdminService();
+                var ctr = new AdminCTR();
+
+                for (let value of adminData.values()) {
+                  console.log("value:" + value);
+                }
+                result = await service.search(adminData);
+
+                if (result === undefined || result === "undefined") {
+                  console.log("CTR-return-error:" + result);
+                } else {
+                  console.log("컨트롤러-서비스 결과값:" + result);
+
+                  view.makeSearchResultPage(result);
+                  ctr.makeSearchResultPage();
+                }
+              });
+          } else if (e.target.innerHTML.includes("Admin")) {
+            console.log("clicked Admin");
+            var result;
+
+            let adminData = localStorage.getItem("admin_id");
+            console.log("local data:" + adminData);
+
+            var view = new AdminComponent();
+            var service = new AdminService();
+            var ctr = new AdminCTR();
+
+            try {
+              result = await service.callAdminPage(adminData);
+            } catch (e) {
+              console.log("error: " + e);
+            }
+
+            if (result === undefined || result === "undefined") {
+              console.log("CTR-result is undefined" + result);
+              return;
+            } else {
+              view.makeCafeListPage(result);
+              ctr.makeCafeListPage();
+            }
+          }
+        } else {
+          console.log("you clicked invalid area");
+        }
+      });
+  }
+}

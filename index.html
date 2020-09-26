@@ -19,6 +19,7 @@
   </head>
 
   <body class="full-height" id="scrollup">
+
     <!-- <div class="page-loading">
       <img src="images/loader.gif" alt="" />
       <span>Skip Loader</span>
@@ -185,18 +186,5 @@
     <script src="./img_upload.js"></script>
     <!-- <script src="./index_bundle.js"></script> -->
     <script src="./app.js" type="module"></script>
-
-    <script>
-      function getContextPath() {
-        var hostIndex =
-          location.href.indexOf(location.host) + location.host.length;
-        return location.href.substring(
-          hostIndex,
-          location.href.indexOf("/", hostIndex + 1)
-        );
-      }
-
-      console.log("CONTEXT_PATH:" + getContextPath());
-    </script>
   </body>
 </html>

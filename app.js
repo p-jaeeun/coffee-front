@@ -14,7 +14,7 @@ import { AdminComponent } from "./client/Admin/view/AdminComponent.js";
 // import { UserService } from "http://192.168.1.131:8080/hiddenc/resources/client/User/service/UserService.js";
 // import { UserComponent } from "http://192.168.1.131:8080/hiddenc/resources/client/User/view/UserComponent.js";
 
-// const user_app = new UserCTR(new UserService(), new UserComponent());
+const user_app = new UserCTR(new UserService(), new UserComponent());
 const admin_app = new AdminCTR(new AdminService(), new AdminComponent());
 console.log("app.js");
 

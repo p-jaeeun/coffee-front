@@ -8,9 +8,6 @@ export class AdminCTR {
   constructor(service, view) {
     this.view = view;
     this.service = service;
-
-    this.view.makeAddCafePage();
-    this.makeAddCafePage();
   }
 
   // admin listener pages
