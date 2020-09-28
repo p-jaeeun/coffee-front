@@ -17,7 +17,7 @@ export class AdminView {
     );
   }
 
-  makeAdminHeader(admin_id) {
+  makeAdminHeader(admin_id, notification) {
     let path = this.getContextPath();
     let admin_header = `
     <div class="theme-layout">
@@ -60,7 +60,7 @@ export class AdminView {
           ></span>
       </div>
       <a href="" class="bellicon"
-        ><i class="fa fa-bell-o"></i><strong>{notification}</strong></a>
+        ><i class="fa fa-bell-o"></i><strong>${notification}</strong></a>
       <nav>
         <ul class="js-admin-header-menu">
           <li>

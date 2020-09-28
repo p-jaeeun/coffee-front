@@ -27,7 +27,7 @@ export class UserView {
       <div class="rheader">
         <span><img src="${path}/images/ricon.png" alt="menu_icon" /></span>
         <div class="logo">
-          <a href="" 
+          <a href="#" 
             ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
           /></a>
         </div>
@@ -52,19 +52,19 @@ export class UserView {
     <header class="s4 dark">
       <div class="container fluid">
         <div class="logo">
-          <a href="" 
+          <a href="#" 
             ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
           /></a>
         </div>
         <div class="userdropsec">
           <span
-            ><img src="${path}http://placehold.it/50x50" alt="user_img" /><span class=""
-              >{user_id}</span
+            ><img src="${path}/${user_img_mini}" alt="user_img" /><span class=""
+              >${user_id}</span
             ></span
           >
         </div>
         <a href=""  class="bellicon"
-          ><i class="fa fa-bell-o"></i><strong>{notification}</strong></a
+          ><i class="fa fa-bell-o"></i><strong>${notification}</strong></a
         >
         <nav class="js-user-header-menu">
           <ul >
@@ -87,28 +87,40 @@ export class UserView {
   makeMainCaffeineList(
     user_id1,
     user_img1,
+    value1,
     user_id2,
     user_img2,
+    value2,
     user_id3,
     user_img3,
+    value3,
     user_id4,
     user_img4,
+    value4,
     user_id5,
     user_img5,
+    value5,
     user_id6,
     user_img6,
+    value6,
     user_id7,
     user_img7,
+    value7,
     user_id8,
     user_img8,
+    value8,
     user_id9,
     user_img9,
+    value9,
     user_id10,
     user_img10,
+    value10,
     user_id11,
     user_img11,
+    value11,
     user_id12,
-    user_img12
+    user_img12,
+    value12
   ) {
     let path = this.getContextPath();
     let caffaine = ` <section class="main-section">
@@ -125,90 +137,44 @@ export class UserView {
                 <li>
                   <div class="cities">
                     <a href="" 
-                      ><img src="${path}+${user_img1}" alt="caffeine_ranker"
+                      ><img src="${path}/${user_img1}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >{user_id1}</a></h3>
-                      <hidden value="{value1}"></hidden>
+                      <h3><a href="" >${user_id1}</a></h3>
+                      <hidden value="${value1}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
                     <a href="" 
-                      ><img src="${path}+${user_img2}" alt="caffeine_ranker"
+                      ><img src="${path}/${user_img2}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >{user_id2}</a></h3>
-                      <hidden value="{value2}"></hidden>
+                      <h3><a href="" >${user_id2}</a></h3>
+                      <hidden value="${value2}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
                     <a href="" 
-                      ><img src="${path}+${user_img3}" alt="caffeine_ranker"
+                      ><img src="${path}/${user_img3}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >{user_id3}</a></h3>
-                      <hidden value="{value3}"></hidden>
+                      <h3><a href="" >${user_id3}</a></h3>
+                      <hidden value="${value3}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
                     <a href="" 
-                      ><img src="${path}+${user_img4}" alt="caffeine_ranker"
+                      ><img src="${path}/${user_img4}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >{user_id4}</a></h3>
-                      <hidden value="{value4}"></hidden>
-                      <span></span>
-                    </div>
-                  </div>
-                  <!-- Cities -->
-                </li>
-                <li>
-                  <div class="cities">
-                    <a href="" 
-                      ><img src="${path}+${user_img5}" alt="caffeine_ranker"
-                    /></a>
-                    <div class="cities-title">
-                      <h3><a href="" >{user_id5}</a></h3>
-                      <hidden value="{value5}"></hidden>
-                      <span></span>
-                    </div>
-                  </div>
-                  <!-- Cities -->
-                  <div class="cities">
-                    <a href="" 
-                      ><img src="${path}+${user_img6}" alt="caffeine_ranker"
-                    /></a>
-                    <div class="cities-title">
-                      <h3><a href="" >{user_id6}</a></h3>
-                      <hidden value="{value6}"></hidden>
-                      <span></span>
-                    </div>
-                  </div>
-                  <!-- Cities -->
-                  <div class="cities">
-                    <a href="" 
-                      ><img src="${path}+${user_img7}" alt="caffeine_ranker"
-                    /></a>
-                    <div class="cities-title">
-                      <h3><a href="" >{user_id7}</a></h3>
-                      <hidden value="{value7}"></hidden>
-                      <span></span>
-                    </div>
-                  </div>
-                  <!-- Cities -->
-                  <div class="cities">
-                    <a href="" 
-                      ><img src="${path}+${user_img8}" alt="caffeine_ranker"
-                    /></a>
-                    <div class="cities-title">
-                      <h3><a href="" >{user_id8}</a></h3>
-                      <hidden value="{value8}"></hidden>
+                      <h3><a href="" >${user_id4}</a></h3>
+                      <hidden value="${value4}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -217,44 +183,90 @@ export class UserView {
                 <li>
                   <div class="cities">
                     <a href="" 
-                      ><img src="${path}+${user_img9}" alt="caffeine_ranker"
+                      ><img src="${path}/${user_img5}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >{user_id9}</a></h3>
-                      <hidden value="{value9}"></hidden>
+                      <h3><a href="" >${user_id5}</a></h3>
+                      <hidden value="${value5}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
                     <a href="" 
-                      ><img src="${path}+${user_img10}" alt="caffeine_ranker"
+                      ><img src="${path}/${user_img6}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >{user_id10}</a></h3>
-                      <hidden value="{value10}"></hidden>
+                      <h3><a href="" >${user_id6}</a></h3>
+                      <hidden value="${value6}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
                     <a href="" 
-                      ><img src="${path}+${user_img11}" alt="caffeine_ranker"
+                      ><img src="${path}/${user_img7}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >{user_id11}</a></h3>
-                      <hidden value="{value11}"></hidden>
+                      <h3><a href="" >${user_id7}</a></h3>
+                      <hidden value="${value7}"></hidden>
                       <span></span>
                     </div>
                   </div>
                   <!-- Cities -->
                   <div class="cities">
                     <a href="" 
-                      ><img src="${path}+${user_img12}" alt="caffeine_ranker"
+                      ><img src="${path}/${user_img8}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >{user_id12}</a></h3>
-                      <hidden value="{value12}"></hidden>
+                      <h3><a href="" >${user_id8}</a></h3>
+                      <hidden value="${value8}"></hidden>
+                      <span></span>
+                    </div>
+                  </div>
+                  <!-- Cities -->
+                </li>
+                <li>
+                  <div class="cities">
+                    <a href="" 
+                      ><img src="${path}/${user_img9}" alt="caffeine_ranker"
+                    /></a>
+                    <div class="cities-title">
+                      <h3><a href="" >${user_id9}</a></h3>
+                      <hidden value="${value9}"></hidden>
+                      <span></span>
+                    </div>
+                  </div>
+                  <!-- Cities -->
+                  <div class="cities">
+                    <a href="" 
+                      ><img src="${path}/${user_img10}" alt="caffeine_ranker"
+                    /></a>
+                    <div class="cities-title">
+                      <h3><a href="" >${user_id10}</a></h3>
+                      <hidden value="${value10}"></hidden>
+                      <span></span>
+                    </div>
+                  </div>
+                  <!-- Cities -->
+                  <div class="cities">
+                    <a href="" 
+                      ><img src="${path}/${user_img11}" alt="caffeine_ranker"
+                    /></a>
+                    <div class="cities-title">
+                      <h3><a href="" >${user_id11}</a></h3>
+                      <hidden value="${value11}"></hidden>
+                      <span></span>
+                    </div>
+                  </div>
+                  <!-- Cities -->
+                  <div class="cities">
+                    <a href="" 
+                      ><img src="${path}/${user_img12}" alt="caffeine_ranker"
+                    /></a>
+                    <div class="cities-title">
+                      <h3><a href="" >${user_id12}</a></h3>
+                      <hidden value="${value12}"></hidden>
                       <span></span>
                     </div>
                   </div>
@@ -270,14 +282,17 @@ export class UserView {
   }
 
   makeMainCafeList(
+    user_img1,
     cafe_name1,
     cafe_rate1,
     cafe_rate_count1,
     cafe_location1,
+    user_img2,
     cafe_name2,
     cafe_rate2,
     cafe_rate_count2,
     cafe_location2,
+    user_img3,
     cafe_name3,
     cafe_rate3,
     cafe_rate_count3,
@@ -298,7 +313,7 @@ export class UserView {
                   <li>
                     <div class="places">
                       <div class="placethumb">
-                        <img src="${path}+'360x220'" alt="new_cafe" />
+                        <img src="${path}/${user_img1}" alt="new_cafe" />
                         <div class="placeoptions">
                           <span class="pull-left">
                             <i class="flaticon-eye"></i> Preview
@@ -309,20 +324,20 @@ export class UserView {
                         </div>
                       </div>
                       <div class="placeinfos">
-                        <h3><a href="" >{cafe_name1}</a></h3>
-                        <hidden value="{value1}"></hidden>
+                        <h3><a href="" >${cafe_name1}</a></h3>
+                        <hidden value="${value1}"></hidden>
   
                         <ul class="listmetas">
                           <li>
-                            <span class="rated">{cafe_rate1}</span
-                            >{cafe_rate_count1}
-                            <hidden value="{value1}"></hidden>
+                            <span class="rated">${cafe_rate1}</span
+                            >${cafe_rate_count1}
+                            <hidden value="${value1}"></hidden>
                           </li>
                         </ul>
                       </div>
                       <div class="placedetails">
                         <span class="pull-left"
-                          ><i class="flaticon-pin"></i>{cafe_location1}</span
+                          ><i class="flaticon-pin"></i>${cafe_location1}</span
                         >
                       </div>
                     </div>
@@ -331,7 +346,7 @@ export class UserView {
                   <li>
                     <div class="places">
                       <div class="placethumb">
-                        <img src="${path}+'360x220'" alt="new_cafe" />
+                        <img src="${path}/${user_img2}" alt="new_cafe" />
                         <div class="placeoptions">
                           <span class="pull-left">
                             <i class="flaticon-eye"></i> Preview
@@ -342,20 +357,20 @@ export class UserView {
                         </div>
                       </div>
                       <div class="placeinfos">
-                        <h3><a href="" >{cafe_name2}</a></h3>
-                        <hidden value="{value2}"></hidden>
+                        <h3><a href="" >${cafe_name2}</a></h3>
+                        <hidden value="${value2}"></hidden>
   
                         <ul class="listmetas">
                           <li>
-                            <span class="rated">{cafe_rate2}</span
-                            >{cafe_rate_count2}
-                            <hidden value="{value2}"></hidden>
+                            <span class="rated">${cafe_rate2}</span
+                            >${cafe_rate_count2}
+                            <hidden value="${value2}"></hidden>
                           </li>
                         </ul>
                       </div>
                       <div class="placedetails">
                         <span class="pull-left"
-                          ><i class="flaticon-pin"></i>{cafe_location2}</span
+                          ><i class="flaticon-pin"></i>${cafe_location2}</span
                         >
                       </div>
                     </div>
@@ -364,7 +379,7 @@ export class UserView {
                   <li>
                     <div class="places">
                       <div class="placethumb">
-                        <img src="${path}+'360x220'" alt="new_cafe" />
+                        <img src="${path}/${user_img3}" alt="new_cafe" />
                         <div class="placeoptions">
                           <span class="pull-left">
                             <i class="flaticon-eye"></i> Preview
@@ -375,20 +390,20 @@ export class UserView {
                         </div>
                       </div>
                       <div class="placeinfos">
-                        <h3><a href="" >{cafe_name3}</a></h3>
-                        <hidden value="{value3}"></hidden>
+                        <h3><a href="" >${cafe_name3}</a></h3>
+                        <hidden value="${value3}"></hidden>
   
                         <ul class="listmetas">
                           <li>
-                            <span class="rated">{cafe_rate3}</span
-                            >{cafe_rate_count3}
-                            <hidden value="{value3}"></hidden>
+                            <span class="rated">${cafe_rate3}</span
+                            >${cafe_rate_count3}
+                            <hidden value="${value3}"></hidden>
                           </li>
                         </ul>
                       </div>
                       <div class="placedetails">
                         <span class="pull-left"
-                          ><i class="flaticon-pin"></i>{cafe_location3}</span
+                          ><i class="flaticon-pin"></i>${cafe_location3}</span
                         >
                       </div>
                     </div>
@@ -418,21 +433,21 @@ export class UserView {
     let path = this.getContextPath();
     let menu = `        <div class="block remove-bottom double-gap-top">
       <div class="layer blackish">
-          <div data-velocity="-.1" style="background: url(${path}+${user_img_background}) repeat scroll 50% 422.28px transparent;" class="no-parallax parallax scrolly-invisible"></div><!-- PARALLAX BACKGROUND IMAGE -->	
+          <div data-velocity="-.1" style="background: url(${path}/${user_img_background}) repeat scroll 50% 422.28px transparent;" class="no-parallax parallax scrolly-invisible"></div><!-- PARALLAX BACKGROUND IMAGE -->	
           <div class="container">
               <div class="row">
                   <div class="col-lg-12">
                       <div class="iamusersec">
                           <div class="iamuser">
-                              <div class="userimg"><img src="${path}+${user_img_profile}" alt="user_img" /></div>
+                              <div class="userimg"><img src="${path}/${user_img_profile}" alt="user_img" /></div>
                               <div class="userinfos">
-                                  <h3>{user_id}</h3>
-                                  <span>{status}</span>
+                                  <h3>${user_id}</h3>
+                                  <span>${status}</span>
                               </div>
                           </div>
                           <div class="iamuserstats">
-                              <span><i class="fa fa-coffee" aria-hidden="true"></i>Caffeine {user_caffeine}</span>
-                              <span><i class="flaticon-avatar"></i>Subscriber {user_like}</span>
+                              <span><i class="fa fa-coffee" aria-hidden="true"></i>Caffeine ${user_caffeine}</span>
+                              <span><i class="flaticon-avatar"></i>Subscriber ${user_like}</span>
                           </div>
                       </div>
                   </div>
@@ -446,10 +461,10 @@ export class UserView {
               <div class="col-lg-12 js-user-menu">
                 
                 <a href="" class="disabled"><i class="flaticon-credit-card"></i>Dashboard</a>
-                <a href="" class="disabled"><i class="fa fa-map-pin" aria-hidden="true"></i>My Hidden Cafe({total_cafe})</a>
-                <a href="" class="disabled"><i class="fa fa-users" aria-hidden="true"></i>My Subscription({subscription}) </a>
+                <a href="" class="disabled"><i class="fa fa-map-pin" aria-hidden="true"></i>My Hidden Cafe(${total_cafe})</a>
+                <a href="" class="disabled"><i class="fa fa-users" aria-hidden="true"></i>My Subscription(${subscription}) </a>
                 <a href="" class="disabled"><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
-                <a href="" class="disabled"><i class="flaticon-heart"></i> Bookmark({favorite})</a>
+                <a href="" class="disabled"><i class="flaticon-heart"></i> Bookmark(${favorite})</a>
                 <a href="" class="disabled"><i class="fa fa-cog" aria-hidden="true"></i>Settings</a>
                 
               </div>
@@ -473,17 +488,17 @@ export class UserView {
                               <div class="row">
                                   <div class="col-lg-4">
                                       <div class="dashbadge clr1">
-                                          <a href=""  class="dashnum"> <span><i>{total_cafe}</i></span> <strong>I   visited</strong></a>
+                                          <a href=""  class="dashnum"> <span><i>${total_cafe}</i></span> <strong>I   visited</strong></a>
                                       </div>
                                   </div>
                                   <div class="col-lg-4">
                                       <div class="dashbadge clr2">
-                                          <a href=""  class="dashnum"> <span><i>{total_add}</i></span> <>I added</  strong></a>
+                                          <a href=""  class="dashnum"> <span><i>${total_add}</i></span> <>I added</  strong></a>
                                       </div>
                                   </div>
                                   <div class="col-lg-4">
                                       <div class="dashbadge clr3">
-                                          <a href=""  class="dashnum"> <span><i>{total_favorite}</i></span>   <strong>Total Bookmark</strong></a>
+                                          <a href=""  class="dashnum"> <span><i>${total_favorite}</i></span>   <strong>Total Bookmark</strong></a>
                                       </div>
                                   </div> 
                               </div>
@@ -595,7 +610,7 @@ export class UserView {
                   </div>
                   <div class="ml-listings allset">
                     <div class="ml-filterbar">
-                      <h3><i class="flaticon-eye"></i>{search_count} Results Found</h3>
+                      <h3><i class="flaticon-eye"></i>${search_count} Results Found</h3>
                       <ul>
                         <li class="doubleplaces active"><span><i class="fa fa-th-large"></i></span></li>
                         <li class="listingplaces"><span><i class="fa fa-th-list"></i></span></li>
@@ -637,15 +652,15 @@ export class UserView {
       </div>
       <div class="boxplaces">
         <div class="placeinfos">
-          <h3><a href="">{cafe_name}</a></h3>
-          <hidden value="{value}"></hidden>
+          <h3><a href="">${cafe_name}</a></h3>
+          <hidden value="${value}"></hidden>
           <ul class="listmetas">
-            <li><span class="rated">{cafe_rate}</span>{cafe_rate_count}</li>
+            <li><span class="rated">${cafe_rate}</span>${cafe_rate_count}</li>
           </ul>
         </div>
         <div class="placedetails">
           <span class="pull-left"
-            ><i class="flaticon-pin"></i>{cafe_location}</span
+            ><i class="flaticon-pin"></i>${cafe_location}</span
           >
         </div>
       </div>
@@ -666,7 +681,7 @@ export class UserView {
                 ><img
                   src="${path}+${user_img_mini}"
                   alt="subscription_user_img"
-                />{user_id}</span
+                />${user_id}</span
               >
             </div>
             <div class="ml-placessec">
@@ -681,17 +696,24 @@ export class UserView {
     return subscription;
   }
 
-  makeSubscriptionItem(cafe_name, cafe_rate, cafe_rate_count, cafe_location) {
+  makeSubscriptionItem(
+    cafe_name,
+    cafe_id,
+    cafe_rate,
+    cafe_img,
+    cafe_rate_count,
+    cafe_location
+  ) {
     let path = this.getContextPath();
     let list = `      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="places">
       <div class="placethumb">
-        <img src="${path}+'360x220'" alt="subscription_cafe" />
+        <img src="${path}/${cafe_img}" alt="subscription_cafe" />
         <div class="placeoptions">
           <span class="pull-left">
             <i class="flaticon-eye"></i> Preview
           </span>
-          <hidden value="{value}"></hidden>
+          <hidden value="${value}"></hidden>
           <span class="pull-right">
             <i class="flaticon-heart"></i> Save
           </span>
@@ -699,15 +721,15 @@ export class UserView {
       </div>
       <div class="boxplaces">
         <div class="placeinfos">
-          <h3><a href="">{cafe_name}</a></h3>
-          <hidden value="{value}"></hidden>
+          <h3><a href="">${cafe_name}</a></h3>
+          <hidden value="${cafe_id}"></hidden>
           <ul class="listmetas">
-            <li><span class="rated">{cafe_rate}</span>{cafe_rate_count}</li>
+            <li><span class="rated">${cafe_rate}</span>${cafe_rate_count}</li>
           </ul>
         </div>
         <div class="placedetails">
           <span class="pull-left"
-            ><i class="flaticon-pin"></i>{cafe_location}</span
+            ><i class="flaticon-pin"></i>${cafe_location}</span
           >
         </div>
       </div>
