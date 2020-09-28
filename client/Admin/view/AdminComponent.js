@@ -18,11 +18,11 @@ export class AdminComponent {
       "js-admin-addcafe-btn"
     )[0];
     this.revisecafe_load_btn = document.getElementsByClassName(
-      "js-admin-revisecafe-load-btn"
+      "js-admin-revisecafe-btn"
     )[0];
     this.revisecafe_update_btn = document.getElementsByClassName(
       "js-admin-revisecafe-btn"
-    )[0];
+    )[1];
     this.search_btn = document.getElementsByClassName("js-search-btn")[0];
 
     // tag
@@ -115,7 +115,6 @@ export class AdminComponent {
     let user_view = new UserView();
     let common_view = new CommonView();
     let admin_view = new AdminView();
-
     let header = admin_view.makeAdminHeader();
     let caffeine = user_view.makeMainCaffeineList();
     let cafe = user_view.makeMainCafeList();
@@ -130,24 +129,8 @@ export class AdminComponent {
   // admin page
 
   makeCafeListPage(result) {
-    // [
-    //   {
-    //       "cafe_id": 1,
-    //       "cafe_name": "재카페",
-    //       "cafe_location": "555/111"
-    //   },
-    //   {
-    //       "cafe_id": 2,
-    //       "cafe_name": "은카페",
-    //       "cafe_location": "555/111"
-    //   },
-    //   {
-    //       "cafe_id": 3,
-    //       "cafe_name": "재은카페",
-    //       "cafe_location": "555/111"
-    //   }
-    // ]
-    console.log("asdsad", result);
+    var result = JSON.parse(result);
+    console.log("데이터" + result);
     this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
@@ -158,54 +141,25 @@ export class AdminComponent {
     let cafe_item = admin_view.makeCafeListItem();
     let footer = common_view.makeFooter();
     let search_pop = common_view.makeSearchPop();
-    console.log("!@@E@#REJFKDHJHFE" + result);
+
     // 서버에서 스크롤 안되는 문제 방지
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
-
     window.document.body.innerHTML =
       header + admin_menu + saved_cafe_list + footer + search_pop;
-    window.addEventListener("load", () => {
-      let dom = document.getElementsByClassName("js-admin-cafelist")[0];
-      console.log("dom" + dom);
-      // console.log(result[i].cafe_name);
-
-      // for (let i = 0; i < result.length; i++) {
-      //   dom += cafe_item(result[i].cafe_name);
-      //   // dom += cafe_item(result[i].cafe_locaion);
-      // }
-      dom.innerHTML += cafe_item;
-      dom.innerHTML += cafe_item; //데이터 꺼내서 매개변수에 넣어주는 로직 추후 구현해야함
-    });
+    // window.addEventListener("load", () => {
+    let dom = document.getElementsByClassName("js-admin-cafelist")[0];
+    console.log("test data" + result);
+    for (let i = 0; i < result.length; i++) {
+      dom.innerHTML += admin_view.makeCafeListItem(
+        result[i]["cafe_name"],
+        result[i]["cafe_location"]
+      );
+    }
   }
 
   makeMemberPage(result) {
-    //   [
-    //     {
-    //         "user_id": "host",
-    //         "user_name": "관리자",
-    //         "user_caffeine": 0,
-    //         "is_blocked_user": false,
-    //         "user_Bg_img": "어드민.jpg",
-    //         "user_Circle_img": null
-    //     },
-    //     {
-    //         "user_id": "ck123",
-    //         "user_name": "청하",
-    //         "user_caffeine": 0,
-    //         "is_blocked_user": false,
-    //         "user_Bg_img": null,
-    //         "user_Circle_img": null
-    //     },
-    //     {
-    //         "user_id": "hello",
-    //         "user_name": "김시험",
-    //         "user_caffeine": 0,
-    //         "is_blocked_user": false,
-    //         "user_Bg_img": null,
-    //         "user_Circle_img": null
-    //     }
-    // ]
+    var result = JSON.parse(result);
     this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
@@ -220,38 +174,21 @@ export class AdminComponent {
     // 서버에서 스크롤 안되는 문제 방지
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
-
     window.document.body.innerHTML =
       header + admin_menu + member_list + footer + search_pop;
-    window.addEventListener("load", () => {
-      let dom = document.getElementsByClassName("js-admin-memberlist")[0];
-      console.log("dom" + dom);
-      dom.innerHTML += member_item;
-      dom.innerHTML += member_item; //데이터 꺼내서 매개변수에 넣어주는 로직 추후 구현해야함
-
-      for (let i = 0, max = result.length; i < max; i++) {
-        dom += member_item(result[i]);
-      }
-    });
+    // window.addEventListener("load", () => {
+    let dom = document.getElementsByClassName("js-admin-memberlist")[0];
+    for (let i = 0, max = result.length; i < max; i++) {
+      dom.innerHTML += admin_view.makeMemberItem(
+        result[i].user_id,
+        result[i].user_name,
+        result[i].user_caffeine
+      );
+    }
+    // });
   }
 
   makeAddCafePage() {
-    // 내가 줘야하는 데이터
-    //   {
-    //     "cafe_id": 0,
-    //     "cafe_name": "재은카페",
-    //     "cafe_location": "555/111",
-    //     "cafe_menu": "아이스아메리카노",
-    //     "cafe_information": "예쁩니다",
-    //     "is_enable_bean_choice": true,
-    //     "cafe_mood": 3,
-    //     "is_enable_buy_bean": true,
-    //     "is_enable_handdrip": true,
-    //     "is_checked": true,
-    //     "user_id": 1,
-    //     "cafe_rate": 0.0,
-    //     "cafe_sns": "www.instagram.com/jaewoo"
-    // }
     this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
@@ -271,57 +208,10 @@ export class AdminComponent {
   }
 
   makeReviseCafePage(result) {
-    //   {
-    //     "byuser": [
-    //         {
-    //             "user_id": "jam1",
-    //             "user_image": null,
-    //             "cafe_id": 8,
-    //             "cafe_name": "zzzzzzzz",
-    //             "cafe_location": "555/111",
-    //             "cafe_menu": "아이스아메리카노",
-    //             "cafe_information": "예쁩니다",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 3,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": true,
-    //             "is_checked": false,
-    //             "cafe_rate": 0.0
-    //         },
-    //         {
-    //             "user_id": "jam1",
-    //             "user_image": null,
-    //             "cafe_id": 9,
-    //             "cafe_name": "zzzzzzzz",
-    //             "cafe_location": "555/111",
-    //             "cafe_menu": "아이스아메리카노",
-    //             "cafe_information": "예쁩니다",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 3,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": true,
-    //             "is_checked": false,
-    //             "cafe_rate": 0.0
-    //         },
-    //
-    //     ],
-    //     "cafeImgList": [
-    //         {
-    //             "cafe_id": 8,
-    //             "cafe_image": "resources/cafeimage/61968d9a-a1e1-4289-bb1f-779a54fe09d0_jj.jpeg",
-    //             "is_checked": null
-    //         },
-    //         {
-    //             "cafe_id": 9,
-    //             "cafe_image": "resources/cafeimage/56297143-efb2-418d-920c-7938a8604dcd_gg.jpg",
-    //             "is_checked": null
-    //         }
-    //     ]
-    // }
+    var result = JSON.parse(result);
     this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
-
     let header = admin_view.makeAdminHeader();
     let admin_menu = admin_view.makeAdminMenu();
     let admin_revisecafe = admin_view.makeReviseCafeForm();
@@ -329,28 +219,50 @@ export class AdminComponent {
     let footer = common_view.makeFooter();
     let search_pop = common_view.makeSearchPop();
 
+    let loadcafe_btn = document.getElementsByClassName(
+      "js-admin-revisecafe-load-btn"
+    )[0];
     // 서버에서 스크롤 안되는 문제 방지
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
-
     window.document.body.innerHTML =
-      header +
-      admin_menu +
-      admin_revisecafe +
-      revise_cafe +
-      footer +
-      search_pop;
+      header + admin_menu + admin_revisecafe + footer + search_pop;
 
-    window.addEventListener("load", () => {
-      let dom = document.getElementsByClassName("js-admin-revisecafe-list")[0];
-      console.log("dom" + dom);
-      dom.innerHTML += revise_cafe;
-      dom.innerHTML += revise_cafe; //데이터 꺼내서 매개변수에 넣어주는 로직 추후 구현해야함
+    for (let i = 0; i < result.byuser.length; i++) {
+      var dom = document.getElementsByClassName("js-admin-revisecafe-list")[0];
 
-      // for (let i = 0, max = result.length; i < max; i++) {
-      //   dom += revise_cafe(result[i]);
-      // }
-    });
+      var opt = document.createElement("option");
+      opt.innerText = result.byuser[i].cafe_name;
+      opt.setAttribute("value", result.byuser[i].cafe_id);
+      dom.append(opt);
+    }
+    document
+      .getElementsByClassName("js-admin-revisecafe-btn")[0]
+      .addEventListener("click", () => {
+        var selected = dom.options[dom.selectedIndex].text;
+
+        for (let i = 0; i < result.byuser.length; i++) {
+          if (JSON.stringify(result.byuser[i]).includes(selected)) {
+            var cafe_id = result.byuser[i].cafe_id;
+            var cafe_location = result.byuser[i].cafe_location;
+            var cafe_menu = result.byuser[i].cafe_menu;
+            var cafe_sns = result.byuser[i].cafe_sns;
+            var cafe_information = result.byuser[i].cafe_information;
+            // console.log(cafe_id);
+            if (JSON.stringify(result.cafeImgList[i].cafe_id === cafe_id)) {
+              var cafe_image = result.cafeImgList[i].cafe_image;
+              // console.log(result.cafeImgList[i].cafe_image);
+            }
+          }
+        }
+
+        document.getElementById("cafe_name").value = selected;
+        document.getElementById("cafe_location").value = cafe_location;
+        document.getElementById("cafe_menu").value = cafe_menu;
+        document.getElementById("cafe_sns").value = cafe_sns;
+        document.getElementById("cafe_information").value = cafe_information;
+        // document.getElementById("js-thumnail").value = cafe_image;
+      });
   }
 
   // search & cafeinfo page
