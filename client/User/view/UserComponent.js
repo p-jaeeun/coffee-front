@@ -1,12 +1,6 @@
-import {
-  UserView
-} from "./UserView.js";
-import {
-  CommonView
-} from "../../Common/view/CommonView.js";
-import {
-  AdminView
-} from "../../Admin/view/AdminView.js";
+import { UserView } from "./UserView.js";
+import { CommonView } from "../../Common/view/CommonView.js";
+import { AdminView } from "../../Admin/view/AdminView.js";
 
 export class UserComponent {
   constructor() {
@@ -138,24 +132,25 @@ export class UserComponent {
 
   //Pages
   makeLoginMain(result) {
-
     //notification도 로그인할때 오나? 그렇다면 이미지랑 같이 저장, 나머지 화면에서는 꺼내서 쓰기
 
-    for (let i = 0; i < result.length; i++) {
-
-    }
-
+    for (let i = 0; i < result.length; i++) {}
 
     let user_view = new UserView();
     let common_view = new CommonView();
     this.addScript();
-    let header = user_view.makeUserHeader(user_img, user_id, notification);
-    let caffeine = user_view.makeMainCaffeineList(user_id1,
-      user_img1,
-      value1,
-      user_id2,
-      user_img2,
-      value2,
+    let header = user_view.makeUserHeader(
+      result.user_circle_img,
+      result.user_id,
+      "0"
+    );
+    let caffeine = user_view.makeMainCaffeineList(
+      result.topCaffeine[0].user_id,
+      result.topCaffeine[0].user_circle_img,
+      result.topCaffeine[0].user_id,
+      result.topCaffeine[1].user_id2,
+      result.topCaffeine[1].user_circle_img,
+      result.topCaffeine[1].value2,
       user_id3,
       user_img3,
       value3,
@@ -185,8 +180,10 @@ export class UserComponent {
       value11,
       user_id12,
       user_img12,
-      value12, );
-    let cafe = user_view.makeMainCafeList(user_img1,
+      value12
+    );
+    let cafe = user_view.makeMainCafeList(
+      user_img1,
       cafe_name1,
       cafe_rate1,
       cafe_rate_count1,
@@ -200,7 +197,8 @@ export class UserComponent {
       cafe_name3,
       cafe_rate3,
       cafe_rate_count3,
-      cafe_location3);
+      cafe_location3
+    );
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
     // this.addScript();
@@ -236,8 +234,8 @@ export class UserComponent {
     let common_view = new CommonView();
     let admin_view = new AdminView();
     this.addScript();
-    let user_id = "ADMIN123"
-    let user_img = "../../image/hiddenc_logo.png"
+    let user_id = "ADMIN123";
+    let user_img = "../../image/hiddenc_logo.png";
 
     let header = admin_view.makeAdminHeader(user_id, user_img);
     let caffeine = user_view.makeMainCaffeineList();
@@ -255,8 +253,8 @@ export class UserComponent {
     let user_view = new UserView();
     let common_view = new CommonView();
     this.addScript();
-    let user_id = localStorage.getItem("user_id")
-    let user_img = localStorage.getItem("user_img")
+    let user_id = localStorage.getItem("user_id");
+    let user_img = localStorage.getItem("user_img");
 
     //usermenu->
     // user_img_background,
@@ -297,12 +295,15 @@ export class UserComponent {
     let user_view = new UserView();
     let common_view = new CommonView();
     this.addScript();
-    let user_id = localStorage.getItem("user_id")
-    let user_img = localStorage.getItem("user_img")
+    let user_id = localStorage.getItem("user_id");
+    let user_img = localStorage.getItem("user_img");
 
     let header = user_view.makeUserHeader(user_img, user_id, notification);
     let user_menu = user_view.makeUserMenu();
-    var subscription = user_view.makeMySubscription(like_user_img_mini, like_user_id);
+    var subscription = user_view.makeMySubscription(
+      like_user_img_mini,
+      like_user_id
+    );
     let item = user_view.makeSubscriptionItem(); //is it really need?
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
@@ -312,14 +313,20 @@ export class UserComponent {
     window.document.body.innerHTML =
       header + user_menu + subscription + footer + pop;
 
-
     //cafe_name, cafe_id, cafe_rate, cafe_img, cafe_rate_count, cafe_location
     window.addEventListener("load", () => {
       let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
       console.log("dom" + dom);
 
       for (let i = 0, max = result.length; i < max; i++) {
-        dom += item(result.cafeList[i].cafe_name, result.cafeList[i].cafe_id, "3.75", result.cafeList[i].cafe_img, "4", result.cafeList[i].cafe_location);
+        dom += item(
+          result.cafeList[i].cafe_name,
+          result.cafeList[i].cafe_id,
+          "3.75",
+          result.cafeList[i].cafe_img,
+          "4",
+          result.cafeList[i].cafe_location
+        );
       }
     });
 
@@ -356,8 +363,8 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    let user_id = localStorage.getItem("user_id")
-    let user_img = localStorage.getItem("user_img")
+    let user_id = localStorage.getItem("user_id");
+    let user_img = localStorage.getItem("user_img");
 
     let header = user_view.makeUserHeader(user_img, user_id, notification);
     let user_menu = user_view.makeUserMenu();
@@ -374,7 +381,12 @@ export class UserComponent {
     window.addEventListener("load", () => {
       let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
       for (let i = 0, max = result.length; i < max; i++) {
-        dom.innerHTML += item(result[i].cafe_name, "3,75", "4", result[i].cafe_location); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+        dom.innerHTML += item(
+          result[i].cafe_name,
+          "3,75",
+          "4",
+          result[i].cafe_location
+        ); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
       }
     });
     //user_pk => 로그인한 사람
@@ -437,16 +449,36 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    localStorage.setItem("cafe_id", result.cafe_id)
-
+    localStorage.setItem("cafe_id", result.cafe_id);
 
     let header = user_view.makeUserHeader(user_img, user_id, notification);
-    let info = common_view.makeCafeInfo(result.cafe_image[0], result.cafe_image[1], result.cafe_image[2], result.cafe_image[0], result.cafe_image[1], result.cafe_image[2], result.cafe_image[0], result.cafe_image[1], result.cafe_image[0], result.cafe_image[1], result.cafe_image[2], result.cafe_image[0], result.cafe_image[1], result.cafe_image[2], result.cafe_name, result.cafe_rate, result.reviewList.length, result.cafe_location, result.cafe_information, cafe_menu, "cafe123@naver.com");
+    let info = common_view.makeCafeInfo(
+      result.cafe_image[0],
+      result.cafe_image[1],
+      result.cafe_image[2],
+      result.cafe_image[0],
+      result.cafe_image[1],
+      result.cafe_image[2],
+      result.cafe_image[0],
+      result.cafe_image[1],
+      result.cafe_image[0],
+      result.cafe_image[1],
+      result.cafe_image[2],
+      result.cafe_image[0],
+      result.cafe_image[1],
+      result.cafe_image[2],
+      result.cafe_name,
+      result.cafe_rate,
+      result.reviewList.length,
+      result.cafe_location,
+      result.cafe_information,
+      cafe_menu,
+      "cafe123@naver.com"
+    );
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
     var no_item = common_view.makeNoReviewItem();
     var item = common_view.makeReviewItem();
-
 
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
@@ -457,15 +489,22 @@ export class UserComponent {
       let dom = document.getElementsByClassName("js-cafe-review-list")[0];
       console.log("cafe-review-list-tag: " + dom);
       if (result.reviewList.length === 0) {
-        dom.innerHTML += no_item
+        dom.innerHTML += no_item;
       } else {
         for (let i = 0; i < result.reviewList.length; i++) {
-          dom.innerHTML += item(result.reviewList[i].image, result.reviewList[i].user_id, "2020년 09월 15일", result.reviewList[i].rate, result.reviewList[i].review, "like")
+          dom.innerHTML += item(
+            result.reviewList[i].image,
+            result.reviewList[i].user_id,
+            "2020년 09월 15일",
+            result.reviewList[i].rate,
+            result.reviewList[i].review,
+            "like"
+          );
         }
       }
 
-      dom.innerHTML += item()
-    })
+      dom.innerHTML += item();
+    });
     //   {
     //     "cafe_id": 1,
     //     "cafe_name": "Starbucks",
@@ -518,7 +557,7 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    let user_id = localStorage.getItem("user_id")
+    let user_id = localStorage.getItem("user_id");
 
     let header = user_view.makeUserHeader(user_img, user_id, notification);
     var search_result = common_view.makeSearchResult();
@@ -535,7 +574,14 @@ export class UserComponent {
       console.log("list-tag: " + dom);
       dom.innerHTML += item;
       for (let i = 0, max = result.length; i < max; i++) {
-        dom.innerHTML += item(result[i].cafe_name, result[i].cafe_id, "3.75", result[i].cafe_img, "4", result[i].cafe_location); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+        dom.innerHTML += item(
+          result[i].cafe_name,
+          result[i].cafe_id,
+          "3.75",
+          result[i].cafe_img,
+          "4",
+          result[i].cafe_location
+        ); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
       }
     });
 
@@ -593,7 +639,7 @@ export class UserComponent {
     let user_view = new UserView();
     let common_view = new CommonView();
 
-    //usermenu ->   
+    //usermenu ->
     //user_img_background,
     // user_img_profile,
     // user_id,
