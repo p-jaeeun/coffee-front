@@ -287,16 +287,21 @@ export class UserView {
     cafe_rate1,
     cafe_rate_count1,
     cafe_location1,
+    value1,
+
     user_img2,
     cafe_name2,
     cafe_rate2,
     cafe_rate_count2,
     cafe_location2,
+    value2,
+
     user_img3,
     cafe_name3,
     cafe_rate3,
     cafe_rate_count3,
-    cafe_location3
+    cafe_location3,
+    value3,
   ) {
     let path = this.getContextPath();
     let list = ` <section>
@@ -696,14 +701,7 @@ export class UserView {
     return subscription;
   }
 
-  makeSubscriptionItem(
-    cafe_name,
-    cafe_id,
-    cafe_rate,
-    cafe_img,
-    cafe_rate_count,
-    cafe_location
-  ) {
+  makeSubscriptionItem(cafe_name, cafe_id, cafe_rate, cafe_img, cafe_rate_count, cafe_location) {
     let path = this.getContextPath();
     let list = `      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="places">

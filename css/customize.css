@@ -45,6 +45,10 @@
   .search_button {
     margin-top: 20px;
   }
+  .main_section,
+  .main_img > img {
+    height: 100vmin;
+  }
 }
 /* 
 #search_bar {

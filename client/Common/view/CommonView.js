@@ -288,15 +288,7 @@ export class CommonView {
     return cafeinfo;
   }
 
-  makeReviewItem(
-    profile,
-    review_user_id,
-    write_date,
-    cafe_rate,
-    cafe_rate_count,
-    comment,
-    cafe_like
-  ) {
+  makeReviewItem(profile, review_user_id, write_date, cafe_rate, cafe_rate_count, comment, cafe_like) {
     let path = this.getContextPath();
     let review = `
     
@@ -540,14 +532,7 @@ export class CommonView {
     return search_result;
   }
 
-  makeSearchItem(
-    cafe_img,
-    cafe_name,
-    cafe_id,
-    cafe_rate,
-    cafe_rate_count,
-    cafe_location
-  ) {
+  makeSearchItem(cafe_img, cafe_name, cafe_id, cafe_rate, cafe_rate_count, cafe_location, ) {
     let path = this.getContextPath();
     let item = `       
     <div class="col-lg-6">

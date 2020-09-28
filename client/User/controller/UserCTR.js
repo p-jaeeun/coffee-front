@@ -24,8 +24,8 @@ export class UserCTR {
     // this.view.makeSettings();
     //this.makeSettings
 
-    // this.view.makeLoginMain();
-    // this.makeLoginMain();
+    // this.view.makeAdminMain();
+    // this.makeAdminMain();
 
     // this.view.makeSubscription()
     // this.makeSubscription()
@@ -474,12 +474,12 @@ export class UserCTR {
 
               if (result === undefined || result === "undefined") {
                 console.log("CTR-return-error:" + result);
-                this.view.makeCafeInfo();
+                this.view.makeCafeInfo(result);
                 this.makeCafeInfo();
               } else {
                 console.log("컨트롤러-서비스 결과값: " + result);
                 alert("성공적으로 등록되었습니다.");
-                this.view.makeCafeInfo(); //새로 더한 리뷰 추가해서 페이지 다시 만들기
+                this.view.makeCafeInfo(result); //새로 더한 리뷰 추가해서 페이지 다시 만들기
                 this.makeCafeInfo();
               }
             });
