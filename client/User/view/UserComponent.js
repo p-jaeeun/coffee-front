@@ -1,6 +1,12 @@
-import { UserView } from "./UserView.js";
-import { CommonView } from "../../Common/view/CommonView.js";
-import { AdminView } from "../../Admin/view/AdminView.js";
+import {
+  UserView
+} from "./UserView.js";
+import {
+  CommonView
+} from "../../Common/view/CommonView.js";
+import {
+  AdminView
+} from "../../Admin/view/AdminView.js";
 
 export class UserComponent {
   constructor() {
@@ -132,13 +138,69 @@ export class UserComponent {
 
   //Pages
   makeLoginMain(result) {
-    //main -> makeUserHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop
+
+    //notification도 로그인할때 오나? 그렇다면 이미지랑 같이 저장, 나머지 화면에서는 꺼내서 쓰기
+
+    for (let i = 0; i < result.length; i++) {
+
+    }
+
+
     let user_view = new UserView();
     let common_view = new CommonView();
     this.addScript();
-    let header = user_view.makeUserHeader();
-    let caffeine = user_view.makeMainCaffeineList();
-    let cafe = user_view.makeMainCafeList();
+    let header = user_view.makeUserHeader(user_img, user_id, notification);
+    let caffeine = user_view.makeMainCaffeineList(user_id1,
+      user_img1,
+      value1,
+      user_id2,
+      user_img2,
+      value2,
+      user_id3,
+      user_img3,
+      value3,
+      user_id4,
+      user_img4,
+      value4,
+      user_id5,
+      user_img5,
+      value5,
+      user_id6,
+      user_img6,
+      value6,
+      user_id7,
+      user_img7,
+      value7,
+      user_id8,
+      user_img8,
+      value8,
+      user_id9,
+      user_img9,
+      value9,
+      user_id10,
+      user_img10,
+      value10,
+      user_id11,
+      user_img11,
+      value11,
+      user_id12,
+      user_img12,
+      value12, );
+    let cafe = user_view.makeMainCafeList(user_img1,
+      cafe_name1,
+      cafe_rate1,
+      cafe_rate_count1,
+      cafe_location1,
+      user_img2,
+      cafe_name2,
+      cafe_rate2,
+      cafe_rate_count2,
+      cafe_location2,
+      user_img3,
+      cafe_name3,
+      cafe_rate3,
+      cafe_rate_count3,
+      cafe_location3);
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
     // this.addScript();
@@ -174,7 +236,10 @@ export class UserComponent {
     let common_view = new CommonView();
     let admin_view = new AdminView();
     this.addScript();
-    let header = admin_view.makeAdminHeader();
+    let user_id = "ADMIN123"
+    let user_img = "../../image/hiddenc_logo.png"
+
+    let header = admin_view.makeAdminHeader(user_id, user_img);
     let caffeine = user_view.makeMainCaffeineList();
     let cafe = user_view.makeMainCafeList();
     let footer = common_view.makeFooter();
@@ -190,7 +255,21 @@ export class UserComponent {
     let user_view = new UserView();
     let common_view = new CommonView();
     this.addScript();
-    let header = user_view.makeUserHeader();
+    let user_id = localStorage.getItem("user_id")
+    let user_img = localStorage.getItem("user_img")
+
+    //usermenu->
+    // user_img_background,
+    // user_img_profile,
+    // user_id,
+    // status,
+    // user_caffeine,
+    // user_like,
+    // total_cafe,
+    // subscription,
+    // favorite
+
+    let header = user_view.makeUserHeader(user_img, user_id, notification);
     let user_menu = user_view.makeUserMenu();
     let dashboard = user_view.makeDashboard();
     let footer = common_view.makeFooter();
@@ -218,10 +297,12 @@ export class UserComponent {
     let user_view = new UserView();
     let common_view = new CommonView();
     this.addScript();
+    let user_id = localStorage.getItem("user_id")
+    let user_img = localStorage.getItem("user_img")
 
-    let header = user_view.makeUserHeader();
+    let header = user_view.makeUserHeader(user_img, user_id, notification);
     let user_menu = user_view.makeUserMenu();
-    var subscription = user_view.makeMySubscription();
+    var subscription = user_view.makeMySubscription(like_user_img_mini, like_user_id);
     let item = user_view.makeSubscriptionItem(); //is it really need?
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
@@ -231,15 +312,14 @@ export class UserComponent {
     window.document.body.innerHTML =
       header + user_menu + subscription + footer + pop;
 
+
+    //cafe_name, cafe_id, cafe_rate, cafe_img, cafe_rate_count, cafe_location
     window.addEventListener("load", () => {
       let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
       console.log("dom" + dom);
 
-      dom.innerHTML += item;
-      dom.innerHTML += item;
-      dom.innerHTML += item; //for test
       for (let i = 0, max = result.length; i < max; i++) {
-        dom += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+        dom += item(result.cafeList[i].cafe_name, result.cafeList[i].cafe_id, "3.75", result.cafeList[i].cafe_img, "4", result.cafeList[i].cafe_location);
       }
     });
 
@@ -276,24 +356,27 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
+    let user_id = localStorage.getItem("user_id")
+    let user_img = localStorage.getItem("user_img")
 
-    let header = user_view.makeUserHeader();
+    let header = user_view.makeUserHeader(user_img, user_id, notification);
     let user_menu = user_view.makeUserMenu();
     var half_list = user_view.makeListAndMap();
     let item = user_view.makeHalfListItem();
 
     let pop = common_view.makeSearchPop();
 
-    window.addEventListener("load", () => {
-      let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
-      for (let i = 0, max = result.length; i < max; i++) {
-        dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
-      }
-    });
+    //cafe_name, cafe_rate, cafe_rate_count, cafe_location
+
     // window.document.body.setAttribute("class", "full-height");
     // window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + user_menu + half_list + pop;
-
+    window.addEventListener("load", () => {
+      let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
+      for (let i = 0, max = result.length; i < max; i++) {
+        dom.innerHTML += item(result[i].cafe_name, "3,75", "4", result[i].cafe_location); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+      }
+    });
     //user_pk => 로그인한 사람
     //   [
     //     {
@@ -329,27 +412,60 @@ export class UserComponent {
 
   makeCafeInfo(result) {
     //cafeInfo : userHeader OR makeAdminHeader + makeCafeInfo(common) + makeFooter(common) +makeSearchPop(common)
+    //    cafe_img1, cafe_img2,
+    // cafe_img3,
+    // cafe_img4,
+    // cafe_img5,
+    // cafe_img6,
+    // cafe_img7,
+    // cafe_img8,
+    // cafe_img_mini1,
+    // cafe_img_mini2,
+    // cafe_img_mini3,
+    // cafe_img_mini4,
+    // cafe_img_mini5,
+    // cafe_img_mini6,
+    // cafe_img_mini7,
+    // cafe_img_mini8,
+    // cafe_name,
+    // cafe_rate,
+    // cafe_rate_count,
+    // cafe_location,
+    // cafe_information,
+    // cafe_menu,
+    // cafe_mail,
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
+    localStorage.setItem("cafe_id", result.cafe_id)
 
-    let header = user_view.makeUserHeader();
-    let info = common_view.makeCafeInfo();
+
+    let header = user_view.makeUserHeader(user_img, user_id, notification);
+    let info = common_view.makeCafeInfo(result.cafe_image[0], result.cafe_image[1], result.cafe_image[2], result.cafe_image[0], result.cafe_image[1], result.cafe_image[2], result.cafe_image[0], result.cafe_image[1], result.cafe_image[0], result.cafe_image[1], result.cafe_image[2], result.cafe_image[0], result.cafe_image[1], result.cafe_image[2], result.cafe_name, result.cafe_rate, result.reviewList.length, result.cafe_location, result.cafe_information, cafe_menu, "cafe123@naver.com");
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
     var no_item = common_view.makeNoReviewItem();
     var item = common_view.makeReviewItem();
 
-    let dom = document.getElementsByClassName("js-cafe-review-list")[0];
-    console.log("dom: " + dom);
-
-    // dom.innerHTML += item;
-    // dom.innerHTML += no_item;
-    // dom.innerHTML += item;
 
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + info + footer + pop;
+
+    //profile, review_user_id, write_date, cafe_rate, cafe_rate_count, comment, cafe_like
+    window.addEventListener("load", () => {
+      let dom = document.getElementsByClassName("js-cafe-review-list")[0];
+      console.log("cafe-review-list-tag: " + dom);
+      if (result.reviewList.length === 0) {
+        dom.innerHTML += no_item
+      } else {
+        for (let i = 0; i < result.reviewList.length; i++) {
+          dom.innerHTML += item(result.reviewList[i].image, result.reviewList[i].user_id, "2020년 09월 15일", result.reviewList[i].rate, result.reviewList[i].review, "like")
+        }
+      }
+
+      dom.innerHTML += item()
+    })
     //   {
     //     "cafe_id": 1,
     //     "cafe_name": "Starbucks",
@@ -402,8 +518,9 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
+    let user_id = localStorage.getItem("user_id")
 
-    let header = user_view.makeUserHeader();
+    let header = user_view.makeUserHeader(user_img, user_id, notification);
     var search_result = common_view.makeSearchResult();
     let item = common_view.makeSearchItem();
     let pop = common_view.makeSearchPop();
@@ -412,12 +529,13 @@ export class UserComponent {
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + search_result + pop;
 
+    //cafe_name, cafe_id, cafe_rate,cafe_img, cafe_rate_count, cafe_location
     window.addEventListener("load", () => {
       let dom = document.getElementsByClassName("js-search-result-list")[0];
-      console.log(dom);
+      console.log("list-tag: " + dom);
       dom.innerHTML += item;
       for (let i = 0, max = result.length; i < max; i++) {
-        dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+        dom.innerHTML += item(result[i].cafe_name, result[i].cafe_id, "3.75", result[i].cafe_img, "4", result[i].cafe_location); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
       }
     });
 
@@ -443,7 +561,7 @@ export class UserComponent {
     let user_view = new UserView();
     let common_view = new CommonView();
 
-    let header = user_view.makeUserHeader();
+    let header = user_view.makeUserHeader(user_img, user_id, notification);
     let add_cafe = user_view.makeAddCafe();
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
@@ -475,7 +593,18 @@ export class UserComponent {
     let user_view = new UserView();
     let common_view = new CommonView();
 
-    let header = user_view.makeUserHeader();
+    //usermenu ->   
+    //user_img_background,
+    // user_img_profile,
+    // user_id,
+    // status,
+    // user_caffeine,
+    // user_like,
+    // total_cafe,
+    // subscription,
+    // favorite
+    //
+    let header = user_view.makeUserHeader(user_img, user_id, notification);
     let user_menu = user_view.makeUserMenu();
     let settings = user_view.makeSettings();
     let footer = common_view.makeFooter();
@@ -538,20 +667,20 @@ export class UserComponent {
     script13.setAttribute = ("type", "text/javascript");
     script14.setAttribute = ("type", "module");
 
-    script1.setAttribute = ("defer", "defer");
-    script2.setAttribute = ("defer", "defer");
-    script3.setAttribute = ("defer", "defer");
-    script4.setAttribute = ("defer", "defer");
-    script5.setAttribute = ("defer", "defer");
-    script6.setAttribute = ("defer", "defer");
-    script7.setAttribute = ("defer", "defer");
-    script8.setAttribute = ("defer", "defer");
-    script9.setAttribute = ("defer", "defer");
-    script10.setAttribute = ("defer", "defer");
-    script11.setAttribute = ("defer", "defer");
-    script12.setAttribute = ("defer", "defer");
-    script13.setAttribute = ("defer", "defer");
-    script14.setAttribute = ("defer", "defer");
+    script1.setAttribute = ("async", "false");
+    script2.setAttribute = ("async", "false");
+    script3.setAttribute = ("async", "false");
+    script4.setAttribute = ("async", "false");
+    script5.setAttribute = ("async", "false");
+    script6.setAttribute = ("async", "false");
+    script7.setAttribute = ("async", "false");
+    script8.setAttribute = ("async", "false");
+    script9.setAttribute = ("async", "false");
+    script10.setAttribute = ("async", "false");
+    script11.setAttribute = ("async", "false");
+    script12.setAttribute = ("async", "false");
+    script13.setAttribute = ("async", "false");
+    script14.setAttribute = ("async", "false");
 
     //append
     document.body.append(script1);

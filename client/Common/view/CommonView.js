@@ -14,9 +14,21 @@ export class CommonView {
   }
 
   makeCafeInfo(
-    user_id,
-    notification,
-    cafe_img_main,
+    cafe_img1, cafe_img2,
+    cafe_img3,
+    cafe_img4,
+    cafe_img5,
+    cafe_img6,
+    cafe_img7,
+    cafe_img8,
+    cafe_img_mini1,
+    cafe_img_mini2,
+    cafe_img_mini3,
+    cafe_img_mini4,
+    cafe_img_mini5,
+    cafe_img_mini6,
+    cafe_img_mini7,
+    cafe_img_mini8,
     cafe_name,
     cafe_rate,
     cafe_rate_count,
@@ -24,12 +36,7 @@ export class CommonView {
     cafe_information,
     cafe_menu,
     cafe_mail,
-    cafe_img_gallery,
-    review_user_id,
-    profile_user_id,
-    write_date,
-    comment,
-    cafe_like
+
   ) {
     let path = this.getContextPath();
     let cafeinfo = `
@@ -42,28 +49,28 @@ export class CommonView {
           <div class="col-lg-12">
             <div class="sl-slider" id="makeslider">
               <div class="slg-box">
-                <img src="${path}+'480x350'" alt="cafe_img_main" />
+                <img src="${path}/${cafe_img1}" alt="cafe_img_main" />
               </div>
               <div class="slg-box">
-                <img src="${path}+'480x350'" alt="cafe_img_main" />
+                <img src="${path}/${cafe_img2}" alt="cafe_img_main" />
               </div>
               <div class="slg-box">
-                <img src="${path}+'480x350'" alt="cafe_img_main" />
+                <img src="${path}/${cafe_img3}" alt="cafe_img_main" />
               </div>
               <div class="slg-box">
-                <img src="${path}+'480x350'" alt="cafe_img_main" />
+                <img src="${path}/${cafe_img4}" alt="cafe_img_main" />
               </div>
               <div class="slg-box">
-                <img src="${path}+'480x350'" alt="cafe_img_main" />
+                <img src="${path}/${cafe_img5}" alt="cafe_img_main" />
               </div>
               <div class="slg-box">
-                <img src="${path}+'480x350'" alt="cafe_img_main" />
+                <img src="${path}/${cafe_img6}" alt="cafe_img_main" />
               </div>
               <div class="slg-box">
-                <img src="${path}+'480x350'" alt="cafe_img_main" />
+                <img src="${path}/${cafe_img7}" alt="cafe_img_main" />
               </div>
               <div class="slg-box">
-                <img src="${path}+'480x350'" alt="cafe_img_main" />
+                <img src="${path}/${cafe_img8}" alt="cafe_img_main" />
               </div>
             </div>
           </div>
@@ -79,11 +86,11 @@ export class CommonView {
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="sltitle">
-                          <h1>{cafe_name}</h1>
+                          <h1>${cafe_name}</h1>
                           <ul class="listmetas">
                             <li>
-                              <span class="rated">{cafe_rate}</span>
-                              {cafe_rate_count}
+                              <span class="rated">${cafe_rate}</span>
+                              ${cafe_rate_count}
                             </li>
                           </ul>
                         </div>
@@ -91,7 +98,7 @@ export class CommonView {
                       <div class="col-lg-6">
                         <div class="slbtnsspans">
                           <span>
-                          <i class="flaticon-pin"></i>cafe_location</span>
+                          <i class="flaticon-pin"></i>${cafe_location}</span>
                           <div class="slbtns">
                             <div class="sharelisting">
                               <a href="">
@@ -157,13 +164,13 @@ export class CommonView {
             <div class="bbox">
               <h3>Description</h3>
               <div class="ldesc">
-                <p>{cafe_information}</p>
+                <p>${cafe_information}</p>
               </div>
             </div>
             <div class="bbox">
               <h3>Menu</h3>
               <div class="ldesc">
-                <p>{cafe_menu}</p>
+                <p>${cafe_menu}</p>
               </div>
             </div>
 
@@ -172,42 +179,42 @@ export class CommonView {
               <ul class="gallerylistin">
                 <li>
                   <img
-                    src="${path}+'cafe_img_gallery'"
+                    src="${path}/${cafe_img_mini1}"
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
                 </li>
                 <li>
                   <img
-                    src="${path}+'cafe_img_gallery'"
+                    src="${path}/'${cafe_img_mini2}'"
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
                 </li>
                 <li>
                   <img
-                    src="${path}+'cafe_img_gallery'"
+                    src="${path}/${cafe_img_mini3}"
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
                 </li>
                 <li>
                   <img
-                    src="${path}+'cafe_img_gallery'
+                    src="${path}/${cafe_img_mini4}"
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
                 </li>
                 <li>
                   <img
-                    src="${path}+'cafe_img_gallery'"
+                    src="${path}/${cafe_img_mini5}"
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
                 </li>
                 <li>
                   <img
-                    src="${path}+'cafe_img_gallery'"
+                    src="${path}/${cafe_img_mini6}"
                     alt="cafe_img_gallery"
                     class="small_img"
                   />
@@ -216,7 +223,7 @@ export class CommonView {
             </div>
 
             <div class="bbox js-review-list">
-            <h3>{cafe_rate_count} Reviews for {cafe_name}</h3>
+            <h3>${cafe_rate_count} Reviews for ${cafe_name}</h3>
             <div class="reviewssec js-cafe-review-list">
             
               </div>
@@ -261,8 +268,8 @@ export class CommonView {
               <div class="contact-map">
                 <div id="map js-map-mini" style="width: 350px; height: 400px"></div>
               </div>
-              <span>{cafe_location}</span>
-              <span>{cafe_mail}</span>
+              <span>${cafe_location}</span>
+              <span>${cafe_mail}</span>
 
               <div class="wsocial">
                 <a href=""><i class="fa fa-facebook"></i></a>
@@ -281,29 +288,29 @@ export class CommonView {
     return cafeinfo;
   }
 
-  makeReviewItem() {
+  makeReviewItem(profile, review_user_id, write_date, cafe_rate, cafe_rate_count, comment, cafe_like) {
     let path = this.getContextPath();
     let review = `
     
       <div class="reviewthumb">
-        <img src="${path}+'profile_user_id'" alt="profile_user_id" />
+        <img src="${path}/${profile}" alt="profile_user_id" />
       </div>
       <div class="reviewinfo">
-        <h3>{review_user_id}</h3>
-        <span>{write_date}</span>
+        <h3>${review_user_id}</h3>
+        <span>${write_date}</span>
         <ul class="listmetas justrate">
           <li>
-            <span class="rated">{cafe_rate}</span>
-            {cafe_rate_count}
+            <span class="rated">${cafe_rate}</span>
+            ${cafe_rate_count}
           </li>
         </ul>
-        <p>{comment}</p>
+        <p>${comment}</p>
         <div class="wasreview">
           <span>Was This Review ...?</span>
           <div class="wasreviewbtn">
             <a href="" class="c3">
               <i class="flaticon-heart"></i>
-              Like {cafe_like}
+              Like ${cafe_like}
             </a>
           </div>
         </div>
@@ -389,7 +396,7 @@ export class CommonView {
       </div>`;
     return search_pop;
   }
-  makeSearchResult() {
+  makeSearchResult(result_count) {
     let search_result = `
       <section>
         <div class="block no-padding">
@@ -497,7 +504,7 @@ export class CommonView {
                     </div>
                     <div class="ml-listings allset">
                       <div class="ml-filterbar">
-                        <h3><i class="flaticon-eye"></i>14 Results Found</h3>
+                        <h3><i class="flaticon-eye"></i>${result_count}Results Found</h3>
                         <ul>
                           <li class="doubleplaces active">
                             <span><i class="fa fa-th-large"></i></span>
@@ -525,13 +532,13 @@ export class CommonView {
     return search_result;
   }
 
-  makeSearchItem() {
+  makeSearchItem(cafe_img, cafe_name, cafe_id, cafe_rate, cafe_rate_count, cafe_location, ) {
     let path = this.getContextPath();
     let item = `       
     <div class="col-lg-6">
       <div class="places s2">
         <div class="placethumb">
-          <img src="${path}+'360x220'" alt="cafe_img" />
+          <img src="${path}/${cafe_img}" alt="cafe_img" />
           <div class="placeoptions">
             <span class="pull-left">
               <i class="flaticon-eye"></i> Preview
@@ -543,20 +550,20 @@ export class CommonView {
         </div>
         <div class="boxplaces">
           <div class="placeinfos">
-            <h3><a href="" >{cafe_name}</a></h3>
-            <hidden value="{value1}"></hidden>
+            <h3><a href="" >${cafe_name}</a></h3>
+            <hidden value="${cafe_id}"></hidden>
             <ul class="listmetas">
               <li>
-                <span class="rated">{cafe_rate}</span>
-                {cafe_rate_count}
+                <span class="rated">${cafe_rate}</span>
+                ${cafe_rate_count}
               </li>
             </ul>
           </div>
           <div class="placedetails">
             <span class="pull-left">
               <i class="flaticon-pin"></i>
-              {cafe_location}
-              <hidden value="{value1}"></hidden>
+              ${cafe_location}
+              <hidden value="${cafe_id}"></hidden>
             </span>
           </div>
         </div>
