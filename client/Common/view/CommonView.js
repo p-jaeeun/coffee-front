@@ -224,11 +224,9 @@ export class CommonView {
 
             <div class="bbox js-review-list">
             <h3>${cafe_rate_count} Reviews for ${cafe_name}</h3>
-            <div class="reviewssec js-cafe-review-list">
-            
-              </div>
+            <div class="js-cafe-review-list">
             </div>
-
+            </div>
             <div class="listingcomment">
               <div class="leavecomment">
               <form id="js-cafe-review-form">
@@ -288,10 +286,18 @@ export class CommonView {
     return cafeinfo;
   }
 
-  makeReviewItem(profile, review_user_id, write_date, cafe_rate, cafe_rate_count, comment, cafe_like) {
+  makeReviewItem(
+    profile,
+    review_user_id,
+    write_date,
+    cafe_rate,
+    cafe_rate_count,
+    comment,
+    cafe_like
+  ) {
     let path = this.getContextPath();
     let review = `
-    
+    <div class="reviewssec js-cafe-review-list">
       <div class="reviewthumb">
         <img src="${path}/${profile}" alt="profile_user_id" />
       </div>
@@ -320,6 +326,7 @@ export class CommonView {
             Reply
           </a>
         </div>
+      </div>
       </div>
     `;
     return review;
@@ -532,7 +539,14 @@ export class CommonView {
     return search_result;
   }
 
-  makeSearchItem(cafe_img, cafe_name, cafe_id, cafe_rate, cafe_rate_count, cafe_location, ) {
+  makeSearchItem(
+    cafe_img,
+    cafe_name,
+    cafe_id,
+    cafe_rate,
+    cafe_rate_count,
+    cafe_location
+  ) {
     let path = this.getContextPath();
     let item = `       
     <div class="col-lg-6">
@@ -550,8 +564,8 @@ export class CommonView {
         </div>
         <div class="boxplaces">
           <div class="placeinfos">
-            <h3><a href="" >${cafe_name}</a></h3>
-            <hidden value="${cafe_id}"></hidden>
+            <h3><a href="" >${cafe_name}<hidden value="${cafe_id}"></hidden></a></h3>
+            
             <ul class="listmetas">
               <li>
                 <span class="rated">${cafe_rate}</span>

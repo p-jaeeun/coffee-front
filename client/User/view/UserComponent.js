@@ -133,99 +133,547 @@ export class UserComponent {
   //Pages
   makeLoginMain(result) {
     //notification도 로그인할때 오나? 그렇다면 이미지랑 같이 저장, 나머지 화면에서는 꺼내서 쓰기
-
-    for (let i = 0; i < result.length; i++) {}
-
     let user_view = new UserView();
     let common_view = new CommonView();
     this.addScript();
+
+    //user_id, user_img
+    localStorage.setItem("user_id", result.user_id);
+    localStorage.setItem("user_img", result.user_circle_img);
+    localStorage.setItem("user_bg_img", result.user_bg_img);
+
+    //review
+    var cafe_review1 = 0;
+    var cafe_review2 = 0;
+    var cafe_review3 = 0;
+    if (result.review.length !== 0 || result.review !== null) {
+      for (let i = 0; i < result.review.length; i++) {
+        if (result.review[0].cafe_id === result.cafebean[0].cafe_id) {
+          cafe_review1 += 1;
+        } else if (result.review[1].cafe_id === result.cafebean[1].cafe_id) {
+          cafe_review2 += 1;
+        } else if (result.review[2].cafe_id === result.cafebean[2].cafe_id) {
+          cafe_review3 += 1;
+        }
+      }
+    } else {
+      cafe_review1 = 0;
+      cafe_review2 = 0;
+      cafe_review3 = 0;
+    }
+
+    //display
     let header = user_view.makeUserHeader(
       result.user_circle_img,
       result.user_id,
       "0"
     );
+
     let caffeine = user_view.makeMainCaffeineList(
-      result.topCaffeine[0].user_id,
-      result.topCaffeine[0].user_circle_img,
-      result.topCaffeine[0].user_id,
-      result.topCaffeine[1].user_id2,
-      result.topCaffeine[1].user_circle_img,
-      result.topCaffeine[1].value2,
-      user_id3,
-      user_img3,
-      value3,
-      user_id4,
-      user_img4,
-      value4,
-      user_id5,
-      user_img5,
-      value5,
-      user_id6,
-      user_img6,
-      value6,
-      user_id7,
-      user_img7,
-      value7,
-      user_id8,
-      user_img8,
-      value8,
-      user_id9,
-      user_img9,
-      value9,
-      user_id10,
-      user_img10,
-      value10,
-      user_id11,
-      user_img11,
-      value11,
-      user_id12,
-      user_img12,
-      value12
+      result.topCaffeines[0].user_id,
+      result.topCaffeines[0].user_circle_img,
+      result.topCaffeines[0].user_id,
+      result.topCaffeines[1].user_id,
+      result.topCaffeines[1].user_circle_img,
+      result.topCaffeines[1].user_id,
+      result.topCaffeines[2].user_id,
+      result.topCaffeines[2].user_circle_img,
+      result.topCaffeines[2].user_id,
+      result.topCaffeines[3].user_id,
+      result.topCaffeines[3].user_circle_img,
+      result.topCaffeines[3].user_id,
+      result.topCaffeines[4].user_id,
+      result.topCaffeines[4].user_circle_img,
+      result.topCaffeines[4].user_id,
+      result.topCaffeines[5].user_id,
+      result.topCaffeines[5].user_circle_img,
+      result.topCaffeines[5].user_id,
+      result.topCaffeines[6].user_id,
+      result.topCaffeines[6].user_circle_img,
+      result.topCaffeines[6].user_id,
+      result.topCaffeines[7].user_id,
+      result.topCaffeines[7].user_circle_img,
+      result.topCaffeines[7].user_id,
+      result.topCaffeines[8].user_id,
+      result.topCaffeines[8].user_circle_img,
+      result.topCaffeines[8].user_id,
+      result.topCaffeines[9].user_id,
+      result.topCaffeines[9].user_circle_img,
+      result.topCaffeines[9].user_id,
+      result.topCaffeines[10].user_id,
+      result.topCaffeines[10].user_circle_img,
+      result.topCaffeines[10].user_id,
+      result.topCaffeines[11].user_id,
+      result.topCaffeines[11].user_circle_img,
+      result.topCaffeines[11].user_id
     );
     let cafe = user_view.makeMainCafeList(
-      user_img1,
-      cafe_name1,
-      cafe_rate1,
-      cafe_rate_count1,
-      cafe_location1,
-      user_img2,
-      cafe_name2,
-      cafe_rate2,
-      cafe_rate_count2,
-      cafe_location2,
-      user_img3,
-      cafe_name3,
-      cafe_rate3,
-      cafe_rate_count3,
-      cafe_location3
+      result.cafeimg[0].cafe_image,
+      result.cafebean[0].cafe_name,
+      result.cafebean[0].cafe_rate,
+      cafe_review1,
+      result.cafebean[0].cafe_location,
+
+      result.cafeimg[1].cafe_image,
+      result.cafebean[1].cafe_name,
+      result.cafebean[1].cafe_rate,
+      cafe_review2,
+      result.cafebean[1].cafe_location,
+
+      result.cafeimg[2].cafe_image,
+      result.cafebean[2].cafe_name,
+      result.cafebean[2].cafe_rate,
+      cafe_review3,
+      result.cafebean[2].cafe_location
     );
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
+
     // this.addScript();
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
 
-    // [
     //   {
-    //     cafe_id: 1,
-    //     cafe_name: "재카페",
-    //     cafe_image:
-    //       "resources/cafeimage/898bc8d1-29c4-4bb9-91ac-5dae332b9b54_asdf.jpeg",
-    //   },
-    //   {
-    //     cafe_id: 2,
-    //     cafe_name: "은카페",
-    //     cafe_image:
-    //       "resources/cafeimage/8a8a3516-50e4-4683-9ca7-bbcac2120e48_asdf.jpeg",
-    //   },
-    //   {
-    //     cafe_id: 3,
-    //     cafe_name: "재은카페",
-    //     cafe_image:
-    //       "resources/cafeimage/9a31614e-9410-4f8b-8c18-2da41250f5f8_asdf.jpeg",
-    //   },
-    // ]; admin도 동일, 아이디만 로컬스토리지에서 뺴서 쓰자
+    //     "user_id": null,
+    //     "user_circle_img": null,
+    //     "cafebean": [
+    //         {
+    //             "cafe_id": 1,
+    //             "cafe_name": "Starbucks",
+    //             "cafe_location": "150:150",
+    //             "cafe_menu": "Americano",
+    //             "cafe_information": "스타벅스에요!",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 2,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": false,
+    //             "is_checked": true,
+    //             "user_id": 8,
+    //             "cafe_rate": 4.3,
+    //             "cafe_sns": "instagram"
+    //         },
+    //         {
+    //             "cafe_id": 4,
+    //             "cafe_name": "Starcoffee",
+    //             "cafe_location": "120:50",
+    //             "cafe_menu": "staramericano",
+    //             "cafe_information": "스타카페에요!",
+    //             "is_enable_bean_choice": false,
+    //             "cafe_mood": 2,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": false,
+    //             "is_checked": true,
+    //             "user_id": 8,
+    //             "cafe_rate": 4.3,
+    //             "cafe_sns": "KakaoStory"
+    //         },
+    //         {
+    //             "cafe_id": 7,
+    //             "cafe_name": "재은카페2",
+    //             "cafe_location": "122:337",
+    //             "cafe_menu": "Americano",
+    //             "cafe_information": "너무 이쁜카페에요!",
+    //             "is_enable_bean_choice": false,
+    //             "cafe_mood": 3,
+    //             "is_enable_buy_bean": false,
+    //             "is_enable_handdrip": false,
+    //             "is_checked": true,
+    //             "user_id": 15,
+    //             "cafe_rate": 2.0,
+    //             "cafe_sns": "Insta"
+    //         },
+    //         {
+    //             "cafe_id": 8,
+    //             "cafe_name": "재은카페1",
+    //             "cafe_location": "120:387",
+    //             "cafe_menu": "CaffeLatte",
+    //             "cafe_information": "이쁜카페에요!",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 2,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": false,
+    //             "is_checked": true,
+    //             "user_id": 15,
+    //             "cafe_rate": 2.0,
+    //             "cafe_sns": "Facebook"
+    //         },
+    //         {
+    //             "cafe_id": 9,
+    //             "cafe_name": "청하카페1",
+    //             "cafe_location": "120:387",
+    //             "cafe_menu": "CaffeLatte",
+    //             "cafe_information": "청하카페에요!",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 2,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": false,
+    //             "is_checked": true,
+    //             "user_id": 8,
+    //             "cafe_rate": 2.0,
+    //             "cafe_sns": "Facebook"
+    //         },
+    //         {
+    //             "cafe_id": 10,
+    //             "cafe_name": "청하카페2",
+    //             "cafe_location": "1220:387",
+    //             "cafe_menu": "Kimchi",
+    //             "cafe_information": "청하카페에요2!",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 2,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": false,
+    //             "is_checked": true,
+    //             "user_id": 8,
+    //             "cafe_rate": 2.0,
+    //             "cafe_sns": "KaKao"
+    //         },
+    //         {
+    //             "cafe_id": 11,
+    //             "cafe_name": "재우카페2",
+    //             "cafe_location": "20:387",
+    //             "cafe_menu": "Desert",
+    //             "cafe_information": "재우카페에요1",
+    //             "is_enable_bean_choice": false,
+    //             "cafe_mood": 2,
+    //             "is_enable_buy_bean": false,
+    //             "is_enable_handdrip": false,
+    //             "is_checked": true,
+    //             "user_id": 17,
+    //             "cafe_rate": 3.0,
+    //             "cafe_sns": "Anycall"
+    //         },
+    //         {
+    //             "cafe_id": 12,
+    //             "cafe_name": "재우카페1",
+    //             "cafe_location": "220:387",
+    //             "cafe_menu": "Americano",
+    //             "cafe_information": "재우카페에요2",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 2,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": true,
+    //             "is_checked": true,
+    //             "user_id": 17,
+    //             "cafe_rate": 1.6,
+    //             "cafe_sns": "Cyon"
+    //         },
+    //         {
+    //             "cafe_id": 13,
+    //             "cafe_name": "재은",
+    //             "cafe_location": "123:232",
+    //             "cafe_menu": "아메리카노",
+    //             "cafe_information": "이뻐요",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 1,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": true,
+    //             "is_checked": true,
+    //             "user_id": 8,
+    //             "cafe_rate": 0.0,
+    //             "cafe_sns": "facebook"
+    //         },
+    //         {
+    //             "cafe_id": 14,
+    //             "cafe_name": "재우3",
+    //             "cafe_location": "123:232",
+    //             "cafe_menu": "아메리카노",
+    //             "cafe_information": "이뻐요",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 1,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": true,
+    //             "is_checked": true,
+    //             "user_id": 8,
+    //             "cafe_rate": 0.0,
+    //             "cafe_sns": "facebook"
+    //         },
+    //         {
+    //             "cafe_id": 15,
+    //             "cafe_name": "Jaeen",
+    //             "cafe_location": "123:232",
+    //             "cafe_menu": "아메리카노",
+    //             "cafe_information": "이뻐요",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 1,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": true,
+    //             "is_checked": true,
+    //             "user_id": 8,
+    //             "cafe_rate": 0.0,
+    //             "cafe_sns": "facebook"
+    //         },
+    //         {
+    //             "cafe_id": 16,
+    //             "cafe_name": "Jaeencoffee",
+    //             "cafe_location": "123:232",
+    //             "cafe_menu": "아메리카노",
+    //             "cafe_information": "이뻐요",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 1,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": true,
+    //             "is_checked": true,
+    //             "user_id": 8,
+    //             "cafe_rate": 0.0,
+    //             "cafe_sns": "facebook"
+    //         },
+    //         {
+    //             "cafe_id": 17,
+    //             "cafe_name": "cafecafe",
+    //             "cafe_location": "123",
+    //             "cafe_menu": "americano",
+    //             "cafe_information": "seoul",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 2,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": true,
+    //             "is_checked": true,
+    //             "user_id": 8,
+    //             "cafe_rate": 2.0,
+    //             "cafe_sns": "insta"
+    //         },
+    //         {
+    //             "cafe_id": 18,
+    //             "cafe_name": "재은카페",
+    //             "cafe_location": "555/111",
+    //             "cafe_menu": "아이스아메리카노",
+    //             "cafe_information": "예쁩니다",
+    //             "is_enable_bean_choice": true,
+    //             "cafe_mood": 3,
+    //             "is_enable_buy_bean": true,
+    //             "is_enable_handdrip": true,
+    //             "is_checked": true,
+    //             "user_id": 1,
+    //             "cafe_rate": 0.0,
+    //             "cafe_sns": "www.instagram.com/jaewoo"
+    //         }
+    //     ],
+    //     "cafeimg": [
+    //         {
+    //             "cafe_id": 1,
+    //             "cafe_image": "1번카페이미지",
+    //             "is_checked": true
+    //         },
+    //         {
+    //             "cafe_id": 1,
+    //             "cafe_image": "1번카페이미지2",
+    //             "is_checked": true
+    //         },
+    //         {
+    //             "cafe_id": 1,
+    //             "cafe_image": "1번카페이미지3",
+    //             "is_checked": true
+    //         },
+    //         {
+    //             "cafe_id": 4,
+    //             "cafe_image": "4번카페이미지1",
+    //             "is_checked": true
+    //         },
+    //         {
+    //             "cafe_id": 4,
+    //             "cafe_image": "4번카페이미지2",
+    //             "is_checked": true
+    //         },
+    //         {
+    //             "cafe_id": 4,
+    //             "cafe_image": "4번카페이미지3",
+    //             "is_checked": true
+    //         }
+    //     ],
+    //     "review": [
+    //         {
+    //             "review_id": 2,
+    //             "review_img": null,
+    //             "review": "재은리뷰",
+    //             "rate": 4,
+    //             "cafe_id": 4,
+    //             "user_id": 15
+    //         },
+    //         {
+    //             "review_id": 3,
+    //             "review_img": null,
+    //             "review": "재은리뷰",
+    //             "rate": 5,
+    //             "cafe_id": 7,
+    //             "user_id": 15
+    //         },
+    //         {
+    //             "review_id": 4,
+    //             "review_img": null,
+    //             "review": "현석리뷰",
+    //             "rate": 5,
+    //             "cafe_id": 1,
+    //             "user_id": 8
+    //         },
+    //         {
+    //             "review_id": 5,
+    //             "review_img": null,
+    //             "review": "현석리뷰",
+    //             "rate": 5,
+    //             "cafe_id": 4,
+    //             "user_id": 8
+    //         },
+    //         {
+    //             "review_id": 6,
+    //             "review_img": null,
+    //             "review": "청하리뷰",
+    //             "rate": 2,
+    //             "cafe_id": 8,
+    //             "user_id": 16
+    //         },
+    //         {
+    //             "review_id": 8,
+    //             "review_img": null,
+    //             "review": "재우리뷰",
+    //             "rate": 3,
+    //             "cafe_id": 9,
+    //             "user_id": 17
+    //         },
+    //         {
+    //             "review_id": 9,
+    //             "review_img": null,
+    //             "review": "재우리뷰",
+    //             "rate": 4,
+    //             "cafe_id": 10,
+    //             "user_id": 17
+    //         },
+    //         {
+    //             "review_id": 10,
+    //             "review_img": null,
+    //             "review": "재우리뷰",
+    //             "rate": 1,
+    //             "cafe_id": 12,
+    //             "user_id": 17
+    //         },
+    //         {
+    //             "review_id": 11,
+    //             "review_img": null,
+    //             "review": "재우리뷰2",
+    //             "rate": 1,
+    //             "cafe_id": 12,
+    //             "user_id": 17
+    //         },
+    //         {
+    //             "review_id": 12,
+    //             "review_img": null,
+    //             "review": "재우리뷰2",
+    //             "rate": 3,
+    //             "cafe_id": 10,
+    //             "user_id": 15
+    //         },
+    //         {
+    //             "review_id": 13,
+    //             "review_img": null,
+    //             "review": "재은리뷰3",
+    //             "rate": 3,
+    //             "cafe_id": 11,
+    //             "user_id": 15
+    //         },
+    //         {
+    //             "review_id": 14,
+    //             "review_img": null,
+    //             "review": "재은리뷰3",
+    //             "rate": 3,
+    //             "cafe_id": 12,
+    //             "user_id": 15
+    //         },
+    //         {
+    //             "review_id": 16,
+    //             "review_img": null,
+    //             "review": "박재은재은리뷰3",
+    //             "rate": 3,
+    //             "cafe_id": 1,
+    //             "user_id": 45
+    //         },
+    //         {
+    //             "review_id": 17,
+    //             "review_img": null,
+    //             "review": "박재은재은리뷰3",
+    //             "rate": 4,
+    //             "cafe_id": 4,
+    //             "user_id": 45
+    //         },
+    //         {
+    //             "review_id": 18,
+    //             "review_img": null,
+    //             "review": "요마롭마슈퍼롭바호롤롤로슈퍼볼",
+    //             "rate": 4,
+    //             "cafe_id": 8,
+    //             "user_id": 45
+    //         },
+    //         {
+    //             "review_id": 21,
+    //             "review_img": null,
+    //             "review": "맛있어요!",
+    //             "rate": 5,
+    //             "cafe_id": 1,
+    //             "user_id": 45
+    //         }
+    //     ],
+    //     "topCaffeines": [
+    //         {
+    //             "user_id": "manje12",
+    //             "user_circle_img": "resources/userimage/circle/manje12_circle.png",
+    //             "user_caffeine": 610
+    //         },
+    //         {
+    //             "user_id": "jam",
+    //             "user_circle_img": "resources/userimage/circle/jam_circle.png",
+    //             "user_caffeine": 180
+    //         },
+    //         {
+    //             "user_id": "CK",
+    //             "user_circle_img": null,
+    //             "user_caffeine": 80
+    //         },
+    //         {
+    //             "user_id": "jaewoo",
+    //             "user_circle_img": null,
+    //             "user_caffeine": 80
+    //         },
+    //         {
+    //             "user_id": "박재은",
+    //             "user_circle_img": null,
+    //             "user_caffeine": 0
+    //         },
+    //         {
+    //             "user_id": "jamjam2",
+    //             "user_circle_img": "resources/userimage/circle/jamjam2_circle.png",
+    //             "user_caffeine": 0
+    //         },
+    //         {
+    //             "user_id": "host",
+    //             "user_circle_img": null,
+    //             "user_caffeine": 0
+    //         },
+    //         {
+    //             "user_id": "Jee",
+    //             "user_circle_img": null,
+    //             "user_caffeine": 0
+    //         },
+    //         {
+    //             "user_id": "박재은재은재은씨",
+    //             "user_circle_img": null,
+    //             "user_caffeine": 0
+    //         },
+    //         {
+    //             "user_id": "박재",
+    //             "user_circle_img": null,
+    //             "user_caffeine": 0
+    //         },
+    //         {
+    //             "user_id": "박재은재은",
+    //             "user_circle_img": null,
+    //             "user_caffeine": 0
+    //         },
+    //         {
+    //             "user_id": "asd",
+    //             "user_circle_img": null,
+    //             "user_caffeine": 0
+    //         }
+    //     ]
+    // }
   }
 
   makeAdminMain(result) {
@@ -234,12 +682,87 @@ export class UserComponent {
     let common_view = new CommonView();
     let admin_view = new AdminView();
     this.addScript();
-    let user_id = "ADMIN123";
-    let user_img = "../../image/hiddenc_logo.png";
 
-    let header = admin_view.makeAdminHeader(user_id, user_img);
-    let caffeine = user_view.makeMainCaffeineList();
-    let cafe = user_view.makeMainCafeList();
+    //user_id, user_img
+    localStorage.setItem("admin_id", result.user_id);
+
+    //review
+    var cafe_review1 = 0;
+    var cafe_review2 = 0;
+    var cafe_review3 = 0;
+    if (result.review.length !== 0 || result.review !== null) {
+      for (let i = 0; i < result.review.length; i++) {
+        if (result.review[0].cafe_id === result.cafebean[0].cafe_id) {
+          cafe_review1 += 1;
+        } else if (result.review[1].cafe_id === result.cafebean[1].cafe_id) {
+          cafe_review2 += 1;
+        } else if (result.review[2].cafe_id === result.cafebean[2].cafe_id) {
+          cafe_review3 += 1;
+        }
+      }
+    } else {
+      cafe_review1 = 0;
+      cafe_review2 = 0;
+      cafe_review3 = 0;
+    }
+    let header = admin_view.makeAdminHeader(result.user_id, "0");
+    let caffeine = user_view.makeMainCaffeineList(
+      result.topCaffeine[0].user_id,
+      result.topCaffeine[0].user_circle_img,
+      result.topCaffeine[0].user_id,
+      result.topCaffeine[1].user_id,
+      result.topCaffeine[1].user_circle_img,
+      result.topCaffeine[1].user_id,
+      result.topCaffeine[2].user_id,
+      result.topCaffeine[2].user_circle_img,
+      result.topCaffeine[2].user_id,
+      result.topCaffeine[3].user_id,
+      result.topCaffeine[3].user_circle_img,
+      result.topCaffeine[3].user_id,
+      result.topCaffeine[4].user_id,
+      result.topCaffeine[4].user_circle_img,
+      result.topCaffeine[4].user_id,
+      result.topCaffeine[5].user_id,
+      result.topCaffeine[5].user_circle_img,
+      result.topCaffeine[5].user_id,
+      result.topCaffeine[6].user_id,
+      result.topCaffeine[6].user_circle_img,
+      result.topCaffeine[6].user_id,
+      result.topCaffeine[7].user_id,
+      result.topCaffeine[7].user_circle_img,
+      result.topCaffeine[7].user_id,
+      result.topCaffeine[8].user_id,
+      result.topCaffeine[8].user_circle_img,
+      result.topCaffeine[8].user_id,
+      result.topCaffeine[9].user_id,
+      result.topCaffeine[9].user_circle_img,
+      result.topCaffeine[9].user_id,
+      result.topCaffeine[10].user_id,
+      result.topCaffeine[10].user_circle_img,
+      result.topCaffeine[10].user_id,
+      result.topCaffeine[11].user_id,
+      result.topCaffeine[11].user_circle_img,
+      result.topCaffeine[11].user_id
+    );
+    let cafe = user_view.makeMainCafeList(
+      result.cafeimg[0].cafe_image,
+      result.cafebean[0].cafe_name,
+      result.cafebean[0].cafe_rate,
+      cafe_review1,
+      result.cafebean[0].cafe_location,
+
+      result.cafeimg[1].cafe_image,
+      result.cafebean[1].cafe_name,
+      result.cafebean[1].cafe_rate,
+      cafe_review2,
+      result.cafebean[1].cafe_location,
+
+      result.cafeimg[2].cafe_image,
+      result.cafebean[2].cafe_name,
+      result.cafebean[2].cafe_rate,
+      cafe_review3,
+      result.cafebean[2].cafe_location
+    );
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
 
@@ -250,12 +773,28 @@ export class UserComponent {
 
   makeDashboard(result) {
     //dashboard -> makeUserHeader + makeUserMenu + makeDashboard + makeFooter(common) + makeSearchPop
+    // let result = {
+    //   user_id: null,
+    //   user_pk: 0,
+    //   user_bg_img: null,
+    //   user_circle_img: null,
+    //   user_like: 0,
+    //   total_visited: 0,
+    //   total_addcafe: 0,
+    //   user_caffeine: 0,
+    // };
+
+    this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    this.addScript();
     let user_id = localStorage.getItem("user_id");
     let user_img = localStorage.getItem("user_img");
-
+    localStorage.setItem("total_visited", result.total_visited);
+    localStorage.setItem("count_like", result.count_like); //subscription
+    localStorage.setItem("caffeine", result.count_like);
+    localStorage.setItem("user_bg_img", result.user_bg_img);
+    localStorage.setItem("total_cafe", result.total_addcafe);
+    localStorage.setItem("user_like", result.user_like);
     //usermenu->
     // user_img_background,
     // user_img_profile,
@@ -267,8 +806,18 @@ export class UserComponent {
     // subscription,
     // favorite
 
-    let header = user_view.makeUserHeader(user_img, user_id, notification);
-    let user_menu = user_view.makeUserMenu();
+    let header = user_view.makeUserHeader(user_img, user_id, "0");
+    let user_menu = user_view.makeUserMenu(
+      result.user_bg_img,
+      user_img,
+      result.user_id,
+      "",
+      result.user_caffeine,
+      result.user_like,
+      result.total_addcafe,
+      result.count_like,
+      "0"
+    );
     let dashboard = user_view.makeDashboard();
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
@@ -291,20 +840,113 @@ export class UserComponent {
   }
 
   makeSubscription(result) {
+    // var result = {
+    //   push_user: 132,
+    //   user_id: [
+    //     {
+    //       user_id: "manje12",
+    //       user_pk: 8,
+    //     },
+    //     {
+    //       user_id: "jam",
+    //       user_pk: 15,
+    //     },
+    //     {
+    //       user_id: "CK",
+    //       user_pk: 16,
+    //     },
+    //     {
+    //       user_id: "jaewoo",
+    //       user_pk: 17,
+    //     },
+    //   ],
+    //   cafeList: [
+    //     {
+    //       cafe_id: 1,
+    //       cafe_name: "Starbucks",
+    //       cafe_location: "150:150",
+    //       cafe_image: "1번카페이미지",
+    //       user_pk: 8,
+    //     },
+    //     {
+    //       cafe_id: 4,
+    //       cafe_name: "Starcoffee",
+    //       cafe_location: "120:50",
+    //       cafe_image: "4번카페이미지1",
+    //       user_pk: 8,
+    //     },
+    //     {
+    //       cafe_id: 7,
+    //       cafe_name: "재은카페2",
+    //       cafe_location: "122:337",
+    //       cafe_image: null,
+    //       user_pk: 15,
+    //     },
+    //     {
+    //       cafe_id: 8,
+    //       cafe_name: "재은카페1",
+    //       cafe_location: "120:387",
+    //       cafe_image: null,
+    //       user_pk: 16,
+    //     },
+    //     {
+    //       cafe_id: 9,
+    //       cafe_name: "청하카페1",
+    //       cafe_location: "120:387",
+    //       cafe_image: null,
+    //       user_pk: 17,
+    //     },
+    //     {
+    //       cafe_id: 10,
+    //       cafe_name: "청하카페2",
+    //       cafe_location: "1220:387",
+    //       cafe_image: null,
+    //       user_pk: 17,
+    //     },
+    //     {
+    //       cafe_id: 12,
+    //       cafe_name: "재우카페1",
+    //       cafe_location: "220:387",
+    //       cafe_image: null,
+    //       user_pk: 17,
+    //     },
+    //     {
+    //       cafe_id: 11,
+    //       cafe_name: "재우카페2",
+    //       cafe_location: "20:387",
+    //       cafe_image: null,
+    //       user_pk: 15,
+    //     },
+    //   ],
+    // };
+
     //my subscription -> makeUserHeader + makeUserMenu + makeMySubscription + makeSubscriptionList(한개씩 추가) + makeFooter(common) + makeSearchPop
     let user_view = new UserView();
     let common_view = new CommonView();
     this.addScript();
     let user_id = localStorage.getItem("user_id");
     let user_img = localStorage.getItem("user_img");
+    let total_visited = localStorage.getItem("total_visited");
+    let count_like = localStorage.getItem("count_like");
+    let caffeine = localStorage.getItem("caffeine");
+    let user_bg_img = localStorage.getItem("user_bg_img");
+    let total_cafe = localStorage.getItem("total_cafe");
+    let user_like = localStorage.getItem("user_like");
 
-    let header = user_view.makeUserHeader(user_img, user_id, notification);
-    let user_menu = user_view.makeUserMenu();
-    var subscription = user_view.makeMySubscription(
-      like_user_img_mini,
-      like_user_id
+    let header = user_view.makeUserHeader(user_img, user_id, "0");
+    let user_menu = user_view.makeUserMenu(
+      user_bg_img,
+      user_img,
+      user_id,
+      "",
+      caffeine,
+      user_like,
+      total_cafe,
+      count_like,
+      "0"
     );
-    let item = user_view.makeSubscriptionItem(); //is it really need?
+    var subscription = user_view.makeMySubscription();
+    // var subscription_user = user_view.makeSubcriptionUser();
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
 
@@ -313,145 +955,170 @@ export class UserComponent {
     window.document.body.innerHTML =
       header + user_menu + subscription + footer + pop;
 
-    //cafe_name, cafe_id, cafe_rate, cafe_img, cafe_rate_count, cafe_location
-    window.addEventListener("load", () => {
-      let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
-      console.log("dom" + dom);
+    // cafe_name, cafe_id, cafe_rate, cafe_img, cafe_rate_count, cafe_location;
 
-      for (let i = 0, max = result.length; i < max; i++) {
-        dom += item(
-          result.cafeList[i].cafe_name,
-          result.cafeList[i].cafe_id,
-          "3.75",
-          result.cafeList[i].cafe_img,
-          "4",
-          result.cafeList[i].cafe_location
-        );
+    var list = document.getElementsByClassName("js-subscription-list")[0];
+
+    for (let i = 0; i < result.user_id.length; i++) {
+      list.innerHTML += user_view.makeSubcriptionUser(
+        result.user_id[i].user_id,
+        "http://placehold.it/50x50"
+      );
+
+      for (let j = 0, max = result.cafeList.length; j < max; j++) {
+        if (result.user_id[i].user_pk === result.cafeList[j].user_pk) {
+          var sub_list = document.getElementsByClassName(
+            "js-user-myhiddencafe-list"
+          );
+          sub_list[i].innerHTML += user_view.makeSubscriptionItem(
+            result.cafeList[j].cafe_name,
+            result.cafeList[j].cafe_id,
+            "3.75",
+            result.cafeList[j].cafe_img,
+            "4",
+            result.cafeList[j].cafe_location
+          );
+        } else {
+          console.log("FALSE");
+        }
       }
-    });
-
-    //user_pk => 상대방 pk
-    //   {
-    //     "push_user": 132,
-    //     "user_id": [
-    //         {
-    //             "user_id": "manje12",
-    //             "user_pk": 8
-    //         }
-    //     ],
-    //     "cafeList": [
-    //         {
-    //             "cafe_id": 1,
-    //             "cafe_name": "Starbucks",
-    //             "cafe_location": "150:150",
-    //             "cafe_image": "1번카페이미지",
-    //             "user_pk": 8
-    //         },
-    //         {
-    //             "cafe_id": 4,
-    //             "cafe_name": "Starcoffee",
-    //             "cafe_location": "120:50",
-    //             "cafe_image": "4번카페이미지1",
-    //             "user_pk": 8
-    //         }
-    //     ]
-    // }
+    }
   }
 
   makeVisitedCafe(result) {
+    // let result = [
+    //   {
+    //     cafe_id: 1,
+    //     cafe_name: "Starbucks",
+    //     cafe_location: "150:150",
+    //     cafe_image: "1번카페이미지",
+    //     user_pk: 132,
+    //   },
+    //   {
+    //     cafe_id: 4,
+    //     cafe_name: "Starcoffee",
+    //     cafe_location: "120:50",
+    //     cafe_image: "4번카페이미지1",
+    //     user_pk: 132,
+    //   },
+    //   {
+    //     cafe_id: 7,
+    //     cafe_name: "재은카페2",
+    //     cafe_location: "122:337",
+    //     cafe_image: null,
+    //     user_pk: 132,
+    //   },
+    //   {
+    //     cafe_id: 8,
+    //     cafe_name: "재은카페1",
+    //     cafe_location: "120:387",
+    //     cafe_image: null,
+    //     user_pk: 132,
+    //   },
+    // ];
+
     //my hidden -> makeUserHeader + makeUserMenu + makeListAndMap + makeHalfListItem(한개씩 추가) + makeFooter + makeSearchPop
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
     let user_id = localStorage.getItem("user_id");
     let user_img = localStorage.getItem("user_img");
+    let total_visited = localStorage.getItem("total_visited");
+    let count_like = localStorage.getItem("count_like");
+    let caffeine = localStorage.getItem("caffeine");
+    let user_bg_img = localStorage.getItem("user_bg_img");
+    let total_cafe = localStorage.getItem("total_cafe");
+    let user_like = localStorage.getItem("user_like");
 
-    let header = user_view.makeUserHeader(user_img, user_id, notification);
-    let user_menu = user_view.makeUserMenu();
-    var half_list = user_view.makeListAndMap();
+    let header = user_view.makeUserHeader(user_img, user_id, "0");
+    let user_menu = user_view.makeUserMenu(
+      user_bg_img,
+      user_img,
+      user_id,
+      "",
+      caffeine,
+      user_like,
+      total_cafe,
+      count_like,
+      "0"
+    );
+    var half_list = user_view.makeListAndMap(result.length);
     let item = user_view.makeHalfListItem();
-
     let pop = common_view.makeSearchPop();
 
-    //cafe_name, cafe_rate, cafe_rate_count, cafe_location
-
-    // window.document.body.setAttribute("class", "full-height");
-    // window.document.body.setAttribute("id", "scrollup");
+    //display --> cafe_name, cafe_rate, cafe_rate_count, cafe_location
+    window.document.body.setAttribute("class", "full-height");
+    window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + user_menu + half_list + pop;
     window.addEventListener("load", () => {
-      let dom = document.getElementsByClassName("js-user-myhiddencafe-list")[0];
       for (let i = 0, max = result.length; i < max; i++) {
-        dom.innerHTML += item(
+        let dom = document.getElementsByClassName(
+          "js-user-myhiddencafe-list"
+        )[0];
+        dom.innerHTML += user_view.makeHalfListItem(
           result[i].cafe_name,
-          "3,75",
+          result[i].cafe_id,
+          "3.75",
           "4",
           result[i].cafe_location
-        ); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+        );
       }
     });
-    //user_pk => 로그인한 사람
-    //   [
-    //     {
-    //         "cafe_id": 1,
-    //         "cafe_name": "Starbucks",
-    //         "cafe_location": "150:150",
-    //         "cafe_image": "1번카페이미지",
-    //         "user_pk": 132
-    //     },
-    //     {
-    //         "cafe_id": 4,
-    //         "cafe_name": "Starcoffee",
-    //         "cafe_location": "120:50",
-    //         "cafe_image": "4번카페이미지1",
-    //         "user_pk": 132
-    //     },
-    //     {
-    //         "cafe_id": 7,
-    //         "cafe_name": "재은카페2",
-    //         "cafe_location": "122:337",
-    //         "cafe_image": null,
-    //         "user_pk": 132
-    //     },
-    //     {
-    //         "cafe_id": 8,
-    //         "cafe_name": "재은카페1",
-    //         "cafe_location": "120:387",
-    //         "cafe_image": null,
-    //         "user_pk": 132
-    //     }
-    // ]
   }
 
   makeCafeInfo(result) {
-    //cafeInfo : userHeader OR makeAdminHeader + makeCafeInfo(common) + makeFooter(common) +makeSearchPop(common)
-    //    cafe_img1, cafe_img2,
-    // cafe_img3,
-    // cafe_img4,
-    // cafe_img5,
-    // cafe_img6,
-    // cafe_img7,
-    // cafe_img8,
-    // cafe_img_mini1,
-    // cafe_img_mini2,
-    // cafe_img_mini3,
-    // cafe_img_mini4,
-    // cafe_img_mini5,
-    // cafe_img_mini6,
-    // cafe_img_mini7,
-    // cafe_img_mini8,
-    // cafe_name,
-    // cafe_rate,
-    // cafe_rate_count,
-    // cafe_location,
-    // cafe_information,
-    // cafe_menu,
-    // cafe_mail,
+    // let result = {
+    //   cafe_id: 1,
+    //   cafe_name: "Starbucks",
+    //   cafe_location: "150:150",
+    //   cafe_menu: "Americano",
+    //   cafe_information: "스타벅스에요!",
+    //   cafe_image: [
+    //     {
+    //       cafe_image: "1번카페이미지",
+    //     },
+    //     {
+    //       cafe_image: "1번카페이미지2",
+    //     },
+    //     {
+    //       cafe_image: "1번카페이미지3",
+    //     },
+    //   ],
+    //   cafe_rate: 4.3,
+    //   cafe_sns: "instagram",
+    //   is_enable_bean_choice: true,
+    //   cafe_mood: 2,
+    //   is_enable_buy_bean: true,
+    //   is_enable_handdrip: false,
+    //   user_id: "manje12",
+    //   reviewList: [
+    //     {
+    //       review: "현석리뷰",
+    //       rate: 5,
+    //       image: null,
+    //       user_id: "manje12",
+    //     },
+    //     {
+    //       review: "박재은재은리뷰3",
+    //       rate: 3,
+    //       image: null,
+    //       user_id: "박재은",
+    //     },
+    //     {
+    //       review: "맛있어요!",
+    //       rate: 5,
+    //       image: null,
+    //       user_id: "박재은",
+    //     },
+    //   ],
+    // };
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    localStorage.setItem("cafe_id", result.cafe_id);
+    let user_id = localStorage.getItem("user_id");
+    let user_img = localStorage.getItem("user_img");
 
-    let header = user_view.makeUserHeader(user_img, user_id, notification);
+    let header = user_view.makeUserHeader(user_img, user_id, "0");
     let info = common_view.makeCafeInfo(
       result.cafe_image[0],
       result.cafe_image[1],
@@ -472,7 +1139,7 @@ export class UserComponent {
       result.reviewList.length,
       result.cafe_location,
       result.cafe_information,
-      cafe_menu,
+      result.cafe_menu,
       "cafe123@naver.com"
     );
     let footer = common_view.makeFooter();
@@ -491,8 +1158,8 @@ export class UserComponent {
       if (result.reviewList.length === 0) {
         dom.innerHTML += no_item;
       } else {
-        for (let i = 0; i < result.reviewList.length; i++) {
-          dom.innerHTML += item(
+        for (let i = 0, max = result.reviewList.length; i < max; i++) {
+          dom.innerHTML += common_view.makeReviewItem(
             result.reviewList[i].image,
             result.reviewList[i].user_id,
             "2020년 09월 15일",
@@ -505,51 +1172,6 @@ export class UserComponent {
 
       dom.innerHTML += item();
     });
-    //   {
-    //     "cafe_id": 1,
-    //     "cafe_name": "Starbucks",
-    //     "cafe_location": "150:150",
-    //     "cafe_menu": "Americano",
-    //     "cafe_information": "스타벅스에요!",
-    //     "cafe_image": [
-    //         {
-    //             "cafe_image": "1번카페이미지"
-    //         },
-    //         {
-    //             "cafe_image": "1번카페이미지2"
-    //         },
-    //         {
-    //             "cafe_image": "1번카페이미지3"
-    //         }
-    //     ],
-    //     "cafe_rate": 4.3,
-    //     "cafe_sns": "instagram",
-    //     "is_enable_bean_choice": true,
-    //     "cafe_mood": 2,
-    //     "is_enable_buy_bean": true,
-    //     "is_enable_handdrip": false,
-    //     "user_id": "manje12",
-    //     "reviewList": [
-    //         {
-    //             "review": "현석리뷰",
-    //             "rate": 5,
-    //             "image": null,
-    //             "user_id": "manje12"
-    //         },
-    //         {
-    //             "review": "박재은재은리뷰3",
-    //             "rate": 3,
-    //             "image": null,
-    //             "user_id": "박재은"
-    //         },
-    //         {
-    //             "review": "맛있어요!",
-    //             "rate": 5,
-    //             "image": null,
-    //             "user_id": "박재은"
-    //         }
-    //     ]
-    // }
   }
 
   makeSearchResult(result) {
@@ -558,8 +1180,9 @@ export class UserComponent {
     let user_view = new UserView();
     let common_view = new CommonView();
     let user_id = localStorage.getItem("user_id");
+    let user_img = localStorage.getItem("user_img");
 
-    let header = user_view.makeUserHeader(user_img, user_id, notification);
+    let header = user_view.makeUserHeader(user_img, user_id, "0");
     var search_result = common_view.makeSearchResult();
     let item = common_view.makeSearchItem();
     let pop = common_view.makeSearchPop();
@@ -606,8 +1229,10 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
+    let user_id = localStorage.getItem("user_id");
+    let user_img = localStorage.getItem("user_img");
 
-    let header = user_view.makeUserHeader(user_img, user_id, notification);
+    let header = user_view.makeUserHeader(user_img, user_id, "0");
     let add_cafe = user_view.makeAddCafe();
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
@@ -638,6 +1263,11 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
+    let user_id = localStorage.getItem("user_id");
+    let user_img = localStorage.getItem("user_img");
+    let total_visited = localStorage.getItem("total_visited");
+    let count_like = localStorage.getItem("count_like");
+    let caffeine = localStorage.getItem("caffeine");
 
     //usermenu ->
     //user_img_background,
@@ -650,7 +1280,8 @@ export class UserComponent {
     // subscription,
     // favorite
     //
-    let header = user_view.makeUserHeader(user_img, user_id, notification);
+
+    let header = user_view.makeUserHeader(user_img, user_id, "0");
     let user_menu = user_view.makeUserMenu();
     let settings = user_view.makeSettings();
     let footer = common_view.makeFooter();

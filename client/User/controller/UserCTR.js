@@ -12,8 +12,8 @@ export class UserCTR {
     this.view = view;
     this.self = this;
 
-    // this.view.makeCafeInfo()
-    // this.makeCafeInfo()
+    // this.view.makeCafeInfo();
+    // this.makeCafeInfo();
 
     // this.view.makeDashboard();
     // this.makeDashboard();
@@ -24,11 +24,17 @@ export class UserCTR {
     // this.view.makeSettings();
     //this.makeSettings
 
+    // this.view.makeLoginMain()
+    // this.makeLoginMain()
+
     // this.view.makeAdminMain();
     // this.makeAdminMain();
 
-    // this.view.makeSubscription()
-    // this.makeSubscription()
+    // this.view.makeSubscription();
+    // this.makeSubscription();
+
+    // this.view.makeVisitedCafe();
+    // this.makeVisitedCafe();
 
     // this.view.makeSearchResult();
     // this.makeSearchResult();
@@ -60,12 +66,14 @@ export class UserCTR {
     } else if (result[0] === "member") {
       console.log("컨트롤러-서비스 결과값:" + result);
       this.view.addScript();
-      this.view.makeLoginMain(result[1]);
+      let result_str = JSON.parse(result[1]);
+      this.view.makeLoginMain(result_str);
       this.makeLoginMain();
     } else if (result[0] === "admin") {
       console.log("컨트롤러-서비스 결과값:" + result);
       this.view.addScript();
-      this.view.makeAdminMain(result[1]);
+      let result_str = JSON.parse(result[1]);
+      this.view.makeAdminMain(result_str);
       this.makeAdminMain();
     }
   };
@@ -105,7 +113,9 @@ export class UserCTR {
       console.log("CTR-return-error:" + result);
     } else {
       console.log("컨트롤러-서비스 결과값:" + result);
-      this.view.makeSearchResult(result); //헤더 클릭 되나?
+      let result_str = JSON.parse(result);
+      this.view.makeSearchResult(result_str); //헤더 클릭 되나?
+      this.makeSearchResult();
     }
   };
 
@@ -145,7 +155,7 @@ export class UserCTR {
 
   makeVisitedCafe() {
     this.makeHeaderComp();
-    this.userMenuComp();
+    this.makeUserMenuComp();
     this.makeCafeListComp();
   }
 
@@ -256,8 +266,8 @@ export class UserCTR {
           console.log("CTR-return-error:" + result);
         } else {
           console.log("컨트롤러-서비스 결과값:" + result);
-          this.view.makeSearchResult(result);
-
+          let result_str = JSON.parse(result);
+          this.view.makeSearchResult(result_str);
           this.makeSearchResult();
         }
       });
@@ -289,8 +299,8 @@ export class UserCTR {
             } catch (e) {
               console.log("error:" + e);
             }
-
-            view.makeLoginMain(result);
+            let result_str = JSON.parse(result);
+            view.makeLoginMain(result_str);
             this.makeLoginMain();
 
             //should i add something on here?
@@ -313,7 +323,8 @@ export class UserCTR {
               console.log("CTR-result is undefined" + result);
               return;
             } else {
-              view.makeDashboard(result);
+              let result_str = JSON.parse(result);
+              view.makeDashboard(result_str);
               this.makeDashboard();
             }
           } else if (e.target.innerHTML.includes("Search")) {
@@ -338,8 +349,8 @@ export class UserCTR {
                   console.log("CTR-return-error:" + result);
                 } else {
                   console.log("컨트롤러-서비스 결과값:" + result);
-
-                  view.makeSearchResult(result);
+                  let result_str = JSON.parse(result);
+                  view.makeSearchResult(result_str);
                   this.makeSearchResult();
                 }
               });
@@ -374,8 +385,8 @@ export class UserCTR {
             } catch (e) {
               console.log("error:" + e);
             }
-
-            view.makeLoginMain(result);
+            let result_str = JSON.parse(result);
+            view.makeLoginMain(result_str);
             this.makeLoginMain();
 
             //should i add something on here?
@@ -397,7 +408,8 @@ export class UserCTR {
               console.log("CTR-result is undefined" + result);
               return;
             } else {
-              view.makeDashboard(result);
+              let result_str = JSON.parse(result);
+              view.makeDashboard(result_str);
               this.makeDashboard();
             }
           } else if (e.target.innerHTML.includes("Search")) {
@@ -422,8 +434,8 @@ export class UserCTR {
                   console.log("CTR-return-error:" + result);
                 } else {
                   console.log("컨트롤러-서비스 결과값:" + result);
-
-                  view.makeSearchResult(result);
+                  let result_str = JSON.parse(result);
+                  view.makeSearchResult(result_str);
                   this.makeSearchResult();
                 }
               });
@@ -445,9 +457,13 @@ export class UserCTR {
           var result;
           var service = new UserService();
           let view = new UserComponent();
-          let pattern = /(?!value=")\d{0,99999}(?<!\")/;
+          let pattern = /(?!value=")\d{0,99999}(?<!\")/g;
           let found = str.match(pattern);
-          let value = found.join();
+
+          let clear_arr = found.filter(function (item) {
+            return item !== null && item !== undefined && item !== "";
+          });
+          let value = clear_arr.join();
 
           try {
             result = await service.searchCafeInfo(value);
@@ -474,12 +490,14 @@ export class UserCTR {
 
               if (result === undefined || result === "undefined") {
                 console.log("CTR-return-error:" + result);
-                this.view.makeCafeInfo(result);
+                let result_str = JSON.parse(result);
+                this.view.makeCafeInfo(result_str);
                 this.makeCafeInfo();
               } else {
                 console.log("컨트롤러-서비스 결과값: " + result);
                 alert("성공적으로 등록되었습니다.");
-                this.view.makeCafeInfo(result); //새로 더한 리뷰 추가해서 페이지 다시 만들기
+                let result_str = JSON.parse(result);
+                this.view.makeCafeInfo(result_str); //새로 더한 리뷰 추가해서 페이지 다시 만들기
                 this.makeCafeInfo();
               }
             });
@@ -496,20 +514,26 @@ export class UserCTR {
         e.preventDefault();
         console.log("CTR-CAFE: " + e.target.innerHTML);
         if (e.target.tagName === "H3" || e.target.tagName === "A") {
+          var view = new UserComponent();
+          var service = new UserService();
+
           let str = String(e.target.innerHTML);
           let pattern = /(?!value=")\d{0,99999}(?<!\")/;
           let found = str.match(pattern);
-          let value = found.join();
           var result;
-          var view = new UserComponent();
-          var service = new UserService();
+
+          let clear_arr = found.filter(function (item) {
+            return item !== null && item !== undefined && item !== "";
+          });
+          let value = clear_arr.join();
 
           try {
             result = await service.searchCafeInfo(value);
           } catch (e) {
             console.log("error:" + e);
           }
-          view.makeVisitedCafe(result); //other person's page
+          let result_str = JSON.parse(result);
+          view.makeVisitedCafe(result_str); //other person's page
           this.makeVisitedCafe();
         } else {
           console.log("you clicked invalid area:" + e.target.tagName);
@@ -544,7 +568,8 @@ export class UserCTR {
               console.log("CTR-result is undefined" + result);
               return;
             } else {
-              view.makeDashboard(result);
+              let result_str = JSON.parse(result);
+              view.makeDashboard(result_str);
               this.makeDashboard();
             }
           } else if (e.target.innerHTML.includes("My Hidden Cafe")) {
@@ -565,7 +590,8 @@ export class UserCTR {
               console.log("CTR-result is undefined" + result);
               return;
             } else {
-              view.makeVisitedCafe(result);
+              let result_str = JSON.parse(result);
+              view.makeVisitedCafe(result_str);
               this.makeVisitedCafe();
             }
           } else if (e.target.innerHTML.includes("My Subscription")) {
@@ -586,7 +612,8 @@ export class UserCTR {
               console.log("CTR-result is undefined" + result);
               return;
             } else {
-              view.makeSubscription(result);
+              let result_str = JSON.parse(result);
+              view.makeSubscription(result_str);
               this.makeSubscription();
             }
           } else if (e.target.innerHTML.includes("Add New Hidden Cafe")) {
@@ -632,6 +659,9 @@ export class UserCTR {
         let userData = new FormData(
           document.getElementById("js-addcafe-user-form")
         );
+
+        // userData.append("user_id", 2);
+
         for (let value of userData.values()) {
           console.log("value:" + value);
         }
@@ -709,8 +739,8 @@ export class UserCTR {
                   console.log("CTR-return-error:" + result);
                 } else {
                   console.log("컨트롤러-서비스 결과값:" + result);
-
-                  view.makeSearchResultPage(result);
+                  let result_str = JSON.parse(result);
+                  view.makeSearchResultPage(result_str);
                   ctr.makeSearchResultPage();
                 }
               });
@@ -735,7 +765,8 @@ export class UserCTR {
               console.log("CTR-result is undefined" + result);
               return;
             } else {
-              view.makeCafeListPage(result);
+              let result_str = JSON.parse(result);
+              view.makeCafeListPage(result_str);
               ctr.makeCafeListPage();
             }
           }
@@ -771,7 +802,8 @@ export class UserCTR {
               console.log("CTR-result is undefined" + result);
               return;
             } else {
-              view.makeMainPage(result);
+              let result_str = JSON.parse(result);
+              view.makeMainPage(result_str);
               ctr.makeMainPage();
               console.log("received data:" + result);
             }
@@ -799,8 +831,8 @@ export class UserCTR {
                   console.log("CTR-return-error:" + result);
                 } else {
                   console.log("컨트롤러-서비스 결과값:" + result);
-
-                  view.makeSearchResultPage(result);
+                  let result_str = JSON.parse(result);
+                  view.makeSearchResultPage(result_str);
                   ctr.makeSearchResultPage();
                 }
               });
@@ -825,7 +857,8 @@ export class UserCTR {
               console.log("CTR-result is undefined" + result);
               return;
             } else {
-              view.makeCafeListPage(result);
+              let result_str = JSON.parse(result);
+              view.makeCafeListPage(result_str);
               ctr.makeCafeListPage();
             }
           }
