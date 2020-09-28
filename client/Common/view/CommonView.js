@@ -14,7 +14,8 @@ export class CommonView {
   }
 
   makeCafeInfo(
-    cafe_img1, cafe_img2,
+    cafe_img1,
+    cafe_img2,
     cafe_img3,
     cafe_img4,
     cafe_img5,
@@ -35,8 +36,7 @@ export class CommonView {
     cafe_location,
     cafe_information,
     cafe_menu,
-    cafe_mail,
-
+    cafe_mail
   ) {
     let path = this.getContextPath();
     let cafeinfo = `
@@ -568,7 +568,7 @@ export class CommonView {
           </div>
         </div>
       </div>
-    </div><!-- Places -->`;
+    </div><!— Places —>`;
     return item;
   }
 }

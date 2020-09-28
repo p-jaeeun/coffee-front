@@ -120,7 +120,7 @@ export class UserView {
     value11,
     user_id12,
     user_img12,
-    value12,
+    value12
   ) {
     let path = this.getContextPath();
     let caffaine = ` <section class="main-section">

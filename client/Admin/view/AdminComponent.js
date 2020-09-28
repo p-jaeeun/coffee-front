@@ -395,6 +395,7 @@ export class AdminComponent {
 
     window.document.body.innerHTML = header + cafe_info + footer + search_pop;
   }
+
   addScript() {
     let path = this.getContextPath();
     //create
