@@ -205,7 +205,7 @@ export class UserCTR {
         );
         var result;
         for (let value of userData.values()) {
-          console.log("vlaue: " + value);
+          console.log("value: " + value);
         }
 
         let input_1 = userData.get("user_changed_pw1");

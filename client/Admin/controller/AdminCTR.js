@@ -8,6 +8,15 @@ export class AdminCTR {
   constructor(service, view) {
     this.view = view;
     this.service = service;
+
+    // this.view.makeCafeListPage();
+    // this.makeCafeListPage();
+
+    // this.view.makeMemberPage();
+    // this.makeMemberPage();
+
+    // this.view.makeReviseCafePage();
+    // this.makeReviseCafePage();
   }
 
   // admin listener pages
@@ -39,7 +48,7 @@ export class AdminCTR {
   makeReviseCafePage() {
     this.makeAdminHeaderComp();
     this.makeAdminMenuComp();
-    this.makeLoadCafeComp();
+    // this.makeLoadCafeComp();
     this.makeReviseCafeComp();
   }
 
@@ -71,7 +80,6 @@ export class AdminCTR {
           if (e.target.innerHTML.includes("Home")) {
             console.log("clicked Home");
             var result;
-
             var view = new AdminComponent();
             var service = new AdminService();
 
@@ -301,7 +309,6 @@ export class AdminCTR {
               return;
             } else {
               console.log("user list:" + result);
-
               view.makeReviseCafePage(result);
               this.makeReviseCafePage();
             }
@@ -429,6 +436,8 @@ export class AdminCTR {
         e.preventDefault();
         var result;
 
+        let cafeData = new FormData();
+
         let service = new AdminService();
       });
   }
@@ -452,11 +461,11 @@ export class AdminCTR {
 
         if (result === undefined || result === "undefined") {
           console.log("CTR-return-error:" + result);
-          view.makeReviseCafePage();
+          view.makeReviseCafePage(result);
           this.makeReviseCafePage();
         } else {
           console.log("컨트롤러-서비스 결과값:" + result);
-          view.makeReviseCafePage();
+          view.makeReviseCafePage(result);
           this.makeReviseCafePage();
           alert("입력하신 카페가 성공적으로 수정되었습니다.");
         }
