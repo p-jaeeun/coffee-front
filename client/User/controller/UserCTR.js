@@ -498,9 +498,8 @@ export class UserCTR {
               } else {
                 console.log("컨트롤러-서비스 결과값: " + result);
                 alert("성공적으로 등록되었습니다.");
-                let result_str = JSON.parse(result);
-                this.view.makeCafeInfo(result_str); //새로 더한 리뷰 추가해서 페이지 다시 만들기
-                this.makeCafeInfo();
+                // let result_str = JSON.parse(result);
+                console.log("TEST" + result);
               }
             });
         } else {
@@ -524,19 +523,20 @@ export class UserCTR {
           let found = str.match(pattern);
           var result;
 
-          let clear_arr = found.filter(function (item) {
-            return item !== null && item !== undefined && item !== "";
-          });
-          let value = clear_arr.join();
+          // let clear_arr = found.filter(function (item) {
+          //   return item !== null && item !== undefined && item !== "";
+          // });
+          // let value = clear_arr.join();
 
-          try {
-            result = await service.searchCafeInfo(value);
-          } catch (e) {
-            console.log("error:" + e);
-          }
-          let result_str = JSON.parse(result);
-          view.makeVisitedCafe(result_str); //other person's page
-          this.makeVisitedCafe();
+          // try {
+          //   result = await service.searchOtherPeople(value);
+          // } catch (e) {
+          //   console.log("error:" + e);
+          // }
+          // let result_str = JSON.parse(result);
+          // view.makeOthersPage(result_str); //other person's page
+          // this.makeOthersPage();
+          console.log("서비스 준비중:" + value);
         } else {
           console.log("you clicked invalid area:" + e.target.tagName);
         }
@@ -627,7 +627,7 @@ export class UserCTR {
             let view = new UserComponent();
             var service = new UserService();
 
-            view.makeAddCafe(user_id, user_img);
+            view.makeAddCafe();
             this.makeAddCafe();
           } else if (e.target.innerHTML.includes("Bookmark")) {
             console.log("clicked Bookmark");

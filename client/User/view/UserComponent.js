@@ -143,26 +143,6 @@ export class UserComponent {
     localStorage.setItem("user_img", result.user_circle_img);
     localStorage.setItem("user_bg_img", result.user_bg_img);
 
-    //review
-    var cafe_review1 = 0;
-    var cafe_review2 = 0;
-    var cafe_review3 = 0;
-    if (result.review.length !== 0 || result.review !== null) {
-      for (let i = 0; i < result.review.length; i++) {
-        if (result.review[0].cafe_id === result.cafebean[0].cafe_id) {
-          cafe_review1 += 1;
-        } else if (result.review[1].cafe_id === result.cafebean[1].cafe_id) {
-          cafe_review2 += 1;
-        } else if (result.review[2].cafe_id === result.cafebean[2].cafe_id) {
-          cafe_review3 += 1;
-        }
-      }
-    } else {
-      cafe_review1 = 0;
-      cafe_review2 = 0;
-      cafe_review3 = 0;
-    }
-
     //display
     let header = user_view.makeUserHeader(
       result.user_circle_img,
@@ -212,20 +192,21 @@ export class UserComponent {
       result.cafeimg[0].cafe_image,
       result.cafebean[0].cafe_name,
       result.cafebean[0].cafe_rate,
-      cafe_review1,
+      "0",
       result.cafebean[0].cafe_location,
-
+      result.cafebean[0].cafe_id,
       result.cafeimg[1].cafe_image,
       result.cafebean[1].cafe_name,
       result.cafebean[1].cafe_rate,
-      cafe_review2,
+      "0",
       result.cafebean[1].cafe_location,
-
+      result.cafebean[1].cafe_id,
       result.cafeimg[2].cafe_image,
       result.cafebean[2].cafe_name,
       result.cafebean[2].cafe_rate,
-      cafe_review3,
-      result.cafebean[2].cafe_location
+      "0",
+      result.cafebean[2].cafe_location,
+      result.cafebean[2].cafe_id
     );
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
@@ -234,447 +215,6 @@ export class UserComponent {
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
-
-    //   {
-    //     "user_id": null,
-    //     "user_circle_img": null,
-    //     "cafebean": [
-    //         {
-    //             "cafe_id": 1,
-    //             "cafe_name": "Starbucks",
-    //             "cafe_location": "150:150",
-    //             "cafe_menu": "Americano",
-    //             "cafe_information": "스타벅스에요!",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 2,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": false,
-    //             "is_checked": true,
-    //             "user_id": 8,
-    //             "cafe_rate": 4.3,
-    //             "cafe_sns": "instagram"
-    //         },
-    //         {
-    //             "cafe_id": 4,
-    //             "cafe_name": "Starcoffee",
-    //             "cafe_location": "120:50",
-    //             "cafe_menu": "staramericano",
-    //             "cafe_information": "스타카페에요!",
-    //             "is_enable_bean_choice": false,
-    //             "cafe_mood": 2,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": false,
-    //             "is_checked": true,
-    //             "user_id": 8,
-    //             "cafe_rate": 4.3,
-    //             "cafe_sns": "KakaoStory"
-    //         },
-    //         {
-    //             "cafe_id": 7,
-    //             "cafe_name": "재은카페2",
-    //             "cafe_location": "122:337",
-    //             "cafe_menu": "Americano",
-    //             "cafe_information": "너무 이쁜카페에요!",
-    //             "is_enable_bean_choice": false,
-    //             "cafe_mood": 3,
-    //             "is_enable_buy_bean": false,
-    //             "is_enable_handdrip": false,
-    //             "is_checked": true,
-    //             "user_id": 15,
-    //             "cafe_rate": 2.0,
-    //             "cafe_sns": "Insta"
-    //         },
-    //         {
-    //             "cafe_id": 8,
-    //             "cafe_name": "재은카페1",
-    //             "cafe_location": "120:387",
-    //             "cafe_menu": "CaffeLatte",
-    //             "cafe_information": "이쁜카페에요!",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 2,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": false,
-    //             "is_checked": true,
-    //             "user_id": 15,
-    //             "cafe_rate": 2.0,
-    //             "cafe_sns": "Facebook"
-    //         },
-    //         {
-    //             "cafe_id": 9,
-    //             "cafe_name": "청하카페1",
-    //             "cafe_location": "120:387",
-    //             "cafe_menu": "CaffeLatte",
-    //             "cafe_information": "청하카페에요!",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 2,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": false,
-    //             "is_checked": true,
-    //             "user_id": 8,
-    //             "cafe_rate": 2.0,
-    //             "cafe_sns": "Facebook"
-    //         },
-    //         {
-    //             "cafe_id": 10,
-    //             "cafe_name": "청하카페2",
-    //             "cafe_location": "1220:387",
-    //             "cafe_menu": "Kimchi",
-    //             "cafe_information": "청하카페에요2!",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 2,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": false,
-    //             "is_checked": true,
-    //             "user_id": 8,
-    //             "cafe_rate": 2.0,
-    //             "cafe_sns": "KaKao"
-    //         },
-    //         {
-    //             "cafe_id": 11,
-    //             "cafe_name": "재우카페2",
-    //             "cafe_location": "20:387",
-    //             "cafe_menu": "Desert",
-    //             "cafe_information": "재우카페에요1",
-    //             "is_enable_bean_choice": false,
-    //             "cafe_mood": 2,
-    //             "is_enable_buy_bean": false,
-    //             "is_enable_handdrip": false,
-    //             "is_checked": true,
-    //             "user_id": 17,
-    //             "cafe_rate": 3.0,
-    //             "cafe_sns": "Anycall"
-    //         },
-    //         {
-    //             "cafe_id": 12,
-    //             "cafe_name": "재우카페1",
-    //             "cafe_location": "220:387",
-    //             "cafe_menu": "Americano",
-    //             "cafe_information": "재우카페에요2",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 2,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": true,
-    //             "is_checked": true,
-    //             "user_id": 17,
-    //             "cafe_rate": 1.6,
-    //             "cafe_sns": "Cyon"
-    //         },
-    //         {
-    //             "cafe_id": 13,
-    //             "cafe_name": "재은",
-    //             "cafe_location": "123:232",
-    //             "cafe_menu": "아메리카노",
-    //             "cafe_information": "이뻐요",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 1,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": true,
-    //             "is_checked": true,
-    //             "user_id": 8,
-    //             "cafe_rate": 0.0,
-    //             "cafe_sns": "facebook"
-    //         },
-    //         {
-    //             "cafe_id": 14,
-    //             "cafe_name": "재우3",
-    //             "cafe_location": "123:232",
-    //             "cafe_menu": "아메리카노",
-    //             "cafe_information": "이뻐요",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 1,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": true,
-    //             "is_checked": true,
-    //             "user_id": 8,
-    //             "cafe_rate": 0.0,
-    //             "cafe_sns": "facebook"
-    //         },
-    //         {
-    //             "cafe_id": 15,
-    //             "cafe_name": "Jaeen",
-    //             "cafe_location": "123:232",
-    //             "cafe_menu": "아메리카노",
-    //             "cafe_information": "이뻐요",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 1,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": true,
-    //             "is_checked": true,
-    //             "user_id": 8,
-    //             "cafe_rate": 0.0,
-    //             "cafe_sns": "facebook"
-    //         },
-    //         {
-    //             "cafe_id": 16,
-    //             "cafe_name": "Jaeencoffee",
-    //             "cafe_location": "123:232",
-    //             "cafe_menu": "아메리카노",
-    //             "cafe_information": "이뻐요",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 1,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": true,
-    //             "is_checked": true,
-    //             "user_id": 8,
-    //             "cafe_rate": 0.0,
-    //             "cafe_sns": "facebook"
-    //         },
-    //         {
-    //             "cafe_id": 17,
-    //             "cafe_name": "cafecafe",
-    //             "cafe_location": "123",
-    //             "cafe_menu": "americano",
-    //             "cafe_information": "seoul",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 2,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": true,
-    //             "is_checked": true,
-    //             "user_id": 8,
-    //             "cafe_rate": 2.0,
-    //             "cafe_sns": "insta"
-    //         },
-    //         {
-    //             "cafe_id": 18,
-    //             "cafe_name": "재은카페",
-    //             "cafe_location": "555/111",
-    //             "cafe_menu": "아이스아메리카노",
-    //             "cafe_information": "예쁩니다",
-    //             "is_enable_bean_choice": true,
-    //             "cafe_mood": 3,
-    //             "is_enable_buy_bean": true,
-    //             "is_enable_handdrip": true,
-    //             "is_checked": true,
-    //             "user_id": 1,
-    //             "cafe_rate": 0.0,
-    //             "cafe_sns": "www.instagram.com/jaewoo"
-    //         }
-    //     ],
-    //     "cafeimg": [
-    //         {
-    //             "cafe_id": 1,
-    //             "cafe_image": "1번카페이미지",
-    //             "is_checked": true
-    //         },
-    //         {
-    //             "cafe_id": 1,
-    //             "cafe_image": "1번카페이미지2",
-    //             "is_checked": true
-    //         },
-    //         {
-    //             "cafe_id": 1,
-    //             "cafe_image": "1번카페이미지3",
-    //             "is_checked": true
-    //         },
-    //         {
-    //             "cafe_id": 4,
-    //             "cafe_image": "4번카페이미지1",
-    //             "is_checked": true
-    //         },
-    //         {
-    //             "cafe_id": 4,
-    //             "cafe_image": "4번카페이미지2",
-    //             "is_checked": true
-    //         },
-    //         {
-    //             "cafe_id": 4,
-    //             "cafe_image": "4번카페이미지3",
-    //             "is_checked": true
-    //         }
-    //     ],
-    //     "review": [
-    //         {
-    //             "review_id": 2,
-    //             "review_img": null,
-    //             "review": "재은리뷰",
-    //             "rate": 4,
-    //             "cafe_id": 4,
-    //             "user_id": 15
-    //         },
-    //         {
-    //             "review_id": 3,
-    //             "review_img": null,
-    //             "review": "재은리뷰",
-    //             "rate": 5,
-    //             "cafe_id": 7,
-    //             "user_id": 15
-    //         },
-    //         {
-    //             "review_id": 4,
-    //             "review_img": null,
-    //             "review": "현석리뷰",
-    //             "rate": 5,
-    //             "cafe_id": 1,
-    //             "user_id": 8
-    //         },
-    //         {
-    //             "review_id": 5,
-    //             "review_img": null,
-    //             "review": "현석리뷰",
-    //             "rate": 5,
-    //             "cafe_id": 4,
-    //             "user_id": 8
-    //         },
-    //         {
-    //             "review_id": 6,
-    //             "review_img": null,
-    //             "review": "청하리뷰",
-    //             "rate": 2,
-    //             "cafe_id": 8,
-    //             "user_id": 16
-    //         },
-    //         {
-    //             "review_id": 8,
-    //             "review_img": null,
-    //             "review": "재우리뷰",
-    //             "rate": 3,
-    //             "cafe_id": 9,
-    //             "user_id": 17
-    //         },
-    //         {
-    //             "review_id": 9,
-    //             "review_img": null,
-    //             "review": "재우리뷰",
-    //             "rate": 4,
-    //             "cafe_id": 10,
-    //             "user_id": 17
-    //         },
-    //         {
-    //             "review_id": 10,
-    //             "review_img": null,
-    //             "review": "재우리뷰",
-    //             "rate": 1,
-    //             "cafe_id": 12,
-    //             "user_id": 17
-    //         },
-    //         {
-    //             "review_id": 11,
-    //             "review_img": null,
-    //             "review": "재우리뷰2",
-    //             "rate": 1,
-    //             "cafe_id": 12,
-    //             "user_id": 17
-    //         },
-    //         {
-    //             "review_id": 12,
-    //             "review_img": null,
-    //             "review": "재우리뷰2",
-    //             "rate": 3,
-    //             "cafe_id": 10,
-    //             "user_id": 15
-    //         },
-    //         {
-    //             "review_id": 13,
-    //             "review_img": null,
-    //             "review": "재은리뷰3",
-    //             "rate": 3,
-    //             "cafe_id": 11,
-    //             "user_id": 15
-    //         },
-    //         {
-    //             "review_id": 14,
-    //             "review_img": null,
-    //             "review": "재은리뷰3",
-    //             "rate": 3,
-    //             "cafe_id": 12,
-    //             "user_id": 15
-    //         },
-    //         {
-    //             "review_id": 16,
-    //             "review_img": null,
-    //             "review": "박재은재은리뷰3",
-    //             "rate": 3,
-    //             "cafe_id": 1,
-    //             "user_id": 45
-    //         },
-    //         {
-    //             "review_id": 17,
-    //             "review_img": null,
-    //             "review": "박재은재은리뷰3",
-    //             "rate": 4,
-    //             "cafe_id": 4,
-    //             "user_id": 45
-    //         },
-    //         {
-    //             "review_id": 18,
-    //             "review_img": null,
-    //             "review": "요마롭마슈퍼롭바호롤롤로슈퍼볼",
-    //             "rate": 4,
-    //             "cafe_id": 8,
-    //             "user_id": 45
-    //         },
-    //         {
-    //             "review_id": 21,
-    //             "review_img": null,
-    //             "review": "맛있어요!",
-    //             "rate": 5,
-    //             "cafe_id": 1,
-    //             "user_id": 45
-    //         }
-    //     ],
-    //     "topCaffeines": [
-    //         {
-    //             "user_id": "manje12",
-    //             "user_circle_img": "resources/userimage/circle/manje12_circle.png",
-    //             "user_caffeine": 610
-    //         },
-    //         {
-    //             "user_id": "jam",
-    //             "user_circle_img": "resources/userimage/circle/jam_circle.png",
-    //             "user_caffeine": 180
-    //         },
-    //         {
-    //             "user_id": "CK",
-    //             "user_circle_img": null,
-    //             "user_caffeine": 80
-    //         },
-    //         {
-    //             "user_id": "jaewoo",
-    //             "user_circle_img": null,
-    //             "user_caffeine": 80
-    //         },
-    //         {
-    //             "user_id": "박재은",
-    //             "user_circle_img": null,
-    //             "user_caffeine": 0
-    //         },
-    //         {
-    //             "user_id": "jamjam2",
-    //             "user_circle_img": "resources/userimage/circle/jamjam2_circle.png",
-    //             "user_caffeine": 0
-    //         },
-    //         {
-    //             "user_id": "host",
-    //             "user_circle_img": null,
-    //             "user_caffeine": 0
-    //         },
-    //         {
-    //             "user_id": "Jee",
-    //             "user_circle_img": null,
-    //             "user_caffeine": 0
-    //         },
-    //         {
-    //             "user_id": "박재은재은재은씨",
-    //             "user_circle_img": null,
-    //             "user_caffeine": 0
-    //         },
-    //         {
-    //             "user_id": "박재",
-    //             "user_circle_img": null,
-    //             "user_caffeine": 0
-    //         },
-    //         {
-    //             "user_id": "박재은재은",
-    //             "user_circle_img": null,
-    //             "user_caffeine": 0
-    //         },
-    //         {
-    //             "user_id": "asd",
-    //             "user_circle_img": null,
-    //             "user_caffeine": 0
-    //         }
-    //     ]
-    // }
   }
 
   makeAdminMain(result) {
@@ -691,81 +231,65 @@ export class UserComponent {
     localStorage.setItem("admin_id", result.user_id);
 
     //review
-    var cafe_review1 = 0;
-    var cafe_review2 = 0;
-    var cafe_review3 = 0;
-    if (result.review.length !== 0 || result.review !== null) {
-      for (let i = 0; i < result.review.length; i++) {
-        if (result.review[0].cafe_id === result.cafebean[0].cafe_id) {
-          cafe_review1 += 1;
-        } else if (result.review[1].cafe_id === result.cafebean[1].cafe_id) {
-          cafe_review2 += 1;
-        } else if (result.review[2].cafe_id === result.cafebean[2].cafe_id) {
-          cafe_review3 += 1;
-        }
-      }
-    } else {
-      cafe_review1 = 0;
-      cafe_review2 = 0;
-      cafe_review3 = 0;
-    }
+
     let header = admin_view.makeAdminHeader(result.user_id, "0");
     let caffeine = user_view.makeMainCaffeineList(
-      result.topCaffeine[0].user_id,
-      result.topCaffeine[0].user_circle_img,
-      result.topCaffeine[0].user_id,
-      result.topCaffeine[1].user_id,
-      result.topCaffeine[1].user_circle_img,
-      result.topCaffeine[1].user_id,
-      result.topCaffeine[2].user_id,
-      result.topCaffeine[2].user_circle_img,
-      result.topCaffeine[2].user_id,
-      result.topCaffeine[3].user_id,
-      result.topCaffeine[3].user_circle_img,
-      result.topCaffeine[3].user_id,
-      result.topCaffeine[4].user_id,
-      result.topCaffeine[4].user_circle_img,
-      result.topCaffeine[4].user_id,
-      result.topCaffeine[5].user_id,
-      result.topCaffeine[5].user_circle_img,
-      result.topCaffeine[5].user_id,
-      result.topCaffeine[6].user_id,
-      result.topCaffeine[6].user_circle_img,
-      result.topCaffeine[6].user_id,
-      result.topCaffeine[7].user_id,
-      result.topCaffeine[7].user_circle_img,
-      result.topCaffeine[7].user_id,
-      result.topCaffeine[8].user_id,
-      result.topCaffeine[8].user_circle_img,
-      result.topCaffeine[8].user_id,
-      result.topCaffeine[9].user_id,
-      result.topCaffeine[9].user_circle_img,
-      result.topCaffeine[9].user_id,
-      result.topCaffeine[10].user_id,
-      result.topCaffeine[10].user_circle_img,
-      result.topCaffeine[10].user_id,
-      result.topCaffeine[11].user_id,
-      result.topCaffeine[11].user_circle_img,
-      result.topCaffeine[11].user_id
+      result.topCaffeines[0].user_id,
+      result.topCaffeines[0].user_circle_img,
+      result.topCaffeines[0].user_id,
+      result.topCaffeines[1].user_id,
+      result.topCaffeines[1].user_circle_img,
+      result.topCaffeines[1].user_id,
+      result.topCaffeines[2].user_id,
+      result.topCaffeines[2].user_circle_img,
+      result.topCaffeines[2].user_id,
+      result.topCaffeines[3].user_id,
+      result.topCaffeines[3].user_circle_img,
+      result.topCaffeines[3].user_id,
+      result.topCaffeines[4].user_id,
+      result.topCaffeines[4].user_circle_img,
+      result.topCaffeines[4].user_id,
+      result.topCaffeines[5].user_id,
+      result.topCaffeines[5].user_circle_img,
+      result.topCaffeines[5].user_id,
+      result.topCaffeines[6].user_id,
+      result.topCaffeines[6].user_circle_img,
+      result.topCaffeines[6].user_id,
+      result.topCaffeines[7].user_id,
+      result.topCaffeines[7].user_circle_img,
+      result.topCaffeines[7].user_id,
+      result.topCaffeines[8].user_id,
+      result.topCaffeines[8].user_circle_img,
+      result.topCaffeines[8].user_id,
+      result.topCaffeines[9].user_id,
+      result.topCaffeines[9].user_circle_img,
+      result.topCaffeines[9].user_id,
+      result.topCaffeines[10].user_id,
+      result.topCaffeines[10].user_circle_img,
+      result.topCaffeines[10].user_id,
+      result.topCaffeines[11].user_id,
+      result.topCaffeines[11].user_circle_img,
+      result.topCaffeines[11].user_id
     );
     let cafe = user_view.makeMainCafeList(
       result.cafeimg[0].cafe_image,
       result.cafebean[0].cafe_name,
       result.cafebean[0].cafe_rate,
-      cafe_review1,
+      "0",
       result.cafebean[0].cafe_location,
-
+      result.cafebean[0].cafe_id,
       result.cafeimg[1].cafe_image,
       result.cafebean[1].cafe_name,
       result.cafebean[1].cafe_rate,
-      cafe_review2,
+      "0",
       result.cafebean[1].cafe_location,
-
+      result.cafebean[1].cafe_id,
       result.cafeimg[2].cafe_image,
       result.cafebean[2].cafe_name,
       result.cafebean[2].cafe_rate,
-      cafe_review3,
-      result.cafebean[2].cafe_location
+      "0",
+      result.cafebean[2].cafe_location,
+      result.cafebean[2].cafe_id
     );
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
@@ -1314,6 +838,7 @@ export class UserComponent {
     let script12 = document.createElement("script");
     let script13 = document.createElement("script");
     let script14 = document.createElement("script");
+    let script15 = document.createElement("script");
 
     //set path
     script1.src = `${path}/resources/js/jquery.min.js`;
@@ -1331,6 +856,8 @@ export class UserComponent {
       "//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb";
     script13.src = `${path}/resources/img_upload.js`;
     script14.src = `${path}/resources/app.js`;
+    script15.src =
+      "http://maps.googleapis.com/maps/api/js?key=AIzaSyCYc537bQom7ajFpWE5sQaVyz1SQa9_tuY&sensor=true&libraries=places";
 
     //type
     script1.setAttribute = ("type", "text/javascript");
@@ -1362,6 +889,7 @@ export class UserComponent {
     script12.setAttribute = ("async", "false");
     script13.setAttribute = ("async", "false");
     script14.setAttribute = ("async", "false");
+    script15.setAttribute = ("async", "false");
 
     //append
     document.body.append(script1);
@@ -1377,7 +905,23 @@ export class UserComponent {
     document.body.append(script11);
     document.body.append(script12);
     document.body.append(script13);
+    document.body.append(script15);
     document.body.append(script14);
+
+    // console.log("script1:" + document.body.append(script1));
+    // console.log("script2:" + document.body.append(script2));
+    // console.log("script3:" + document.body.append(script3));
+    // console.log("script4:" + document.body.append(script4));
+    // console.log("script5:" + document.body.append(script5));
+    // console.log("script6:" + document.body.append(script6));
+    // console.log("script7:" + document.body.append(script7));
+    // console.log("script8:" + document.body.append(script8));
+    // console.log("script9:" + document.body.append(script9));
+    // console.log("script10:" + document.body.append(script10));
+    // console.log("script11:" + document.body.append(script11));
+    // console.log("script12:" + document.body.append(script12));
+    // console.log("script13:" + document.body.append(script13));
+    // console.log("script14:" + document.body.append(script14));
   }
 
   getContextPath() {

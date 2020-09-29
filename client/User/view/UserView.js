@@ -792,7 +792,7 @@ export class UserView {
                     </div>
                     <div class="fieldformy">
                       <span>카테고리</span>
-                      <select class="cdropshere" name="category">
+                      <select class="cdropshere" >
                         <option value="">select option</option>
                         <option value="">option1</option>
                         <option value="">option2</option>
