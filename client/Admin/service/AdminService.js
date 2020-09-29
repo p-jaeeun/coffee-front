@@ -17,7 +17,7 @@ export class AdminService {
 
     if (result === undefined || result === "undefined") {
       console.log("Service-result-undefined:" + result);
-      this.view.makeAddcafePage();
+      this.view.makeAddCafePage();
       return;
     } else {
       console.log("Service-result:" + result);
@@ -37,7 +37,7 @@ export class AdminService {
 
     if (result === undefined || result === "undefined") {
       console.log("Service-result-undefined:" + result);
-      this.view.makeAddcafePage();
+      this.view.makeReviseCafePage();
       return;
     } else {
       console.log("Service-result:" + result);
@@ -67,9 +67,10 @@ export class AdminService {
 
     try {
       result = await this.api.callMain();
-    } catch {
-      console.log("Service-error: " + e);
+    } catch (e) {
+      console.log("Service-error:" + e);
     }
+
     return result;
   }
 

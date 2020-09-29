@@ -156,7 +156,9 @@ export class UserCTR {
   }
 
   makeAdminMain() {
-    this.makeAdminHeaderComp();
+    let ctr = new AdminCTR();
+    // this.makeAdminHeaderComp();
+    ctr.makeAdminHeaderComp();
     this.makeCafeListComp();
     this.makeCaffeineListComp();
   }
@@ -651,187 +653,189 @@ export class UserCTR {
       });
   }
 
-  makeAdminHeaderComp() {
-    // responsive header
-    document
-      .getElementsByClassName("js-admin-header-menu")[0]
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
-        if (
-          e.target.tagname === "UL" ||
-          e.target.tagName === "LI" ||
-          e.target.tagName === "A"
-        ) {
-          // console.log('taget' + e.target.tagName)
-          if (e.target.innerHTML.includes("Home")) {
-            console.log("clicked Home");
-            var result;
+  // makeAdminHeaderComp() {
+  //   // responsive header
+  //   document
+  //     .getElementsByClassName("js-admin-header-menu")[0]
+  //     .addEventListener("click", async (e) => {
+  //       e.preventDefault();
+  //       if (
+  //         e.target.tagname === "UL" ||
+  //         e.target.tagName === "LI" ||
+  //         e.target.tagName === "A"
+  //       ) {
+  //         // console.log('taget' + e.target.tagName)
+  //         if (e.target.innerHTML.includes("Home")) {
+  //           console.log("clicked Home");
+  //           var result;
 
-            var view = new AdminComponent();
-            var service = new AdminService();
-            var ctr = new AdminCTR();
+  //           var service = new AdminService();
 
-            try {
-              result = await service.callMain();
-            } catch (e) {
-              console.log("error: " + e);
-            }
-            if (result === undefined || result === "undefined") {
-              console.log("CTR-result is undefined" + result);
-              return;
-            } else {
-              view.makeMainPage(result);
-              ctr.makeAdminMainPage();
-              console.log("received data:" + result);
-            }
-          } else if (e.target.innerHTML.includes("Search")) {
-            console.log("clicked Search");
-            document
-              .getElementsByClassName("js-search-btn")[0]
-              .addEventListener("click", async (e) => {
-                e.preventDefault();
-                var result;
+  //           try {
+  //             result = await service.callMain();
+  //           } catch (e) {
+  //             console.log("error: " + e);
+  //           }
+  //           if (result === undefined || result === "undefined") {
+  //             console.log("CTR-result is undefined" + result);
+  //             return;
+  //           } else {
+  //             var view = new UserComponent();
+  //             var ctr = new UserCTR();
+  //             view.makeAdminMain(result);
+  //             ctr.makeAdminMain();
+  //             console.log("received data:" + result);
+  //           }
+  //         } else if (e.target.innerHTML.includes("Search")) {
+  //           console.log("clicked Search");
+  //           document
+  //             .getElementsByClassName("js-search-btn")[0]
+  //             .addEventListener("click", async (e) => {
+  //               e.preventDefault();
+  //               var result;
 
-                var view = new AdminComponent();
-                var service = new AdminService();
-                var ctr = new AdminCTR();
+  //               var view = new AdminComponent();
+  //               var service = new AdminService();
+  //               var ctr = new AdminCTR();
 
-                let adminData = new FormData(
-                  document.getElementById("js-search-form")
-                );
-                for (let value of adminData.values()) {
-                  console.log("value:" + value);
-                }
+  //               let adminData = new FormData(
+  //                 document.getElementById("js-search-form")
+  //               );
+  //               for (let value of adminData.values()) {
+  //                 console.log("value:" + value);
+  //               }
 
-                result = await service.search(adminData);
+  //               result = await service.search(adminData);
 
-                if (result === undefined || result === "undefined") {
-                  console.log("CTR-return-error:" + result);
-                } else {
-                  console.log("컨트롤러-서비스 결과값:" + result);
+  //               if (result === undefined || result === "undefined") {
+  //                 console.log("CTR-return-error:" + result);
+  //               } else {
+  //                 console.log("컨트롤러-서비스 결과값:" + result);
 
-                  view.makeSearchResultPage(result);
-                  ctr.makeSearchResultPage();
-                }
-              });
-          } else if (e.target.innerHTML.includes("Admin")) {
-            console.log("clicked Admin");
-            var result;
+  //                 view.makeSearchResultPage(result);
+  //                 ctr.makeSearchResultPage();
+  //               }
+  //             });
+  //         } else if (e.target.innerHTML.includes("Admin")) {
+  //           console.log("clicked Admin");
+  //           var result;
 
-            let adminData = localStorage.getItem("admin_id");
-            console.log("local data:" + adminData);
+  //           let adminData = localStorage.getItem("admin_id");
+  //           console.log("local data:" + adminData);
 
-            var view = new AdminComponent();
-            var service = new AdminService();
-            var ctr = new AdminCTR();
+  //           var view = new AdminComponent();
+  //           var service = new AdminService();
+  //           var ctr = new AdminCTR();
 
-            try {
-              result = await service.callAdminPage(adminData);
-            } catch (e) {
-              console.log("error: " + e);
-            }
+  //           try {
+  //             result = await service.callAdminPage(adminData);
+  //           } catch (e) {
+  //             console.log("error: " + e);
+  //           }
 
-            if (result === undefined || result === "undefined") {
-              console.log("CTR-result is undefined" + result);
-              return;
-            } else {
-              view.makeCafeListPage(result);
-              ctr.makeCafeListPage();
-            }
-          }
-        } else {
-          console.log("you clicked invalid area");
-        }
-      });
-    // header
-    document
-      .getElementsByClassName("js-admin-header-menu")[1]
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
-        if (
-          e.target.tagname === "UL" ||
-          e.target.tagName === "LI" ||
-          e.target.tagName === "A"
-        ) {
-          // console.log('taget' + e.target.tagName)
-          if (e.target.innerHTML.includes("Home")) {
-            console.log("clicked Home");
-            var result;
+  //           if (result === undefined || result === "undefined") {
+  //             console.log("CTR-result is undefined" + result);
+  //             return;
+  //           } else {
+  //             view.makeCafeListPage(result);
+  //             ctr.makeCafeListPage();
+  //           }
+  //         }
+  //       } else {
+  //         console.log("you clicked invalid area");
+  //       }
+  //     });
+  //   // header
+  //   document
+  //     .getElementsByClassName("js-admin-header-menu")[1]
+  //     .addEventListener("click", async (e) => {
+  //       e.preventDefault();
+  //       if (
+  //         e.target.tagname === "UL" ||
+  //         e.target.tagName === "LI" ||
+  //         e.target.tagName === "A"
+  //       ) {
+  //         // console.log('taget' + e.target.tagName)
+  //         if (e.target.innerHTML.includes("Home")) {
+  //           console.log("clicked Home");
+  //           var result;
 
-            var view = new AdminComponent();
-            var service = new AdminService();
-            var ctr = new AdminCTR();
+  //           var view = new AdminComponent();
+  //           var service = new AdminService();
+  //           var ctr = new AdminCTR();
 
-            try {
-              result = await service.callMain();
-            } catch (e) {
-              console.log("error: " + e);
-            }
-            if (result === undefined || result === "undefined") {
-              console.log("CTR-result is undefined" + result);
-              return;
-            } else {
-              view.makeMainPage(result);
-              ctr.makeMainPage();
-              console.log("received data:" + result);
-            }
-          } else if (e.target.innerHTML.includes("Search")) {
-            console.log("clicked Search");
-            document
-              .getElementsByClassName("js-search-btn")[0]
-              .addEventListener("click", async (e) => {
-                e.preventDefault();
-                var result;
+  //           try {
+  //             result = await service.callMain();
+  //           } catch (e) {
+  //             console.log("error: " + e);
+  //           }
+  //           if (result === undefined || result === "undefined") {
+  //             console.log("CTR-result is undefined" + result);
+  //             return;
+  //           } else {
+  //             var view = new UserComponent();
+  //             var ctr = new UserCTR();
+  //             view.makeAdminMain(result);
+  //             ctr.makeAdminMain();
+  //             console.log("received data:" + result);
+  //           }
+  //         } else if (e.target.innerHTML.includes("Search")) {
+  //           console.log("clicked Search");
+  //           document
+  //             .getElementsByClassName("js-search-btn")[0]
+  //             .addEventListener("click", async (e) => {
+  //               e.preventDefault();
+  //               var result;
 
-                let adminData = new FormData(
-                  document.getElementById("js-search-form")
-                );
-                var view = new AdminComponent();
-                var service = new AdminService();
-                var ctr = new AdminCTR();
+  //               let adminData = new FormData(
+  //                 document.getElementById("js-search-form")
+  //               );
+  //               var view = new AdminComponent();
+  //               var service = new AdminService();
+  //               var ctr = new AdminCTR();
 
-                for (let value of adminData.values()) {
-                  console.log("value:" + value);
-                }
-                result = await service.search(adminData);
+  //               for (let value of adminData.values()) {
+  //                 console.log("value:" + value);
+  //               }
+  //               result = await service.search(adminData);
 
-                if (result === undefined || result === "undefined") {
-                  console.log("CTR-return-error:" + result);
-                } else {
-                  console.log("컨트롤러-서비스 결과값:" + result);
+  //               if (result === undefined || result === "undefined") {
+  //                 console.log("CTR-return-error:" + result);
+  //               } else {
+  //                 console.log("컨트롤러-서비스 결과값:" + result);
 
-                  view.makeSearchResultPage(result);
-                  ctr.makeSearchResultPage();
-                }
-              });
-          } else if (e.target.innerHTML.includes("Admin")) {
-            console.log("clicked Admin");
-            var result;
+  //                 view.makeSearchResultPage(result);
+  //                 ctr.makeSearchResultPage();
+  //               }
+  //             });
+  //         } else if (e.target.innerHTML.includes("Admin")) {
+  //           console.log("clicked Admin");
+  //           var result;
 
-            let adminData = localStorage.getItem("admin_id");
-            console.log("local data:" + adminData);
+  //           let adminData = localStorage.getItem("admin_id");
+  //           console.log("local data:" + adminData);
 
-            var view = new AdminComponent();
-            var service = new AdminService();
-            var ctr = new AdminCTR();
+  //           var view = new AdminComponent();
+  //           var service = new AdminService();
+  //           var ctr = new AdminCTR();
 
-            try {
-              result = await service.callAdminPage(adminData);
-            } catch (e) {
-              console.log("error: " + e);
-            }
+  //           try {
+  //             result = await service.callAdminPage(adminData);
+  //           } catch (e) {
+  //             console.log("error: " + e);
+  //           }
 
-            if (result === undefined || result === "undefined") {
-              console.log("CTR-result is undefined" + result);
-              return;
-            } else {
-              view.makeCafeListPage(result);
-              ctr.makeCafeListPage();
-            }
-          }
-        } else {
-          console.log("you clicked invalid area");
-        }
-      });
-  }
+  //           if (result === undefined || result === "undefined") {
+  //             console.log("CTR-result is undefined" + result);
+  //             return;
+  //           } else {
+  //             view.makeCafeListPage(result);
+  //             ctr.makeCafeListPage();
+  //           }
+  //         }
+  //       } else {
+  //         console.log("you clicked invalid area");
+  //       }
+  //     });
+  // }
 }

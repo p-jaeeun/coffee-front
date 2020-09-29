@@ -25,10 +25,10 @@ export class UserView {
     <div class="theme-layout">
     <div class="responsiveheader">
       <div class="rheader">
-        <span><img src="${path}/images/ricon.png" alt="menu_icon" /></span>
+        <span><img src="${path}/resources/images/ricon.png" alt="menu_icon" /></span>
         <div class="logo">
           <a href="#" 
-            ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
+            ><img src="${path}/resources/images/hiddenc_logo.png" alt="hiddenC_logo"
           /></a>
         </div>
       </div>
@@ -53,7 +53,7 @@ export class UserView {
       <div class="container fluid">
         <div class="logo">
           <a href="#" 
-            ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
+            ><img src="${path}/resources/images/hiddenc_logo.png" alt="hiddenC_logo"
           /></a>
         </div>
         <div class="userdropsec">
@@ -301,7 +301,7 @@ export class UserView {
     cafe_rate3,
     cafe_rate_count3,
     cafe_location3,
-    value3,
+    value3
   ) {
     let path = this.getContextPath();
     let list = ` <section>
@@ -701,7 +701,14 @@ export class UserView {
     return subscription;
   }
 
-  makeSubscriptionItem(cafe_name, cafe_id, cafe_rate, cafe_img, cafe_rate_count, cafe_location) {
+  makeSubscriptionItem(
+    cafe_name,
+    cafe_id,
+    cafe_rate,
+    cafe_img,
+    cafe_rate_count,
+    cafe_location
+  ) {
     let path = this.getContextPath();
     let list = `      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="places">

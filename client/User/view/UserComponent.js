@@ -6,6 +6,7 @@ export class UserComponent {
   constructor() {
     this.user_view = new UserView();
     this.common_view = new CommonView();
+    this.test12 = "12";
 
     //form
     this.signup_form = document.getElementById("js-signup-form");
@@ -234,8 +235,8 @@ export class UserComponent {
     let common_view = new CommonView();
     let admin_view = new AdminView();
     this.addScript();
-    let user_id = "ADMIN123";
-    let user_img = "../../image/hiddenc_logo.png";
+    let user_id = "admin";
+    let user_img = "../../resources/images/hiddenc_logo.png";
 
     let header = admin_view.makeAdminHeader(user_id, user_img);
     let caffeine = user_view.makeMainCaffeineList();

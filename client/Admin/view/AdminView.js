@@ -23,10 +23,10 @@ export class AdminView {
     <div class="theme-layout">
     <div class="responsiveheader">
     <div class="rheader">
-      <span><img src="${path}/images/ricon.png" alt="menu_icon" /></span>
+      <span><img src="${path}/resources/images/ricon.png" alt="menu_icon" /></span>
       <div class="logo">
         <a href="">
-        <img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
+        <img src="${path}/resources/images/hiddenc_logo.png" alt="hiddenC_logo"
         /></a>
       </div>
     </div>
@@ -51,7 +51,7 @@ export class AdminView {
     <div class="container fluid">
       <div class="logo">
         <a href=""
-          ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
+          ><img src="${path}/resources/images/hiddenc_logo.png" alt="hiddenC_logo"
         /></a>
       </div>
       <div class="userdropsec">
@@ -142,7 +142,7 @@ export class AdminView {
   }
 
   makeCafeListItem(cafe_name, cafe_location) {
-    let item = `
+    let cafe_item = `
     <div class="col-lg-6">
       <div class="fieldformy">
         <span>${cafe_name} </span>
@@ -150,10 +150,10 @@ export class AdminView {
     </div>
     <div class="col-lg-6">
       <div class="fieldformy">
-        <span>${cafe_location} </span>
+        <span>${cafe_location}</span>
       </div>
     </div>`;
-    return item;
+    return cafe_item;
   }
 
   makeMemberList() {
@@ -226,14 +226,12 @@ export class AdminView {
                     <div class="add_cafe_title">카페 수정하기</div>
                     <div class="row">
                       <div class="col-lg-12">
-                        <div class="saved_cafe_list">
                           <h5 id="cafe_list_title">
                             카페 리스트:
-                            <select name="cafe_list" class="js-admin-revisecafe-list" id="saved_cafe_list">
+                            <select name="cafe_list" class="js-admin-revisecafe-list" id="js-admin-revisecafe-select">
                               <option value="0">select</option>
                             </select>
                           </h5>
-                        </div>
                         <div class="fieldbtn">
                           <button type="submit" class="js-admin-revisecafe-btn">불러오기</button>
                         </div>
@@ -248,11 +246,11 @@ export class AdminView {
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 이름 *</span>
-                          <input type="text" name="cafe_name" required/>
+                          <input type="text" name="cafe_name" id="cafe_name" required/>
                         </div>
                         <div class="fieldformy">
                           <span>카페 메뉴 </span>
-                          <input type="text" name="cafe_menu" placeholder="" />
+                          <input type="text" name="cafe_menu" id="cafe_menu" placeholder="" />
                         </div>
                         <div class="fieldformy">
                           <span>카테고리</span>
@@ -268,12 +266,12 @@ export class AdminView {
                       <div class="col-lg-6">
                         <div class="fieldformy">
                           <span>카페 주소 *</span>
-                          <input type="text" name="cafe_location" placeholder="ex)서울시 종로구 관철동 5-8, 카페 뎀셀브즈"
+                          <input type="text" name="cafe_location" id="cafe_location" placeholder="ex)서울시 종로구 관철동 5-8, 카페 뎀셀브즈"
                           required />
                         </div>
                         <div class="fieldformy">
                           <span>카페 SNS </span>
-                          <input type="text" name="cafe_sns" placeholder="" />
+                          <input type="text" name="cafe_sns" id="cafe_sns" placeholder="" />
                         </div>
                       </div>
                       <div class="col-lg-12">
@@ -282,6 +280,7 @@ export class AdminView {
                           <textarea
                             name="cafe_information"
                             class="js-admin-revisecafe-input"
+                            id="cafe_information"
                             placeholder="예) 여기는 라떼맛집이에요! 핸드드립 메뉴도 있어요"
                           ></textarea>
                         </div>
@@ -311,6 +310,7 @@ export class AdminView {
                       </div>
                     </div>
                     <br />
+                      <input type="hidden" name="user_id">
                       <button type="submit" class="js-submit js-admin-revisecafe-btn">등록하기</button>
                   </form>
                 </div>
@@ -322,9 +322,9 @@ export class AdminView {
     return admin_revisecafe;
   }
 
-  makeReviseCafeList(cafe_name) {
+  makeReviseCafeList(cafe_id, cafe_name) {
     let revise_cafe_name = `
-    <option value="">${cafe_name}</option>`;
+    <option value="${cafe_id}">${cafe_name}</option>`;
     return revise_cafe_name;
   }
   makeAddCafeForm() {
