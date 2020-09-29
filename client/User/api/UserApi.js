@@ -39,7 +39,7 @@ export class UserApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        `http://192.168.1.131:8080/hiddenc/login`
+        `http://192.168.1.131:8080/hiddenc/admin/cafe`
       );
     } catch (e) {
       console.log("error:" + e);

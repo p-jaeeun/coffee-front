@@ -52,12 +52,14 @@ export class UserService {
           this.callHome();
           return;
         } else {
-          localStorage.setItem("user_id", userData.get("user_id"));
+          let user = userData.get("user_id");
+          localStorage.setItem("user_id", user);
+
           return ["member", result_of_main];
         }
 
       case "admin_true":
-        let result_of_admin = await this.api.callAdminPage();
+        let result_of_admin = await this.api.callMain();
         if (result_of_admin === undefined || result_of_admin === "undefined") {
           console.log("Service-result-undefined:" + result_of_admin);
           alert("로그인 중 오류가 발생했습니다.");
@@ -65,7 +67,8 @@ export class UserService {
           return;
         } else {
           console.log("Service-result:" + result_of_admin);
-          localStorage.setItem("admin_id", userData.get("user_id"));
+          let admin = userData.get("user_id");
+          localStorage.setItem("admin_id", admin);
           return ["admin", result_of_admin];
         }
 
