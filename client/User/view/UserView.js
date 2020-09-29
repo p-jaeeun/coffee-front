@@ -140,8 +140,8 @@ export class UserView {
                       ><img src="${path}/${user_img1}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id1}</a></h3>
-                      <hidden value="${value1}"></hidden>
+                      <h3><a href="" >${user_id1}<hidden value="${value1}"></hidden></a></h3>
+                      
                       <span></span>
                     </div>
                   </div>
@@ -151,8 +151,8 @@ export class UserView {
                       ><img src="${path}/${user_img2}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id2}</a></h3>
-                      <hidden value="${value2}"></hidden>
+                      <h3><a href="" >${user_id2}<hidden value="${value2}"></hidden></a></h3>
+                      
                       <span></span>
                     </div>
                   </div>
@@ -162,8 +162,8 @@ export class UserView {
                       ><img src="${path}/${user_img3}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id3}</a></h3>
-                      <hidden value="${value3}"></hidden>
+                      <h3><a href="" >${user_id3}<hidden value="${value3}"></hidden></a></h3>
+                      
                       <span></span>
                     </div>
                   </div>
@@ -173,8 +173,8 @@ export class UserView {
                       ><img src="${path}/${user_img4}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id4}</a></h3>
-                      <hidden value="${value4}"></hidden>
+                      <h3><a href="" >${user_id4}<hidden value="${value4}"></hidden></a></h3>
+                      
                       <span></span>
                     </div>
                   </div>
@@ -186,8 +186,8 @@ export class UserView {
                       ><img src="${path}/${user_img5}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id5}</a></h3>
-                      <hidden value="${value5}"></hidden>
+                      <h3><a href="" >${user_id5}<hidden value="${value5}"></hidden></a></h3>
+                      
                       <span></span>
                     </div>
                   </div>
@@ -197,8 +197,8 @@ export class UserView {
                       ><img src="${path}/${user_img6}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id6}</a></h3>
-                      <hidden value="${value6}"></hidden>
+                      <h3><a href="" >${user_id6} <hidden value="${value6}"></hidden></a></h3>
+                     
                       <span></span>
                     </div>
                   </div>
@@ -208,8 +208,8 @@ export class UserView {
                       ><img src="${path}/${user_img7}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id7}</a></h3>
-                      <hidden value="${value7}"></hidden>
+                      <h3><a href="" >${user_id7}<hidden value="${value7}"></hidden></a></h3>
+                      
                       <span></span>
                     </div>
                   </div>
@@ -219,8 +219,8 @@ export class UserView {
                       ><img src="${path}/${user_img8}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id8}</a></h3>
-                      <hidden value="${value8}"></hidden>
+                      <h3><a href="" >${user_id8}<hidden value="${value8}"></hidden></a></h3>
+                      
                       <span></span>
                     </div>
                   </div>
@@ -232,8 +232,8 @@ export class UserView {
                       ><img src="${path}/${user_img9}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id9}</a></h3>
-                      <hidden value="${value9}"></hidden>
+                      <h3><a href="" >${user_id9}<hidden value="${value9}"></hidden></a></h3>
+                      
                       <span></span>
                     </div>
                   </div>
@@ -243,8 +243,8 @@ export class UserView {
                       ><img src="${path}/${user_img10}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id10}</a></h3>
-                      <hidden value="${value10}"></hidden>
+                      <h3><a href="" >${user_id10}<hidden value="${value10}"></hidden></a></h3>
+                      
                       <span></span>
                     </div>
                   </div>
@@ -254,8 +254,8 @@ export class UserView {
                       ><img src="${path}/${user_img11}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id11}</a></h3>
-                      <hidden value="${value11}"></hidden>
+                      <h3><a href="" >${user_id11}<hidden value="${value11}"></hidden></a></h3>
+                      
                       <span></span>
                     </div>
                   </div>
@@ -265,8 +265,8 @@ export class UserView {
                       ><img src="${path}/${user_img12}" alt="caffeine_ranker"
                     /></a>
                     <div class="cities-title">
-                      <h3><a href="" >${user_id12}</a></h3>
-                      <hidden value="${value12}"></hidden>
+                      <h3><a href="" >${user_id12} <hidden value="${value12}"></hidden></a></h3>
+                     
                       <span></span>
                     </div>
                   </div>
@@ -329,14 +329,14 @@ export class UserView {
                         </div>
                       </div>
                       <div class="placeinfos">
-                        <h3><a href="" >${cafe_name1}</a></h3>
-                        <hidden value="${value1}"></hidden>
+                        <h3><a href="" >${cafe_name1}<hidden value="${value1}"></hidden></a></h3>
+                        
   
                         <ul class="listmetas">
                           <li>
-                            <span class="rated">${cafe_rate1}</span
+                            <span class="rated">${cafe_rate1}<hidden value="${value1}"></hidden></span
                             >${cafe_rate_count1}
-                            <hidden value="${value1}"></hidden>
+                            
                           </li>
                         </ul>
                       </div>
@@ -362,14 +362,14 @@ export class UserView {
                         </div>
                       </div>
                       <div class="placeinfos">
-                        <h3><a href="" >${cafe_name2}</a></h3>
-                        <hidden value="${value2}"></hidden>
+                        <h3><a href="" >${cafe_name2}<hidden value="${value2}"></hidden></a></h3>
+                        
   
                         <ul class="listmetas">
                           <li>
-                            <span class="rated">${cafe_rate2}</span
+                            <span class="rated">${cafe_rate2} <hidden value="${value2}"></hidden></span
                             >${cafe_rate_count2}
-                            <hidden value="${value2}"></hidden>
+                           
                           </li>
                         </ul>
                       </div>
@@ -395,14 +395,14 @@ export class UserView {
                         </div>
                       </div>
                       <div class="placeinfos">
-                        <h3><a href="" >${cafe_name3}</a></h3>
-                        <hidden value="${value3}"></hidden>
+                        <h3><a href="" >${cafe_name3}<hidden value="${value3}"></hidden></a></h3>
+                        
   
                         <ul class="listmetas">
                           <li>
-                            <span class="rated">${cafe_rate3}</span
+                            <span class="rated">${cafe_rate3} <hidden value="${value3}"></hidden></span
                             >${cafe_rate_count3}
-                            <hidden value="${value3}"></hidden>
+                           
                           </li>
                         </ul>
                       </div>
@@ -605,8 +605,8 @@ export class UserView {
                           <div class="rslider">
                             <amino-slider class="slider" data-min="0" data-max="100" data-value="10"></amino-slider>
                           </div>
-                          <a href=""  class="btn1 pull-left">Disable</a>
-                          <a href=""  class="btn2 pull-right">Apply</a>
+                          <a href=""  class="btn1 pull-left disabled">Disable</a>
+                          <a href=""  class="btn2 pull-right disabled">Apply</a>
                         </div>
                       </div>
                     </div>
@@ -640,12 +640,20 @@ export class UserView {
     return list;
   }
 
-  makeHalfListItem(cafe_name, cafe_rate, cafe_rate_count, cafe_location) {
+  makeHalfListItem(
+    cafe_img,
+    cafe_name,
+    cafe_id,
+    cafe_rate,
+    cafe_rate_count,
+    cafe_location
+  ) {
     let path = this.getContextPath();
     let item = `       <!--여기서 부터 1개의 카페-->
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="places s2">
       <div class="placethumb">
-        <img src="${path}+'360x220'" alt="cafe_img" />
+        <img src="${path}/${cafe_img}" alt="cafe_img" />
         <div class="placeoptions">
           <span class="pull-left">
             <i class="flaticon-eye"></i> Preview
@@ -657,8 +665,8 @@ export class UserView {
       </div>
       <div class="boxplaces">
         <div class="placeinfos">
-          <h3><a href="">${cafe_name}</a></h3>
-          <hidden value="${value}"></hidden>
+          <h3><a href=""  class="disabled">${cafe_name}  <hidden value="${cafe_id}"></hidden></a></h3>
+        
           <ul class="listmetas">
             <li><span class="rated">${cafe_rate}</span>${cafe_rate_count}</li>
           </ul>
@@ -671,34 +679,43 @@ export class UserView {
       </div>
     </div>
   </div>
-  <!-- Places -->`;
+  </div>
+  <!-- Places -->
+  `;
     return item;
   }
 
-  makeMySubscription(user_img_mini, user_id) {
-    let path = this.getContextPath();
+  makeMySubscription() {
     let subscription = ` <div class="block remove-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="userdropsec sub_profile">
-              <span
-                ><img
-                  src="${path}+${user_img_mini}"
-                  alt="subscription_user_img"
-                />${user_id}</span
-              >
-            </div>
-            <div class="ml-placessec">
-              <div class="row js-user-myhiddencafe-list js-cafe-list">
-     
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="container js-subscription-list">
+        
+        
       </div>
     </div>`;
     return subscription;
+  }
+
+
+  makeSubcriptionUser(user_img_mini, user_id) {
+    let path = this.getContextPath();
+    let user = `  <div class="row">
+    <div class="col-lg-12">
+      <div class="userdropsec sub_profile">
+        <span
+          ><img
+            src="${user_img_mini}"
+            alt="subscription_user_img"
+          />${user_id}</span
+        >
+      </div>
+      <div class="ml-placessec">
+        <div class="row js-user-myhiddencafe-list js-cafe-list">
+
+        </div>
+      </div>
+    </div>
+  </div>`;
+    return user;
   }
 
   makeSubscriptionItem(
@@ -710,15 +727,16 @@ export class UserView {
     cafe_location
   ) {
     let path = this.getContextPath();
-    let list = `      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+    let list = `
+    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
     <div class="places">
       <div class="placethumb">
-        <img src="${path}/${cafe_img}" alt="subscription_cafe" />
+        <img src="${path}/${cafe_img}" alt="" />
+        <hidden value="${cafe_id}"></hidden>
         <div class="placeoptions">
           <span class="pull-left">
             <i class="flaticon-eye"></i> Preview
           </span>
-          <hidden value="${value}"></hidden>
           <span class="pull-right">
             <i class="flaticon-heart"></i> Save
           </span>
@@ -726,10 +744,13 @@ export class UserView {
       </div>
       <div class="boxplaces">
         <div class="placeinfos">
-          <h3><a href="">${cafe_name}</a></h3>
-          <hidden value="${cafe_id}"></hidden>
+          <h3><a href="" title=""  class="disabled">${cafe_name}<hidden value="${cafe_id}"></hidden></a></h3>
+          
           <ul class="listmetas">
-            <li><span class="rated">${cafe_rate}</span>${cafe_rate_count}</li>
+            <li>
+              <span class="rated">${cafe_rate}</span
+              >${cafe_rate_count}
+            </li>
           </ul>
         </div>
         <div class="placedetails">
@@ -739,7 +760,7 @@ export class UserView {
         </div>
       </div>
     </div>
-  </div>`;
+  </div>  `;
     return list;
   }
 
@@ -785,7 +806,7 @@ export class UserView {
                       <span>카페 주소 *</span>
                       <input
                         placeholder="ex) Seoul, Jongno-gu, Gwancheol-dong, 5-8 카페 뎀셀브즈"
-                        type="text"  name="cafe_loaction" required="required"
+                        type="text"  name="cafe_location" required="required"
                       />
                     </div>
                     <div class="fieldformy">

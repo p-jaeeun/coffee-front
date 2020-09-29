@@ -12,6 +12,7 @@ export class AdminCTR {
     this.userCTR = userCTR;
     this.userView = userView;
 
+
     // this.view.makeCafeListPage();
     // this.makeCafeListPage();
 
@@ -51,6 +52,7 @@ export class AdminCTR {
   makeReviseCafePage() {
     this.makeAdminHeaderComp();
     this.makeAdminMenuComp();
+    // this.makeLoadCafeComp();
     this.makeReviseCafeComp();
   }
 
@@ -438,34 +440,34 @@ export class AdminCTR {
       });
   }
 
-  makeCaffeineListComp() {
+makeReviseCafeComp() {
     document
-      .getElementsByClassName("js-caffeine-list")[0]
+      .getElementsByClassName("js-admin-revisecafe-btn")[1]
       .addEventListener("click", async (e) => {
         e.preventDefault();
-        console.log("CTR-CAFE: " + e.target.innerHTML);
-        if (e.target.tagName === "H3" || e.target.tagName === "A") {
-          let str = String(e.target.innerHTML);
-          let pattern = /(?!value=")\d{0,99999}(?<!\")/;
-          let found = str.match(pattern);
-          let value = found.join();
-          var result;
-          var view = new UserComponent();
-          var service = new UserService();
+        var result;
+        let view = new AdminComponent();
+        let service = new AdminService();
 
-          try {
-            result = await service.searchCafeInfo(value);
-          } catch (e) {
-            console.log("error:" + e);
-          }
-          view.makeVisitedCafe(result); //other person's page
-          this.makeVisitedCafe();
+        let cafeData = new FormData(
+          document.getElementById("js-admin-revisecafe-form")
+        );
+        for (let value of cafeData.values()) {
+          console.log("value: " + value);
+        }
+
+        result = service.reviseCafe(cafeData);
+
+        if (result === undefined || result === "undefined") {
+          console.log("CTR-return-error:" + result);
+          alert("입력하신 카페 수정이 실패했습니다.");
         } else {
-          console.log("you clicked invalid area:" + e.target.tagName);
+          console.log("컨트롤러-서비스 결과값:" + result);
+          alert("입력하신 카페가 성공적으로 수정되었습니다.");
         }
       });
   }
-
+  
   makeSearchComp() {
     document
       .getElementById("js-search-btn")

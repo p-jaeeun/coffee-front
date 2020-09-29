@@ -253,6 +253,7 @@ export class AdminComponent {
             //   var cafe_image = result.cafeImgList[i].cafe_image;
             // console.log(result.cafeImgList[i].cafe_image);
             // }
+
           }
         }
 
