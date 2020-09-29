@@ -249,10 +249,11 @@ export class AdminComponent {
             var cafe_sns = result.byuser[i].cafe_sns;
             var cafe_information = result.byuser[i].cafe_information;
             // console.log(cafe_id);
-            if (JSON.stringify(result.cafeImgList[i].cafe_id === cafe_id)) {
-              var cafe_image = result.cafeImgList[i].cafe_image;
-              // console.log(result.cafeImgList[i].cafe_image);
-            }
+            // if (JSON.stringify(result.cafeImgList[i].cafe_id == cafe_id)) {
+            //   var cafe_image = result.cafeImgList[i].cafe_image;
+            // console.log(result.cafeImgList[i].cafe_image);
+            // }
+
           }
         }
 
@@ -281,14 +282,14 @@ export class AdminComponent {
     window.document.body.setAttribute("id", "scrollup");
 
     window.document.body.innerHTML = header + search_result + search_pop;
-    window.addEventListener("load", () => {
-      let dom = document.getElementsByClassName("js-search-result-list")[0];
-      console.log(dom);
-      dom.innerHTML += item;
-      for (let i = 0, max = result.length; i < max; i++) {
-        dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
-      }
-    });
+    // window.addEventListener("load", () => {
+    let dom = document.getElementsByClassName("js-search-result-list")[0];
+    console.log(dom);
+    dom.innerHTML += item;
+    for (let i = 0, max = result.length; i < max; i++) {
+      dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+    }
+    // });
   }
 
   makeCafeInfoPage(result) {
