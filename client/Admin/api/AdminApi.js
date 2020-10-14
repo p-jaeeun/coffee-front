@@ -16,9 +16,8 @@ export class AdminApi {
         "http://192.168.1.131:8080/hiddenc/login/main"
       );
     } catch (e) {
-      console.log("error:" + e);
+      console.log("error: " + e);
     }
-
     return result;
   }
 

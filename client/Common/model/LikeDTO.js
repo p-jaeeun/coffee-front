@@ -1,28 +1,28 @@
 export class LikeDTO {
   constructor() {
-    this.like_id = like_id;
-    this.push_user = push_user;
-    this.got_like = got_like;
+    this._like_id
+    this._push_user
+    this._got_like
   }
   getLikeId() {
-    return this.like_id;
+    return this._like_id;
   }
   setLikeId(like_id) {
-    this.like_id = like_id;
+    this._like_id = like_id;
   }
 
   getPushUser() {
-    return this.push_user;
+    return this._push_user;
   }
   setPushUser(push_user) {
-    this.push_user = push_user;
+    this._push_user = push_user;
   }
 
   getGotLike() {
-    return this.gotLike;
+    return this._gotLike;
   }
   setGotLike(got_like) {
-    this.got_like = got_like;
+    this._got_like = got_like;
   }
 }
 

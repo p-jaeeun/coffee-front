@@ -1,42 +1,42 @@
 export class ReviewDTO {
   constructor() {
-    this.review = review;
-    this.rate = rate;
-    this.image = image;
-    this.cafe_id = cafe_id;
-    this.user_id = user_id;
+    this._review
+    this._rate
+    this._image
+    this._cafe_id
+    this._user_id
   }
 
   getReview() {
-    return this.review;
+    return this._review;
   }
   setReview(review) {
-    this.review = review;
+    this._review = review;
   }
 
   getRate() {
-    return this.rate;
+    return this._rate;
   }
   setRate(rate) {
-    this.rate = rate;
+    this._rate = rate;
   }
   getImage() {
-    return this.image;
+    return this._image;
   }
   setImage(image) {
-    this.image = image;
+    this._image = image;
   }
   getCafeId() {
-    return this.cafe_id;
+    return this._cafe_id;
   }
   setCafeId(cafe_id) {
-    this.cafe_id = cafe_id;
+    this._cafe_id = cafe_id;
   }
   getUserId() {
-    return this.user_id;
+    return this._user_id;
   }
   setUserId(user_id) {
-    this.user_id = user_id;
+    this._user_id = user_id;
   }
 }
 

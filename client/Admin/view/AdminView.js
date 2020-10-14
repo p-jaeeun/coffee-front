@@ -23,10 +23,10 @@ export class AdminView {
     <div class="theme-layout">
     <div class="responsiveheader">
     <div class="rheader">
-      <span><img src="${path}/resources/images/ricon.png" alt="menu_icon" /></span>
+      <span><img src="${path}/images/ricon.png" alt="menu_icon" /></span>
       <div class="logo">
         <a href="">
-        <img src="${path}/resources/images/hiddenc_logo.png" alt="hiddenC_logo"
+        <img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
         /></a>
       </div>
     </div>
@@ -51,7 +51,7 @@ export class AdminView {
     <div class="container fluid">
       <div class="logo">
         <a href=""
-          ><img src="${path}/resources/images/hiddenc_logo.png" alt="hiddenC_logo"
+          ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
         /></a>
       </div>
       <div class="userdropsec">

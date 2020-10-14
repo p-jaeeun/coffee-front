@@ -25,10 +25,10 @@ export class UserView {
     <div class="theme-layout">
     <div class="responsiveheader">
       <div class="rheader">
-        <span><img src="${path}/resources/images/ricon.png" alt="menu_icon" /></span>
+        <span><img src="${path}/images/ricon.png" alt="menu_icon" /></span>
         <div class="logo">
-          <a href="#" 
-            ><img src="${path}/resources/images/hiddenc_logo.png" alt="hiddenC_logo"
+          <a href=""  class="disabled"
+            ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
           /></a>
         </div>
       </div>
@@ -53,7 +53,7 @@ export class UserView {
       <div class="container fluid">
         <div class="logo">
           <a href="#" 
-            ><img src="${path}/resources/images/hiddenc_logo.png" alt="hiddenC_logo"
+            ><img src="${path}/images/hiddenc_logo.png" alt="hiddenC_logo"
           /></a>
         </div>
         <div class="userdropsec">
@@ -695,7 +695,6 @@ export class UserView {
     return subscription;
   }
 
-
   makeSubcriptionUser(user_img_mini, user_id) {
     let path = this.getContextPath();
     let user = `  <div class="row">
@@ -792,7 +791,7 @@ export class UserView {
                     </div>
                     <div class="fieldformy">
                       <span>카테고리</span>
-                      <select class="cdropshere" >
+                      <select class="cdropshere" name="category">
                         <option value="">select option</option>
                         <option value="">option1</option>
                         <option value="">option2</option>

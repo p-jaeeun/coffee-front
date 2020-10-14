@@ -1,17 +1,23 @@
-import { AdminView } from "../view/AdminView.js";
-import { AdminService } from "../service/AdminService.js";
-import { AdminComponent } from "../view/AdminComponent.js";
-import { UserService } from "../../User/service/UserService.js";
-import { UserComponent } from "../../User/view/UserComponent.js";
-import { UserCTR } from "../../User/controller/UserCTR.js";
+import {
+  AdminView
+} from "../view/AdminView.js";
+import {
+  AdminService
+} from "../service/AdminService.js";
+import {
+  AdminComponent
+} from "../view/AdminComponent.js";
+import {
+  UserService
+} from "../../User/service/UserService.js";
+import {
+  UserComponent
+} from "../../User/component/UserComponent.js"
 
 export class AdminCTR {
-  constructor(adminService, adminView, userCTR, userView) {
-    this.view = adminView;
-    this.service = adminService;
-    this.userCTR = userCTR;
-    this.userView = userView;
-
+  constructor(service, view) {
+    this.view = view;
+    this.service = service;
 
     // this.view.makeCafeListPage();
     // this.makeCafeListPage();
@@ -25,11 +31,11 @@ export class AdminCTR {
 
   // admin listener pages
 
-  // makeMainPage() {
-  //   this.makeAdminHeaderComp();
-  //   this.makeCaffeineListComp();
-  //   this.makeCafeListComp();
-  // }
+  makeMainPage() {
+    this.makeAdminHeaderComp();
+    this.makeCaffeineListComp();
+    this.makeCafeListComp();
+  }
 
   makeCafeListPage() {
     this.makeAdminHeaderComp();
@@ -70,7 +76,7 @@ export class AdminCTR {
   // Listener Components
 
   makeAdminHeaderComp() {
-    // responsive headers
+    // responsive header
     document
       .getElementsByClassName("js-admin-header-menu")[0]
       .addEventListener("click", async (e) => {
@@ -96,9 +102,8 @@ export class AdminCTR {
               console.log("CTR-result is undefined" + result);
               return;
             } else {
-              this.userView.addScript();
-              this.userView.makeAdminMain(result);
-              this.userCTR.makeAdminMain();
+              view.makeMainPage(result);
+              this.makeMainPage();
               console.log("received data:" + result);
             }
           } else if (e.target.innerHTML.includes("Search")) {
@@ -134,7 +139,7 @@ export class AdminCTR {
             console.log("clicked Admin");
             var result;
 
-            let adminData = localStorage.getItem("user_id");
+            let adminData = localStorage.getItem("admin_id");
             console.log("local data:" + adminData);
 
             var view = new AdminComponent();
@@ -185,9 +190,8 @@ export class AdminCTR {
               console.log("CTR-result is undefined" + result);
               return;
             } else {
-              this.userView.addScript();
-              this.userView.makeAdminMain(result);
-              this.userCTR.makeAdminMain();
+              view.makeMainPage(result);
+              this.makeMainPage();
               console.log("received data:" + result);
             }
           } else if (e.target.innerHTML.includes("Search")) {
@@ -222,7 +226,7 @@ export class AdminCTR {
             console.log("clicked Admin");
             var result;
 
-            let adminData = localStorage.getItem("user_id");
+            let adminData = localStorage.getItem("admin_id");
             console.log("local data:" + adminData);
 
             var view = new AdminComponent();
@@ -325,68 +329,34 @@ export class AdminCTR {
       });
   }
 
-  makeAddCafeComp() {
+  makeCaffeineListComp() {
     document
-      .getElementsByClassName("js-admin-addcafe-btn")[0]
+      .getElementsByClassName("js-caffeine-list")[0]
       .addEventListener("click", async (e) => {
         e.preventDefault();
-        var result;
+        console.log("CTR-CAFE: " + e.target.innerHTML);
+        if (e.target.tagName === "H3" || e.target.tagName === "A") {
+          let str = String(e.target.innerHTML);
+          let pattern = /(?!value=")\d{0,99999}(?<!\")/;
+          let found = str.match(pattern);
+          let value = found.join();
+          var result;
+          var view = new UserComponent();
+          var service = new UserService();
 
-        let cafeData = new FormData(
-          document.getElementById("js-admin-addcafe-form")
-        );
-        for (let value of cafeData.values()) {
-          console.log("value: " + value);
-        }
-
-        let service = new AdminService();
-        result = await service.addCafe(cafeData);
-
-        if (result === undefined || result === "undefined") {
-          console.log("CTR-return-error:" + result);
-          // let view = new AdminView();
-          view.makeAddCafePage();
-          this.makeAddCafePage();
+          try {
+            result = await service.searchCafeInfo(value);
+          } catch (e) {
+            console.log("error:" + e);
+          }
+          view.makeVisitedCafe(result); //other person's page
+          this.makeVisitedCafe();
         } else {
-          console.log("컨트롤러-서비스 결과값:" + result);
-          // let view = new AdminView();
-          view.makeAddCafePage();
-          this.makeAddCafePage();
-          alert("입력하신 카페가 성공적으로 등록되었습니다.");
+          console.log("you clicked invalid area:" + e.target.tagName);
         }
       });
   }
-
-  makeReviseCafeComp() {
-    document
-      .getElementsByClassName("js-admin-revisecafe-btn")[1]
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
-        var result;
-        let view = new AdminComponent();
-        let service = new AdminService();
-
-        let cafeData = new FormData(
-          document.getElementById("js-admin-revisecafe-form")
-        );
-        for (let value of cafeData.values()) {
-          console.log("value: " + value);
-        }
-
-        result = service.reviseCafe(cafeData);
-
-        if (result === undefined || result === "undefined") {
-          console.log("CTR-return-error:" + result);
-          alert("입력하신 카페 수정이 실패했습니다.");
-        } else {
-          console.log("컨트롤러-서비스 결과값:" + result);
-          alert("입력하신 카페가 성공적으로 수정되었습니다.");
-        }
-      });
-  }
-
   makeCafeListComp() {
-    //Userview의   makeSearchResult 에서 클래스 추가
     document
       .getElementsByClassName("js-cafe-list")[0]
       .addEventListener("click", async (e) => {
@@ -425,12 +395,13 @@ export class AdminCTR {
 
               if (result === undefined || result === "undefined") {
                 console.log("CTR-return-error:" + result);
-                this.view.makeCafeInfo(result);
+                this.view.makeCafeInfo();
+
                 this.makeCafeInfo();
               } else {
                 console.log("컨트롤러-서비스 결과값: " + result);
                 alert("성공적으로 등록되었습니다.");
-                this.view.makeCafeInfo(result); //새로 더한 리뷰 추가해서 페이지 다시 만들기
+                this.view.makeCafeInfo(); //새로 더한 리뷰 추가해서 페이지 다시 만들기
                 this.makeCafeInfo();
               }
             });
@@ -439,10 +410,50 @@ export class AdminCTR {
         }
       });
   }
-
-makeReviseCafeComp() {
+  makeAddCafeComp() {
     document
-      .getElementsByClassName("js-admin-revisecafe-btn")[1]
+      .getElementsByClassName("js-admin-addcafe-btn")[0]
+      .addEventListener("click", async (e) => {
+        e.preventDefault();
+        var result;
+
+        let cafeData = new FormData(
+          document.getElementById("js-admin-addcafe-form")
+        );
+        for (let value of cafeData.values()) {
+          console.log("value: " + value);
+        }
+
+        let service = new AdminService();
+        result = await service.addCafe(cafeData);
+
+        if (result === undefined || result === "undefined") {
+          console.log("CTR-return-error:" + result);
+          view.makeAddCafePage();
+          this.makeAddCafePage();
+        } else {
+          console.log("컨트롤러-서비스 결과값:" + result);
+          view.makeAddCafePage();
+          this.makeAddCafePafe();
+          alert("입력하신 카페가 성공적으로 등록되었습니다.");
+        }
+      });
+  }
+  makeLoadCafeComp() {
+    document
+      .getElementsByClassName("js-admin-revisecafe-load-btn")[0]
+      .addEventListener("click", async (e) => {
+        e.preventDefault();
+        var result;
+
+        let cafeData = new FormData();
+
+        let service = new AdminService();
+      });
+  }
+  makeReviseCafeComp() {
+    document
+      .getElementsByClassName("js-admin-revisecafe-btn")[0]
       .addEventListener("click", async (e) => {
         e.preventDefault();
         var result;
@@ -460,14 +471,23 @@ makeReviseCafeComp() {
 
         if (result === undefined || result === "undefined") {
           console.log("CTR-return-error:" + result);
-          alert("입력하신 카페 수정이 실패했습니다.");
+          view.makeReviseCafePage(result);
+          this.makeReviseCafePage();
         } else {
           console.log("컨트롤러-서비스 결과값:" + result);
+          view.makeReviseCafePage(result);
+          this.makeReviseCafePage();
           alert("입력하신 카페가 성공적으로 수정되었습니다.");
         }
       });
   }
-  
+
+  makeCafeListComp() {}
+
+  makeSavedCafeListComp() {}
+
+  makeMemberListComp() {}
+
   makeSearchComp() {
     document
       .getElementById("js-search-btn")
