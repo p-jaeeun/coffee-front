@@ -28,7 +28,6 @@ export class CommonView {
     cafe_img_mini4,
     cafe_img_mini5,
     cafe_img_mini6,
-
     cafe_name,
     cafe_rate,
     cafe_rate_count,
@@ -259,26 +258,24 @@ export class CommonView {
               </div>
             </div>
           </div>
-
-
           <div class="col-lg-4 column">
-<div class="blocation">
-							<h3>Location <a href="#" title="">Get Direction</a></h3>
-							<div class="contact-map">
-								<div id="map_div">&nbsp;</div>  
-							</div>
+            <div class="blocation">
+              <h3>Location <a href="">Get Direction</a></h3>
+              <div class="contact-map">
+                <div id="js-mini-map" style="width: 350px; height: 400px"></div>
+              </div>
               <span>${cafe_location}</span>
               <span>${cafe_mail}</span>
-              
-							<div class="wsocial">
-								<a href="#" title=""><i class="fa fa-facebook"></i></a>
-								<a href="#" title=""><i class="fa fa-twitter"></i></a>
-								<a href="#" title=""><i class="fa fa-linkedin"></i></a>
-								<a href="#" title=""><i class="fa fa-pinterest"></i></a>
-								<a href="#" title=""><i class="fa fa-google"></i></a>
-								<a href="#" title=""><i class="fa fa-dribbble"></i></a>
-							</div>
-						</div>
+
+              <div class="wsocial">
+                <a href=""><i class="fa fa-facebook"></i></a>
+                <a href=""><i class="fa fa-twitter"></i></a>
+                <a href=""><i class="fa fa-linkedin"></i></a>
+                <a href=""><i class="fa fa-pinterest"></i></a>
+                <a href=""><i class="fa fa-google"></i></a>
+                <a href=""><i class="fa fa-dribbble"></i></a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

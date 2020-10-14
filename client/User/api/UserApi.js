@@ -1,5 +1,6 @@
-// import { UserDTO } from "../model/UserDTO.js";
-import { Ajax } from "../../Common/lib/Ajax.js";
+import {
+  Ajax
+} from "../../Common/lib/Ajax.js";
 
 export class UserApi {
   constructor() {
@@ -39,7 +40,7 @@ export class UserApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        `http://192.168.1.131:8080/hiddenc/admin/cafe`
+        `http://192.168.1.131:8080/hiddenc/login`
       );
     } catch (e) {
       console.log("error:" + e);
@@ -63,12 +64,11 @@ export class UserApi {
 
     console.log("value type" + typeof result);
     return result;
-  } //url 131로 바꿔줘야함
+  }
 
   async signup(userData) {
     console.log("ajax-signup");
     let result;
-    // let str = JSON.stringify(userData);
 
     try {
       result = await this.ajax.sendAjaxPostFile(
@@ -90,7 +90,7 @@ export class UserApi {
       result = await this.ajax.sendAjaxPostFile(
         "http://192.168.1.131:8080/hiddenc/user/addcafe",
         userData
-      ); // from here have to check whether the address is correct or not
+      );
     } catch (e) {
       console.log("error:" + e);
     }
@@ -102,7 +102,6 @@ export class UserApi {
     console.log("ajax-search");
     let result;
 
-    // let str = JSON.stringify(userData);
     try {
       result = await this.ajax.sendAjaxPostFile(
         "http://192.168.1.131:8080/hiddenc/login/search/result",
@@ -113,7 +112,7 @@ export class UserApi {
     }
 
     return result;
-  } //search main이랑 search result 뭐가 다름?
+  }
 
   async searchCafeInfo(userData) {
     console.log("ajax-cafe-info-search");
@@ -170,7 +169,8 @@ export class UserApi {
     console.log("ajax-addReview");
     let result;
     let obj = {};
-    obj.cafe_id = userData; //have to discuss more specific data form
+    obj.cafe_id = userData;
+
     let str = JSON.stringify(userData);
     try {
       result = await this.ajax.sendAjaxPost(
@@ -182,7 +182,7 @@ export class UserApi {
     }
 
     return result;
-  }
+  } //아직 서버단에서 구현안됨
 
   async callDashboard() {
     let result;
@@ -239,9 +239,5 @@ export class UserApi {
       console.log("error:" + e);
     }
     return result;
-  } //아직 정해지지 않음
+  } //아직 서버단에서 구현되지 않음
 }
-
-//callsubscription, visitedCafe, callDashboard
-
-//Put은 Post로?

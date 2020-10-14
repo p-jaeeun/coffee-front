@@ -1,94 +1,94 @@
 export class UserDTO {
   constructor() {
-    this.user_pk = user_pk;
-    this.user_id = user_id;
-    this.user_pw = user_pw;
-    this.user_email = user_email;
-    this.user_gender = user_gender;
-    this.user_birth = user_birth;
-    this.user_like = user_like;
-    this.user_caffeine = user_caffeine;
-    this.count_expose_main = count_expose_main;
-    this.count_accepted_cafe = count_accepted_cafe;
-    this.is_blocked_user = is_blocked_user;
+    this._user_pk
+    this._user_id
+    this._user_pw
+    this._user_email
+    this._user_gender
+    this._user_birth
+    this._user_like
+    this._user_caffeine
+    this._count_expose_main
+    this._count_accepted_cafe
+    this._is_blocked_user
   }
 
   getUserPk() {
-    return this.user_pk;
+    return this._user_pk;
   }
 
   setUserPk(user_pk) {
-    this.user_pk = user_pk;
+    this._user_pk = user_pk;
   }
 
   getUserId() {
-    return this.user_id;
+    return this._user_id;
   }
   setUserId(user_id) {
-    this.user_id = user_id;
+    this._user_id = user_id;
   }
 
   getUserPw() {
-    return this.user_pw;
+    return this._user_pw;
   }
   setUserPw(user_pw) {
-    this.user_pw = user_pw;
+    this._user_pw = user_pw;
   }
 
   getUserEmail() {
-    return this.user_email;
+    return this._user_email;
   }
   setUserEmail(user_email) {
-    this.user_eamail = user_email;
+    this._user_eamail = user_email;
   }
 
   getUserGender() {
-    return this.user_gender;
+    return this._user_gender;
   }
   setUserGender(user_gender) {
-    this.user_gender = user_gender;
+    this._user_gender = user_gender;
   }
 
   getUserBirth() {
-    return this.user_birth;
+    return this._user_birth;
   }
   setUserBirth(user_birth) {
-    this.user_birth = user_birth;
+    this._user_birth = user_birth;
   }
   getUserLike() {
-    return this.user_like;
+    return this._user_like;
   }
   setUserLike(user_like) {
-    this.user_like = user_like;
+    this._user_like = user_like;
   }
 
   getUserCaffeine() {
-    return this.user_caffeine;
+    return this._user_caffeine;
   }
 
   setUserCaffeine(user_caffeine) {
-    this.user_caffeine = user_caffeine;
+    this._user_caffeine = user_caffeine;
   }
 
   getCountExposeMain() {
-    return this.count_expose_main;
+    return this._count_expose_main;
   }
   setCountExposeMain(count_expose_main) {
-    this.count_expose_main = count_expose_main;
+    this._count_expose_main = count_expose_main;
   }
 
   getCountAcceptedCafe() {
-    return this.count_accepted_cafe;
+    return this._count_accepted_cafe;
   }
   setCountAcceptedCafe(count_accepted_cafe) {
-    this.count_accepted_cafe = count_accepted_cafe;
+    this._count_accepted_cafe = count_accepted_cafe;
   }
 
   getIsBlockedUser() {
-    return this.is_blocked_user;
+    return this._is_blocked_user;
   }
   setIsBlockedUser(is_blocked_user) {
-    this.is_blocked_user = is_blocked_user;
+    this._is_blocked_user = is_blocked_user;
   }
 }
 
