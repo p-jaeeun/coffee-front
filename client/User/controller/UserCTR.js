@@ -6,7 +6,6 @@ export class UserCTR {
     this.comp = new UserComponent();
     this.service = new UserEvent();
     this.self = this;
-    this.executeMakeCafeInfo();
   }
   //callback functions are to be splited into UserComponent and UserService
 
