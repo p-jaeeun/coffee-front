@@ -1,10 +1,12 @@
 import { CommonComponent } from "../component/CommonComponent.js";
 import { CommonEvent } from "../service/CommonEvent.js";
+import { UserCTR } from "../../User/controller/UserCTR.js";
 
 export class CommonCTR {
   constructor() {
-    this.service = new CommonEvent();
+    this.event = new CommonEvent();
     this.comp = new CommonComponent();
+    this.user = new UserCTR();
     this.self = this;
 
     this.comp.signin(this.signin, this.self);
@@ -13,8 +15,6 @@ export class CommonCTR {
 
   async signin(userData) {
     console.log("ctr");
-    let event = new CommonEvent();
-    let comp = new CommonComponent();
     let result;
 
     for (let value of userData.values()) {
@@ -22,29 +22,27 @@ export class CommonCTR {
     }
 
     try {
-      result = await event.signin(userData);
+      result = await this.event.signin(userData);
     } catch (e) {
       console.log("error:" + e);
     }
 
-    if (result[0] === "user") {
+    if (result[0] === "member") {
       let result_str = JSON.parse(result[1]);
-      comp.makeLoginMain(result_str);
+      this.user.executeMakeLoginMain();
     } else if (result[0] === "admin") {
       let result_str = JSON.parse(result[1]);
-      comp.makeAdminMain(result_str);
+      this.comp.makeAdminMain();
     }
   }
 
   async signup(userData) {
-    let event = new CommonEvent();
-
     for (let value of userData.values()) {
       console.log("value-ctr:" + value);
     }
 
     try {
-      await event.signup(userData);
+      await this.event.signup(userData);
     } catch (e) {
       console.log("error:" + e);
     }

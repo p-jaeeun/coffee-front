@@ -4,9 +4,8 @@ import { UserEvent } from "../service/UserEvent.js";
 export class UserCTR {
   constructor() {
     this.comp = new UserComponent();
-    this.service = new UserEvent();
+    this.event = new UserEvent();
     this.self = this;
-    this.executeMakeCafeInfo();
   }
   //callback functions are to be splited into UserComponent and UserService
 
@@ -65,47 +64,92 @@ export class UserCTR {
   }
 
   async headerMenu(userData) {
-    let result;
-
-    try {
-      result = await this.event.headerMenu(userData);
-    } catch (e) {
-      console.log("error:" + e);
-    }
-
     switch (userData) {
       case "Home":
-        this.executeMakeLoginMain(result);
+        this.callMain();
+        break;
       case "Search":
         console.log("Search menu clicked");
+        break;
       case "User":
-        this.executeMakeDashboard(result);
+        this.getUserPage();
+        break;
     }
   }
 
-  async userMenu(userData) {
+  async getUserPage() {
     let result;
+    let user_id = localStorage.getItem("user_id");
 
     try {
-      result = await this.event.userMenu(userData);
+      result = await this.event.getUserPage(user_id);
     } catch (e) {
       console.log("error:" + e);
     }
 
+    this.executeMakeDashboard(result);
+  }
+
+  async callMain() {
+    let result;
+
+    try {
+      result = await this.event.callMain();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    this.executeMakeLoginMain(result);
+  }
+
+  async userMenu(userData) {
+    console.log(userData);
     switch (userData) {
       case "Dashboard":
-        this.executeMakeDashboard(result);
+        this.getUserPage();
+        break;
       case "My Hidden Cafe":
-        this.executeVisitedCafe(result);
+        this.getVisitedCafePage();
+        break;
       case "My Subscription":
-        this.executeMakeSubscription(result);
+        this.getSubscriptionPage();
+        break;
       case "Add New Hidden Cafe":
         this.executeMakeAddCafe();
+        break;
       case "Bookmark":
         console.log("CTR-Bookmark");
-      case "settings":
+        break;
+      case "Settings":
         this.executeMakeSettings();
+        break;
     }
+  }
+
+  async getSubscriptionPage() {
+    let result;
+    let user_id = localStorage.getItem("user_id");
+
+    try {
+      result = await this.event.getSubscriptionPage(user_id);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    this.executeMakeSubscription(result);
+  }
+
+  async getVisitedCafePage() {
+    let result;
+    let user_id = localStorage.getItem("user_id");
+
+    try {
+      result = await this.event.getVisitedCafePage(user_id);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    this.executeVisitedCafe(result);
   }
 
   async cafeList(cafe_id) {
@@ -169,8 +213,8 @@ export class UserCTR {
 
   executeMakeDashboard(result) {
     this.comp.makeDashboard(result);
-    this.headerMenu(this.headerMenu, this.self);
-    this.userMenu(this.userMenu, this.self);
+    this.comp.headerMenu(this.headerMenu, this.self);
+    this.comp.userMenu(this.userMenu, this.self);
   }
 
   executeMakeLoginMain(result) {
@@ -185,7 +229,6 @@ export class UserCTR {
     this.comp.makeAddCafe();
     this.comp.addCafe(this.addCafe, this.self);
     this.comp.headerMenu(this.headerMenu, this.self);
-    this.comp.userMenu(this.userMenu, this.self);
   }
 
   executeMakeSearch(result) {
