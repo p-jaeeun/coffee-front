@@ -199,11 +199,35 @@ export class UserService {
     }
   }
 
-  async callDashboard(userData) {
+  async getVisitedCafePage(userData) {
     let result;
 
     try {
-      result = await this.api.callDashboard(userData);
+      result = await this.api.getVisitedCafePage(userData);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    return result;
+  }
+
+  async getSubscriptionPage(userData) {
+    let result;
+
+    try {
+      result = await this.api.getSubscriptionPage(userData);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    return result;
+  }
+
+  async getUserPage(userData) {
+    let result;
+
+    try {
+      result = await this.api.getUserPage(userData);
     } catch (e) {
       console.log("error:" + e);
     }

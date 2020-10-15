@@ -1,4 +1,5 @@
 import { CommonView } from "../view/CommonView.js";
+import { UserView } from "../../User/view/UserView.js";
 
 export class CommonComponent {
   constructor() {
@@ -72,15 +73,157 @@ export class CommonComponent {
     });
   }
 
+  //event delegation
+  headerMenu(callback, self) {
+    console.log("header-delegation");
+    if (document.querySelectorAll(".js-user-header-menu") !== undefined) {
+      const header_menu = document.querySelectorAll(".js-user-header-menu");
+      header_menu[0].addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("headermenu-this");
+        let clicked;
+
+        if (
+          e.target.tagname === "UL" ||
+          e.target.tagName === "LI" ||
+          e.target.tagName === "A"
+        ) {
+          if (e.target.innerHTML.includes("Home")) {
+            console.log("Home");
+            clicked = "Home";
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
+            }
+          } else if (e.target.innerHTML.includes("User")) {
+            console.log("user");
+            clicked = "User";
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
+            }
+          } else if (e.target.innerHTML.includes("Search")) {
+            console.log("search");
+            clicked = "Search";
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
+            }
+          }
+        } else {
+          console.log("you clicked invalid area" + e.target.tagName);
+        }
+      });
+
+      header_menu[1].addEventListener("click", (e) => {
+        e.preventDefault();
+        console.log("headermenu-this");
+        if (
+          e.target.tagname === "UL" ||
+          e.target.tagName === "LI" ||
+          e.target.tagName === "A"
+        ) {
+          // console.log('taget' + e.target.tagName)
+          if (e.target.innerHTML.includes("Home")) {
+            console.log("Home");
+            clicked = "Home";
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
+            }
+
+            //should i add something on here?
+          } else if (e.target.innerHTML.includes("User")) {
+            console.log("user");
+            clicked = "User";
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
+            }
+          } else if (e.target.innerHTML.includes("Search")) {
+            console.log("search");
+            clicked = "Search";
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
+            }
+          }
+        } else {
+          console.log("you clicked invalid area" + e.target.tagName);
+        }
+      });
+    }
+  }
+
+  caffeineList(callback, self) {
+    console.log("caffeine-list");
+    if (document.querySelector(".js-caffeine-list") !== undefined) {
+      const caffeine_list = document.querySelector(".js-caffeine-list");
+      caffeine_list.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        //event delegation
+        if (e.target.tagName === "H3" || e.target.tagName === "A") {
+          let str = String(e.target.innerHTML);
+          let pattern = /(?!value=")\d{0,99999}(?<!\")/;
+          let found = str.match(pattern);
+
+          let clear_arr = found.filter(function (item) {
+            return item !== null && item !== undefined && item !== "";
+          });
+          let user_id = clear_arr.join();
+
+          if (typeof callback === "string") {
+            callback = self[callback(user_id)];
+          } else if (typeof callback === "function") {
+            callback.call(self, user_id);
+          }
+        }
+      });
+    }
+  }
+
+  cafeList(callback, self) {
+    console.log("cafe-list");
+    if (document.querySelector(".js-cafe-list") !== undefined) {
+      const cafe_list = document.querySelector(".js-cafe-list");
+      cafe_list.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        if (e.target.tagName === "H3" || e.target.tagName === "A") {
+          let str = String(e.target.innerHTML);
+          let pattern = /(?!value=")\d{0,99999}(?<!\")/g;
+          let found = str.match(pattern);
+
+          let clear_arr = found.filter(function (item) {
+            return item !== null && item !== undefined && item !== "";
+          });
+          let cafe_id = clear_arr.join();
+
+          if (typeof callback === "string") {
+            callback = self[callback(cafe_id)];
+          } else if (typeof callback === "function") {
+            callback.call(self, cafe_id);
+          }
+        }
+      });
+    }
+  }
+
+  //make the display
   makeSearchResult(result) {
     //search_result : makeUserHeader OR makeAdminHeader + makeSearchResult + makeFooter(common) + makeSearchPop(common)
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    let user_id = localStorage.getItem("user_id");
-    let user_img = localStorage.getItem("user_img");
 
-    let header = user_view.makeUserHeader(user_img, user_id, "0");
+    let header = user_view.makeUserHeader();
     var search_result = common_view.makeSearchResult();
     let item = common_view.makeSearchItem();
     let pop = common_view.makeSearchPop();
@@ -95,14 +238,13 @@ export class CommonComponent {
       console.log("list-tag: " + dom);
       dom.innerHTML += item;
       for (let i = 0, max = result.length; i < max; i++) {
-        dom.innerHTML += item(
-          result[i].cafe_name,
-          result[i].cafe_id,
-          "3.75",
-          result[i].cafe_img,
-          "4",
-          result[i].cafe_location
-        ); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
+        dom.innerHTML += item();
+        // result[i].cafe_name,
+        // result[i].cafe_id,
+        // "3.75",
+        // result[i].cafe_img,
+        // "4",
+        // result[i].cafe_location //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
       }
     });
 
@@ -126,19 +268,14 @@ export class CommonComponent {
     //notification도 로그인할때 오나? 그렇다면 이미지랑 같이 저장, 나머지 화면에서는 꺼내서 쓰기
     let user_view = new UserView();
     let common_view = new CommonView();
-    this.addScript();
 
     //user_id, user_img
-    localStorage.setItem("user_id", result.user_id);
-    localStorage.setItem("user_img", result.user_circle_img);
-    localStorage.setItem("user_bg_img", result.user_bg_img);
+    // localStorage.setItem("user_id", result.user_id);
+    // localStorage.setItem("user_img", result.user_circle_img);
+    // localStorage.setItem("user_bg_img", result.user_bg_img);
 
     //display
-    let header = user_view.makeUserHeader(
-      result.user_circle_img,
-      result.user_id,
-      "0"
-    );
+    let header = user_view.makeUserHeader();
 
     let caffeine = user_view.makeMainCaffeineList();
     let cafe = user_view.makeMainCafeList();

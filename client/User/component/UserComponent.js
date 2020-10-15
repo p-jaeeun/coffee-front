@@ -53,8 +53,8 @@ export class UserComponent {
   }
 
   addCafe(callback, self) {
-    if (document.querySelector(".js-addcafe-user-btn") !== undefined) {
-      const add_cafe_btn = document.querySelector(".js-addcafe-user-btn");
+    if (document.querySelector(".js-user-addcafe-btn") !== undefined) {
+      const add_cafe_btn = document.querySelector(".js-user-addcafe-btn");
       add_cafe_btn.addEventListener("click", (e) => {
         e.preventDefault();
         const add_cafe_form = document.getElementById("js-addcafe-user-form");
@@ -163,13 +163,6 @@ export class UserComponent {
         console.log("headermenu-this");
         let clicked;
 
-        //callback
-        if (typeof callback === "string") {
-          callback = self[callback];
-        } else if (typeof callback === "function ") {
-          callback.call(self);
-        }
-
         if (
           e.target.tagname === "UL" ||
           e.target.tagName === "LI" ||
@@ -178,20 +171,26 @@ export class UserComponent {
           if (e.target.innerHTML.includes("Home")) {
             console.log("Home");
             clicked = "Home";
-            if (callback) {
-              callback(clicked);
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
             }
           } else if (e.target.innerHTML.includes("User")) {
             console.log("user");
             clicked = "User";
-            if (callback) {
-              callback(clicked);
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
             }
           } else if (e.target.innerHTML.includes("Search")) {
             console.log("search");
             clicked = "Search";
-            if (callback) {
-              callback(clicked);
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
             }
           }
         } else {
@@ -199,16 +198,10 @@ export class UserComponent {
         }
       });
 
-      header_menu[0].addEventListener("click", (e) => {
+      header_menu[1].addEventListener("click", (e) => {
         e.preventDefault();
+        let clicked;
         console.log("headermenu-this");
-
-        if (typeof callback === "string") {
-          callback = self[callback];
-        } else if (typeof callback === "function ") {
-          callback.call(self);
-        }
-
         if (
           e.target.tagname === "UL" ||
           e.target.tagName === "LI" ||
@@ -218,22 +211,28 @@ export class UserComponent {
           if (e.target.innerHTML.includes("Home")) {
             console.log("Home");
             clicked = "Home";
-            if (callback) {
-              callback(clicked);
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
             }
 
             //should i add something on here?
           } else if (e.target.innerHTML.includes("User")) {
             console.log("user");
             clicked = "User";
-            if (callback) {
-              callback(clicked);
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
             }
           } else if (e.target.innerHTML.includes("Search")) {
             console.log("search");
             clicked = "Search";
-            if (callback) {
-              callback(clicked);
+            if (typeof callback === "string") {
+              callback = self[callback(clicked)];
+            } else if (typeof callback === "function") {
+              callback.call(self, clicked);
             }
           }
         } else {
@@ -245,12 +244,12 @@ export class UserComponent {
 
   userMenu(callback, self) {
     console.log("user_menu-delegation");
-    let clicked;
+
     if (document.querySelector(".js-user-menu") !== undefined) {
       const user_menu = document.querySelector(".js-user-menu");
       user_menu.addEventListener("click", (e) => {
         e.preventDefault();
-
+        let clicked;
         if (e.target.tagName === "A" || e.target.tagName === "I") {
           if (e.target.innerHTML.includes("Dashboard")) {
             console.log("clicked Dashboard");
@@ -366,9 +365,9 @@ export class UserComponent {
     this.addScript();
 
     //user_id, user_img
-    localStorage.setItem("user_id", result.user_id);
-    localStorage.setItem("user_img", result.user_circle_img);
-    localStorage.setItem("user_bg_img", result.user_bg_img);
+    // localStorage.setItem("user_id", result.user_id);
+    // localStorage.setItem("user_img", result.user_circle_img);
+    // localStorage.setItem("user_bg_img", result.user_bg_img);
 
     //display
     let header = user_view.makeUserHeader();
@@ -392,7 +391,7 @@ export class UserComponent {
     this.addScript();
 
     //user_id, user_img
-    localStorage.setItem("admin_id", result.user_id);
+    // localStorage.setItem("admin_id", result.user_id);
 
     //review
 
@@ -411,16 +410,16 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    let user_id = localStorage.getItem("user_id");
-    let user_img = localStorage.getItem("user_img");
-    localStorage.setItem("total_visited", result.total_visited);
-    localStorage.setItem("count_like", result.count_like); //subscription
-    localStorage.setItem("caffeine", result.count_like);
-    localStorage.setItem("user_bg_img", result.user_bg_img);
-    localStorage.setItem("total_cafe", result.total_addcafe);
-    localStorage.setItem("user_like", result.user_like);
+    // let user_id = localStorage.getItem("user_id");
+    // let user_img = localStorage.getItem("user_img");
+    // localStorage.setItem("total_visited", result.total_visited);
+    // localStorage.setItem("count_like", result.count_like); //subscription
+    // localStorage.setItem("caffeine", result.count_like);
+    // localStorage.setItem("user_bg_img", result.user_bg_img);
+    // localStorage.setItem("total_cafe", result.total_addcafe);
+    // localStorage.setItem("user_like", result.user_like);
 
-    let header = user_view.makeUserHeader(user_img, user_id, "0");
+    let header = user_view.makeUserHeader();
     let user_menu = user_view.makeUserMenu();
     let dashboard = user_view.makeDashboard();
     let footer = common_view.makeFooter();
@@ -437,16 +436,16 @@ export class UserComponent {
     let user_view = new UserView();
     let common_view = new CommonView();
     this.addScript();
-    let user_id = localStorage.getItem("user_id");
-    let user_img = localStorage.getItem("user_img");
-    let total_visited = localStorage.getItem("total_visited");
-    let count_like = localStorage.getItem("count_like");
-    let caffeine = localStorage.getItem("caffeine");
-    let user_bg_img = localStorage.getItem("user_bg_img");
-    let total_cafe = localStorage.getItem("total_cafe");
-    let user_like = localStorage.getItem("user_like");
+    // let user_id = localStorage.getItem("user_id");
+    // let user_img = localStorage.getItem("user_img");
+    // let total_visited = localStorage.getItem("total_visited");
+    // let count_like = localStorage.getItem("count_like");
+    // let caffeine = localStorage.getItem("caffeine");
+    // let user_bg_img = localStorage.getItem("user_bg_img");
+    // let total_cafe = localStorage.getItem("total_cafe");
+    // let user_like = localStorage.getItem("user_like");
 
-    let header = user_view.makeUserHeader(user_img, user_id, "0");
+    let header = user_view.makeUserHeader();
     let user_menu = user_view.makeUserMenu();
 
     var subscription = user_view.makeMySubscription();
@@ -495,16 +494,16 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    let user_id = localStorage.getItem("user_id");
-    let user_img = localStorage.getItem("user_img");
-    let total_visited = localStorage.getItem("total_visited");
-    let count_like = localStorage.getItem("count_like");
-    let caffeine = localStorage.getItem("caffeine");
-    let user_bg_img = localStorage.getItem("user_bg_img");
-    let total_cafe = localStorage.getItem("total_cafe");
-    let user_like = localStorage.getItem("user_like");
+    // let user_id = localStorage.getItem("user_id");
+    // let user_img = localStorage.getItem("user_img");
+    // let total_visited = localStorage.getItem("total_visited");
+    // let count_like = localStorage.getItem("count_like");
+    // let caffeine = localStorage.getItem("caffeine");
+    // let user_bg_img = localStorage.getItem("user_bg_img");
+    // let total_cafe = localStorage.getItem("total_cafe");
+    // let user_like = localStorage.getItem("user_like");
 
-    let header = user_view.makeUserHeader(user_img, user_id, "0");
+    let header = user_view.makeUserHeader();
     let user_menu = user_view.makeUserMenu();
     var half_list = user_view.makeListAndMap(result.length);
     let item = user_view.makeHalfListItem();
@@ -535,8 +534,8 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    let user_id = localStorage.getItem("user_id");
-    let user_img = localStorage.getItem("user_img");
+    // let user_id = localStorage.getItem("user_id");
+    // let user_img = localStorage.getItem("user_img");
 
     let header = user_view.makeUserHeader(user_img, user_id, "0");
     let info = common_view.makeCafeInfo();
@@ -578,10 +577,10 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    let user_id = localStorage.getItem("user_id");
-    let user_img = localStorage.getItem("user_img");
+    // let user_id = localStorage.getItem("user_id");
+    // let user_img = localStorage.getItem("user_img");
 
-    let header = user_view.makeUserHeader(user_img, user_id, "0");
+    let header = user_view.makeUserHeader();
     var search_result = common_view.makeSearchResult();
     let item = common_view.makeSearchItem();
     let pop = common_view.makeSearchPop();
@@ -613,10 +612,10 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    let user_id = localStorage.getItem("user_id");
-    let user_img = localStorage.getItem("user_img");
+    // let user_id = localStorage.getItem("user_id");
+    // let user_img = localStorage.getItem("user_img");
 
-    let header = user_view.makeUserHeader(user_img, user_id, "0");
+    let header = user_view.makeUserHeader();
     let add_cafe = user_view.makeAddCafe();
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
@@ -632,12 +631,12 @@ export class UserComponent {
     this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
-    let user_id = localStorage.getItem("user_id");
-    let user_img = localStorage.getItem("user_img");
-    let total_visited = localStorage.getItem("total_visited");
-    let count_like = localStorage.getItem("count_like");
-    let caffeine = localStorage.getItem("caffeine");
-    let header = user_view.makeUserHeader(user_img, user_id, "0");
+    // let user_id = localStorage.getItem("user_id");
+    // let user_img = localStorage.getItem("user_img");
+    // let total_visited = localStorage.getItem("total_visited");
+    // let count_like = localStorage.getItem("count_like");
+    // let caffeine = localStorage.getItem("caffeine");
+    let header = user_view.makeUserHeader();
     let user_menu = user_view.makeUserMenu();
     let settings = user_view.makeSettings();
     let footer = common_view.makeFooter();
