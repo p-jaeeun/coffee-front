@@ -1,11 +1,10 @@
-export class MapApi {
+class MapApi {
   constructor() {
     this.latlng;
   }
 
   getHalfMap(visited_arr) {
-    //based user location -> it needs https server
-
+    //it needs https server
     // navigator.geolocation.getCurrentPosition((position) => {
     // 		let lat = position.coords.latitude
     // 		let lng = position.coords.longitude
@@ -23,8 +22,7 @@ export class MapApi {
     // 		var map = new kakao.maps.Map(mapContainer, mapOption);
     // 		var marker = new kakao.maps.Marker(latlng)
     // });
-
-    let center = new kakao.maps.LatLng(37.5554251714123, 126.971865111592321); //test data
+    let center = new kakao.maps.LatLng(37.5554251714123, 126.971865111592321); //현재위치 기반 -> https여야함
     var mapContainer = document.getElementById("js-half-map"); // 지도를 표시할 div
     var mapOption = {
       center: center, // 지도의 중심좌표
@@ -47,6 +45,8 @@ export class MapApi {
       marker.setPosition(latlng);
       marker.setClickable(true);
       marker.setMap(map);
+      //   marker.setPosition(latlng);
+      //   marker.getMap();
 
       kakao.maps.event.addListener(marker, "click", function () {
         // 마커 위에 인포윈도우를 표시합니다
@@ -246,3 +246,53 @@ export class MapApi {
     });
   }
 }
+
+let arr = [
+  {
+    lat: 37.55477440293975,
+    lng: 126.96428280969594,
+    content: `	<section class="info-box">
+    <div class="cafe-name">
+        <h4>{cafe_name}</h4>
+    </div>
+    <div calss="cafe-img-info-box">
+        <img src="{cafe_img_info_box}" alt="cafe_img_info_box">
+    </div>
+    <div class="address">
+        <h5>{address}</h5>
+    </div>
+</section>`,
+  },
+  {
+    lat: 37.553876749269854,
+    lng: 126.9779542924915,
+    content:
+      '<div style="padding:0 5px;background:#fff;">HTML코드를 입력해주세요 2222222:D</div>',
+  },
+  {
+    lat: 37.55077699138689,
+    lng: 126.9762803443654,
+    content:
+      '<div style="padding:0 5px;background:#fff;">HTML코드를 입력해주세요3333333 :D</div>',
+  },
+];
+
+let obj = {
+  lat: 37.55477440293975,
+  lng: 126.96428280969594,
+  content: `	<section class="info-box">
+    <div class="cafe-name">
+        <h4>{cafe_name}</h4>
+    </div>
+    <div calss="cafe-img-info-box">
+        <img src="{cafe_img_info_box}" alt="cafe_img_info_box">
+    </div>
+    <div class="address">
+        <h5>{address}</h5>
+    </div>
+</section>`,
+};
+let map = new MapApi();
+// map.getHalfMap(arr);
+// map.getCafeInfoMap(obj);
+map.registerCafe();
