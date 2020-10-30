@@ -123,6 +123,9 @@ export class UserCTR {
       case "Settings":
         this.executeMakeSettings();
         break;
+      default:
+        console.log("You clicked invalid area!");
+        break;
     }
   }
 

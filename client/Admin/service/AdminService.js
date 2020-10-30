@@ -67,7 +67,7 @@ export class AdminService {
 
     try {
       result = await this.api.callMain();
-    } catch {
+    } catch (e) {
       console.log("Service-error: " + e);
     }
     return result;

@@ -1,16 +1,19 @@
 import { CommonComponent } from "../component/CommonComponent.js";
 import { CommonEvent } from "../service/CommonEvent.js";
 import { UserCTR } from "../../User/controller/UserCTR.js";
+import { AdminCTR } from "../../Admin/controller/AdminCTR.js";
 
 export class CommonCTR {
   constructor() {
     this.event = new CommonEvent();
     this.comp = new CommonComponent();
     this.user = new UserCTR();
+    this.admin = new AdminCTR();
     this.self = this;
 
     this.comp.signin(this.signin, this.self);
     this.comp.signup(this.signup, this.self);
+    this.comp.pushState();
   }
 
   async signin(userData) {
@@ -28,11 +31,11 @@ export class CommonCTR {
     }
 
     if (result[0] === "member") {
-      let result_str = JSON.parse(result[1]);
-      this.user.executeMakeLoginMain();
+      this.user.executeMakeLoginMain(result[1]);
     } else if (result[0] === "admin") {
-      let result_str = JSON.parse(result[1]);
-      this.comp.makeAdminMain();
+      this.admin.executeAdminLogin(result[1]);
+    } else {
+      console.log("unexpected result");
     }
   }
 

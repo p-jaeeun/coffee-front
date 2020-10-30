@@ -51,8 +51,8 @@ export class UserComponent {
     this.background = document.querySelector("#js-back-img");
     this.upload_background = document.querySelector("#js-upload-back-img");
   }
-
-  addCafe(callback, self) {
+  //Event listener
+  addCafe(callback, context) {
     if (document.querySelector(".js-user-addcafe-btn") !== undefined) {
       const add_cafe_btn = document.querySelector(".js-user-addcafe-btn");
       add_cafe_btn.addEventListener("click", (e) => {
@@ -66,15 +66,15 @@ export class UserComponent {
         }
 
         if (typeof callback === "string") {
-          callback = self[callback(userData)];
+          callback = context[callback(userData)];
         } else if (typeof callback === "function ") {
-          callback.call(self, userData);
+          callback.call(context, userData);
         }
       });
     }
   }
 
-  search(callback, self) {
+  search(callback, context) {
     if (document.querySelector(".js-search-btn") !== undefined) {
       const search_btn = document.querySelector(".js-search-btn");
       search_btn.addEventListener("click", (e) => {
@@ -88,15 +88,15 @@ export class UserComponent {
         }
 
         if (typeof callback === "string") {
-          callback = self[callback(userData)];
+          callback = context[callback(userData)];
         } else if (typeof callback === "function ") {
-          callback.call(self, userData);
+          callback.call(context, userData);
         }
       });
     }
   }
 
-  settings(callback, self) {
+  settings(callback, context) {
     if (document.querySelector(".js-user-pwchange-btn") !== undefined) {
       const settings_btn = document.querySelector(".js-user-pwchange-btn");
       settings_btn.addEventListener("click", (e) => {
@@ -123,15 +123,15 @@ export class UserComponent {
         }
 
         if (typeof callback === "string") {
-          callback = self[callback(userData)];
+          callback = context[callback(userData)];
         } else if (typeof callback === "function ") {
-          callback.call(self, userData);
+          callback.call(context, userData);
         }
       });
     }
   }
 
-  addReview(callback, self) {
+  addReview(callback, context) {
     if (document.querySelector(".js-cafe-review-btn") !== undefined) {
       const add_review_btn = document.querySelector(".js-cafe-review-btn");
       add_review_btn.addEventListener("click", (e) => {
@@ -145,16 +145,16 @@ export class UserComponent {
         }
 
         if (typeof callback === "string") {
-          callback = self[callback(userData)];
+          callback = context[callback(userData)];
         } else if (typeof callback === "function ") {
-          callback.call(self, userData);
+          callback.call(context, userData);
         }
       });
     }
   }
 
-  //event delegation
-  headerMenu(callback, self) {
+  //Event delegation
+  headerMenu(callback, context) {
     console.log("header-delegation");
     if (document.querySelectorAll(".js-user-header-menu") !== undefined) {
       const header_menu = document.querySelectorAll(".js-user-header-menu");
@@ -171,26 +171,29 @@ export class UserComponent {
           if (e.target.innerHTML.includes("Home")) {
             console.log("Home");
             clicked = "Home";
+            this.pushState(clicked);
             if (typeof callback === "string") {
-              callback = self[callback(clicked)];
+              callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
-              callback.call(self, clicked);
+              callback.call(context, clicked);
             }
           } else if (e.target.innerHTML.includes("User")) {
             console.log("user");
             clicked = "User";
+            this.pushState(clicked);
             if (typeof callback === "string") {
-              callback = self[callback(clicked)];
+              callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
-              callback.call(self, clicked);
+              callback.call(context, clicked);
             }
           } else if (e.target.innerHTML.includes("Search")) {
             console.log("search");
             clicked = "Search";
+            this.pushState(clicked);
             if (typeof callback === "string") {
-              callback = self[callback(clicked)];
+              callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
-              callback.call(self, clicked);
+              callback.call(context, clicked);
             }
           }
         } else {
@@ -211,28 +214,31 @@ export class UserComponent {
           if (e.target.innerHTML.includes("Home")) {
             console.log("Home");
             clicked = "Home";
+            this.pushState(clicked);
             if (typeof callback === "string") {
-              callback = self[callback(clicked)];
+              callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
-              callback.call(self, clicked);
+              callback.call(context, clicked);
             }
 
             //should i add something on here?
           } else if (e.target.innerHTML.includes("User")) {
             console.log("user");
             clicked = "User";
+            this.pushState(clicked);
             if (typeof callback === "string") {
-              callback = self[callback(clicked)];
+              callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
-              callback.call(self, clicked);
+              callback.call(context, clicked);
             }
           } else if (e.target.innerHTML.includes("Search")) {
             console.log("search");
             clicked = "Search";
+            this.pushState(clicked);
             if (typeof callback === "string") {
-              callback = self[callback(clicked)];
+              callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
-              callback.call(self, clicked);
+              callback.call(context, clicked);
             }
           }
         } else {
@@ -242,7 +248,7 @@ export class UserComponent {
     }
   }
 
-  userMenu(callback, self) {
+  userMenu(callback, context) {
     console.log("user_menu-delegation");
 
     if (document.querySelector(".js-user-menu") !== undefined) {
@@ -255,33 +261,33 @@ export class UserComponent {
             console.log("clicked Dashboard");
             clicked = "Dashboard";
             if (typeof callback === "string") {
-              callback = self[callback(clicked)];
+              callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
-              callback.call(self, clicked);
+              callback.call(context, clicked);
             }
           } else if (e.target.innerHTML.includes("My Hidden Cafe")) {
             console.log("clicked My Hidden Cafe");
             clicked = "My Hidden Cafe";
             if (typeof callback === "string") {
-              callback = self[callback(clicked)];
+              callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
-              callback.call(self, clicked);
+              callback.call(context, clicked);
             }
           } else if (e.target.innerHTML.includes("My Subscription")) {
             console.log("clicked My subscription");
             clicked = "My Subscription";
             if (typeof callback === "string") {
-              callback = self[callback(clicked)];
+              callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
-              callback.call(self, clicked);
+              callback.call(context, clicked);
             }
           } else if (e.target.innerHTML.includes("Add New Hidden Cafe")) {
             console.log("clicked Add new hidden cafe");
             clicked = "Add New Hidden Cafe";
             if (typeof callback === "string") {
-              callback = self[callback(clicked)];
+              callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
-              callback.call(self, clicked);
+              callback.call(context, clicked);
             }
           } else if (e.target.innerHTML.includes("Bookmark")) {
             console.log("clicked Bookmark");
@@ -290,9 +296,9 @@ export class UserComponent {
             console.log("clicked Settings");
             clicked = "Settings";
             if (typeof callback === "string") {
-              callback = self[callback(clicked)];
+              callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
-              callback.call(self, clicked);
+              callback.call(context, clicked);
             }
           }
         } else {
@@ -302,12 +308,13 @@ export class UserComponent {
     }
   }
 
-  caffeineList(callback, self) {
+  caffeineList(callback, context) {
     console.log("caffeine-list");
     if (document.querySelector(".js-caffeine-list") !== undefined) {
       const caffeine_list = document.querySelector(".js-caffeine-list");
       caffeine_list.addEventListener("click", (e) => {
         e.preventDefault();
+        let clicked = "user_info";
 
         //event delegation
         if (e.target.tagName === "H3" || e.target.tagName === "A") {
@@ -319,23 +326,25 @@ export class UserComponent {
             return item !== null && item !== undefined && item !== "";
           });
           let user_id = clear_arr.join();
+          this.pushState(clicked, user_id);
 
           if (typeof callback === "string") {
-            callback = self[callback(user_id)];
+            callback = context[callback(user_id)];
           } else if (typeof callback === "function") {
-            callback.call(self, user_id);
+            callback.call(context, user_id);
           }
         }
       });
     }
   }
 
-  cafeList(callback, self) {
+  cafeList(callback, context) {
     console.log("cafe-list");
     if (document.querySelector(".js-cafe-list") !== undefined) {
       const cafe_list = document.querySelector(".js-cafe-list");
       cafe_list.addEventListener("click", (e) => {
         e.preventDefault();
+        let clicked = "cafe_info";
 
         if (e.target.tagName === "H3" || e.target.tagName === "A") {
           let str = String(e.target.innerHTML);
@@ -346,18 +355,19 @@ export class UserComponent {
             return item !== null && item !== undefined && item !== "";
           });
           let cafe_id = clear_arr.join();
+          this.pushState(clicked, cafe_id);
 
           if (typeof callback === "string") {
-            callback = self[callback(cafe_id)];
+            callback = context[callback(cafe_id)];
           } else if (typeof callback === "function") {
-            callback.call(self, cafe_id);
+            callback.call(context, cafe_id);
           }
         }
       });
     }
   }
 
-  //Pages
+  //Render view
   makeLoginMain(result) {
     //notification도 로그인할때 오나? 그렇다면 이미지랑 같이 저장, 나머지 화면에서는 꺼내서 쓰기
     let user_view = new UserView();
@@ -737,5 +747,61 @@ export class UserComponent {
       hostIndex,
       location.href.indexOf("/", hostIndex + 1)
     );
+  }
+
+  pushState(clicked, dynamic_id) {
+    let data;
+    const main = "/hiddenc";
+    const user_login = "/hiddenc/login";
+    const dashboard = "/hiddenc/login/mypage";
+    const visited_cafe = "/hiddenc/login/visited";
+    const settings = "/hiddenc/login/setting";
+    const subscription = "/hiddenc/login/subscription";
+    const add_cafe = "/hiddenc/user/addcafe";
+    const user_info = "/hiddenc/search/other";
+    const cafe_info = "/hiddenc/login/search/result/cafeinfo";
+    const pre_page = window.history.state.pre_page;
+
+    switch (clicked) {
+      case "User":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "dashboard", dashboard);
+        break;
+      case "Home":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "home", user_login);
+        break;
+      case "before_login_main":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "before_login_main", main);
+        break;
+      case "Dashboard":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "dashboard", dashboard);
+        break;
+      case "My Subscription":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "subscription", subscription);
+      case "My Hidden Cafe":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "visited_cafe", visited_cafe);
+        break;
+      case "Settings":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "settings", settings);
+        break;
+      case "Add New Hidden Cafe":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "add_cafe", add_cafe);
+        break;
+      case "user_info":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "user_info", user_info + dynamic_id);
+        break;
+      case "cafe_info":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "cafe_info", cafe_info + dynamic_id);
+        break;
+    }
   }
 }

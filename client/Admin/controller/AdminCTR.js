@@ -1,516 +1,234 @@
-import {
-  AdminView
-} from "../view/AdminView.js";
-import {
-  AdminService
-} from "../service/AdminService.js";
-import {
-  AdminComponent
-} from "../view/AdminComponent.js";
-import {
-  UserService
-} from "../../User/service/UserService.js";
-import {
-  UserComponent
-} from "../../User/component/UserComponent.js"
+import { AdminService } from "../service/AdminService.js";
+import { AdminComponent } from "../component/AdminComponent.js";
+import { MapApi } from "../../Common/lib/MapApi.js";
 
 export class AdminCTR {
-  constructor(service, view) {
-    this.view = view;
-    this.service = service;
+  constructor() {
+    this.comp = new AdminComponent();
+    this.service = new AdminService();
+    this.map = new MapApi();
+    this.self = this;
+  }
+  //callback
+  async addCafe(userData) {
+    let result;
+    this.map.getCafeLocation("js-addcafe-map");
+    let latlng = this.map.latlng; //have to check the return value is right or not.
 
-    // this.view.makeCafeListPage();
-    // this.makeCafeListPage();
-
-    // this.view.makeMemberPage();
-    // this.makeMemberPage();
-
-    // this.view.makeReviseCafePage();
-    // this.makeReviseCafePage();
+    userData.append("location", latlng);
+    try {
+      result = await this.service.addCafe(userData);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+    console.log("Admin-ctr:" + result);
   }
 
-  // admin listener pages
+  async reviseCafe(userData) {
+    let result;
 
-  makeMainPage() {
-    this.makeAdminHeaderComp();
-    this.makeCaffeineListComp();
-    this.makeCafeListComp();
+    try {
+      result = await this.service.reviseCafe(userData);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+    console.log("Admin-ctr:" + result);
   }
 
-  makeCafeListPage() {
-    this.makeAdminHeaderComp();
-    this.makeAdminMenuComp();
-    this.makeSavedCafeListComp();
+  async loadCafeList() {
+    let result;
+
+    try {
+      result = await this.service.loadCafeList(userData);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+    console.log("Admin-ctr:" + result);
+
+    this.executeReviseCafePage(result);
   }
 
-  makeMemberPage() {
-    this.makeAdminHeaderComp();
-    this.makeAdminMenuComp();
-    this.makeMemberListComp();
+  async search(userData) {
+    let result;
+
+    for (let value of userData.values()) {
+      console.log("value-ctr:" + value);
+    }
+
+    try {
+      result = await this.event.search(userData);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    this.executeMakeSearch(result);
   }
 
-  makeAddCafePage() {
-    this.makeAdminHeaderComp();
-    this.makeAdminMenuComp();
-    this.makeAddCafeComp();
+  async callMain() {
+    let result;
+
+    try {
+      result = await this.service.callMain();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    this.executeAdminLogin(result);
   }
 
-  makeReviseCafePage() {
-    this.makeAdminHeaderComp();
-    this.makeAdminMenuComp();
-    // this.makeLoadCafeComp();
-    this.makeReviseCafeComp();
+  async callCafeList() {
+    let result;
+
+    try {
+      result = await this.service.callCafeList();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    this.executeCafeListPage(result);
   }
 
-  makeSearchResultPage() {
-    this.makeAdminHeaderComp();
-    this.makeCafeListComp();
+  async headerMenu(clicked) {
+    console.log("clicked:" + clicked);
+    switch (clicked) {
+      case "Home":
+        this.callMain();
+        break;
+      case "Search":
+        console.log("Search");
+        break;
+      case "Admin":
+        this.callCafeList();
+        break;
+      default:
+        console.log("You clicked invalid area!");
+        break;
+    }
   }
 
-  makeCafeInfoPage() {
-    this.makeAdminHeaderComp();
-    this.makeAdminMenuComp();
-    this.makeCafeListComp();
+  async reviseCafe() {
+    let result;
+
+    try {
+      result = await this.service.callReviseCafe();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    console.log("admin-ctr:" + result);
   }
 
-  // Listener Components
+  async callMemberList() {
+    let result;
 
-  makeAdminHeaderComp() {
-    // responsive header
-    document
-      .getElementsByClassName("js-admin-header-menu")[0]
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
-        if (
-          e.target.tagname === "UL" ||
-          e.target.tagName === "LI" ||
-          e.target.tagName === "A"
-        ) {
-          // console.log('taget' + e.target.tagName)
-          if (e.target.innerHTML.includes("Home")) {
-            console.log("clicked Home");
-            var result;
-            var view = new AdminComponent();
-            var service = new AdminService();
+    try {
+      result = await this.service.callMemberList();
+    } catch (e) {
+      console.log("error:" + e);
+    }
 
-            try {
-              result = await service.callMain();
-            } catch (e) {
-              console.log("error: " + e);
-            }
-            if (result === undefined || result === "undefined") {
-              console.log("CTR-result is undefined" + result);
-              return;
-            } else {
-              view.makeMainPage(result);
-              this.makeMainPage();
-              console.log("received data:" + result);
-            }
-          } else if (e.target.innerHTML.includes("Search")) {
-            console.log("clicked Search");
-            document
-              .getElementsByClassName("js-search-btn")[0]
-              .addEventListener("click", async (e) => {
-                e.preventDefault();
-                var result;
-
-                var view = new AdminComponent();
-                var service = new AdminService();
-
-                let adminData = new FormData(
-                  document.getElementById("js-search-form")
-                );
-                for (let value of adminData.values()) {
-                  console.log("value:" + value);
-                }
-
-                result = await service.search(adminData);
-
-                if (result === undefined || result === "undefined") {
-                  console.log("CTR-return-error:" + result);
-                } else {
-                  console.log("컨트롤러-서비스 결과값:" + result);
-
-                  view.makeSearchResultPage(result);
-                  this.makeSearchResultPage();
-                }
-              });
-          } else if (e.target.innerHTML.includes("Admin")) {
-            console.log("clicked Admin");
-            var result;
-
-            let adminData = localStorage.getItem("admin_id");
-            console.log("local data:" + adminData);
-
-            var view = new AdminComponent();
-            var service = new AdminService();
-
-            try {
-              result = await service.callAdminPage(adminData);
-            } catch (e) {
-              console.log("error: " + e);
-            }
-
-            if (result === undefined || result === "undefined") {
-              console.log("CTR-result is undefined" + result);
-              return;
-            } else {
-              view.makeCafeListPage(result);
-              this.makeCafeListPage();
-            }
-          }
-        } else {
-          console.log("you clicked invalid area");
-        }
-      });
-    // header
-    document
-      .getElementsByClassName("js-admin-header-menu")[1]
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
-        if (
-          e.target.tagname === "UL" ||
-          e.target.tagName === "LI" ||
-          e.target.tagName === "A"
-        ) {
-          // console.log('taget' + e.target.tagName)
-          if (e.target.innerHTML.includes("Home")) {
-            console.log("clicked Home");
-            var result;
-
-            var view = new AdminComponent();
-            var service = new AdminService();
-
-            try {
-              result = await service.callMain();
-            } catch (e) {
-              console.log("error: " + e);
-            }
-            if (result === undefined || result === "undefined") {
-              console.log("CTR-result is undefined" + result);
-              return;
-            } else {
-              view.makeMainPage(result);
-              this.makeMainPage();
-              console.log("received data:" + result);
-            }
-          } else if (e.target.innerHTML.includes("Search")) {
-            console.log("clicked Search");
-            document
-              .getElementsByClassName("js-search-btn")[0]
-              .addEventListener("click", async (e) => {
-                e.preventDefault();
-                var result;
-
-                let adminData = new FormData(
-                  document.getElementById("js-search-form")
-                );
-                var view = new AdminComponent();
-                var service = new AdminService();
-
-                for (let value of adminData.values()) {
-                  console.log("value:" + value);
-                }
-                result = await service.search(adminData);
-
-                if (result === undefined || result === "undefined") {
-                  console.log("CTR-return-error:" + result);
-                } else {
-                  console.log("컨트롤러-서비스 결과값:" + result);
-
-                  view.makeSearchResultPage(result);
-                  this.makeSearchResultPage();
-                }
-              });
-          } else if (e.target.innerHTML.includes("Admin")) {
-            console.log("clicked Admin");
-            var result;
-
-            let adminData = localStorage.getItem("admin_id");
-            console.log("local data:" + adminData);
-
-            var view = new AdminComponent();
-            var service = new AdminService();
-
-            try {
-              result = await service.callAdminPage(adminData);
-            } catch (e) {
-              console.log("error: " + e);
-            }
-
-            if (result === undefined || result === "undefined") {
-              console.log("CTR-result is undefined" + result);
-              return;
-            } else {
-              view.makeCafeListPage(result);
-              this.makeCafeListPage();
-            }
-          }
-        } else {
-          console.log("you clicked invalid area");
-        }
-      });
+    this.executeMemberListPage(result);
   }
 
-  makeAdminMenuComp() {
-    console.log("admin menu - CTR");
-    document
-      .getElementsByClassName("js-admin-menu")[0]
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
+  async callCafeList() {
+    let result;
 
-        if (e.target.tagName === "A" || e.target.tagName === "I") {
-          if (e.target.innerHTML.includes("Hidden Cafe List")) {
-            console.log("clicked Hidden Cafe List");
-            let result;
-            // local storage에 admindata 담아줘야 하나??
-            let view = new AdminComponent();
-            let service = new AdminService();
-
-            try {
-              result = await service.callCafeList();
-            } catch (e) {
-              console.log("error: " + e);
-            }
-            if (result === undefined || result === "undefined") {
-              console.log("CTR-result is undefined" + result);
-              return;
-            } else {
-              view.makeCafeListPage(result);
-              this.makeCafeListPage();
-              console.log("cafe list:" + result);
-            }
-          } else if (e.target.innerHTML.includes("Member Management")) {
-            console.log("clicked Member Management");
-            let result;
-            let view = new AdminComponent();
-            let service = new AdminService();
-            try {
-              result = await service.callMemberList();
-            } catch (e) {
-              console.log("error: " + e);
-            }
-            if (result === undefined || result === "undefined") {
-              console.log("CTR-result is undefined" + result);
-              return;
-            } else {
-              view.makeMemberPage(result);
-              this.makeMemberPage();
-              console.log("user list:" + result);
-            }
-          } else if (e.target.innerHTML.includes("Add New Hidden Cafe")) {
-            console.log("clicked Add Cafe");
-            let view = new AdminComponent();
-
-            view.makeAddCafePage();
-            this.makeAddCafePage();
-          } else if (e.target.innerHTML.includes("Revise Hidden Cafe")) {
-            console.log("clicked Revise Cafe");
-            var result;
-            let view = new AdminComponent();
-            let service = new AdminService();
-            try {
-              result = await service.callReviseCafe();
-            } catch (e) {
-              console.log("error: " + e);
-            }
-            if (result === undefined || result === "undefined") {
-              console.log("CTR-result is undefined" + result);
-              return;
-            } else {
-              console.log("user list:" + result);
-              view.makeReviseCafePage(result);
-              this.makeReviseCafePage();
-            }
-          }
-        } else {
-          console.log("you clicked ivalid area");
-        }
-      });
+    try {
+      result = await this.service.callCafeList();
+    } catch (e) {
+      console.log("error:" + e);
+    }
+    console.log("result:" + result);
+    this.executeCafeListPage();
   }
 
-  makeCaffeineListComp() {
-    document
-      .getElementsByClassName("js-caffeine-list")[0]
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
-        console.log("CTR-CAFE: " + e.target.innerHTML);
-        if (e.target.tagName === "H3" || e.target.tagName === "A") {
-          let str = String(e.target.innerHTML);
-          let pattern = /(?!value=")\d{0,99999}(?<!\")/;
-          let found = str.match(pattern);
-          let value = found.join();
-          var result;
-          var view = new UserComponent();
-          var service = new UserService();
-
-          try {
-            result = await service.searchCafeInfo(value);
-          } catch (e) {
-            console.log("error:" + e);
-          }
-          view.makeVisitedCafe(result); //other person's page
-          this.makeVisitedCafe();
-        } else {
-          console.log("you clicked invalid area:" + e.target.tagName);
-        }
-      });
-  }
-  makeCafeListComp() {
-    document
-      .getElementsByClassName("js-cafe-list")[0]
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
-        if (e.target.tagName === "H3" || e.target.tagName === "A") {
-          let str = String(e.target.innerHTML);
-          var result;
-          var service = new UserService();
-          let view = new UserComponent();
-          let pattern = /(?!value=")\d{0,99999}(?<!\")/;
-          let found = str.match(pattern);
-          let value = found.join();
-
-          try {
-            result = await service.searchCafeInfo(value);
-          } catch (e) {
-            console.log("error:" + e);
-          }
-          view.makeCafeInfo(result);
-
-          document
-            .getElementsByClassName("js-cafe-review-btn")[0]
-            .addEventListener("click", async (e) => {
-              e.preventDefault();
-              var result;
-              var service = new UserService();
-
-              let userData = new FormData(
-                document.getElementById("js-cafe-review-form")
-              );
-              for (let value of userData.values()) {
-                console.log("value:" + value);
-              }
-
-              result = await service.settings(userData);
-
-              if (result === undefined || result === "undefined") {
-                console.log("CTR-return-error:" + result);
-                this.view.makeCafeInfo();
-
-                this.makeCafeInfo();
-              } else {
-                console.log("컨트롤러-서비스 결과값: " + result);
-                alert("성공적으로 등록되었습니다.");
-                this.view.makeCafeInfo(); //새로 더한 리뷰 추가해서 페이지 다시 만들기
-                this.makeCafeInfo();
-              }
-            });
-        } else {
-          console.log("you clicked invalid area:" + e.target.tagName);
-        }
-      });
-  }
-  makeAddCafeComp() {
-    document
-      .getElementsByClassName("js-admin-addcafe-btn")[0]
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
-        var result;
-
-        let cafeData = new FormData(
-          document.getElementById("js-admin-addcafe-form")
-        );
-        for (let value of cafeData.values()) {
-          console.log("value: " + value);
-        }
-
-        let service = new AdminService();
-        result = await service.addCafe(cafeData);
-
-        if (result === undefined || result === "undefined") {
-          console.log("CTR-return-error:" + result);
-          view.makeAddCafePage();
-          this.makeAddCafePage();
-        } else {
-          console.log("컨트롤러-서비스 결과값:" + result);
-          view.makeAddCafePage();
-          this.makeAddCafePafe();
-          alert("입력하신 카페가 성공적으로 등록되었습니다.");
-        }
-      });
-  }
-  makeLoadCafeComp() {
-    document
-      .getElementsByClassName("js-admin-revisecafe-load-btn")[0]
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
-        var result;
-
-        let cafeData = new FormData();
-
-        let service = new AdminService();
-      });
-  }
-  makeReviseCafeComp() {
-    document
-      .getElementsByClassName("js-admin-revisecafe-btn")[0]
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
-        var result;
-        let view = new AdminComponent();
-        let service = new AdminService();
-
-        let cafeData = new FormData(
-          document.getElementById("js-admin-revisecafe-form")
-        );
-        for (let value of cafeData.values()) {
-          console.log("value: " + value);
-        }
-
-        result = service.reviseCafe(cafeData);
-
-        if (result === undefined || result === "undefined") {
-          console.log("CTR-return-error:" + result);
-          view.makeReviseCafePage(result);
-          this.makeReviseCafePage();
-        } else {
-          console.log("컨트롤러-서비스 결과값:" + result);
-          view.makeReviseCafePage(result);
-          this.makeReviseCafePage();
-          alert("입력하신 카페가 성공적으로 수정되었습니다.");
-        }
-      });
+  async adminMenu(clicked) {
+    console.log("clicked:" + clicked);
+    switch (clicked) {
+      case "Hidden Cafe List":
+        this.callCafeList();
+        break;
+      case "Member Management":
+        this.callMemberList();
+        break;
+      case "Add New Hidden":
+        this.executeAddCafe();
+        break;
+      case "Revise Hidden Cafe":
+        this.reviseCafe();
+        break;
+      default:
+        console.log("You clicked invalid area!");
+        break;
+    }
   }
 
-  makeCafeListComp() {}
+  async cafeList(cafe_id) {
+    let result;
 
-  makeSavedCafeListComp() {}
+    try {
+      result = await this.event.cafeList(cafe_id);
+    } catch (e) {
+      console.log("error:" + e);
+    }
 
-  makeMemberListComp() {}
+    this.executeMakeCafeInfo(result);
+  }
 
-  makeSearchComp() {
-    document
-      .getElementById("js-search-btn")
-      .addEventListener("click", async (e) => {
-        e.preventDefault();
-        var result;
+  async caffeineList(user_id) {
+    let result;
 
-        let view = new AdminComponent();
-        let adminData = new FormData(view.search_form);
-        for (let value of adminData.values()) {
-          console.log("vlaue:" + value);
-        }
+    try {
+      result = await this.event.caffeineList(user_id);
+    } catch (e) {
+      console.log("error:" + e);
+    }
 
-        let service = new AdminService();
-        result = await service.search(adminData);
+    this.executeMakeOthersPage(result);
+  }
 
-        if (result === undefined || result === "undefined") {
-          console.log("CTR-return-error:" + result);
-        } else {
-          console.log("컨트롤러-서비스 결과값:" + result);
-          view.makeSearchResultPage(result);
-          this.makeSearchResultPage();
-        }
-      });
+  //make display
+  executeReviseCafePage(result) {
+    this.comp.makeReviseCafePage(result);
+    this.comp.headerMenu(this.headerMenu, this.self);
+    this.comp.adminMenu(this.adminMenu, this.self);
+    this.comp.reviseCafe(this.reviseCafe, this.self);
+  }
+
+  executeCafeListPage(result) {
+    this.comp.makeCafeListPage(result);
+    console.log("여기 정상");
+    this.comp.headerMenu(this.headerMenu, this.self);
+    this.comp.adminMenu(this.adminMenu, this.self);
+  }
+
+  executeMakeOthersPage(reuslt) {
+    //
+  }
+
+  executeMakeCafeInfo(result) {
+    this.comp.makeCafeInfoPage(result);
+    this.comp.headerMenu(this.headerMenu, this.self);
+    //review listener
+  }
+
+  executeMemberListPage(result) {
+    this.comp.makeMemberPage(result);
+    this.comp.headerMenu(this.headerMenu, this.self);
+    this.comp.adminMenu(this.adminMenu, this.self);
+  }
+
+  executeAddCafe() {
+    this.comp.makeAddCafePage();
+    this.comp.addCafe(this.addCafe, this.self);
+    this.comp.headerMenu(this.headerMenu, this.self);
+    this.comp.adminMenu(this.adminMenu, this.self);
+  }
+
+  executeAdminLogin(result) {
+    this.comp.makeMainPage(result);
+    this.comp.headerMenu(this.headerMenu, this.self);
+    this.comp.cafeList(this.cafeList, this.self);
+    this.comp.caffeineList(this.caffeineList, this.self);
   }
 }

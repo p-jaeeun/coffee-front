@@ -263,3 +263,9 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 10px;
 }
+
+/* map-size */
+.addcafe-map-size {
+  width: 700px;
+  height: 350px;
+}
