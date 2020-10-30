@@ -188,7 +188,7 @@ class MapApi {
     });
   }
 
-  registerCafe() {
+  registerCafe(html_class) {
     //based user location -> it needs https server
 
     // navigator.geolocation.getCurrentPosition((position) => {
@@ -210,7 +210,7 @@ class MapApi {
     // });
 
     let center = new kakao.maps.LatLng(37.5554251714123, 126.971865111592321); //test data
-    var mapContainer = document.getElementById("js-register-map"); // 지도를 표시할 div
+    var mapContainer = document.getElementById(html_class); // 지도를 표시할 div
     var mapOption = {
       center: center, // 지도의 중심좌표
       level: 4, // 지도의 확대 레벨
@@ -242,7 +242,8 @@ class MapApi {
 
       console.log(message);
       this.latLng = latlng;
-      console.log("get:" + map.latLng);
+      console.log("get:" + this.latLng);
+      console.log("get type:" + typeof this.latLng);
     });
   }
 }
@@ -295,4 +296,4 @@ let obj = {
 let map = new MapApi();
 // map.getHalfMap(arr);
 // map.getCafeInfoMap(obj);
-map.registerCafe();
+map.registerCafe("js-addcafe-map");

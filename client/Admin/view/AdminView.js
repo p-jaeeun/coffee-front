@@ -96,7 +96,7 @@ export class AdminView {
               <a href=""><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden Cafe</a>
               </li>
               <li>
-              <a href=""><i class="fa fa-user-plus"></i> Revise Hidden Cafe</a>
+              <a href=""><i class="fa fa-user-plus"></i>Revise Hidden Cafe</a>
               </li>
               </ul>
             </div>
@@ -413,6 +413,8 @@ export class AdminView {
                             </div>
                           </div>
                         </div>
+
+                        <div class="addcafe-map-size js-addcafe-map"></div>
                       </div>
                     </div>
                     <br />

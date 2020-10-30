@@ -1,5 +1,6 @@
 import { CommonView } from "../view/CommonView.js";
 import { UserView } from "../../User/view/UserView.js";
+import { AdminView } from "../../Admin/view/AdminView.js";
 
 export class CommonComponent {
   constructor() {
@@ -219,7 +220,6 @@ export class CommonComponent {
   //make the display
   makeSearchResult(result) {
     //search_result : makeUserHeader OR makeAdminHeader + makeSearchResult + makeFooter(common) + makeSearchPop(common)
-    this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
 
@@ -282,7 +282,7 @@ export class CommonComponent {
     let footer = common_view.makeFooter();
     let pop = common_view.makeSearchPop();
 
-    // this.addScript();
+    // ;
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
@@ -293,7 +293,6 @@ export class CommonComponent {
     let user_view = new UserView();
     let common_view = new CommonView();
     let admin_view = new AdminView();
-    this.addScript();
 
     //user_id, user_img
     localStorage.setItem("admin_id", result.user_id);
@@ -309,5 +308,11 @@ export class CommonComponent {
     window.window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
+  }
+
+  pushState() {
+    const main = "/hiddenc";
+    const data = { pre_page: main };
+    window.history.pushState(data, "main", main);
   }
 }

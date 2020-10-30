@@ -188,7 +188,7 @@ export class MapApi {
     });
   }
 
-  registerCafe() {
+  getCafeLocation(html_class) {
     //based user location -> it needs https server
 
     // navigator.geolocation.getCurrentPosition((position) => {
@@ -210,7 +210,7 @@ export class MapApi {
     // });
 
     let center = new kakao.maps.LatLng(37.5554251714123, 126.971865111592321); //test data
-    var mapContainer = document.getElementById("js-register-map"); // 지도를 표시할 div
+    var mapContainer = document.getElementsByClassName(html_class)[0]; // 지도를 표시할 div
     var mapOption = {
       center: center, // 지도의 중심좌표
       level: 4, // 지도의 확대 레벨

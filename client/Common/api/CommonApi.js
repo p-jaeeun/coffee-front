@@ -9,7 +9,9 @@ export class CommonApi {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxGet("http://172.16.101.87:8080/hiddenc");
+      result = await this.ajax.sendAjaxGet(
+        "http://172.16.101.141:8080/hiddenc"
+      );
     } catch (e) {
       console.log("error:" + e);
     }
@@ -22,7 +24,7 @@ export class CommonApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://172.16.101.87:8080/hiddenc/login/main"
+        "http://172.16.101.141:8080/hiddenc/login/main"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -36,7 +38,7 @@ export class CommonApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        `http://172.16.101.87:8080/hiddenc/login`
+        `http://172.16.101.141:8080/hiddenc/login`
       );
     } catch (e) {
       console.log("error:" + e);
@@ -51,7 +53,7 @@ export class CommonApi {
 
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.101.87:8080/hiddenc/login",
+        "http://172.16.101.141:8080/hiddenc/login",
         userData
       );
     } catch (e) {
@@ -68,7 +70,7 @@ export class CommonApi {
 
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.101.87:8080/hiddenc/signup",
+        "http://172.16.101.141:8080/hiddenc/signup",
         userData
       );
     } catch (e) {
