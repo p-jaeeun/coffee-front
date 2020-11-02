@@ -616,6 +616,7 @@ export class UserComponent {
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + add_cafe + footer + pop;
     this.pushState("Add New Hidden Cafe");
+    console.log("ASDASD");
   }
 
   makeSettings() {

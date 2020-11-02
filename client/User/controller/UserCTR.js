@@ -7,8 +7,7 @@ export class UserCTR {
     this.event = new UserEvent();
     this.self = this;
   }
-  //callback functions are to be splited into UserComponent and UserService
-
+  //callback
   async addCafe(userData) {
     let result;
 
@@ -21,6 +20,7 @@ export class UserCTR {
     } catch (e) {
       console.log("error:" + e);
     }
+    // console.log("result:" + result);
   }
 
   async search(userData) {
@@ -102,6 +102,33 @@ export class UserCTR {
     this.executeMakeLoginMain(result);
   }
 
+  async getSubscriptionPage() {
+    let result;
+    let user_id = localStorage.getItem("user_id");
+
+    try {
+      result = await this.event.getSubscriptionPage(user_id);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    this.executeMakeSubscription(result);
+  }
+
+  async getVisitedCafePage() {
+    let result;
+    let user_id = localStorage.getItem("user_id");
+
+    try {
+      result = await this.event.getVisitedCafePage(user_id);
+    } catch (e) {
+      console.log("error:" + e);
+    }
+
+    this.executeVisitedCafe(result);
+  }
+
+  //callbacks of the event delegation
   async userMenu(userData) {
     console.log(userData);
     switch (userData) {
@@ -127,32 +154,6 @@ export class UserCTR {
         console.log("You clicked invalid area!");
         break;
     }
-  }
-
-  async getSubscriptionPage() {
-    let result;
-    let user_id = localStorage.getItem("user_id");
-
-    try {
-      result = await this.event.getSubscriptionPage(user_id);
-    } catch (e) {
-      console.log("error:" + e);
-    }
-
-    this.executeMakeSubscription(result);
-  }
-
-  async getVisitedCafePage() {
-    let result;
-    let user_id = localStorage.getItem("user_id");
-
-    try {
-      result = await this.event.getVisitedCafePage(user_id);
-    } catch (e) {
-      console.log("error:" + e);
-    }
-
-    this.executeVisitedCafe(result);
   }
 
   async cafeList(cafe_id) {
