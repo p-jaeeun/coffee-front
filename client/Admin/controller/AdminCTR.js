@@ -11,16 +11,26 @@ export class AdminCTR {
   }
   //callback
   async addCafe(userData) {
-    let result;
-    this.map.getCafeLocation("js-addcafe-map");
-    let latlng = this.map.latlng; //have to check the return value is right or not.
+    this.map.observer.register(
+      "search",
+      this.getLocAndAddCafe,
+      userData,
+      this.self
+    );
+    this.map.search(".js-search-map-input", ".js-search-map-btn", userData);
+  }
 
+  async getLocAndAddCafe(latlng, userData, input) {
+    let result;
     userData.append("location", latlng);
+    userData.append("input_address", input);
+
     try {
       result = await this.service.addCafe(userData);
     } catch (e) {
       console.log("error:" + e);
     }
+
     console.log("Admin-ctr:" + result);
   }
 
@@ -197,13 +207,12 @@ export class AdminCTR {
 
   executeCafeListPage(result) {
     this.comp.makeCafeListPage(result);
-    console.log("여기 정상");
     this.comp.headerMenu(this.headerMenu, this.self);
     this.comp.adminMenu(this.adminMenu, this.self);
   }
 
   executeMakeOthersPage(reuslt) {
-    //
+    //서비스 준비중
   }
 
   executeMakeCafeInfo(result) {

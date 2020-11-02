@@ -2,34 +2,34 @@ $(document).on("ready", function () {
   "use strict";
 
   /* =============== Ajax Contact Form ===================== */
-  $("#contactform").submit(function () {
-    var action = $(this).attr("action");
-    $("#message").slideUp(750, function () {
-      $("#message").hide();
-      $("#submit")
-        .after('<img src="images/ajax-loader.gif" class="loader" />')
-        .attr("disabled", "disabled");
-      $.post(
-        action,
-        {
-          name: $("#name").val(),
-          email: $("#email").val(),
-          comments: $("#comments").val(),
-          verify: $("#verify").val(),
-        },
-        function (data) {
-          document.getElementById("message").innerHTML = data;
-          $("#message").slideDown("slow");
-          $("#contactform img.loader").fadeOut("slow", function () {
-            $(this).remove();
-          });
-          $("#submit").removeAttr("disabled");
-          if (data.match("success") != null) $("#contactform").slideUp("slow");
-        }
-      );
-    });
-    return false;
-  });
+  // $("#contactform").submit(function () {
+  //   var action = $(this).attr("action");
+  //   $("#message").slideUp(750, function () {
+  //     $("#message").hide();
+  //     $("#submit")
+  //       .after('<img src="images/ajax-loader.gif" class="loader" />')
+  //       .attr("disabled", "disabled");
+  //     $.post(
+  //       action,
+  //       {
+  //         name: $("#name").val(),
+  //         email: $("#email").val(),
+  //         comments: $("#comments").val(),
+  //         verify: $("#verify").val(),
+  //       },
+  //       function (data) {
+  //         document.getElementById("message").innerHTML = data;
+  //         $("#message").slideDown("slow");
+  //         $("#contactform img.loader").fadeOut("slow", function () {
+  //           $(this).remove();
+  //         });
+  //         $("#submit").removeAttr("disabled");
+  //         if (data.match("success") != null) $("#contactform").slideUp("slow");
+  //       }
+  //     );
+  //   });
+  //   return false;
+  // });
 
   var tabs = $(".ctabs li a");
   tabs.on("click", function () {
@@ -42,11 +42,11 @@ $(document).on("ready", function () {
 
   $(".accountbtn").on("click", function () {
     $(".popupsec").fadeIn();
-    $("html").addClass("no-scroll");
+    // $("html").addClass("no-scroll");
   });
   $(".closepopup").on("click", function () {
     $(".popupsec").fadeOut();
-    $("html").removeClass("no-scroll");
+    // $("html").removeClass("no-scroll");
   });
 
   $("a.scrollup, .scrolldown, .listingnav a").on("click", function (e) {

@@ -415,6 +415,8 @@ export class AdminView {
                         </div>
 
                         <div class="addcafe-map-size js-addcafe-map"></div>
+                        <input type="text" class="js-search-map-input">
+                        <button class="js-search-map-btn">주소 검색</button>
                       </div>
                     </div>
                     <br />
