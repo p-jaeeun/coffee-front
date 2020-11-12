@@ -6,13 +6,13 @@ export class CommonComponent {
   constructor() {
     this.view = new CommonView();
     //btn
-    this.signin_btn = document.getElementsByClassName("js-signin-btn")[0];
-    this.signup_btn = document.getElementsByClassName("js-signup-btn")[0];
-    this.search_btn = document.getElementsByClassName("js-search-btn")[0];
+    this.signin_btn = document.querySelector(".js-signin-btn");
+    this.signup_btn = document.querySelector(".js-signup-btn");
+    this.search_btn = document.querySelector(".js-search-btn");
     //form
-    this.signin_form = document.getElementById("js-signin-form");
-    this.signup_form = document.getElementById("js-signup-form");
-    this.search_form = document.getElementById("js-search-form");
+    this.signin_form = document.querySelector(".js-signin-form");
+    this.signup_form = document.querySelector(".js-signup-form");
+    this.search_form = document.querySelector(".js-search-form");
   }
 
   signin(callback, context) {

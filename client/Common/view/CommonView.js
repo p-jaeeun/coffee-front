@@ -398,7 +398,9 @@ export class CommonView {
             </div>
           </div>
         </div>
-      </div>`;
+      </div>
+      
+      `;
     return search_pop;
   }
   makeSearchResult(result_count) {

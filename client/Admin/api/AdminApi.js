@@ -13,7 +13,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://172.16.101.141:8080/hiddenc/login/main"
+        "http://172.16.100.69:8080/hiddenc/login/main"
       );
     } catch (e) {
       console.log("error: " + e);
@@ -26,7 +26,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://172.16.101.141:8080/hiddenc/admin/cafe"
+        "http://172.16.100.69:8080/hiddenc/admin/cafe"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -39,7 +39,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://172.16.101.141:8080/hiddenc/admin/cafe"
+        "http://172.16.100.69:8080/hiddenc/admin/cafe"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -52,7 +52,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://172.16.101.141:8080/hiddenc/admin/user"
+        "http://172.16.100.69:8080/hiddenc/admin/user"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -65,7 +65,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://172.16.101.141:8080/hiddenc/admin/addcafe/byuser"
+        "http://172.16.100.69:8080/hiddenc/admin/addcafe/byuser"
       );
     } catch (e) {
       console.log("error:" + e);
@@ -80,7 +80,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.101.141:8080/hiddenc/admin/addcafe",
+        "http://172.16.100.69:8080/hiddenc/admin/addcafe",
         cafeData
       );
     } catch (e) {
@@ -95,7 +95,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.101.141:8080/hiddenc/admin/addcafe/byuser",
+        "http://172.16.100.69:8080/hiddenc/admin/addcafe/byuser",
         cafeData
       );
     } catch (e) {
@@ -109,7 +109,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.101.141:8080/hiddenc/login/search/result",
+        "http://172.16.100.69:8080/hiddenc/login/search/result",
         adminData
       );
     } catch (e) {

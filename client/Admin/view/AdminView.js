@@ -194,6 +194,7 @@ export class AdminView {
     `;
     return member_list;
   }
+
   makeMemberItem(user_id, user_name, user_caffeine) {
     let member_item = `
     <div class="col-lg-4">
@@ -213,6 +214,7 @@ export class AdminView {
     </div> `;
     return member_item;
   }
+
   makeReviseCafeForm() {
     let admin_revisecafe = `
     <section>
@@ -327,6 +329,7 @@ export class AdminView {
     <option value="${cafe_id}">${cafe_name}</option>`;
     return revise_cafe_name;
   }
+
   makeAddCafeForm() {
     let admin_addcafe = `
     <div class="block gray">
@@ -334,7 +337,7 @@ export class AdminView {
             <div class="row justify-content-center">
               <div class="col-lg-10">
                 <div class="pbox">
-                  <form enctype="multipart/form-data" class="addlistingform" id="js-admin-addcafe-form" >
+                  <form enctype="multipart/form-data" class="addlistingform js-admin-addcafe-form" >
                     <div class="add_cafe_title">카페 추가하기</div>
                     <div class="row">
                       <div class="col-lg-6">
@@ -413,10 +416,6 @@ export class AdminView {
                             </div>
                           </div>
                         </div>
-
-                        <div class="addcafe-map-size js-addcafe-map"></div>
-                        <input type="text" class="js-search-map-input">
-                        <button class="js-search-map-btn">주소 검색</button>
                       </div>
                     </div>
                     <br />

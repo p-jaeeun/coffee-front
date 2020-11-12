@@ -191,9 +191,9 @@ export class MapApi {
     });
   }
 
-  search(input_class, search_class, userData) {
-    let input = document.querySelector(input_class);
-    let search = document.querySelector(search_class);
+  search(userData) {
+    let input = userData.get("cafe_location");
+
     let mapContainer = document.getElementById("js-addcafe-map"); // 지도를 표시할 div
     let mapOption = {
       center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
@@ -205,152 +205,25 @@ export class MapApi {
     let map = new kakao.maps.Map(mapContainer, mapOption);
     let geocoder = new kakao.maps.services.Geocoder();
 
-    // 주소로 좌표를 검색합니다
+    geocoder.addressSearch(input, (result, status) => {
+      // 정상적으로 검색이 완료됐으면
+      if (status === kakao.maps.services.Status.OK) {
+        let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-    // 키워드로 장소를 검색합니다
-    search.addEventListener("click", (e) => {
-      console.log("check button");
-      geocoder.addressSearch(input.value, (result, status) => {
-        // 정상적으로 검색이 완료됐으면
-        if (status === kakao.maps.services.Status.OK) {
-          let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        let marker = new kakao.maps.Marker({
+          map: map,
+          position: coords,
+        });
 
-          let marker = new kakao.maps.Marker({
-            map: map,
-            position: coords,
-          });
+        let infowindow = new kakao.maps.InfoWindow({
+          content: `<div style="width:150px;text-align:center;padding:6px 0;">${input}</div>`,
+        });
+        infowindow.open(map, marker);
+        map.setCenter(coords);
 
-          let infowindow = new kakao.maps.InfoWindow({
-            content: `<div style="width:150px;text-align:center;padding:6px 0;">${input.value}</div>`,
-          });
-          infowindow.open(map, marker);
-          map.setCenter(coords);
-
-          //observer에 값을 넘김
-          this.observer.notify("search", coords, userData, input);
-        }
-      });
+        //observer에 값을 넘김
+        this.observer.notify("search", coords, userData, input);
+      }
     });
   }
-  getLoc() {
-    return this.latlng;
-  }
-  Test() {
-    // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
-
-    var mapContainer = document.getElementById("js-addcafe-map"), // 지도를 표시할 div
-      mapOption = {
-        center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 3, // 지도의 확대 레벨
-      };
-
-    // 지도를 생성합니다
-    var map = new kakao.maps.Map(mapContainer, mapOption);
-
-    // 장소 검색 객체를 생성합니다
-    var ps = new kakao.maps.services.Places();
-
-    // 키워드로 장소를 검색합니다
-    ps.keywordSearch("이태원 맛집", placesSearchCB);
-
-    // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-    function placesSearchCB(data, status, pagination) {
-      if (status === kakao.maps.services.Status.OK) {
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-        // LatLngBounds 객체에 좌표를 추가합니다
-        var bounds = new kakao.maps.LatLngBounds();
-
-        for (var i = 0; i < data.length; i++) {
-          displayMarker(data[i]);
-          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-        }
-
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-        map.setBounds(bounds);
-      }
-    }
-
-    // 지도에 마커를 표시하는 함수입니다
-    function displayMarker(place) {
-      // 마커를 생성하고 지도에 표시합니다
-      var marker = new kakao.maps.Marker({
-        map: map,
-        position: new kakao.maps.LatLng(place.y, place.x),
-      });
-
-      // 마커에 클릭이벤트를 등록합니다
-      kakao.maps.event.addListener(marker, "click", function () {
-        // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-        infowindow.setContent(
-          '<div style="padding:5px;font-size:12px;">' +
-            place.place_name +
-            "</div>"
-        );
-        infowindow.open(map, marker);
-      });
-    }
-  }
-  // registerCafe(html_class, callback) {
-  //   //based user location -> it needs https server
-
-  //   // navigator.geolocation.getCurrentPosition((position) => {
-  //   // 		let lat = position.coords.latitude
-  //   // 		let lng = position.coords.longitude
-  //   // 		console.log("lat: " + lat)
-  //   // 		console.log("lng: " + lng)
-  //   // 		let latlng = new kakao.maps.latLng(lat, lng)
-  //   // 		var mapContainer = document.getElementById('js-half-map')// 지도를 표시할 div
-  //   // 		var mapOption = {
-  //   // 		        center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
-  //   // 		        level: 4, // 지도의 확대 레벨
-  //   // 		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-  //   // 		    };
-
-  //   // 		// 지도를 생성한다
-  //   // 		var map = new kakao.maps.Map(mapContainer, mapOption);
-  //   // 		var marker = new kakao.maps.Marker(latlng)
-  //   // });
-
-  //   let center = new kakao.maps.LatLng(37.5554251714123, 126.971865111592321); //test data
-  //   var mapContainer = document.getElementById(html_class); // 지도를 표시할 div
-  //   var mapOption = {
-  //     center: center, // 지도의 중심좌표
-  //     level: 4, // 지도의 확대 레벨
-  //     mapTypeId: kakao.maps.MapTypeId.ROADMAP, // 지도종류
-  //   };
-
-  //   // 지도를 생성한다
-  //   var map = new kakao.maps.Map(mapContainer, mapOption);
-
-  //   // 지도를 클릭한 위치에 표출할 마커입니다
-  //   var marker = new kakao.maps.Marker({
-  //     // 지도 중심좌표에 마커를 생성합니다
-  //     position: map.getCenter(),
-  //   });
-  //   // 지도에 마커를 표시합니다
-  //   marker.setMap(map);
-
-  //   kakao.maps.event.addListener(map, "click", function (mouseEvent) {
-  //     // 클릭한 위도, 경도 정보를 가져옵니다
-  //     var latlng = mouseEvent.latLng;
-
-  //     // 마커 위치를 클릭한 위치로 옮깁니다
-  //     marker.setPosition(latlng);
-
-  //     var message = "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, ";
-  //     message += "경도는 " + latlng.getLng() + " 입니다";
-
-  //     console.log(message);
-  //     this.latLng = latlng;
-  //     console.log("get:" + this.latLng);
-  //     console.log("get type:" + typeof this.latLng);
-
-  //     if (typeof callback === "string") {
-  //       callback = this[callback(latlng)];
-  //     } else if (typeof callback === "function") {
-  //       callback.call(this, latlng);
-  //     }
-  //   });
-  // }
 }

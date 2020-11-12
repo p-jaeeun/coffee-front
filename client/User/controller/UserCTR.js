@@ -224,7 +224,6 @@ export class UserCTR {
   executeMakeLoginMain(result) {
     this.comp.makeLoginMain(result);
     this.comp.headerMenu(this.headerMenu, this.self);
-    this.comp.userMenu(this.userMenu, this.self);
     this.comp.cafeList(this.cafeList, this.self);
     this.comp.caffeineList(this.caffeineList, this.self);
   }

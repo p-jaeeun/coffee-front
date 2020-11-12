@@ -17,7 +17,7 @@ export class AdminCTR {
       userData,
       this.self
     );
-    this.map.search(".js-search-map-input", ".js-search-map-btn", userData);
+    this.map.search(userData);
   }
 
   async getLocAndAddCafe(latlng, userData, input) {

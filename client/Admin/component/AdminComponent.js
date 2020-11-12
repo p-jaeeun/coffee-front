@@ -41,18 +41,17 @@ export class AdminComponent {
     this.thumnail = document.getElementById("js-thumnail");
     this.upload_cafe = document.getElementById("js-upload");
   }
-
   //Listener
   addCafe(callback, context) {
     console.log("add-cafe-listener");
     if (document.querySelector(".js-admin-addcafe-btn") !== null) {
-      const add_cafe_btn = document.querySelector(".js-addcafe-admin-btn");
+      const add_cafe_btn = document.querySelector(".js-admin-addcafe-btn");
       add_cafe_btn.addEventListener("click", (e) => {
         e.preventDefault();
         const add_cafe_form = document.querySelector(".js-admin-addcafe-form");
-        let userData = new FormData(add_cafe_btn);
+        let userData = new FormData(add_cafe_form);
 
-        for (let value of userData.values) {
+        for (let value of userData.values()) {
           console.log("value:" + value);
         }
 
@@ -341,7 +340,6 @@ export class AdminComponent {
 
   //render view
   makeMainPage(result) {
-    this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
     let admin_view = new AdminView();
@@ -359,7 +357,7 @@ export class AdminComponent {
 
   makeCafeListPage(result) {
     console.log("데이터" + result);
-    this.addScript();
+
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -388,7 +386,6 @@ export class AdminComponent {
   }
 
   makeMemberPage(result) {
-    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -418,7 +415,6 @@ export class AdminComponent {
   }
 
   makeAddCafePage() {
-    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -438,7 +434,6 @@ export class AdminComponent {
   }
 
   makeReviseCafePage(result) {
-    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
     let header = admin_view.makeAdminHeader();
@@ -497,7 +492,6 @@ export class AdminComponent {
   }
 
   makeSearchResultPage(result) {
-    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -522,7 +516,6 @@ export class AdminComponent {
   }
 
   makeCafeInfoPage(result) {
-    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -652,7 +645,7 @@ export class AdminComponent {
     const user_info = "/hiddenc/search/other";
     const cafe_info = "/hiddenc/login/search/result/cafeinfo";
     const search_result = "/hiddenc/login/search/result";
-    const pre_page = window.history.state.pre_page;
+    const pre_page = window.location.href;
 
     switch (page) {
       case "Home":
