@@ -1,5 +1,6 @@
 import { Ajax } from "../../Common/lib/Ajax.js";
 import { AdminDTO } from "../model/AdminDTO.js";
+import { env } from "../../../router.js";
 
 export class AdminApi {
   constructor() {
@@ -12,9 +13,7 @@ export class AdminApi {
 
     let result;
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://172.16.100.69:8080/hiddenc/login/main"
-      );
+      result = await this.ajax.sendAjaxGet(`${env}/hiddenc/login/main`);
     } catch (e) {
       console.log("error: " + e);
     }
@@ -25,9 +24,7 @@ export class AdminApi {
     console.log("ajax-adminpage");
     let result;
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://172.16.100.69:8080/hiddenc/admin/cafe"
-      );
+      result = await this.ajax.sendAjaxGet(`${env}/hiddenc/admin/cafe`);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -38,9 +35,7 @@ export class AdminApi {
     console.log("ajax-adminpage-cafeList");
     let result;
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://172.16.100.69:8080/hiddenc/admin/cafe"
-      );
+      result = await this.ajax.sendAjaxGet(`${env}/hiddenc/admin/cafe`);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -51,9 +46,7 @@ export class AdminApi {
     console.log("ajax-adminpage-member");
     let result;
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://172.16.100.69:8080/hiddenc/admin/user"
-      );
+      result = await this.ajax.sendAjaxGet(`${env}/hiddenc/admin/user`);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -65,7 +58,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxGet(
-        "http://172.16.100.69:8080/hiddenc/admin/addcafe/byuser"
+        `${env}/hiddenc/admin/addcafe/byuser`
       );
     } catch (e) {
       console.log("error:" + e);
@@ -80,7 +73,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.100.69:8080/hiddenc/admin/addcafe",
+        `${env}/hiddenc/admin/addcafe`,
         cafeData
       );
     } catch (e) {
@@ -95,7 +88,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.100.69:8080/hiddenc/admin/addcafe/byuser",
+        `${env}/hiddenc/admin/addcafe/byuser`,
         cafeData
       );
     } catch (e) {
@@ -109,7 +102,7 @@ export class AdminApi {
     let result;
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.100.69:8080/hiddenc/login/search/result",
+        `${env}/hiddenc/login/search/result`,
         adminData
       );
     } catch (e) {

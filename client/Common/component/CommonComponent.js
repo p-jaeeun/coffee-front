@@ -16,7 +16,7 @@ export class CommonComponent {
   }
 
   signin(callback, context) {
-    if (this.signin_btn !== undefined) {
+    if (this.signin_btn !== null) {
       this.signin_btn.addEventListener("click", (e) => {
         console.log("component");
         e.preventDefault();
@@ -37,7 +37,7 @@ export class CommonComponent {
   }
 
   signup(callback, context) {
-    if (this.signup_btn !== undefined) {
+    if (this.signup_btn !== null) {
       this.signup_btn.addEventListener("click", (e) => {
         e.preventDefault();
 

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/grid.css" />
+    <title>Add Hidden Cafe</title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="mainlogo">
+          <a href="#"
+            ><img src="/images/hiddenc_logo.png" alt="hiddenc_logo"
+          /></a>
+        </div>
+        <div class="header-wrap">
+          <nav>
+            <ul class="header-menu">
+              <li>
+                <a href="#" title="">Home</a>
+              </li>
+              <li>
+                <a href="#" title="">Search</a>
+              </li>
+              <li>
+                <a href="#" title="">Admin</a>
+              </li>
+            </ul>
+          </nav>
+          <div class="admin-profile">
+            <span class="">${user_id}</span>
+          </div>
+          <!-- <a href="#" class="bellicon"
+            ><i class="fa fa-bell-o"></i><strong>${notification}</strong></a
+          > -->
+        </div>
+        
+      </header>
+      
+      <div class="admin-menu js-admin-menu">
+        <a href="javascript:void(0)"
+          ><i class="fa fa-coffee" aria-hidden="true"></i>Hidden Cafe
+          List</a
+        >
+        <a href="javascript:void(0)"
+          ><i class="fa fa-address-card-o" aria-hidden="true"></i> Member
+          Management</a
+        >
+        <a href="javascript:void(0)"
+          ><i class="fa fa-plus" aria-hidden="true"></i>Add New Hidden
+          Cafe</a
+        >
+        <a href="javascript:void(0)"
+          ><i class="fa fa-user-plus"></i> Add Hidden Cafe by Users</a
+        >
+      </div>
+      <main>
+        <div class="addcafe_title">카페 추가하기</div>
+        <form class="addcafe_form js-cafe-admin-form">
+              <div class="addcafe_name">
+                <span>카페 이름 *</span>
+                <input type="text" class="js-admin-addcafe-input" name="cafe_name"/>
+              </div>
+              <div class="addcafe_address">
+                <span>카페 주소 *</span>
+                <input
+                  type="text"
+                  class="js-admin-addcafe-input"
+                  placeholder="ex) Seoul, Jongno-gu, Gwancheol-dong, 5-8 카페 뎀셀브즈" name="cafe_location"
+                />
+              </div>
+              <div class="addcafe_menu">
+                <span>카페 메뉴</span>
+                <input
+                  type="text"
+                  class="js-admin-addcafe-input"
+                  placeholder="ex) 아메리카노 4000 , 라떼 4500" name="cafe_menu"
+                />
+              </div>
+              
+              <div class="addcafe_sns">
+                <span>카페 SNS </span>
+                <input
+                  type="text"
+                  class="js-admin-addcafe-input"
+                  placeholder="https://www.instagram.com/starbucks" name="cafe_sns"
+                />
+              </div>
+              <div class="addcafe_otherinfo">
+                <span>카페 기타 정보 사항</span>
+                <textarea
+                  class="js-admin-addcafe-input"
+                  placeholder="예) 여기는 라떼맛집이에요! 핸드드립 메뉴도 있어요" name="cafe_info"
+                ></textarea>
+              </div>
+              <a class="addcafe_uploadfile">
+                <div>
+                  <img src="images/cloud.png" alt="" />
+                  <span>이미지를 업로드 하려면 클릭해주세요.</span>
+                </div>
+                <input
+                  type="file"
+                  class="js-admin-addcafe-img"
+                  accept="img/*"
+                  onChange="uploadImgPreview()"
+                  id="js-upload"
+                  name="cafe_img"
+                />
+              </a>
+
+              <div class="addcafe_preview">
+                <h3>Preview</h3>
+                    <div id="js-thumnail" style="display: flex"></div>
+                  </div>
+          <br />
+            <button
+              type="submit"
+              class="addcafe_btn js-submit"
+              id="js-admin-addcafe-btn"
+            >
+            등록하기
+            </button>
+          </div>
+        </form>
+      </main>
+      <footer>
+        <div class="footer__container">
+          <ul class="footer__list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Customer Center</a></li>
+          </ul>
+          <div>Seoul Geumcheon-gu, Gasan-dong, Gasan digital 1-ro</div>
+          <div>+82 02-123-4567</div>
+          <div>HiddenC@gmail.com</div>
+          <div class="footer__social">
+            <a href="#" title=""><i class="fa fa-facebook"></i></a>
+            <a href="#" title=""><i class="fa fa-twitter"></i></a>
+            <a href="#" title=""><i class="fa fa-instagram"></i></a>
+            <a href="#" title=""><i class="fa fa-google"></i></a>
+          </div>
+          <div class="footer__bottomline">
+              <span>© 2020 HiddenC All rights reserved.</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

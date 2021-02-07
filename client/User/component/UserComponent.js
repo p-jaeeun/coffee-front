@@ -166,7 +166,8 @@ export class UserComponent {
         if (
           e.target.tagname === "UL" ||
           e.target.tagName === "LI" ||
-          e.target.tagName === "A"
+          e.target.tagName === "A" ||
+          e.target.tagName === "H5"
         ) {
           if (e.target.innerHTML.includes("Home")) {
             console.log("Home");
