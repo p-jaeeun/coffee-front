@@ -45,6 +45,7 @@ export class AdminService {
       return result;
     }
   }
+  
   async search(adminData) {
     let result;
     try {

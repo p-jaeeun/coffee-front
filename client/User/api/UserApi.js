@@ -1,5 +1,5 @@
 import { Ajax } from "../../Common/lib/Ajax.js";
-
+import { env } from "../../../router.js";
 export class UserApi {
   constructor() {
     this.ajax = new Ajax();
@@ -11,9 +11,7 @@ export class UserApi {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://172.16.101.141:8080/hiddenc"
-      );
+      result = await this.ajax.sendAjaxGet(`${env}/hiddenc`);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -25,9 +23,7 @@ export class UserApi {
 
     let result;
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://172.16.101.141:8080/hiddenc/login/main"
-      );
+      result = await this.ajax.sendAjaxGet(`${env}/hiddenc/login/main`);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -42,7 +38,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.101.141:8080/hiddenc/user/addcafe",
+        `${env}/hiddenc/user/addcafe`,
         userData
       );
     } catch (e) {
@@ -58,7 +54,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.101.141:8080/hiddenc/login/search/result",
+        `${env}/hiddenc/login/search/result`,
         userData
       );
     } catch (e) {
@@ -76,7 +72,7 @@ export class UserApi {
     let str = JSON.stringify(obj);
     try {
       result = await this.ajax.sendAjaxPost(
-        "http://172.16.101.141:8080/hiddenc/login/search/result/cafeinfo",
+        `${env}/hiddenc/login/search/result/cafeinfo`,
         str
       );
     } catch (e) {
@@ -92,7 +88,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.101.141:8080/hiddenc/login/setting",
+        `${env}/hiddenc/login/setting`,
         userData
       );
     } catch (e) {
@@ -109,7 +105,7 @@ export class UserApi {
 
     try {
       result = await this.ajax.sendAjaxPostFile(
-        "http://172.16.101.141:8080/hiddenc/login/addreview",
+        `${env}/hiddenc/login/addreview`,
         userData
       );
     } catch (e) {
@@ -128,7 +124,7 @@ export class UserApi {
     let str = JSON.stringify(userData);
     try {
       result = await this.ajax.sendAjaxPost(
-        "http://172.16.101.141:8080/hiddenc/login/deletereview",
+        `${env}/hiddenc/login/deletereview`,
         str
       );
     } catch (e) {
@@ -142,9 +138,7 @@ export class UserApi {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://172.16.101.141:8080/hiddenc/login/mypage"
-      );
+      result = await this.ajax.sendAjaxGet(`${env}/hiddenc/login/mypage`);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -156,9 +150,7 @@ export class UserApi {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://172.16.101.141:8080/hiddenc/login/visited/"
-      );
+      result = await this.ajax.sendAjaxGet(`${env}/hiddenc/login/visited/`);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -169,9 +161,7 @@ export class UserApi {
     let result;
 
     try {
-      result = await this.ajax.sendAjaxGet(
-        "http://172.16.101.141:8080/hiddenc/login/Likelist"
-      );
+      result = await this.ajax.sendAjaxGet(`${env}/hiddenc/login/Likelist`);
     } catch (e) {
       console.log("error:" + e);
     }
@@ -185,10 +175,7 @@ export class UserApi {
     let str = JSON.stringify(obj);
 
     try {
-      result = await this.ajax.sendAjaxPost(
-        "http://172.16.101.141:8080/hiddenc/search/other",
-        str
-      );
+      result = await this.ajax.sendAjaxPost(`${env}/hiddenc/search/other`, str);
     } catch (e) {
       console.log("error:" + e);
     }

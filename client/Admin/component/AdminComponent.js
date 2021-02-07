@@ -41,18 +41,17 @@ export class AdminComponent {
     this.thumnail = document.getElementById("js-thumnail");
     this.upload_cafe = document.getElementById("js-upload");
   }
-
   //Listener
   addCafe(callback, context) {
     console.log("add-cafe-listener");
     if (document.querySelector(".js-admin-addcafe-btn") !== null) {
-      const add_cafe_btn = document.querySelector(".js-addcafe-admin-btn");
+      const add_cafe_btn = document.querySelector(".js-admin-addcafe-btn");
       add_cafe_btn.addEventListener("click", (e) => {
         e.preventDefault();
         const add_cafe_form = document.querySelector(".js-admin-addcafe-form");
-        let userData = new FormData(add_cafe_btn);
+        let userData = new FormData(add_cafe_form);
 
-        for (let value of userData.values) {
+        for (let value of userData.values()) {
           console.log("value:" + value);
         }
 
@@ -168,7 +167,6 @@ export class AdminComponent {
           if (e.target.includes("Home")) {
             console.log("Home");
             clicked = "Home";
-            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -185,7 +183,6 @@ export class AdminComponent {
           } else if (e.target.includes("Admin")) {
             console.log("Admin");
             clicked = "Admin";
-            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -205,7 +202,6 @@ export class AdminComponent {
           if (e.target.innerHTML.includes("Home")) {
             console.log("Home");
             clicked = "Home";
-            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -222,7 +218,6 @@ export class AdminComponent {
           } else if (e.target.innerHTML.includes("Admin")) {
             console.log("Admin");
             clicked = "Admin";
-            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -246,7 +241,6 @@ export class AdminComponent {
           if (e.target.innerHTML.includes("Hidden Cafe List")) {
             console.log("clicked Hidden Cafe List");
             clicked = "Hidden Cafe List";
-            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -255,7 +249,6 @@ export class AdminComponent {
           } else if (e.target.innerHTML.includes("Member Management")) {
             console.log("clicked Member Management");
             clicked = "Member Management";
-            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -264,7 +257,6 @@ export class AdminComponent {
           } else if (e.target.innerHTML.includes("Add New Hidden")) {
             console.log("clicked Add New Hidden");
             clicked = "Add New Hidden";
-            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -273,7 +265,6 @@ export class AdminComponent {
           } else if (e.target.innerHTML.includes("Revise Hidden Cafe")) {
             console.log("clicked Revise Hidden Cafe");
             clicked = "Revise Hidden Cafe";
-            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -327,7 +318,6 @@ export class AdminComponent {
 
         if (e.target.tagName === "H3" || e.target.tagName === "A") {
           clicked = "cafe_info";
-          this.pushState(clicked);
           let str = String(e.target.innerHTML);
           let pattern = /(?!value=")\d{0,99999}(?<!\")/g;
           let found = str.match(pattern);
@@ -350,7 +340,6 @@ export class AdminComponent {
 
   //render view
   makeMainPage(result) {
-    this.addScript();
     let user_view = new UserView();
     let common_view = new CommonView();
     let admin_view = new AdminView();
@@ -363,11 +352,12 @@ export class AdminComponent {
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
+    this.pushState("Home");
   }
 
   makeCafeListPage(result) {
     console.log("데이터" + result);
-    this.addScript();
+
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -392,10 +382,10 @@ export class AdminComponent {
     //     result[i]["cafe_location"]
     //   );
     // }
+    this.pushState("Hidden Cafe List");
   }
 
   makeMemberPage(result) {
-    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -421,10 +411,10 @@ export class AdminComponent {
     //   );
     // }
     // });
+    this.pushState("Member Management");
   }
 
   makeAddCafePage() {
-    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -440,10 +430,10 @@ export class AdminComponent {
 
     window.document.body.innerHTML =
       header + admin_menu + admin_addcafe + footer + search_pop;
+    this.pushState("Add New Hidden");
   }
 
   makeReviseCafePage(result) {
-    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
     let header = admin_view.makeAdminHeader();
@@ -497,10 +487,11 @@ export class AdminComponent {
         document.getElementById("cafe_information").value = cafe_information;
         // document.getElementById("js-thumnail").value = cafe_image;
       });
+
+    this.pushState("Revise Hidden Cafe");
   }
 
   makeSearchResultPage(result) {
-    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -521,10 +512,10 @@ export class AdminComponent {
       //   dom.innerHTML += item(result[i]); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
       // }
     });
+    this.pushState("Search");
   }
 
   makeCafeInfoPage(result) {
-    this.addScript();
     let admin_view = new AdminView();
     let common_view = new CommonView();
 
@@ -540,6 +531,7 @@ export class AdminComponent {
     window.document.body.innerHTML = header + cafe_info + footer + search_pop;
   }
 
+  //additional functions
   addScript() {
     let path = this.getContextPath();
     //create
@@ -557,6 +549,8 @@ export class AdminComponent {
     let script12 = document.createElement("script");
     let script13 = document.createElement("script");
     let script14 = document.createElement("script");
+    let script15 = document.createElement("script");
+    let script16 = document.createElement("script");
 
     //set path
     script1.src = `${path}/resources/js/jquery.min.js`;
@@ -573,7 +567,10 @@ export class AdminComponent {
     script12.src =
       "//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb";
     script13.src = `${path}/resources/img_upload.js`;
-    script14.src = `${path}/resources/app.js`;
+    script14.src =
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb&libraries=LIBRARY";
+    script15.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb&libraries=services,clusterer,drawing`;
+    script16.src = `${path}/resources/app.js`;
 
     //type
     script1.setAttribute = ("type", "text/javascript");
@@ -589,7 +586,9 @@ export class AdminComponent {
     script11.setAttribute = ("type", "text/javascript");
     script12.setAttribute = ("type", "text/javascript");
     script13.setAttribute = ("type", "text/javascript");
-    script14.setAttribute = ("type", "module");
+    script14.setAttribute = ("type", "text/javascript");
+    script15.setAttribute = ("type", "text/javascript");
+    script16.setAttribute = ("type", "module");
 
     script1.setAttribute = ("defer", "defer");
     script2.setAttribute = ("defer", "defer");
@@ -605,6 +604,8 @@ export class AdminComponent {
     script12.setAttribute = ("defer", "defer");
     script13.setAttribute = ("defer", "defer");
     script14.setAttribute = ("defer", "defer");
+    script15.setAttribute = ("defer", "defer");
+    script16.setAttribute = ("defer", "defer");
 
     //append
     document.body.append(script1);
@@ -621,6 +622,8 @@ export class AdminComponent {
     document.body.append(script12);
     document.body.append(script13);
     document.body.append(script14);
+    document.body.append(script15);
+    document.body.append(script16);
   }
 
   getContextPath() {
@@ -631,7 +634,7 @@ export class AdminComponent {
     );
   }
 
-  pushState(clicked, dynamic_id) {
+  pushState(page, dynamic_id) {
     let data;
     const main = "/hiddenc";
     const admin_login = "/hiddenc/login/admin";
@@ -641,12 +644,13 @@ export class AdminComponent {
     const add_cafe = "/hiddenc/admin/addcafe";
     const user_info = "/hiddenc/search/other";
     const cafe_info = "/hiddenc/login/search/result/cafeinfo";
-    const pre_page = window.history.state.pre_page;
+    const search_result = "/hiddenc/login/search/result";
+    const pre_page = window.location.href;
 
-    switch (clicked) {
+    switch (page) {
       case "Home":
         data = { pre_page: pre_page };
-        window.history.pushState(data, "home", main);
+        window.history.pushState(data, "home", admin_login);
         break;
       case "admin":
         data = { pre_page: main };
@@ -679,6 +683,10 @@ export class AdminComponent {
       case "cafe_info":
         data = { pre_page: pre_page };
         window.history.pushState(data, "cafe_info", cafe_info + dynamic_id);
+        break;
+      case "Search":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "search_result", search_result);
         break;
       default:
         console.log("Unexpected case");

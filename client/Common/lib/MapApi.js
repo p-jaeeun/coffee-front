@@ -1,6 +1,9 @@
+import { Observer } from "./Observer.js";
+
 export class MapApi {
   constructor() {
-    this.latlng;
+    this.observer = new Observer();
+    this.self = this;
   }
 
   getHalfMap(visited_arr) {
@@ -188,61 +191,39 @@ export class MapApi {
     });
   }
 
-  getCafeLocation(html_class) {
-    //based user location -> it needs https server
+  search(userData) {
+    let input = userData.get("cafe_location");
 
-    // navigator.geolocation.getCurrentPosition((position) => {
-    // 		let lat = position.coords.latitude
-    // 		let lng = position.coords.longitude
-    // 		console.log("lat: " + lat)
-    // 		console.log("lng: " + lng)
-    // 		let latlng = new kakao.maps.latLng(lat, lng)
-    // 		var mapContainer = document.getElementById('js-half-map')// 지도를 표시할 div
-    // 		var mapOption = {
-    // 		        center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
-    // 		        level: 4, // 지도의 확대 레벨
-    // 		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-    // 		    };
-
-    // 		// 지도를 생성한다
-    // 		var map = new kakao.maps.Map(mapContainer, mapOption);
-    // 		var marker = new kakao.maps.Marker(latlng)
-    // });
-
-    let center = new kakao.maps.LatLng(37.5554251714123, 126.971865111592321); //test data
-    var mapContainer = document.getElementsByClassName(html_class)[0]; // 지도를 표시할 div
-    var mapOption = {
-      center: center, // 지도의 중심좌표
+    let mapContainer = document.getElementById("js-addcafe-map"); // 지도를 표시할 div
+    let mapOption = {
+      center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
       level: 4, // 지도의 확대 레벨
       mapTypeId: kakao.maps.MapTypeId.ROADMAP, // 지도종류
     };
 
-    // 지도를 생성한다
-    var map = new kakao.maps.Map(mapContainer, mapOption);
+    // 지도를 생성합니다
+    let map = new kakao.maps.Map(mapContainer, mapOption);
+    let geocoder = new kakao.maps.services.Geocoder();
 
-    // 지도를 클릭한 위치에 표출할 마커입니다
-    var marker = new kakao.maps.Marker({
-      // 지도 중심좌표에 마커를 생성합니다
-      position: map.getCenter(),
-    });
-    // 지도에 마커를 표시합니다
-    marker.setMap(map);
+    geocoder.addressSearch(input, (result, status) => {
+      // 정상적으로 검색이 완료됐으면
+      if (status === kakao.maps.services.Status.OK) {
+        let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-    // 지도에 클릭 이벤트를 등록합니다
-    // 지도를 클릭하면 마지막 파라미터로 넘어온 함수를 호출합니다
-    kakao.maps.event.addListener(map, "click", function (mouseEvent) {
-      // 클릭한 위도, 경도 정보를 가져옵니다
-      var latlng = mouseEvent.latLng;
+        let marker = new kakao.maps.Marker({
+          map: map,
+          position: coords,
+        });
 
-      // 마커 위치를 클릭한 위치로 옮깁니다
-      marker.setPosition(latlng);
+        let infowindow = new kakao.maps.InfoWindow({
+          content: `<div style="width:150px;text-align:center;padding:6px 0;">${input}</div>`,
+        });
+        infowindow.open(map, marker);
+        map.setCenter(coords);
 
-      var message = "클릭한 위치의 위도는 " + latlng.getLat() + " 이고, ";
-      message += "경도는 " + latlng.getLng() + " 입니다";
-
-      console.log(message);
-      this.latLng = latlng;
-      console.log("get:" + map.latLng);
+        //observer에 값을 넘김
+        this.observer.notify("search", coords, userData, input);
+      }
     });
   }
 }

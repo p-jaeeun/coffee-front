@@ -166,12 +166,13 @@ export class UserComponent {
         if (
           e.target.tagname === "UL" ||
           e.target.tagName === "LI" ||
-          e.target.tagName === "A"
+          e.target.tagName === "A" ||
+          e.target.tagName === "H5"
         ) {
           if (e.target.innerHTML.includes("Home")) {
             console.log("Home");
             clicked = "Home";
-            this.pushState(clicked);
+
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -180,7 +181,7 @@ export class UserComponent {
           } else if (e.target.innerHTML.includes("User")) {
             console.log("user");
             clicked = "User";
-            this.pushState(clicked);
+
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -189,7 +190,7 @@ export class UserComponent {
           } else if (e.target.innerHTML.includes("Search")) {
             console.log("search");
             clicked = "Search";
-            this.pushState(clicked);
+
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -214,7 +215,7 @@ export class UserComponent {
           if (e.target.innerHTML.includes("Home")) {
             console.log("Home");
             clicked = "Home";
-            this.pushState(clicked);
+
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -225,7 +226,7 @@ export class UserComponent {
           } else if (e.target.innerHTML.includes("User")) {
             console.log("user");
             clicked = "User";
-            this.pushState(clicked);
+
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -234,7 +235,7 @@ export class UserComponent {
           } else if (e.target.innerHTML.includes("Search")) {
             console.log("search");
             clicked = "Search";
-            this.pushState(clicked);
+
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -276,6 +277,7 @@ export class UserComponent {
           } else if (e.target.innerHTML.includes("My Subscription")) {
             console.log("clicked My subscription");
             clicked = "My Subscription";
+            this.pushState(clicked);
             if (typeof callback === "string") {
               callback = context[callback(clicked)];
             } else if (typeof callback === "function") {
@@ -340,11 +342,12 @@ export class UserComponent {
 
   cafeList(callback, context) {
     console.log("cafe-list");
-    if (document.querySelector(".js-cafe-list") !== undefined) {
+    if (document.querySelector(".js-cafe-list") !== null) {
       const cafe_list = document.querySelector(".js-cafe-list");
       cafe_list.addEventListener("click", (e) => {
         e.preventDefault();
         let clicked = "cafe_info";
+        this.pushState(clicked);
 
         if (e.target.tagName === "H3" || e.target.tagName === "A") {
           let str = String(e.target.innerHTML);
@@ -355,7 +358,6 @@ export class UserComponent {
             return item !== null && item !== undefined && item !== "";
           });
           let cafe_id = clear_arr.join();
-          this.pushState(clicked, cafe_id);
 
           if (typeof callback === "string") {
             callback = context[callback(cafe_id)];
@@ -369,6 +371,7 @@ export class UserComponent {
 
   //Render view
   makeLoginMain(result) {
+    window.document.body.innerHTML = "";
     //notification도 로그인할때 오나? 그렇다면 이미지랑 같이 저장, 나머지 화면에서는 꺼내서 쓰기
     let user_view = new UserView();
     let common_view = new CommonView();
@@ -391,29 +394,7 @@ export class UserComponent {
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
-  }
-
-  makeAdminMain(result) {
-    //main -> makeUserHeader + makeMainCaffeineList + makeMainCafeList + makeFooter(common) + makeSearchPop
-    let user_view = new UserView();
-    let common_view = new CommonView();
-    let admin_view = new AdminView();
-    this.addScript();
-
-    //user_id, user_img
-    // localStorage.setItem("admin_id", result.user_id);
-
-    //review
-
-    let header = admin_view.makeAdminHeader(result.user_id, "0");
-    let caffeine = user_view.makeMainCaffeineList();
-    let cafe = user_view.makeMainCafeList();
-    let footer = common_view.makeFooter();
-    let pop = common_view.makeSearchPop();
-
-    window.window.document.body.setAttribute("class", "full-height");
-    window.document.body.setAttribute("id", "scrollup");
-    window.document.body.innerHTML = header + caffeine + cafe + footer + pop;
+    this.pushState("Home");
   }
 
   makeDashboard(result) {
@@ -439,6 +420,7 @@ export class UserComponent {
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML =
       header + user_menu + dashboard + footer + pop;
+    this.pushState("Dashboard");
   }
 
   makeSubscription(result) {
@@ -472,31 +454,31 @@ export class UserComponent {
 
     var list = document.getElementsByClassName("js-subscription-list")[0];
 
-    for (let i = 0; i < result.user_id.length; i++) {
-      list.innerHTML += user_view.makeSubcriptionUser(
-        result.user_id[i].user_id,
-        "http://placehold.it/50x50"
-      );
+    // for (let i = 0; i < result.user_id.length; i++) {
+    //   list.innerHTML += user_view.makeSubcriptionUser(
+    //     result.user_id[i].user_id,
+    //     "http://placehold.it/50x50"
+    //   );
 
-      for (let j = 0, max = result.cafeList.length; j < max; j++) {
-        if (result.user_id[i].user_pk === result.cafeList[j].user_pk) {
-          var sub_list = document.getElementsByClassName(
-            "js-user-myhiddencafe-list"
-          );
-          sub_list[i].innerHTML += user_view
-            .makeSubscriptionItem
-            // result.cafeList[j].cafe_name,
-            // result.cafeList[j].cafe_id,
-            // "3.75",
-            // result.cafeList[j].cafe_img,
-            // "4",
-            // result.cafeList[j].cafe_location
-            ();
-        } else {
-          console.log("FALSE");
-        }
-      }
-    }
+    //   for (let j = 0, max = result.cafeList.length; j < max; j++) {
+    //     if (result.user_id[i].user_pk === result.cafeList[j].user_pk) {
+    //       var sub_list = document.getElementsByClassName(
+    //         "js-user-myhiddencafe-list"
+    //       );
+    //       sub_list[i].innerHTML += user_view
+    //         .makeSubscriptionItem
+    //         // result.cafeList[j].cafe_name,
+    //         // result.cafeList[j].cafe_id,
+    //         // "3.75",
+    //         // result.cafeList[j].cafe_img,
+    //         // "4",
+    //         // result.cafeList[j].cafe_location
+    //         ();
+    //     } else {
+    //       console.log("FALSE");
+    //     }
+    //   }
+    // }
   }
 
   makeVisitedCafe(result) {
@@ -538,6 +520,7 @@ export class UserComponent {
           ();
       }
     });
+    this.pushState("My Hidden Cafe");
   }
 
   makeCafeInfo(result) {
@@ -580,6 +563,7 @@ export class UserComponent {
 
       dom.innerHTML += item();
     });
+    this.pushState("cafe_info");
   }
 
   makeSearchResult(result) {
@@ -615,6 +599,7 @@ export class UserComponent {
         ); //result는 나중에 데이터 받아서 구체적으로 바꿔줘야함
       }
     });
+    this.pushState("Search");
   }
 
   makeAddCafe() {
@@ -633,6 +618,8 @@ export class UserComponent {
     window.document.body.setAttribute("class", "full-height");
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML = header + add_cafe + footer + pop;
+    this.pushState("Add New Hidden Cafe");
+    console.log("ASDASD");
   }
 
   makeSettings() {
@@ -656,10 +643,13 @@ export class UserComponent {
     window.document.body.setAttribute("id", "scrollup");
     window.document.body.innerHTML =
       header + user_menu + settings + footer + pop;
+    this.pushState("Settings");
   }
 
+  //additional functions
   addScript() {
-    let path = this.getContextPath();
+    // let path = this.getContextPath();
+
     //create
     let script1 = document.createElement("script");
     let script2 = document.createElement("script");
@@ -677,21 +667,21 @@ export class UserComponent {
     let script14 = document.createElement("script");
 
     //set path
-    script1.src = `${path}/resources/js/jquery.min.js`;
-    script2.src = `${path}/resources/js/modernizr.js`;
-    script3.src = `${path}/resources/js/script.js`;
-    script4.src = `${path}/resources/js/bootstrap.min.js`;
-    script5.src = `${path}/resources/js/wow.min.js`;
-    script6.src = `${path}/resources/js/slick.min.js`;
-    script7.src = `${path}/resources/js/sumoselect.js`;
-    script8.src = `${path}/resources/js/isotop.js`;
-    script9.src = `${path}/resources/js/jquery.nicescroll.min.js`;
-    script10.src = `${path}/resources/js/map1.js`;
-    script11.src = `${path}/resources/js/jq.aminoSlider.js`;
+    script1.src = `../../js/jquery.min.js`;
+    script2.src = `../../js/modernizr.js`;
+    script3.src = `../../js/script.js`;
+    script4.src = `../../js/bootstrap.min.js`;
+    script5.src = `../../js/wow.min.js`;
+    script6.src = `../../js/slick.min.js`;
+    script7.src = `../../js/sumoselect.js`;
+    script8.src = `../../js/isotop.js`;
+    script9.src = `../../js/jquery.nicescroll.min.js`;
+    script10.src = `../../js/map1.js`;
+    script11.src = `../../js/jq.aminoSlider.js`;
     script12.src =
       "//dapi.kakao.com/v2/maps/sdk.js?appkey=f6ac04217d0213217c7208829defdafb";
-    script13.src = `${path}/resources/img_upload.js`;
-    script14.src = `${path}/resources/app.js`;
+    script13.src = `../../img_upload.js`;
+    script14.src = `../../app.js`;
 
     //type
     script1.setAttribute = ("type", "text/javascript");
@@ -709,20 +699,20 @@ export class UserComponent {
     script13.setAttribute = ("type", "text/javascript");
     script14.setAttribute = ("type", "module");
 
-    script1.setAttribute = ("async", "false");
-    script2.setAttribute = ("async", "false");
-    script3.setAttribute = ("async", "false");
-    script4.setAttribute = ("async", "false");
-    script5.setAttribute = ("async", "false");
-    script6.setAttribute = ("async", "false");
-    script7.setAttribute = ("async", "false");
-    script8.setAttribute = ("async", "false");
-    script9.setAttribute = ("async", "false");
-    script10.setAttribute = ("async", "false");
-    script11.setAttribute = ("async", "false");
-    script12.setAttribute = ("async", "false");
-    script13.setAttribute = ("async", "false");
-    script14.setAttribute = ("async", "false");
+    script1.setAttribute = ("async", "async");
+    script2.setAttribute = ("async", "async");
+    script3.setAttribute = ("async", "async");
+    script4.setAttribute = ("async", "async");
+    script5.setAttribute = ("async", "async");
+    script6.setAttribute = ("async", "async");
+    script7.setAttribute = ("async", "async");
+    script8.setAttribute = ("async", "async");
+    script9.setAttribute = ("async", "async");
+    script10.setAttribute = ("async", "async");
+    script11.setAttribute = ("async", "async");
+    script12.setAttribute = ("async", "async");
+    script13.setAttribute = ("async", "async");
+    script14.setAttribute = ("async", "async");
 
     //append
     document.body.append(script1);
@@ -756,11 +746,13 @@ export class UserComponent {
     const dashboard = "/hiddenc/login/mypage";
     const visited_cafe = "/hiddenc/login/visited";
     const settings = "/hiddenc/login/setting";
-    const subscription = "/hiddenc/login/subscription";
+    const subscription = "/hiddenc/login/Likelist";
     const add_cafe = "/hiddenc/user/addcafe";
     const user_info = "/hiddenc/search/other";
     const cafe_info = "/hiddenc/login/search/result/cafeinfo";
-    const pre_page = window.history.state.pre_page;
+    const search_result = "/hiddenc/login/search/result";
+    const pre_page = window.location.href;
+    let added_url;
 
     switch (clicked) {
       case "User":
@@ -782,6 +774,7 @@ export class UserComponent {
       case "My Subscription":
         data = { pre_page: pre_page };
         window.history.pushState(data, "subscription", subscription);
+        break;
       case "My Hidden Cafe":
         data = { pre_page: pre_page };
         window.history.pushState(data, "visited_cafe", visited_cafe);
@@ -796,11 +789,23 @@ export class UserComponent {
         break;
       case "user_info":
         data = { pre_page: pre_page };
-        window.history.pushState(data, "user_info", user_info + dynamic_id);
+        if (dynamic_id !== undefined) {
+          added_url = cafe_info + dynamic_id;
+        }
+        console.log("user_info");
+        window.history.pushState(data, "user_info", added_url);
         break;
       case "cafe_info":
         data = { pre_page: pre_page };
-        window.history.pushState(data, "cafe_info", cafe_info + dynamic_id);
+        console.log("cafe_info");
+        window.history.pushState(data, "cafe_info", cafe_info);
+        break;
+      case "Search":
+        data = { pre_page: pre_page };
+        window.history.pushState(data, "search_result", search_result);
+        break;
+      default:
+        console.log("Unexpected url");
         break;
     }
   }

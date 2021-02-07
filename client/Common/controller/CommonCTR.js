@@ -13,7 +13,7 @@ export class CommonCTR {
 
     this.comp.signin(this.signin, this.self);
     this.comp.signup(this.signup, this.self);
-    this.comp.pushState();
+    // this.comp.pushState();
   }
 
   async signin(userData) {
